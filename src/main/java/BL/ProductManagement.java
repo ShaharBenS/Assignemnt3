@@ -241,7 +241,7 @@ public class ProductManagement {
     private void checkIfNeedToOrder(int id) {
         Quantity quantity = QUANTITIES.getQuantity(id);
         if (quantity.getWarehouse() <= quantity.getMinimum()) {
-            int supplierID = SBL.getSupplierID(id);
+            int supplierID = SBL.getSupplierID(id); // TODO MORE THAN 1 item can be supplied.
             int oid = ITEMS.existOrder(supplierID);
             int orderID;
             if(oid == 0) //there is no open order

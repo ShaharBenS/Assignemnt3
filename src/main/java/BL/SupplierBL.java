@@ -330,8 +330,9 @@ public class SupplierBL {
     }
     
     public boolean removeOrderItem(int orderID, int itemID){
-    	int supID= si.getSupplierID(itemID);
-    	int catalogNum = si.getCatalogNumber(itemID, supID);
+    	String [] spiltted = order.getOrder(orderID).split("\\s");
+
+    	int catalogNum = si.getCatalogNumber(itemID, Integer.parseInt(spiltted[1]));
     	return OI.removeOrderItem(orderID,catalogNum);
     }
 

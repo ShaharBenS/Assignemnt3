@@ -41,7 +41,7 @@ public class SupplierItems {
 
     public boolean setSupplierID(int id, int newId) {
         try {
-            String sql = "UPDATE SupplierItems SET SupplierIDID = ? WHERE SupplierID = ?";
+            String sql = "UPDATE SupplierItems SET SupplierID = ? WHERE SupplierID = ?";
 
             PreparedStatement pstmt = c.prepareStatement(sql);
 
@@ -148,7 +148,7 @@ public class SupplierItems {
     }
     
     public int getSupplierID(int itemID){
-    	int supID =0;
+    	int supID = 0;
         try {
             String sqlQuary = "SELECT SupplierID FROM SupplierItems WHERE ItemID = " + itemID + ";";
             stmt = c.createStatement();
