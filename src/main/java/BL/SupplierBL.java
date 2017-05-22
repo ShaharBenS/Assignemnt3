@@ -2,6 +2,7 @@ package BL;
 
 import DAL.*;
 import SharedClasses.*;
+import com.sun.org.apache.xml.internal.security.algorithms.implementations.IntegrityHmac;
 import com.sun.org.apache.xpath.internal.operations.Or;
 import javafx.util.Pair;
 import java.util.List;
@@ -267,13 +268,16 @@ public class SupplierBL {
     	return toReturn;
     }
     
-    public boolean addOrderItem(int orderID,int supplierID,int itemID, int quantity){
-        int disco = dis.getDiscountPer(supplierID, itemID, quantity);
-        double cost =si.getCost(itemID,supplierID);
+    public boolean addOrderItem(int orderID, int itemID, int quantity){
+
+        String[] splited = order.getOrder(orderID).split("\\s");
+
+        int disco = dis.getDiscountPer(Integer.parseInt(splited[1]), itemID, quantity);
+        double cost = si.getCost(itemID,Integer.parseInt(splited[1]));
         double finalCost = cost;
         if(disco!=0)
          finalCost= (disco*cost)/100;
-        OrderItem orderItem = new OrderItem(orderID,supplierID,itemID, quantity, finalCost);
+        OrderItem orderItem = new OrderItem(orderID,itemID, quantity, finalCost);
         return OI.addOrderItem(orderItem);
     }
     public boolean setOrderArrivalDate(String line)

@@ -264,7 +264,7 @@ public class PL_Orders
             if (item != 0) {
                 quantity = getQuantity();
                 if (quantity != -1) {
-                    if(bl.addOrderItem(order, bl.getOrder(order).getSupplier(), item, quantity))
+                    if(bl.addOrderItem(order, item, quantity))
                         System.out.println("Item has been added successfully");
                     else{
                         System.out.println("ERROR! something went wrong");

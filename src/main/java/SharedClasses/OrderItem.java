@@ -5,15 +5,13 @@ package SharedClasses;
  */
 public class OrderItem {
     private int orderID;
-    private int SupplierID;
     private int ItemID;
     private int quantity;
     private double finalCost;
 
 
-    public OrderItem(int orderID, int supplierID,int ItemID, int quantity, double finalCost){
+    public OrderItem(int orderID,int ItemID, int quantity, double finalCost){
         this.orderID = orderID;
-        this.SupplierID = supplierID;
         this.ItemID = ItemID;
         this.quantity = quantity;
         this.finalCost = finalCost;
@@ -48,12 +46,4 @@ public class OrderItem {
 
     public void setFinalCost(double finalCost){this.finalCost = finalCost;}
 
-
-    public int getSupplierID() {
-        return SupplierID;
-    }
-
-    public void setSupplierID(int supplierID) {
-        SupplierID = supplierID;
-    }
 }

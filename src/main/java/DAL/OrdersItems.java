@@ -25,13 +25,12 @@ public class OrdersItems {
 
     public boolean addOrderItem(OrderItem orderItem) {
         try {
-            PreparedStatement ps = c.prepareStatement("INSERT INTO OrdersItems (OrderID,SupplierID, ItemID, Quantity, FinalCost) " +
-                    "VALUES (?,?,?,?,?);");
+            PreparedStatement ps = c.prepareStatement("INSERT INTO OrdersItems (OrderID, ItemID, Quantity, FinalCost) " +
+                    "VALUES (?,?,?,?);");
             ps.setInt(1, orderItem.getOrderID());
-            ps.setInt(2,orderItem.getSupplierID());
-            ps.setInt(3, orderItem.getItemID());
-            ps.setInt(4,orderItem.getQuantity());
-            ps.setDouble(5,orderItem.getFinalCost());
+            ps.setInt(2, orderItem.getItemID());
+            ps.setInt(3,orderItem.getQuantity());
+            ps.setDouble(4,orderItem.getFinalCost());
 
             ps.executeUpdate();
             c.commit();
@@ -122,7 +121,7 @@ public class OrdersItems {
             while(rs.next())
             {
                 count++;
-                orderItemsList.add(new OrderItem(rs.getInt("OrderID"),rs.getInt("SupplierID"),
+                orderItemsList.add(new OrderItem(rs.getInt("OrderID"),
                         rs.getInt("ItemID"), rs.getInt("Quantity"),rs.getDouble("FinalCost")));
             }
             orderItems= new OrderItem[count];

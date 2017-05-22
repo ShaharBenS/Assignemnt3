@@ -129,17 +129,17 @@ public class ProgramLauncher
         ORDERS.addOrder(new Order(4,300000,new Date(new java.util.Date()),"30303030",3));
 
 
-        ORDERS_ITEMS.addOrderItem(new OrderItem(1,200000, 111111, 30, 50.0));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(2,300000,222222,40,10));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(3,100000, 333333, 30, 60.0));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(4,300000,444444,40,10));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(1,200000, 555555, 30, 22.5));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(2,300000,666666,40,10));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(3,100000, 777777, 30, 32.5));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(4,300000,888888,40,10));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(1,200000, 999999, 30, 42.5));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(2,300000,101010,40,10));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(3,100000, 202020, 30, 12.5));
+        ORDERS_ITEMS.addOrderItem(new OrderItem(1,111111, 30, 50.0));
+        ORDERS_ITEMS.addOrderItem(new OrderItem(2,222222,40,10));
+        ORDERS_ITEMS.addOrderItem(new OrderItem(3,333333, 30, 60.0));
+        ORDERS_ITEMS.addOrderItem(new OrderItem(4,444444,40,10));
+        ORDERS_ITEMS.addOrderItem(new OrderItem(1,555555, 30, 22.5));
+        ORDERS_ITEMS.addOrderItem(new OrderItem(2,666666,40,10));
+        ORDERS_ITEMS.addOrderItem(new OrderItem(3,777777, 30, 32.5));
+        ORDERS_ITEMS.addOrderItem(new OrderItem(4,888888,40,10));
+        ORDERS_ITEMS.addOrderItem(new OrderItem(1,999999, 30, 42.5));
+        ORDERS_ITEMS.addOrderItem(new OrderItem(2,101010,40,10));
+        ORDERS_ITEMS.addOrderItem(new OrderItem(3,202020, 30, 12.5));
 
         QUANTITIES.addItemQuantity(new Quantity(111111, "SHELF 2-A",0,
                 10,10, 0, 30));
@@ -168,9 +168,12 @@ public class ProgramLauncher
         PRICES.addItemPrice(new Price(222222, 30.5, 0, null, null));
         PRICES.addItemPrice(new Price(333333, 50.5, 0, null, null));
         PRICES.addItemPrice(new Price(444444, 60.5, 0, null, null));
-        PRICES.addItemPrice(new Price(555555, 70.5, 30, new Date(2017,12,10), new Date(2017,12,30)));
-        PRICES.addItemPrice(new Price(666666, 80.5, 20, new Date(2017,04,10), new Date(2017,04,16)));
-        PRICES.addItemPrice(new Price(777777, 90.5, 10, new Date(2017,03,10), new Date(2017,03,14)));
+        PRICES.addItemPrice(new Price(555555, 70.5, 30,
+                new Date(2017,12,10), new Date(2017,12,30)));
+        PRICES.addItemPrice(new Price(666666, 80.5, 20,
+                new Date(2017,04,10), new Date(2017,04,16)));
+        PRICES.addItemPrice(new Price(777777, 90.5, 10,
+                new Date(2017,03,10), new Date(2017,03,14)));
         PRICES.addItemPrice(new Price(888888, 100.5, 0, null, null));
         PRICES.addItemPrice(new Price(999999, 200.5, 0, null, null));
         PRICES.addItemPrice(new Price(101010, 56.5, 0, null, null));
@@ -263,6 +266,7 @@ public class ProgramLauncher
             }
         });
         checkPeriodicOrders.start();
+
         // start
         MENU.start();
         continuePeriodCheck = false;
@@ -274,7 +278,7 @@ public class ProgramLauncher
         {
             conn.commit();
             conn.close();
-         //   Thread.sleep(1000);
+            Thread.sleep(500);
 
         } catch (Exception e)
         {
@@ -372,18 +376,16 @@ public class ProgramLauncher
             stmt = c.createStatement();
             sql = "CREATE TABLE IF NOT EXISTS Discounts " +
                     "(SupplierID INT  NOT NULL," +
-                    "ItemID INT   NOT NULL," +
-                    "Quantity INT NOT NULL,"+
+                    " ItemID INT   NOT NULL," +
+                    " Quantity INT NOT NULL,"+
                     " DiscountPercentage INT  NOT NULL, " +
-                    "PRIMARY KEY (SupplierID, ItemID, Quantity),"+
+                    " PRIMARY KEY (SupplierID, ItemID, Quantity),"+
                     " FOREIGN KEY(SupplierID) REFERENCES Suppliers(ID) ON UPDATE CASCADE ON DELETE CASCADE,"+
-                    "FOREIGN KEY(ItemID) REFERENCES Items(ID) ON DELETE CASCADE ON UPDATE CASCADE); " ;
+                    " FOREIGN KEY(ItemID) REFERENCES Items(ID) ON DELETE CASCADE ON UPDATE CASCADE); " ;
             stmt.execute(sql);
             stmt.close();
 
-            /*
-                Orders : OrderID, SupplierID, Date, ContactNumber, SupplierID(FR), ContactNumber(FR).
-             */
+
             stmt = c.createStatement();
             sql =   "CREATE TABLE IF NOT EXISTS Orders " +
                     "(OrderID INT PRIMARY KEY  NOT NULL," +
@@ -397,21 +399,14 @@ public class ProgramLauncher
             stmt.close();
 
 
-            /*
-                OrdersItems : OrderID, SupplierID ,ItemID, Quantity, ,
-                              , FinalCost, OrderID(FR), catalogNumber(FR),
-                              ItemName(FR), Cost(FR), Discount(FR).
-             */
             stmt = c.createStatement();
             sql =    "CREATE TABLE IF NOT EXISTS OrdersItems " +
                     "(OrderID INT  NOT NULL," +
                     " ItemID INT NOT NULL,"+
                     " Quantity INT  NOT NULL," +
-                    " SupplierID INT NOT NULL, " +
                     " FinalCost REAL  NOT NULL, " +
                     "PRIMARY KEY(OrderID,ItemID), "+
                     " FOREIGN KEY(OrderID) REFERENCES Orders(OrderID) ON UPDATE CASCADE ON DELETE CASCADE,"+
-                    " FOREIGN KEY(SupplierID) REFERENCES Suppliers(ID) ON UPDATE CASCADE ON DELETE CASCADE,"+
                     " FOREIGN KEY(ItemID) REFERENCES Items(ID) ON UPDATE CASCADE ON DELETE CASCADE);";
             stmt.execute(sql);
             stmt.close();
