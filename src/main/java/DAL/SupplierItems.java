@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 public class SupplierItems {
@@ -147,18 +148,21 @@ public class SupplierItems {
         return cost;
     }
     
-    public int[] getSuppliersID(int itemID){
-    	int supID = 0;
+    public Integer[] getSuppliersID(int itemID){
+        ArrayList<Integer> arrayList;
         try {
-            String sqlQuary = "SELECT SupplierID FROM SupplierItems WHERE ItemID = " + itemID + ";";
+            String sqlQuery = "SELECT SupplierID FROM SupplierItems WHERE ItemID = " + itemID + ";";
             stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery(sqlQuary);
-            supID = rs.getInt(1);
-
+            ResultSet rs = stmt.executeQuery(sqlQuery);
+            arrayList = new ArrayList<>();
+            while(rs.next())
+            {
+                arrayList.add(rs.getInt(1));
+            }
             rs.close();
             stmt.close();
         } catch (Exception e) { return null; }
-        return supID;
+        return  arrayList.toArray(new Integer[arrayList.size()]);
     }
 
     public String getSupplierItems(int supId) {

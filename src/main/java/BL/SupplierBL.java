@@ -186,7 +186,7 @@ public class SupplierBL {
         return dis.getDiscount(supplierId, itemId, quantity);
     }
 
-    public int getDiscountPer(int itemId, int supId, int quantity){return  dis.getDiscountPer(supId, itemId, quantity);}
+    public int getDiscountPercentage(int itemId, int supId, int quantity){return  dis.getDiscountPer(supId, itemId, quantity);}
 
     public String getDiscounts(int supId, int ItemId) {
         return dis.getDiscounts(supId, ItemId);
@@ -339,7 +339,7 @@ public class SupplierBL {
     }
 
 
-    public int getSupplierID(int itemID)
+    public Integer[] getSuppliersID(int itemID)
     {
         return si.getSuppliersID(itemID);
     }
@@ -349,4 +349,6 @@ public class SupplierBL {
     }
 
     public boolean checkItemExistInOrder(int orderID, int itemID){return OI.checkItemExistInOrder(orderID, itemID);}
+
+    public boolean isItemOrdered(int itemID) { return OI.isItemOrdered(itemID); }
 }

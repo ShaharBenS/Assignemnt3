@@ -241,8 +241,25 @@ public class ProductManagement {
     private void checkIfNeedToOrder(int id) {
         Quantity quantity = QUANTITIES.getQuantity(id);
         if (quantity.getWarehouse() <= quantity.getMinimum()) {
-            int supplierID = SBL.getSupplierID(id); // TODO MORE THAN 1 item can be supplied.
-                                                    // TODO AND WE NEED TO CHOOSE THE BEST PRICE! SO FIX IT
+
+            if(SBL.isItemOrdered(id))
+                return;
+
+            Integer[] suppliersID = SBL.getSuppliersID(id);
+            if(suppliersID==null) return;
+            double first_cost = SBL.getCost(id,suppliersID[0]);
+            first_cost = first_cost - (first_cost*SBL.getDiscountPercentage(id,suppliersID[0],quantity.getAmount_to_order()));
+            Pair<Integer,Double> minimum = new Pair<>(suppliersID[0],first_cost);
+            for(int i = 1; i<suppliersID.length; i++)
+            {
+                double cost = SBL.getCost(id, suppliersID[i]);
+                cost = cost - (cost*SBL.getDiscountPercentage(id,suppliersID[i],quantity.getAmount_to_order()));
+                if(cost < minimum.getValue())
+                {
+                    minimum = new Pair<>(suppliersID[i],cost);
+                }
+            }
+            int supplierID = minimum.getKey();
             int oid = ITEMS.existOrder(supplierID);
             int orderID;
             if(oid == 0) //there is no open order

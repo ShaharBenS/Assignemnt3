@@ -158,7 +158,23 @@ public class OrdersItems {
     public boolean checkItemExistInOrder(int orderID, int itemID){
         try {
             stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM OrdersItems where catalogNumber = '" + orderID + "' and itemID = '" + itemID + "';");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM OrdersItems where OrderID = '" + orderID + "' and itemID = '" + itemID + "';");
+            if (rs.next()) {
+                rs.close();
+                stmt.close();
+                return true;
+            } else return false;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
+    public boolean isItemOrdered(int itemID){
+        try {
+            stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM OrdersItems as oi CROSS JOIN Order as o" +
+                                                 " where oi.itemID = '" + itemID + "' and o.ArrivalDate = NULL;");
             if (rs.next()) {
                 rs.close();
                 stmt.close();
