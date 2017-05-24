@@ -72,9 +72,9 @@ public class Quantities
     /*
         This method will update 'fieldName' to 'newValue'.
      */
-    private boolean updateField(String fieldName, int orderID, Object newValue)
+    private boolean updateField(String fieldName, int itemID, Object newValue)
     {
-        String query = "UPDATE QUANTITIES SET "+fieldName+" = '"+newValue+"' WHERE ItemID = "+orderID+";";
+        String query = "UPDATE QUANTITIES SET "+fieldName+" = '"+newValue+"' WHERE ItemID = "+itemID+";";
         try
         {
             Statement stmt = conn.createStatement();

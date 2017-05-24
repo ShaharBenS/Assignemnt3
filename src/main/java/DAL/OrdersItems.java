@@ -173,7 +173,7 @@ public class OrdersItems {
     public boolean isItemOrdered(int itemID){
         try {
             stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM OrdersItems as oi CROSS JOIN Orders as o where oi.itemID = "+itemID+" and o.ArrivalDate IS NULL");
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM OrdersItems as oi CROSS JOIN Orders as o where oi.itemID = " + itemID + " and o.ArrivalDate IS NULL");
             if (rs.next()) {
                 rs.close();
                 stmt.close();

@@ -100,6 +100,7 @@ public class ProgramLauncher
 
             SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 111111, 100000, 12.5));
             SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 111111, 100001, 12.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 333333, 100001, 12.5));
             SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 222222, 200000, 22.5));
             SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(300000, 333333, 300000, 32.5));
             SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 444444, 400000, 42.5));
@@ -115,6 +116,7 @@ public class ProgramLauncher
             DISCOUNTS.addDiscount(new Discount(200000, 111111, 20, 20));
             DISCOUNTS.addDiscount(new Discount(200000, 222222, 20, 20));
             DISCOUNTS.addDiscount(new Discount(300000, 333333, 20, 30));
+            DISCOUNTS.addDiscount(new Discount(200000, 333333, 20, 30));
             DISCOUNTS.addDiscount(new Discount(400000, 444444, 20, 40));
             DISCOUNTS.addDiscount(new Discount(500000, 555555, 20, 50));
             DISCOUNTS.addDiscount(new Discount(600000, 666666, 20, 60));
