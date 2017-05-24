@@ -273,8 +273,8 @@ public class SupplierBL {
         int disco = dis.getDiscountPer(Integer.parseInt(splited[1]), itemID, quantity);
         double cost = si.getCost(itemID,Integer.parseInt(splited[1]));
         double finalCost = cost;
-        if(disco!=0)
-         finalCost= (disco*cost)/100;
+        if(disco != 0)
+         finalCost = cost - (disco*cost)/100;
         OrderItem orderItem = new OrderItem(orderID,itemID, quantity, finalCost);
         return OI.addOrderItem(orderItem);
     }

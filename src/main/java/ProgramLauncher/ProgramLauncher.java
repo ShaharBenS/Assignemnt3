@@ -60,128 +60,130 @@ public class ProgramLauncher
         /*
             Database init
          */
-        CATEGORIES.addCategory(new Category(103,"Drinks"));
-        CATEGORIES.addCategory(new Category(102,"KARTON",103));
-        CATEGORIES.addCategory(new Category(100,"Milk",102));
-        CATEGORIES.addCategory(new Category(101,"Meat"));
-        CATEGORIES.addCategory(new Category(104,"Bread"));
-        CATEGORIES.addCategory(new Category(105,"35%", 101));
 
-        SUPPLIERS.addSupplier(new Supplier(100000,"TNUVA",111, 1, 15,"LEOMI",
-                "BY HAND","10:50","netivot"));
-        SUPPLIERS.addSupplier(new Supplier(200000,"TARA",222, 2, 16,"HAPOALIM",
-                "INTERNET ONLY","13:00","shfaram"));
-        SUPPLIERS.addSupplier(new Supplier(300000,"MOTHER-EARTH",333, 3, 17,"YAHAV",
-                "Mail","05:00","plat-earth"));
+        if(CATEGORIES.addCategory(new Category(103,"Drinks"))) {
+            CATEGORIES.addCategory(new Category(102, "KARTON", 103));
+            CATEGORIES.addCategory(new Category(100, "Milk", 102));
+            CATEGORIES.addCategory(new Category(101, "Meat"));
+            CATEGORIES.addCategory(new Category(104, "Bread"));
+            CATEGORIES.addCategory(new Category(105, "35%", 101));
 
-        CONTACTS.addContact(new Contact("10101010",100000, "Naruto Uzumaki",
-                "123456789","a@a.a" ));
+            SUPPLIERS.addSupplier(new Supplier(100000, "TNUVA", 111, 1, 15, "LEOMI",
+                    "BY HAND", "10:50", "netivot"));
+            SUPPLIERS.addSupplier(new Supplier(200000, "TARA", 222, 2, 16, "HAPOALIM",
+                    "INTERNET ONLY", "13:00", "shfaram"));
+            SUPPLIERS.addSupplier(new Supplier(300000, "MOTHER-EARTH", 333, 3, 17, "YAHAV",
+                    "Mail", "05:00", "plat-earth"));
 
-        CONTACTS.addContact(new Contact("20202020",200000, "Edoward Elich",
-                "465123789","a@a.a" ));
+            CONTACTS.addContact(new Contact("10101010", 100000, "Naruto Uzumaki",
+                    "123456789", "a@a.a"));
 
-        CONTACTS.addContact(new Contact("30303030",300000, "Natsu Dragneel",
-                "789123456","c@c.c" ));
+            CONTACTS.addContact(new Contact("20202020", 200000, "Edoward Elich",
+                    "465123789", "a@a.a"));
 
-
-        ITEMS.addItem(new Item(111111, "KORNFLEKS", 102, "SHKEL-INC"));
-        ITEMS.addItem(new Item(222222,"Steak",101,"COWS-KILLERS"));
-        ITEMS.addItem(new Item(333333,"Cheese",100,"TARA"));
-        ITEMS.addItem(new Item(444444,"White-Bread",101,"Bereshit"));
-        ITEMS.addItem(new Item(555555,"Soda",103,"Shweps"));
-        ITEMS.addItem(new Item(666666,"Cola",103,"Coca-Cola"));
-        ITEMS.addItem(new Item(777777,"Arak",103,"Tzuani-Nehmad"));
-        ITEMS.addItem(new Item(888888,"Potatoes",104,"Mother-Earth"));
-        ITEMS.addItem(new Item(999999,"Tomato",104,"Mother-Earth"));
-        ITEMS.addItem(new Item(101010,"Rice",105,"Mother-Earth"));
-        ITEMS.addItem(new Item(202020,"Eggs",105,"Mother-Chicken"));
+            CONTACTS.addContact(new Contact("30303030", 300000, "Natsu Dragneel",
+                    "789123456", "c@c.c"));
 
 
-
-        SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 111111, 100000, 12.5));
-        SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 222222, 200000, 22.5));
-        SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(300000, 333333, 300000, 32.5));
-        SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 444444, 400000, 42.5));
-        SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 555555, 500000, 52.5));
-        SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(300000, 666666, 600000, 52.5));
-        SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 777777, 700000, 62.5));
-        SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 888888, 800000, 72.5));
-        SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(300000, 999999, 900000, 82.5));
-        SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 101010, 110000, 92.5));
-        SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 202020, 120000, 112.5));
-
-        DISCOUNTS.addDiscount(new Discount(100000,111111,20,10));
-        DISCOUNTS.addDiscount(new Discount(200000,222222,20,20));
-        DISCOUNTS.addDiscount(new Discount(300000,333333,20,30));
-        DISCOUNTS.addDiscount(new Discount(400000,444444,20,40));
-        DISCOUNTS.addDiscount(new Discount(500000,555555,20,50));
-        DISCOUNTS.addDiscount(new Discount(600000,666666,20,60));
-        DISCOUNTS.addDiscount(new Discount(700000,777777,20,70));
-        DISCOUNTS.addDiscount(new Discount(800000,888888,20,80));
-        DISCOUNTS.addDiscount(new Discount(900000,999999,20,90));
-        DISCOUNTS.addDiscount(new Discount(110000,101010,20,15));
-        DISCOUNTS.addDiscount(new Discount(120000,202020,20,25));
+            ITEMS.addItem(new Item(111111, "KORNFLEKS", 102, "SHKEL-INC"));
+            ITEMS.addItem(new Item(222222, "Steak", 101, "COWS-KILLERS"));
+            ITEMS.addItem(new Item(333333, "Cheese", 100, "TARA"));
+            ITEMS.addItem(new Item(444444, "White-Bread", 101, "Bereshit"));
+            ITEMS.addItem(new Item(555555, "Soda", 103, "Shweps"));
+            ITEMS.addItem(new Item(666666, "Cola", 103, "Coca-Cola"));
+            ITEMS.addItem(new Item(777777, "Arak", 103, "Tzuani-Nehmad"));
+            ITEMS.addItem(new Item(888888, "Potatoes", 104, "Mother-Earth"));
+            ITEMS.addItem(new Item(999999, "Tomato", 104, "Mother-Earth"));
+            ITEMS.addItem(new Item(101010, "Rice", 105, "Mother-Earth"));
+            ITEMS.addItem(new Item(202020, "Eggs", 105, "Mother-Chicken"));
 
 
-        ORDERS.addOrder(new Order(1, 200000, new Date(new java.util.Date()),"20202020",0));
-        ORDERS.addOrder(new Order(2,300000,new Date(new java.util.Date()),"30303030",1));
-        ORDERS.addOrder(new Order(3,100000,new Date(new java.util.Date()),"10101010",2));
-        ORDERS.addOrder(new Order(4,300000,new Date(new java.util.Date()),"30303030",3));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 111111, 100000, 12.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 111111, 100001, 12.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 222222, 200000, 22.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(300000, 333333, 300000, 32.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 444444, 400000, 42.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 555555, 500000, 52.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(300000, 666666, 600000, 52.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 777777, 700000, 62.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 888888, 800000, 72.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(300000, 999999, 900000, 82.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 101010, 110000, 92.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 202020, 120000, 112.5));
+
+            DISCOUNTS.addDiscount(new Discount(100000, 111111, 20, 10));
+            DISCOUNTS.addDiscount(new Discount(200000, 111111, 20, 20));
+            DISCOUNTS.addDiscount(new Discount(200000, 222222, 20, 20));
+            DISCOUNTS.addDiscount(new Discount(300000, 333333, 20, 30));
+            DISCOUNTS.addDiscount(new Discount(400000, 444444, 20, 40));
+            DISCOUNTS.addDiscount(new Discount(500000, 555555, 20, 50));
+            DISCOUNTS.addDiscount(new Discount(600000, 666666, 20, 60));
+            DISCOUNTS.addDiscount(new Discount(700000, 777777, 20, 70));
+            DISCOUNTS.addDiscount(new Discount(800000, 888888, 20, 80));
+            DISCOUNTS.addDiscount(new Discount(900000, 999999, 20, 90));
+            DISCOUNTS.addDiscount(new Discount(110000, 101010, 20, 15));
+            DISCOUNTS.addDiscount(new Discount(120000, 202020, 20, 25));
 
 
-        ORDERS_ITEMS.addOrderItem(new OrderItem(1,111111, 30, 50.0));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(2,222222,40,10));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(3,333333, 30, 60.0));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(4,444444,40,10));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(1,555555, 30, 22.5));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(2,666666,40,10));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(3,777777, 30, 32.5));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(4,888888,40,10));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(1,999999, 30, 42.5));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(2,101010,40,10));
-        ORDERS_ITEMS.addOrderItem(new OrderItem(3,202020, 30, 12.5));
+            ORDERS.addOrder(new Order(1, 200000, new Date(new java.util.Date()), "20202020", 0));
+            ORDERS.addOrder(new Order(2, 300000, new Date(new java.util.Date()), "30303030", 1));
+            ORDERS.addOrder(new Order(3, 100000, new Date(new java.util.Date()), "10101010", 2));
+            ORDERS.addOrder(new Order(4, 300000, new Date(new java.util.Date()), "30303030", 3));
 
-        QUANTITIES.addItemQuantity(new Quantity(111111, "SHELF 2-A",0,
-                10,10, 0, 30));
-        QUANTITIES.addItemQuantity(new Quantity(222222, "SHELF 2-B",0,
-                20,10, 0, 12));
-        QUANTITIES.addItemQuantity(new Quantity(333333, "SHELF 2-C",0,
-                30,10, 30, 63));
-        QUANTITIES.addItemQuantity(new Quantity(444444, "SHELF 2-D",0,
-                40,20, 20, 80));
-        QUANTITIES.addItemQuantity(new Quantity(555555, "SHELF 2-E",0,
-                50,20, 10, 10));
-        QUANTITIES.addItemQuantity(new Quantity(666666, "SHELF 2-F",0,
-                60,30, 10, 13));
-        QUANTITIES.addItemQuantity(new Quantity(777777, "SHELF 2-G",0,
-                70,30, 10, 50));
-        QUANTITIES.addItemQuantity(new Quantity(888888, "SHELF 2-H",0,
-                80,40, 30, 90));
-        QUANTITIES.addItemQuantity(new Quantity(999999, "SHELF 2-I",0,
-                90,40, 60, 60));
-        QUANTITIES.addItemQuantity(new Quantity(101010, "SHELF 2-J",0,
-                100,50, 30, 30));
-        QUANTITIES.addItemQuantity(new Quantity(202020, "SHELF 2-K",0,
-                110,50, 10, 50));
 
-        PRICES.addItemPrice(new Price(111111, 20.5, 0, null, null));
-        PRICES.addItemPrice(new Price(222222, 30.5, 0, null, null));
-        PRICES.addItemPrice(new Price(333333, 50.5, 0, null, null));
-        PRICES.addItemPrice(new Price(444444, 60.5, 0, null, null));
-        PRICES.addItemPrice(new Price(555555, 70.5, 30,
-                new Date(2017,12,10), new Date(2017,12,30)));
-        PRICES.addItemPrice(new Price(666666, 80.5, 20,
-                new Date(2017,04,10), new Date(2017,04,16)));
-        PRICES.addItemPrice(new Price(777777, 90.5, 10,
-                new Date(2017,03,10), new Date(2017,03,14)));
-        PRICES.addItemPrice(new Price(888888, 100.5, 0, null, null));
-        PRICES.addItemPrice(new Price(999999, 200.5, 0, null, null));
-        PRICES.addItemPrice(new Price(101010, 56.5, 0, null, null));
-        PRICES.addItemPrice(new Price(202020, 23.5, 0, null, null));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(1, 111111, 30, 50.0));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(2, 222222, 40, 10));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(3, 333333, 30, 60.0));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(4, 444444, 40, 10));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(1, 555555, 30, 22.5));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(2, 666666, 40, 10));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(3, 777777, 30, 32.5));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(4, 888888, 40, 10));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(1, 999999, 30, 42.5));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(2, 101010, 40, 10));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(3, 202020, 30, 12.5));
 
-        ORDERS.setArrivalDate(3,new Date(new java.util.Date()));
-        ORDERS.setArrivalDate(4,new Date(new java.util.Date()));
+            QUANTITIES.addItemQuantity(new Quantity(111111, "SHELF 2-A", 0,
+                    10, 10, 0, 30));
+            QUANTITIES.addItemQuantity(new Quantity(222222, "SHELF 2-B", 0,
+                    20, 10, 0, 12));
+            QUANTITIES.addItemQuantity(new Quantity(333333, "SHELF 2-C", 0,
+                    30, 10, 30, 63));
+            QUANTITIES.addItemQuantity(new Quantity(444444, "SHELF 2-D", 0,
+                    40, 20, 20, 80));
+            QUANTITIES.addItemQuantity(new Quantity(555555, "SHELF 2-E", 0,
+                    50, 20, 10, 10));
+            QUANTITIES.addItemQuantity(new Quantity(666666, "SHELF 2-F", 0,
+                    60, 30, 10, 13));
+            QUANTITIES.addItemQuantity(new Quantity(777777, "SHELF 2-G", 0,
+                    70, 30, 10, 50));
+            QUANTITIES.addItemQuantity(new Quantity(888888, "SHELF 2-H", 0,
+                    80, 40, 30, 90));
+            QUANTITIES.addItemQuantity(new Quantity(999999, "SHELF 2-I", 0,
+                    90, 40, 60, 60));
+            QUANTITIES.addItemQuantity(new Quantity(101010, "SHELF 2-J", 0,
+                    100, 50, 30, 30));
+            QUANTITIES.addItemQuantity(new Quantity(202020, "SHELF 2-K", 0,
+                    110, 50, 10, 50));
 
+            PRICES.addItemPrice(new Price(111111, 20.5, 0, null, null));
+            PRICES.addItemPrice(new Price(222222, 30.5, 0, null, null));
+            PRICES.addItemPrice(new Price(333333, 50.5, 0, null, null));
+            PRICES.addItemPrice(new Price(444444, 60.5, 0, null, null));
+            PRICES.addItemPrice(new Price(555555, 70.5, 30,
+                    new Date(2017, 12, 10), new Date(2017, 12, 30)));
+            PRICES.addItemPrice(new Price(666666, 80.5, 20,
+                    new Date(2017, 04, 10), new Date(2017, 04, 16)));
+            PRICES.addItemPrice(new Price(777777, 90.5, 10,
+                    new Date(2017, 03, 10), new Date(2017, 03, 14)));
+            PRICES.addItemPrice(new Price(888888, 100.5, 0, null, null));
+            PRICES.addItemPrice(new Price(999999, 200.5, 0, null, null));
+            PRICES.addItemPrice(new Price(101010, 56.5, 0, null, null));
+            PRICES.addItemPrice(new Price(202020, 23.5, 0, null, null));
+
+            ORDERS.setArrivalDate(3, new Date(new java.util.Date()));
+            ORDERS.setArrivalDate(4, new Date(new java.util.Date()));
+        }
         SBL.initOrderID();
 
         checkPeriodicOrders = new Thread(()->{

@@ -98,7 +98,8 @@ public class Discounts {
     public int getDiscountPer( int supId,int itemId, int quantity){
         int discount =0;
         try {
-            String sqlQuary = "SELECT MAX(DiscountPercentage) FROM Discounts WHERE SupplierID = '" + supId + "'and ItemID = '" + itemId +  " and Quantity <= " + quantity +"';";
+            String sqlQuary = "SELECT MAX(DiscountPercentage) " +
+                    "FROM Discounts WHERE SupplierID = " + supId + " and ItemID = " + itemId +  " and Quantity <= " + quantity +";";
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQuary);
             if(rs.next())

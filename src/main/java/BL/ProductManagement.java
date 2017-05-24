@@ -238,7 +238,8 @@ public class ProductManagement {
         return toStringsDefects;
     }
 
-    private void checkIfNeedToOrder(int id) {
+    private void checkIfNeedToOrder(int id)
+    {
         Quantity quantity = QUANTITIES.getQuantity(id);
         if (quantity.getWarehouse() <= quantity.getMinimum()) {
 
@@ -248,12 +249,12 @@ public class ProductManagement {
             Integer[] suppliersID = SBL.getSuppliersID(id);
             if(suppliersID==null) return;
             double first_cost = SBL.getCost(id,suppliersID[0]);
-            first_cost = first_cost - (first_cost*SBL.getDiscountPercentage(id,suppliersID[0],quantity.getAmount_to_order()));
+            first_cost = first_cost - (first_cost*SBL.getDiscountPercentage(id,suppliersID[0],quantity.getAmount_to_order())/100);
             Pair<Integer,Double> minimum = new Pair<>(suppliersID[0],first_cost);
             for(int i = 1; i<suppliersID.length; i++)
             {
                 double cost = SBL.getCost(id, suppliersID[i]);
-                cost = cost - (cost*SBL.getDiscountPercentage(id,suppliersID[i],quantity.getAmount_to_order()));
+                cost = cost - (cost*SBL.getDiscountPercentage(id,suppliersID[i],quantity.getAmount_to_order())/100);
                 if(cost < minimum.getValue())
                 {
                     minimum = new Pair<>(suppliersID[i],cost);
@@ -266,7 +267,7 @@ public class ProductManagement {
                 orderID = SBL.addOrder(supplierID,new Date(new java.util.Date()),0);
             else orderID = oid;
             if(!SBL.addOrderItem(orderID,id, quantity.getAmount_to_order())) return;
-            Order order = SBL.getOrder(orderID);
+           Order order = SBL.getOrder(orderID);
             System.out.println(order.toString());
         }
     }
