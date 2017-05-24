@@ -2,8 +2,6 @@ package BL;
 
 import DAL.*;
 import SharedClasses.*;
-import com.sun.org.apache.xml.internal.security.algorithms.implementations.IntegrityHmac;
-import com.sun.org.apache.xpath.internal.operations.Or;
 import javafx.util.Pair;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -343,7 +341,7 @@ public class SupplierBL {
 
     public int getSupplierID(int itemID)
     {
-        return si.getSupplierID(itemID);
+        return si.getSuppliersID(itemID);
     }
     
     public boolean checkOrderExist(int orderID){

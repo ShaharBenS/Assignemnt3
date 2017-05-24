@@ -147,7 +147,7 @@ public class SupplierItems {
         return cost;
     }
     
-    public int getSupplierID(int itemID){
+    public int[] getSuppliersID(int itemID){
     	int supID = 0;
         try {
             String sqlQuary = "SELECT SupplierID FROM SupplierItems WHERE ItemID = " + itemID + ";";
@@ -157,7 +157,7 @@ public class SupplierItems {
 
             rs.close();
             stmt.close();
-        } catch (Exception e) { return 0; }
+        } catch (Exception e) { return null; }
         return supID;
     }
 

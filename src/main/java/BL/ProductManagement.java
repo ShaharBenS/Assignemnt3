@@ -242,6 +242,7 @@ public class ProductManagement {
         Quantity quantity = QUANTITIES.getQuantity(id);
         if (quantity.getWarehouse() <= quantity.getMinimum()) {
             int supplierID = SBL.getSupplierID(id); // TODO MORE THAN 1 item can be supplied.
+                                                    // TODO AND WE NEED TO CHOOSE THE BEST PRICE! SO FIX IT
             int oid = ITEMS.existOrder(supplierID);
             int orderID;
             if(oid == 0) //there is no open order
