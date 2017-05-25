@@ -14,6 +14,8 @@ public class Quantity {
     private int amount_to_order;
     private int current;
 
+
+    //TODO:omri&shahr: add supp shop
     public Quantity(int itemID, String location, int defects, int warehouse, int minimum, int store, int amount_to_order)
     {
         this.itemID = itemID;

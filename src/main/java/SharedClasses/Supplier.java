@@ -3,8 +3,8 @@ package SharedClasses;
 /**
  * Created by keren on 4/6/2017.
  */
-public class Supplier {
-    private int id;
+public class Supplier extends Site {
+    // private int id;
     private String name;
     private int bankNum;
     private int branchNum;
@@ -12,10 +12,10 @@ public class Supplier {
     private String payment;
     private String deliveryMethod;
     private String supplyTime;
-    private String address;
-
-    public Supplier(int id, String name, int bankNum, int branchNum, int accountNum, String payment, String deliveryMethod, String supplyTime, String address){
-        this.id = id;
+    //private String address;
+//TODO:: add contacts array
+    public Supplier(int id, String name, int bankNum, int branchNum, int accountNum, String payment, String deliveryMethod, String supplyTime, String address) {
+        super(id,address,"","");
         this.name = name;
         this.bankNum = bankNum;
         this.branchNum = branchNum;
@@ -23,14 +23,14 @@ public class Supplier {
         this.payment = payment;
         this.deliveryMethod = deliveryMethod;
         this.supplyTime = supplyTime;
-        this.address=address;
     }
+
     public int getId() {
-        return id;
+        return super.getCode();
     }
 
     public void setId(int id) {
-        this.id = id;
+        super.code = id;
     }
 
     public String getName() {
@@ -88,13 +88,29 @@ public class Supplier {
     public void setSupplyTime(String supplyTime) {
         this.supplyTime = supplyTime;
     }
-    
-    public String getAddress(){
-    	return address;
-    }
-    
-    public void setAddress(String address){
-    	this.address=address;
+
+    public String getAddress() {
+        return super.getAddress();
     }
 
+    @Override
+    public String openingForDoc() {
+        return "Collect From:";
+    }
+
+
+
+    @Override
+    public String toString() {
+        String myclass = this.getClass().getSimpleName();
+        return myclass + " " + this.code + "\n" +
+                "	Address: " + getAddress() + "\n" +
+                "	Contacts: \n" ;//TODO: add all contacts (name & phone)
+
+    }
+
+    @Override
+    public String change() {
+        return " were supposed to be taken from Supplier " + this.getCode();
+    }
 }

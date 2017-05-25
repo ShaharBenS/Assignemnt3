@@ -5,6 +5,10 @@ package SharedClasses;
  */
 
 public class Order {
+
+    //TODO:omri&shahr: add supp shop
+
+
     private int orderID;
     private int supplierID;
     private Date date;

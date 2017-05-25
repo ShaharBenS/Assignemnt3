@@ -1,18 +1,13 @@
 package ProgramLauncher;
 
-import BL.CategoryManagement;
-import BL.PriceManagement;
-import BL.ProductManagement;
-import BL.SupplierBL;
+import BL.*;
 import DAL.*;
-import PL.Menu;
-import PL.PL_Orders;
-import PL.PL_Stock;
-import PL.PL_Supplier;
+import PL.*;
 import SharedClasses.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -45,13 +40,18 @@ public class ProgramLauncher
         SupplierItems SUPPLIER_ITEMS = new SupplierItems(conn);
         Suppliers SUPPLIERS = new Suppliers(conn);
 
+        DAL dal =  new DAL(conn,ITEMS, SUPPLIERS);
+
         // BL INIT
         SupplierBL SBL = new SupplierBL(CONTACTS, DISCOUNTS, ITEMS, SUPPLIER_ITEMS, SUPPLIERS, ORDERS, ORDERS_ITEMS,QUANTITIES);
         ProductManagement PRODUCT_MANAGEMENT = new ProductManagement(ITEMS, PRICES, QUANTITIES, SBL);
         CategoryManagement CATEGORY_MANAGEMENT = new CategoryManagement(CATEGORIES, ITEMS, PRICES, QUANTITIES);
         PriceManagement PRICE_MANAGEMENT = new PriceManagement(PRICES);
 
+        BL bl =  new BL(dal);
+
         // PL INIT
+        //TODO:GAL: redo all
         PL_Stock PL_STOCK = new PL_Stock(PRODUCT_MANAGEMENT, PRICE_MANAGEMENT, CATEGORY_MANAGEMENT,SBL);
         PL_Supplier pl_sup= new PL_Supplier (SBL);
         PL_Orders pl_ord= new PL_Orders(SBL);
@@ -84,7 +84,7 @@ public class ProgramLauncher
             CONTACTS.addContact(new Contact("30303030", 300000, "Natsu Dragneel",
                     "789123456", "c@c.c"));
 
-
+            //TODO:omri&shahar:
             ITEMS.addItem(new Item(111111, "KORNFLEKS", 102, "SHKEL-INC"));
             ITEMS.addItem(new Item(222222, "Steak", 101, "COWS-KILLERS"));
             ITEMS.addItem(new Item(333333, "Cheese", 100, "TARA"));
@@ -185,6 +185,70 @@ public class ProgramLauncher
 
             ORDERS.setArrivalDate(3, new Date(new java.util.Date()));
             ORDERS.setArrivalDate(4, new Date(new java.util.Date()));
+
+            //TODO:: change to supplier
+            sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (313,'tnuva','Petach-Tikava','Shlomo','0500000000'); INSERT INTO Supliers (code) VALUES (313)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (323,'elit','Ramat-Gan','benizri','0522222222'); INSERT INTO Supliers (code) VALUES (323)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (4,'elit','Ramat-Gan','benizri','0522228222'); INSERT INTO Supliers (code) VALUES (4)";
+            stmt.executeUpdate(sql);
+
+            String sql;
+            Statement stmt = null;
+            try {
+                stmt = conn.createStatement();
+
+                sql="INSERT INTO Drivers (ID,Name, licence) VALUES (1, 'David', 2)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Drivers (ID,Name, licence) VALUES (2, 'Yisrael', 1)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Drivers (ID,Name, licence) VALUES (3, 'Shimon', 3)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Drivers (ID,Name, licence) VALUES (4, 'Moshe', 4)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Drivers (ID,Name, licence) VALUES (5, 'Marziano', 5)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Drivers (ID,Name, licence) VALUES (555225398 , 'AA', 6)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Drivers (ID,Name, licence) VALUES (111111234  , 'BB', 4)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Drivers (ID,Name, licence) VALUES (234567891  , 'CC', 3)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('12121212', 'Volvo', 1, 500, 1000)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('13131313', 'Ford', 2, 750, 4000)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('14141414', 'Tetra', 3, 1000, 7000)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('15151515', 'Mazda', 4, 1500, 10000)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('16161616', 'Subaru', 5, 2250, 15000)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Items (code , Weight ,descripsion) VALUES (21212, 0.2, 'koteg')";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Items (code , Weight ,descripsion) VALUES (78, 650.2, 'cow')";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Items (code , Weight ,descripsion) VALUES (23232, 1, 'milk')";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Items (code , Weight ,descripsion) VALUES (24242, 0.5, 'hummus')";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Items (code , Weight ,descripsion) VALUES (25252, 0.01, 'tiktak')";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Items (code , Weight ,descripsion) VALUES (26262, 670, 'chocolate')";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (414,'supersal','rishon','Shimi','0501212121'); INSERT INTO Shops (code , rigion ) VALUES (414,'A')";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (424,'Mega','jafa','Meni','0548889999'); INSERT INTO Shops (code , rigion ) VALUES (424,'A')";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (434,'Osher Ad','jerusalem','avram','0587777777'); INSERT INTO Shops (code , rigion ) VALUES (434,'B')";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (5,'Osher Ad','Tel Aviv','avrami','0587778777'); INSERT INTO Shops (code , rigion ) VALUES (5,'B')";
+                stmt.executeUpdate(sql);
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         SBL.initOrderID();
 
@@ -299,21 +363,56 @@ public class ProgramLauncher
 
             c.createStatement().execute("PRAGMA FOREIGN_KEYS = ON;");
             c.setAutoCommit(false);
+
+
+            String sql;
+
+            stmt = c.createStatement();
+
+
+
+            //********************************************************************************************************
+
+            sql = "CREATE TABLE Drivers (ID INT PRIMARY KEY NOT NULL, Name VARCHAR(50) NOT NULL, Licence INT NOT NULL);";
+            stmt.executeUpdate(sql);
+            sql= "CREATE TABLE Trucks (Plate VARCHAR(10) PRIMARY KEY NOT NULL, Model VARCHAR(50) NOT NULL, licenseType INT NOT NULL , Wight INT NOT NULL , MaxWight INT NOT NULL);";
+            stmt.executeUpdate(sql);
+            sql= "CREATE TABLE Transport (TransportNumber INT PRIMARY KEY NOT NULL ,  date DATE NOT NULL );";
+            stmt.executeUpdate(sql);
+            sql= "CREATE TABLE Items (code INT PRIMARY KEY NOT NULL, Weight DOUBLE NOT NULL ,descripsion VARCHAR(50) DEFAULT NULL);";
+            stmt.executeUpdate(sql);
+            sql= "CREATE TABLE Sites (code INT PRIMARY KEY NOT NULL, Name VARCHAR(50) NOT NULL ,Address VARCHAR(50) NOT NULL, Contact VARCHAR(50) NOT NULL, Phone VARCHAR(10) NOT NULL);";
+            stmt.executeUpdate(sql);
+            sql= "CREATE TABLE Shops (code INT PRIMARY KEY REFERENCES Sites(code), rigion VARCHAR(50) NOT NULL );";
+            stmt.executeUpdate(sql);
+            sql= "CREATE TABLE Supliers (code INT PRIMARY KEY REFERENCES Sites(code));";
+            stmt.executeUpdate(sql);
+            sql="CREATE TABLE Missions (shop INT REFERENCES Shops(code), Supplier INT REFERENCES Supliers(code) ,Transport INT REFERENCES Transport(TransportNumber), item INT REFERENCES Itemss(code),plandQ INT ,actualQ INT ,PRIMARY KEY (shop,Supplier,Transport,item));";
+            stmt.executeUpdate(sql);
+            sql= "CREATE TABLE TrucksTrnsportSigning  (truck VARCHAR(10) REFERENCES Trucks(Plate), transport INT REFERENCES Transport(TransportNumber), PRIMARY KEY (truck,transport));";
+            stmt.executeUpdate(sql);
+            sql= "CREATE TABLE driverAsiignmetns (truck VARCHAR(10) REFERENCES Trucks(Plate), transport INT PRIMARY KEY REFERENCES Transport(TransportNumber) ,driver INT REFERENCES Drivers(ID));";
+            stmt.executeUpdate(sql);
+
+            //********************************************************************************************************
+
+
+
             /*Creating Tables if they are NOT existed */
 
             /*
                 Suppliers Table : ID, Name, BankNum, BranchBum, AccountNum, Payment, DeliveryMethod, SupplyTime, Address.
              */
-            stmt = c.createStatement();
-            String sql = "CREATE TABLE IF NOT EXISTS Suppliers " +
+            //TODO:omri&shahar: id referecne to Site, need to remove all what we got in site -address
+            sql = "CREATE TABLE IF NOT EXISTS Suppliers " +
                     "(ID INT PRIMARY KEY     NOT NULL," +
                     " Name          TEXT    NOT NULL, " +
                     " BankNum          INT    NOT NULL, " +
                     " BranchNum        INT    NOT NULL, " +
                     " AccountNum	   INT    NOT NULL, " +
                     " Payment         TEXT	NOT NULL," +
-                    " DeliveryMethod TEXT NOT NULL," +
-                    " SupplyTime TEXT," +
+                    " DeliveryMethod TEXT NOT NULL," + //SOMEONE BRING ME OR I BRING FROM SOMEONE
+                    " SupplyTime TEXT," + //DAYS
                     " Address TEXT NOT NULL);";
             stmt.execute(sql);
             stmt.close();
@@ -353,6 +452,7 @@ public class ProgramLauncher
             sql = "  CREATE TABLE IF NOT EXISTS Items " +
                     " (ID   INT PRIMARY KEY  NOT NULL," +
                     " NAME   TEXT NOT NULL, " +
+                    " Weight REAL NOT NULL," +
                     " CategoryNumber       INT    REFERENCES CATEGORY(ID) ON DELETE SET NULL ON UPDATE CASCADE, " +
                     " Manufacture          TEXT    NOT NULL);";
             stmt.execute(sql);
@@ -391,6 +491,7 @@ public class ProgramLauncher
             stmt.close();
 
 
+            //TODO:omri&shahar: need to add shop number ref to shop
             stmt = c.createStatement();
             sql =   "CREATE TABLE IF NOT EXISTS Orders " +
                     "(OrderID INT PRIMARY KEY  NOT NULL," +
@@ -420,6 +521,7 @@ public class ProgramLauncher
             /*
                 Quantities : ItemID, Location, Defects, Warehouse, Minimum, Store, Order. (Current = Store+Warehouse+Defects)
              */
+            //TODO:omri&shahar: add supp in shops ref
             stmt = c.createStatement();
             sql =   "CREATE TABLE IF NOT EXISTS QUANTITIES " +
                     "(ItemID INT REFERENCES Items(ID) ON UPDATE CASCADE ON DELETE CASCADE ," +
@@ -457,33 +559,4 @@ public class ProgramLauncher
     }
 
 
-    /*private static void initializeDatabase(Connection conn)
-    {
-        String [] Queries = {"INSERT INTO CATEGORY (ID,NAME,ID-FATHER",
-                             "INSERT INTO ",
-                             "INSERT INTO ",
-                             "INSERT INTO ",
-                             "INSERT INTO ",
-                             "INSERT INTO ",
-                             "INSERT INTO ",
-                             "INSERT INTO ",
-                             "INSERT INTO ",
-                             "INSERT INTO ",
-                             "INSERT INTO ",
-                             "INSERT INTO ",
-                             "INSERT INTO "};
-        try
-        {
-
-            for (String Query : Queries) {
-                Statement stmt = conn.createStatement();
-                stmt.executeUpdate(Query);
-            }
-            conn.commit();
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-    }*/
 }

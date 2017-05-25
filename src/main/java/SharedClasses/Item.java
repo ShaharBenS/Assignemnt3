@@ -8,13 +8,16 @@ public class Item {
     private int categoryNumber;
     private String name;
     private String manufacture;
+    private double weight;
 
-    public Item(int itemID,  String name, int categoryNumber, String manufacture) {
+    public Item(int itemID, int categoryNumber, String name, String manufacture, double weight) {
         this.itemID = itemID;
         this.categoryNumber = categoryNumber;
         this.name = name;
         this.manufacture = manufacture;
+        this.weight = weight;
     }
+
 
     public Item() {
         itemID = 0;
@@ -65,6 +68,7 @@ public class Item {
         str += "NAME: " + name +"\n";
         str += "MANUFACTURE: " + manufacture +"\n";
         str += "CATEGORY : " + categoryNumber +"\n";
+        str += "WEIGHT : " + weight +"\n";
         str += "----- ITEM -----\n";
 
         return str;
@@ -79,7 +83,23 @@ public class Item {
         str += "NAME: " + name +"\n";
         str += "MANUFACTURE: " + manufacture +"\n";
         str += "CATEGORY : " + categoryNumber +"\n";
+        str += "WEIGHT : " + weight +"\n";
 
         return str;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public int getCode() {
+        return itemID;
+    }
+    public String getDescription() {
+        return name;
     }
 }

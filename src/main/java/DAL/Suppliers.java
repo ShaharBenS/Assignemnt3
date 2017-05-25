@@ -17,6 +17,7 @@ public class Suppliers {
         stmt = null;
     }
 
+    //TODO:shahar & omri: add site before adding supplier
     public boolean addSupplier(Supplier sup) {
         try {
             PreparedStatement ps = c.prepareStatement("INSERT INTO Suppliers (ID, Name, BankNum, BranchNum, AccountNum, Payment, DeliveryMethod, SupplyTime, Address) " +
@@ -328,4 +329,7 @@ public class Suppliers {
 
     }
 
+    //TODO: FILL
+    public Supplier getSupplierWithContact(int to) {
+    }
 }
