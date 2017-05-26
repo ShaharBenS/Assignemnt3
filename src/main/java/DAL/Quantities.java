@@ -1,5 +1,6 @@
 package DAL;
 
+import BL.BL;
 import SharedClasses.Quantity;
 
 import java.sql.*;
@@ -54,7 +55,7 @@ public class Quantities
 
         try
         {
-            String query = "SELECT * FROM QUANTITIES AS Q WHERE Q.ItemID = "+id+";";
+            String query = "SELECT * FROM QUANTITIES AS Q WHERE Q.ItemID = "+id+" AND Q.ShopID = "+BL.shopID+";";
             Statement stmt = conn.createStatement();
             ResultSet resultSet = stmt.executeQuery(query);
             q = new Quantity(resultSet.getInt("ItemID"),resultSet.getInt("ShopID"),resultSet.getString("LOCATION"),
@@ -75,7 +76,7 @@ public class Quantities
      */
     private boolean updateField(String fieldName, int itemID, Object newValue)
     {
-        String query = "UPDATE QUANTITIES SET "+fieldName+" = '"+newValue+"' WHERE ItemID = "+itemID+";";
+        String query = "UPDATE QUANTITIES SET "+fieldName+" = '"+newValue+"' WHERE ItemID = "+itemID+" AND ShopID = "+BL.shopID+";";
         try
         {
             Statement stmt = conn.createStatement();
@@ -126,7 +127,7 @@ public class Quantities
         List<Quantity> itemList = new ArrayList<>();
         String query =  "SELECT * " +
                 "FROM QUANTITIES " +
-                "WHERE DEFECTS > 0";
+                "WHERE DEFECTS > 0"+" AND ShopID = "+BL.shopID;
 
         try
         {

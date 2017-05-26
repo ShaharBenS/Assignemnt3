@@ -38,7 +38,7 @@ public class ProgramLauncher
         Orders ORDERS = new Orders(conn);
         OrdersItems ORDERS_ITEMS = new OrdersItems(conn);
         SupplierItems SUPPLIER_ITEMS = new SupplierItems(conn);
-        Suppliers SUPPLIERS = new Suppliers(conn);
+        Suppliers SUPPLIERS = new Suppliers(conn, CONTACTS);
 
         DAL dal =  new DAL(conn,ITEMS, SUPPLIERS);
 

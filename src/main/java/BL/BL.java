@@ -13,7 +13,7 @@ public class BL {
 	 * 			it tells the shopID of the current user who work with the system.
 	 * 			need to update it EVERY LOGIN! otherwise we will get rekt.	 *
  	 */
-	public int shopID;
+	public static int shopID;
 
 
 	private DAL dal;
