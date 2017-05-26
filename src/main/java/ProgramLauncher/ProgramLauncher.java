@@ -85,17 +85,17 @@ public class ProgramLauncher
                     "789123456", "c@c.c"));
 
             //TODO:omri&shahar:
-            ITEMS.addItem(new Item(111111, "KORNFLEKS", 102, "SHKEL-INC"));
-            ITEMS.addItem(new Item(222222, "Steak", 101, "COWS-KILLERS"));
-            ITEMS.addItem(new Item(333333, "Cheese", 100, "TARA"));
-            ITEMS.addItem(new Item(444444, "White-Bread", 101, "Bereshit"));
-            ITEMS.addItem(new Item(555555, "Soda", 103, "Shweps"));
-            ITEMS.addItem(new Item(666666, "Cola", 103, "Coca-Cola"));
-            ITEMS.addItem(new Item(777777, "Arak", 103, "Tzuani-Nehmad"));
-            ITEMS.addItem(new Item(888888, "Potatoes", 104, "Mother-Earth"));
-            ITEMS.addItem(new Item(999999, "Tomato", 104, "Mother-Earth"));
-            ITEMS.addItem(new Item(101010, "Rice", 105, "Mother-Earth"));
-            ITEMS.addItem(new Item(202020, "Eggs", 105, "Mother-Chicken"));
+            ITEMS.addItem(new Item(111111, "KORNFLEKS", 102, "SHKEL-INC",0.5));
+            ITEMS.addItem(new Item(222222, "Steak", 101, "COWS-KILLERS",1));
+            ITEMS.addItem(new Item(333333, "Cheese", 100, "TARA",0.2));
+            ITEMS.addItem(new Item(444444, "White-Bread", 101, "Bereshit",0.4));
+            ITEMS.addItem(new Item(555555, "Soda", 103, "Shweps",6));
+            ITEMS.addItem(new Item(666666, "Cola", 103, "Coca-Cola",8));
+            ITEMS.addItem(new Item(777777, "Arak", 103, "Tzuani-Nehmad",2));
+            ITEMS.addItem(new Item(888888, "Potatoes", 104, "Mother-Earth",1));
+            ITEMS.addItem(new Item(999999, "Tomato", 104, "Mother-Earth",0.7));
+            ITEMS.addItem(new Item(101010, "Rice", 105, "Mother-Earth",0.4));
+            ITEMS.addItem(new Item(202020, "Eggs", 105, "Mother-Chicken",0.3));
 
 
             SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 111111, 100000, 12.5));
@@ -373,47 +373,86 @@ public class ProgramLauncher
 
             //********************************************************************************************************
 
-            sql = "CREATE TABLE Drivers (ID INT PRIMARY KEY NOT NULL, Name VARCHAR(50) NOT NULL, Licence INT NOT NULL);";
+            sql = "CREATE TABLE IF NOT EXISTS Drivers " +
+                    "(ID INT PRIMARY KEY NOT NULL," +
+                    " Name VARCHAR(50) NOT NULL," +
+                    " Licence INT NOT NULL);";
             stmt.executeUpdate(sql);
-            sql= "CREATE TABLE Trucks (Plate VARCHAR(10) PRIMARY KEY NOT NULL, Model VARCHAR(50) NOT NULL, licenseType INT NOT NULL , Wight INT NOT NULL , MaxWight INT NOT NULL);";
+
+            sql= "CREATE TABLE IF NOT EXISTS Trucks " +
+                    "(Plate VARCHAR(10) PRIMARY KEY NOT NULL, " +
+                    "Model VARCHAR(50) NOT NULL, " +
+                    "licenseType INT NOT NULL , " +
+                    "Wight INT NOT NULL , " +
+                    "MaxWight INT NOT NULL);";
+
             stmt.executeUpdate(sql);
-            sql= "CREATE TABLE Transport (TransportNumber INT PRIMARY KEY NOT NULL ,  date DATE NOT NULL );";
+            sql= "CREATE TABLE IF NOT EXISTS Transport " +
+                    "(TransportNumber INT PRIMARY KEY NOT NULL ," +
+                    " date DATE NOT NULL );";
+
             stmt.executeUpdate(sql);
-            sql= "CREATE TABLE Items (code INT PRIMARY KEY NOT NULL, Weight DOUBLE NOT NULL ,descripsion VARCHAR(50) DEFAULT NULL);";
+            sql= "CREATE TABLE IF NOT EXISTS Items " +
+                    "(code INT PRIMARY KEY NOT NULL," +
+                    " Weight DOUBLE NOT NULL ," +
+                    "descripsion VARCHAR(50) DEFAULT NULL);";
+
             stmt.executeUpdate(sql);
-            sql= "CREATE TABLE Sites (code INT PRIMARY KEY NOT NULL, Name VARCHAR(50) NOT NULL ,Address VARCHAR(50) NOT NULL, Contact VARCHAR(50) NOT NULL, Phone VARCHAR(10) NOT NULL);";
+            sql= "CREATE TABLE IF NOT EXISTS Sites " +
+                    "(code INT PRIMARY KEY NOT NULL," +
+                    " Name VARCHAR(50) NOT NULL " +
+                    ",Address VARCHAR(50) NOT NULL," +
+                    " Contact VARCHAR(50) NOT NULL," +
+                    " Phone VARCHAR(10) NOT NULL);";
+
             stmt.executeUpdate(sql);
-            sql= "CREATE TABLE Shops (code INT PRIMARY KEY REFERENCES Sites(code), rigion VARCHAR(50) NOT NULL );";
+            sql= "CREATE TABLE IF NOT EXISTS Shops" +
+                    " (code INT PRIMARY KEY REFERENCES Sites(code)," +
+                    " rigion VARCHAR(50) NOT NULL );";
+
             stmt.executeUpdate(sql);
-            sql= "CREATE TABLE Supliers (code INT PRIMARY KEY REFERENCES Sites(code));";
+            sql= "CREATE TABLE IF NOT EXISTS Supliers" +
+                    " (code INT PRIMARY KEY REFERENCES Sites(code));";
+
             stmt.executeUpdate(sql);
-            sql="CREATE TABLE Missions (shop INT REFERENCES Shops(code), Supplier INT REFERENCES Supliers(code) ,Transport INT REFERENCES Transport(TransportNumber), item INT REFERENCES Itemss(code),plandQ INT ,actualQ INT ,PRIMARY KEY (shop,Supplier,Transport,item));";
+            sql="CREATE TABLE IF NOT EXISTS Missions" +
+                    " (shop INT REFERENCES Shops(code)," +
+                    " Supplier INT REFERENCES Supliers(code) " +
+                    ",Transport INT REFERENCES Transport(TransportNumber)," +
+                    " item INT REFERENCES Itemss(code)," +
+                    "plandQ INT ," +
+                    "actualQ INT ," +
+                    "PRIMARY KEY (shop,Supplier,Transport,item));";
+
             stmt.executeUpdate(sql);
-            sql= "CREATE TABLE TrucksTrnsportSigning  (truck VARCHAR(10) REFERENCES Trucks(Plate), transport INT REFERENCES Transport(TransportNumber), PRIMARY KEY (truck,transport));";
+            sql= "CREATE TABLE IF NOT EXISTS TrucksTrnsportSigning" +
+                    " (truck VARCHAR(10) REFERENCES Trucks(Plate)," +
+                    " transport INT REFERENCES Transport(TransportNumber)," +
+                    " PRIMARY KEY (truck,transport));";
+
             stmt.executeUpdate(sql);
-            sql= "CREATE TABLE driverAsiignmetns (truck VARCHAR(10) REFERENCES Trucks(Plate), transport INT PRIMARY KEY REFERENCES Transport(TransportNumber) ,driver INT REFERENCES Drivers(ID));";
+            sql= "CREATE TABLE IF NOT EXISTS driverAsiignmetns " +
+                    "(truck VARCHAR(10) REFERENCES Trucks(Plate)," +
+                    " transport INT PRIMARY KEY REFERENCES Transport(TransportNumber) " +
+                    ",driver INT REFERENCES Drivers(ID));";
             stmt.executeUpdate(sql);
 
             //********************************************************************************************************
-
-
 
             /*Creating Tables if they are NOT existed */
 
             /*
                 Suppliers Table : ID, Name, BankNum, BranchBum, AccountNum, Payment, DeliveryMethod, SupplyTime, Address.
              */
-            //TODO:omri&shahar: id referecne to Site, need to remove all what we got in site -address
             sql = "CREATE TABLE IF NOT EXISTS Suppliers " +
                     "(ID INT PRIMARY KEY     NOT NULL," +
-                    " Name          TEXT    NOT NULL, " +
                     " BankNum          INT    NOT NULL, " +
                     " BranchNum        INT    NOT NULL, " +
                     " AccountNum	   INT    NOT NULL, " +
                     " Payment         TEXT	NOT NULL," +
-                    " DeliveryMethod TEXT NOT NULL," + //SOMEONE BRING ME OR I BRING FROM SOMEONE
-                    " SupplyTime TEXT," + //DAYS
-                    " Address TEXT NOT NULL);";
+                    " DeliveryMethod TEXT NOT NULL," + //SOMEONE BRING ME *OR* I BRING FROM SOMEONE
+                    " SupplyTime TEXT," + // DAYS
+                    "FOREIGN KEY(ID) REFERENCES Sites(code) ON UPDATE CASCADE);";
             stmt.execute(sql);
             stmt.close();
 
@@ -423,7 +462,7 @@ public class ProgramLauncher
             stmt = c.createStatement();
             sql = "CREATE TABLE IF NOT EXISTS Contacts " +
                     "(ID   TEXT NOT NULL," +
-                    "SupplierID INT  NOT NULL," +
+                    " SupplierID INT  NOT NULL," +
                     " FullName   TEXT  NOT NULL, " +
                     " PhoneNumber TEXT NOT NULL, " +
                     " Email	TEXT," +
@@ -454,7 +493,7 @@ public class ProgramLauncher
                     " NAME   TEXT NOT NULL, " +
                     " Weight REAL NOT NULL," +
                     " CategoryNumber       INT    REFERENCES CATEGORY(ID) ON DELETE SET NULL ON UPDATE CASCADE, " +
-                    " Manufacture          TEXT    NOT NULL);";
+                    " Manufacture         TEXT    NOT NULL);";
             stmt.execute(sql);
             stmt.close();
 
@@ -491,16 +530,17 @@ public class ProgramLauncher
             stmt.close();
 
 
-            //TODO:omri&shahar: need to add shop number ref to shop
             stmt = c.createStatement();
             sql =   "CREATE TABLE IF NOT EXISTS Orders " +
                     "(OrderID INT PRIMARY KEY  NOT NULL," +
+                    " ShopID INT NOT NULL," +
                     " SupplierID INT   NOT NULL," +
                     " Date  DATE  NOT NULL, " +
                     " ContactID TEXT  NOT NULL, " +
                     " ArrivalDate Date DEFAULT NULL," +
                     " OrderFrequency INT NOT NULL DEFAULT 0," +
-                    " FOREIGN KEY(SupplierID , ContactID) REFERENCES Contacts(SupplierID, ID) ON UPDATE CASCADE ON DELETE CASCADE);";
+                    " FOREIGN KEY(SupplierID , ContactID) REFERENCES Contacts(SupplierID, ID) ON UPDATE CASCADE ON DELETE CASCADE," +
+                    " FOREIGN KEY(ShopID) REFERENCES Shops(code));";
             stmt.execute(sql);
             stmt.close();
 
@@ -521,16 +561,19 @@ public class ProgramLauncher
             /*
                 Quantities : ItemID, Location, Defects, Warehouse, Minimum, Store, Order. (Current = Store+Warehouse+Defects)
              */
-            //TODO:omri&shahar: add supp in shops ref
             stmt = c.createStatement();
             sql =   "CREATE TABLE IF NOT EXISTS QUANTITIES " +
-                    "(ItemID INT REFERENCES Items(ID) ON UPDATE CASCADE ON DELETE CASCADE ," +
+                    "(ItemID INT NOT NULL," +
+                    "ShopID INT NOT NULL " +
                     "LOCATION TEXT NOT NULL," +
                     "MINIMUM INT NOT NULL," +
                     "ORDER_AMOUNT INT DEFAULT 0," +
                     "WAREHOUSE INT NOT NULL," +
                     "STORE INT NOT NULL," +
-                    "DEFECTS INT NOT NULL);";
+                    "DEFECTS INT NOT NULL, " +
+                    "PRIMARY KEY(ItemID,ShopID), " +
+                    "FOREIGN KEY(ItemID) REFERENCES Items(ID) ON UPDATE CASCADE ON DELETE CASCADE," +
+                    "FOREIGN KEY(ShopID) REFERENCES Shops(code) ON UPDATE CASCADE ON DELETE CASCADE);";
             stmt.execute(sql);
             stmt.close();
 
