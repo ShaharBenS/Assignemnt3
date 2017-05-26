@@ -403,7 +403,6 @@ public class ProgramLauncher
             stmt.executeUpdate(sql);
             sql= "CREATE TABLE IF NOT EXISTS Sites " +
                     "(code INT PRIMARY KEY NOT NULL," +
-                    " Name VARCHAR(50) NOT NULL " +
                     ",Address VARCHAR(50) NOT NULL," +
                     " Contact VARCHAR(50) NOT NULL," +
                     " Phone VARCHAR(10) NOT NULL);";
@@ -449,6 +448,7 @@ public class ProgramLauncher
              */
             sql = "CREATE TABLE IF NOT EXISTS Suppliers " +
                     "(ID INT PRIMARY KEY     NOT NULL," +
+                    "Name TEXT NOT NULL," +
                     " BankNum          INT    NOT NULL, " +
                     " BranchNum        INT    NOT NULL, " +
                     " AccountNum	   INT    NOT NULL, " +

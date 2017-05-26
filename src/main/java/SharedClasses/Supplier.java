@@ -13,6 +13,7 @@ public class Supplier extends Site {
     private String deliveryMethod;
     private String supplyTime;
     //private String address;
+
 //TODO:: add contacts array
     public Supplier(int id, String name, int bankNum, int branchNum, int accountNum, String payment, String deliveryMethod, String supplyTime, String address) {
         super(id,address,"","");

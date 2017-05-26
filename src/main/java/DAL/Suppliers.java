@@ -20,8 +20,8 @@ public class Suppliers {
     //TODO:shahar & omri: add site before adding supplier
     public boolean addSupplier(Supplier sup) {
         try {
-            PreparedStatement ps = c.prepareStatement("INSERT INTO Suppliers (ID, Name, BankNum, BranchNum, AccountNum, Payment, DeliveryMethod, SupplyTime, Address) " +
-                    "VALUES (?,?,?,?,?,?,?,?,?);");
+            PreparedStatement ps = c.prepareStatement("INSERT INTO Suppliers (ID, Name, BankNum, BranchNum, AccountNum, Payment, DeliveryMethod, SupplyTime) " +
+                    "VALUES (?,?,?,?,?,?,?,?);");
 
             ps.setInt(1, sup.getId());
             ps.setString(2, sup.getName());
@@ -31,7 +31,6 @@ public class Suppliers {
             ps.setString(6, sup.getPayment());
             ps.setString(7, sup.getDeliveryMethod());
             ps.setString(8, sup.getSupplyTime());
-            ps.setString(9, sup.getAddress());
 
             ps.executeUpdate();
             c.commit();
