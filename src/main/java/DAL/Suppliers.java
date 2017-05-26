@@ -1,25 +1,24 @@
 package DAL;
 
-import SharedClasses.Site;
 import SharedClasses.Supplier;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Suppliers {
     private Connection c;
-    java.sql.Statement stmt;
+    private Statement stmt;
 
-
-    public Suppliers(Connection c) {
+    public Suppliers(Connection c){
         this.c = c;
         stmt = null;
     }
 
     /* NEW FINCTION: ADDING SITE TO DB -TRUE IF SUCCEED, FALSE OTHERWISE */
-    private boolean addSite(int siteCode, String name, String address, String contact, String phone)
+    private void addSite(int siteCode, String name, String address, String contact, String phone)
     {
         try{
             PreparedStatement ps = c.prepareStatement("INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) "+
@@ -34,23 +33,19 @@ public class Suppliers {
             ps.executeUpdate();
             c.commit();
             ps.close();
-            return true;
-        }catch (Exception e){
-            e.printStackTrace(); //TODO:omri&shahar need to check its rly works
-            return false;
+        }catch (Exception e){ //should fall here is site already exist
         }
     }
 
     public boolean addSupplier(Supplier sup) {
         try {
-
             int siteCode = sup.getCode();
             String name = sup.getName();
             String address = sup.getAddress();
             String contact = sup.getContact();
             String phone = sup.getPhone();
 
-            if(!addSite(siteCode, name, address, contact, phone)) return false;
+            addSite(siteCode, name, address, contact, phone);
 
             PreparedStatement ps = c.prepareStatement("INSERT INTO Suppliers (ID, Name, BankNum, BranchNum, AccountNum, Payment, DeliveryMethod, SupplyTime, Address) " +
                     "VALUES (?,?,?,?,?,?,?,?,?);");
