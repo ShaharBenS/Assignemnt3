@@ -41,7 +41,6 @@ public class Suppliers {
         }
     }
 
-    //TODO:shahar & omri: add site before adding supplier
     public boolean addSupplier(Supplier sup) {
         try {
 
@@ -70,10 +69,7 @@ public class Suppliers {
             c.commit();
             ps.close();
             return true;
-        } catch (Exception e) {
-            e.printStackTrace();//TODO:omri&shshar: do we rly wanna print it ?
-            return false;
-        }
+        } catch (Exception e) { return false; }
 
     }
 
