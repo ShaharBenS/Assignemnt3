@@ -265,13 +265,14 @@ public class Suppliers {
 
 
     public Supplier getSupplier(int id) {
-        Supplier sup = null;
+        Supplier sup;
         try {
             String sqlQuary = "SELECT * FROM Suppliers WHERE ID = '" + id + "';";
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQuary);
 
-            sup = new Supplier(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
+            sup = new Supplier(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
+                    rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
 
             rs.close();
             stmt.close();
