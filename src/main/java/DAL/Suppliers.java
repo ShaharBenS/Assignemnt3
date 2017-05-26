@@ -1,5 +1,6 @@
 package DAL;
 
+import SharedClasses.Site;
 import SharedClasses.Supplier;
 
 import java.sql.Connection;
@@ -17,9 +18,41 @@ public class Suppliers {
         stmt = null;
     }
 
+    /* NEW FINCTION: ADDING SITE TO DB -TRUE IF SUCCEED, FALSE OTHERWISE */
+    private boolean addSite(int siteCode, String name, String address, String contact, String phone)
+    {
+        try{
+            PreparedStatement ps = c.prepareStatement("INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) "+
+                    "VALUES (?,?,?,?,?);");
+
+            ps.setInt(1, siteCode);
+            ps.setString(2, name);
+            ps.setString(3, address);
+            ps.setString(4, contact);
+            ps.setString(5, phone);
+
+            ps.executeUpdate();
+            c.commit();
+            ps.close();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace(); //TODO:omri&shahar need to check its rly works
+            return false;
+        }
+    }
+
     //TODO:shahar & omri: add site before adding supplier
     public boolean addSupplier(Supplier sup) {
         try {
+
+            int siteCode = sup.getCode();
+            String name = sup.getName();
+            String address = sup.getAddress();
+            String contact = sup.getContact();
+            String phone = sup.getPhone();
+
+            if(!addSite(siteCode, name, address, contact, phone)) return false;
+
             PreparedStatement ps = c.prepareStatement("INSERT INTO Suppliers (ID, Name, BankNum, BranchNum, AccountNum, Payment, DeliveryMethod, SupplyTime, Address) " +
                     "VALUES (?,?,?,?,?,?,?,?,?);");
 
@@ -38,7 +71,7 @@ public class Suppliers {
             ps.close();
             return true;
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e);//TODO:omri&shshar: do we rly wanna print it ?
             return false;
         }
 
@@ -287,6 +320,7 @@ public class Suppliers {
             rs.close();
             stmt.close();
         } catch (Exception e) {
+            return "";
         }
         return ans;
     }
@@ -329,7 +363,7 @@ public class Suppliers {
 
     }
 
-    //TODO: FILL
     public Supplier getSupplierWithContact(int to) {
+        return getSupplier(to);
     }
 }
