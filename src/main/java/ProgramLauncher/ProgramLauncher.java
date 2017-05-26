@@ -403,7 +403,7 @@ public class ProgramLauncher
             stmt.executeUpdate(sql);
             sql= "CREATE TABLE IF NOT EXISTS Sites " +
                     "(code INT PRIMARY KEY NOT NULL," +
-                    ",Address VARCHAR(50) NOT NULL," +
+                    " Address VARCHAR(50) NOT NULL," +
                     " Contact VARCHAR(50) NOT NULL," +
                     " Phone VARCHAR(10) NOT NULL);";
 
