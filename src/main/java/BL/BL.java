@@ -1149,4 +1149,22 @@ public class BL {
 				throw new NituzException(1, "manager is not in the same branch as the shift!");
 		}
 	}
+
+	public String getAllTrucks() throws NituzException {
+		String ans="";
+		Truck t[]=dal.getAllTrucks();
+		for ( int i=0;i<t.length; i++) {
+				ans+=t[i].toString()+"\n";
+		}
+		return ans;
+	}
+
+    public String getAllTransport() throws NituzException {
+	    String ans="";
+        Transport t[]=dal.getAllTransports();
+        for (int i=0;i<t.length;i++){
+            ans+= t[i].getNumber()+"|"+t[i].getDate()+","+t[i].getLeavTime()+"\n";
+        }
+	    return ans;
+    }
 }

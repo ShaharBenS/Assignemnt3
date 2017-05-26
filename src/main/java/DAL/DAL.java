@@ -1,7 +1,5 @@
 package DAL;
 
-import DAL.Items;
-import DAL.Suppliers;
 import java.sql.*;
 import SharedClasses.*;
 import SharedClasses.Driver;
@@ -1293,6 +1291,47 @@ public class DAL {
             }
         } catch ( Exception e){
             throw new NituzException(1,"There isn't a shift entered");
+        }
+    }
+
+    public Truck[] getAllTrucks() throws NituzException {
+        try{
+            Statement stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM Trucks;" );
+            if(rs.isBeforeFirst()) {
+                LinkedList<Truck> ans=new LinkedList<Truck>();
+                while (rs.next()) {
+                    Truck truck1 = new Truck(truckplate(rs.getString("Plate")), rs.getString("Model"), rs.getDouble("Wight"), rs.getDouble("MaxWight"), rs.getInt("licenseType"));
+                    ans.addLast(truck1);
+                }
+                stmt.close();
+                rs.close();
+                return (Truck[])ans.toArray();
+            }
+            else throw new Exception("There are no Trucks in DB");
+        } catch (Exception e){
+            throw new NituzException(1,e.getMessage());
+        }
+    }
+
+    public Transport[] getAllTransports() throws NituzException {
+        try{
+            Statement stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM Transport;" );
+            if(rs.isBeforeFirst()) {
+                LinkedList<Transport> ans=new LinkedList<Transport>();
+                while (rs.next()) {
+                    java.util.Date d = new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(rs.getString("date"));//rs.getDate("date");
+                    Transport tran = new Transport(new SimpleDateFormat("dd/MM/yyyy").format(d),new SimpleDateFormat("HH:mm").format(d),Integer.parseInt(rs.getString("TransportNumber")));
+                    ans.addLast(tran);
+                }
+                stmt.close();
+                rs.close();
+                return (Transport [])ans.toArray();
+            }
+            else throw new Exception("There are no Trucks in DB");
+        } catch (Exception e){
+            throw new NituzException(1,e.getMessage());
         }
     }
 }
