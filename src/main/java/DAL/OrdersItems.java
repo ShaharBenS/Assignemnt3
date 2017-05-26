@@ -135,7 +135,7 @@ public class OrdersItems {
 
     public boolean removeOrderItem(int orderID, int itemID){
     	try {
-            String sql = "DELETE FROM OrdersItems WHERE OrderID = ? and catalogNumber=?;";
+            String sql = "DELETE FROM OrdersItems WHERE OrderID = ? and ItemID = ?;";
 
             PreparedStatement pstmt = c.prepareStatement(sql);
 
@@ -150,7 +150,6 @@ public class OrdersItems {
             stmt.close();
             return true;
         } catch (Exception e) {
-            System.out.println(e);
             return false;
         }
     }

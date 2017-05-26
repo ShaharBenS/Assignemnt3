@@ -2,6 +2,7 @@ package BL;
 
 import DAL.*;
 import SharedClasses.*;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import javafx.util.Pair;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -226,8 +227,7 @@ public class SupplierBL {
 
     public int addOrder(int supplierId, Date date,int frequency){
         String conID=contacts.getContactID(supplierId);
-        Order ord = new Order(OrderID++,supplierId,date, shopID, conID);
-        ord.setFrequency(frequency);
+        Order ord = new Order(OrderID++,BL.shopID,supplierId,date, conID,frequency);
         if(!order.addOrder(ord))
         {
             return -1;
@@ -251,27 +251,26 @@ public class SupplierBL {
     	Order ord;
     	String orderGet = order.getOrder(orderID);
     	String[] splited = orderGet.split("\\s");
-    	ord= new Order(Integer.parseInt(splited[0]), Integer.parseInt(splited[1]),new Date(splited[2]), shopID, splited[3],Integer.parseInt(splited[4]),OI.getOrderItems(orderID));
+    	ord= new Order(Integer.parseInt(splited[0]),BL.shopID, Integer.parseInt(splited[1]),new Date(splited[2]), splited[3],Integer.parseInt(splited[4]),OI.getOrderItems(orderID));
     	return ord;
     }
     
     public Order[] getOrderOfSup(int supID){
     	Order[] toReturn;
-    	List<String> orderSup=order.getOrderSup(supID);
+    	List<Order> orderSup=order.getOrderSup(supID);
         toReturn= new Order[orderSup.size()];
     	for(int i=0; i<orderSup.size();i++){
-            String[] splited = orderSup.get(i).split("\\s");
-            toReturn[i]= new Order(Integer.parseInt(splited[0]), Integer.parseInt(splited[1]), new Date(splited[2]), shopID, splited[3],Integer.parseInt(splited[4]),OI.getOrderItems(Integer.parseInt(splited[0])));
+            toReturn[i]= orderSup.get(i);
     	}
     	return toReturn;
     }
     
     public boolean addOrderItem(int orderID, int itemID, int quantity){
 
-        String[] splited = order.getOrder(orderID).split("\\s");
+        Order OrderToAdd = order.getOrder(orderID);
 
-        int disco = dis.getDiscountPer(Integer.parseInt(splited[1]), itemID, quantity);
-        double cost = si.getCost(itemID,Integer.parseInt(splited[1]));
+        int disco = dis.getDiscountPer(OrderToAdd.getSupplierID(), itemID, quantity);
+        double cost = si.getCost(itemID,OrderToAdd.getSupplierID());
         double finalCost = cost;
         if(disco != 0)
          finalCost = cost - (disco*cost)/100;
@@ -327,11 +326,9 @@ public class SupplierBL {
         return order.removeOrder(orderID);
     }
     
-    public boolean removeOrderItem(int orderID, int itemID){
-    	String [] spiltted = order.getOrder(orderID).split("\\s");
-
-    	int catalogNum = si.getCatalogNumber(itemID, Integer.parseInt(spiltted[1]));
-    	return OI.removeOrderItem(orderID,catalogNum);
+    public boolean removeOrderItem(int orderID, int itemID)
+    {
+    	return OI.removeOrderItem(orderID,itemID);
     }
 
     public boolean checkIfItemExistInSupItems(int itemID){

@@ -64,41 +64,36 @@ public class Orders {
          }
     }
     
-    public String getOrder(int orderID){
-    	String order = "";
+    public Order getOrder(int orderID){
+    	Order order = null;
         try {
             String sqlQuary = "SELECT * FROM Orders WHERE OrderID = " + orderID + ";";
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQuary);
-            order+= rs.getInt(1);
-            order+= " ";
-            order+=  rs.getInt(2);
-            order+= " ";
-            order+= new Date(rs.getString(3));
-            order+= " ";
-            order+= rs.getString(4);
-            order+= " ";
-            order+= rs.getInt(5);
+            order = new Order(rs.getInt(1),rs.getInt(2),rs.getInt(3),
+                    new Date(rs.getString(4)),rs.getString(5),rs.getInt(6));
             rs.close();
             stmt.close();
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         return order;
     }
     
-    public List<String> getOrderSup(int supID){
-    	List<String>ordersSup = new ArrayList<>();
+    public List<Order> getOrderSup(int supID){
+    	List<Order> ordersSup = new ArrayList<>();
         try {
             String sqlQuary = "SELECT * FROM Orders WHERE SupplierID = " + supID + ";";
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQuary);
             while (rs.next()){
-                ordersSup.add("" +rs.getInt(1) + " "+  rs.getInt(2)+ " " + new Date(rs.getString(3))+ " "+ rs.getString(4) + " " + rs.getInt(5));
+                ordersSup.add(new Order(rs.getInt(1),rs.getInt(2),rs.getInt(3)
+                ,new Date(rs.getString(4)),rs.getString(5),rs.getInt(6)));
             }
 
             rs.close();
             stmt.close();
         } catch (Exception e) {
+            return new ArrayList<>();
         }
         return ordersSup;
     }
@@ -132,10 +127,10 @@ public class Orders {
                 rs.close();
                 stmt.close();
                 return true;
-            } else return false;
-        } catch (Exception e) {
-            return false;
+            }
+        } catch (Exception ignored) {
         }
+        return false;
     }
 
     public boolean setArrivalDate(int i,Date newDate)
