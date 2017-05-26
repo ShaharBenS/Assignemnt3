@@ -22,15 +22,16 @@ public class Quantities
     {
         try
         {
-            PreparedStatement p_stmt = conn.prepareStatement("INSERT INTO Quantities(ItemID,LOCATION,MINIMUM,ORDER_AMOUNT,WAREHOUSE," +
-                    "STORE,DEFECTS) VALUES(?,?,?,?,?,?,?);");
+            PreparedStatement p_stmt = conn.prepareStatement("INSERT INTO Quantities(ItemID,ShopID,LOCATION,MINIMUM,ORDER_AMOUNT,WAREHOUSE," +
+                    "STORE,DEFECTS) VALUES(?,?,?,?,?,?,?,?);");
             p_stmt.setInt(1,quantity.getItemID());
-            p_stmt.setString(2,quantity.getLocation());
-            p_stmt.setInt(3,quantity.getMinimum());
-            p_stmt.setInt(4,quantity.getAmount_to_order());
-            p_stmt.setInt(5,quantity.getWarehouse());
-            p_stmt.setInt(6,quantity.getStore());
-            p_stmt.setInt(7,quantity.getDefects());
+            p_stmt.setInt(2,quantity.getShopID());
+            p_stmt.setString(3,quantity.getLocation());
+            p_stmt.setInt(4,quantity.getMinimum());
+            p_stmt.setInt(5,quantity.getAmount_to_order());
+            p_stmt.setInt(6,quantity.getWarehouse());
+            p_stmt.setInt(7,quantity.getStore());
+            p_stmt.setInt(8,quantity.getDefects());
             p_stmt.executeUpdate();
 
             conn.commit();
@@ -56,7 +57,7 @@ public class Quantities
             String query = "SELECT * FROM QUANTITIES AS Q WHERE Q.ItemID = "+id+";";
             Statement stmt = conn.createStatement();
             ResultSet resultSet = stmt.executeQuery(query);
-            q = new Quantity(resultSet.getInt("ItemID"),resultSet.getString("LOCATION"),
+            q = new Quantity(resultSet.getInt("ItemID"),resultSet.getInt("ShopID"),resultSet.getString("LOCATION"),
                     resultSet.getInt("DEFECTS"),resultSet.getInt("WAREHOUSE"),resultSet.getInt("MINIMUM"),
                     resultSet.getInt("STORE"),resultSet.getInt("ORDER_AMOUNT"));
             stmt.close();
@@ -156,7 +157,7 @@ public class Quantities
     {
         try
         {
-            return new Quantity(result.getInt("ItemID"),result.getString("LOCATION"),
+            return new Quantity(result.getInt("ItemID"),result.getInt("ShopID"),result.getString("LOCATION"),
                     result.getInt("DEFECTS"),result.getInt("WAREHOUSE"),result.getInt("MINIMUM"),
                     result.getInt("STORE"),result.getInt("ORDER_AMOUNT"));
         } catch (SQLException e)

@@ -5,12 +5,12 @@ package SharedClasses;
  */
 public class Item {
     private int itemID;
-    private int categoryNumber;
     private String name;
+    private int categoryNumber;
     private String manufacture;
     private double weight;
 
-    public Item(int itemID, int categoryNumber, String name, String manufacture, double weight) {
+    public Item(int itemID,  String name,int categoryNumber, String manufacture, double weight) {
         this.itemID = itemID;
         this.categoryNumber = categoryNumber;
         this.name = name;

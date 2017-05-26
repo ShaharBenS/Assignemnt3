@@ -2,7 +2,7 @@ package SharedClasses;
 
 import java.util.LinkedList;
 
-public class Trunsport 
+public class Trunsport  // TODO gal | ofir : There are two transport classes. I think this one is the wrong one.
 {
 	private String date;
 	private String leavTime;

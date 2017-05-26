@@ -2,11 +2,8 @@ package DAL;
 
 import java.sql.*;
 
-import ProgramLauncher.ProgramLauncher;
 import SharedClasses.Date;
-import SharedClasses.Item;
 import SharedClasses.Order;
-import SharedClasses.OrderItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +23,14 @@ public class Orders {
 
     public boolean addOrder(Order order) {
         try {
-            PreparedStatement ps = c.prepareStatement("INSERT INTO Orders (OrderID, SupplierID, Date, ContactID,OrderFrequency) " +
-                    "VALUES (?,?,?,?,?);");
+            PreparedStatement ps = c.prepareStatement("INSERT INTO Orders (OrderID,ShopID, SupplierID, Date, ContactID,OrderFrequency) " +
+                    "VALUES (?,?,?,?,?,?);");
             ps.setInt(1, order.getOrderID());
-            ps.setInt(2, order.getSupplier());
-            ps.setString(3,order.getDate().toString());
-            ps.setString(4,order.getContactID());
-            ps.setInt(5,order.getFrequency());
+            ps.setInt(2,order.getShopID());
+            ps.setInt(3, order.getSupplier());
+            ps.setString(4,order.getDate().toString());
+            ps.setString(5,order.getContactID());
+            ps.setInt(6,order.getFrequency());
 
             ps.executeUpdate();
             c.commit();
@@ -205,8 +203,8 @@ public class Orders {
             while(rs.next())
             {
                 count++;
-                orderList.add(new Order(rs.getInt("OrderID"),rs.getInt("SupplierID"),
-                        new Date(rs.getString("Date")),rs.getString("ContactID"),
+                orderList.add(new Order(rs.getInt("OrderID"),rs.getInt("ShopID"),rs.getInt("SupplierID"),
+                        new Date(rs.getString("Date")), rs.getString("ContactID"),
                         rs.getInt("OrderFrequency")));
             }
             ordersArray = new Order[count];

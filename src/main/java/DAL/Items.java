@@ -19,12 +19,14 @@ public class Items {
     public boolean addItem(Item item) {
         try
         {
-            PreparedStatement ps = c.prepareStatement("INSERT INTO Items (ID, Name, CategoryNumber, Manufacture) " +
-                    "VALUES (?,?,?,?);");
+            PreparedStatement ps = c.prepareStatement("INSERT INTO Items (ID, Name, CategoryNumber, Manufacture,Weight) " +
+                    "VALUES (?,?,?,?,?);");
             ps.setInt(1, item.getItemID());
             ps.setString(2, item.getName());
             ps.setInt(3, item.getCategoryNumber());
             ps.setString(4, item.getManufacture());
+            ps.setDouble(5,item.getWeight());
+
             ps.executeUpdate();
 
             c.commit();
@@ -73,7 +75,8 @@ public class Items {
             while(result.next())
             {
                 Item item = new Item(result.getInt("ID"),result.getString("NAME"),
-                        result.getInt("CategoryNumber"),result.getString("MANUFACTURE"));
+                        result.getInt("CategoryNumber"),
+                        result.getString("MANUFACTURE"),result.getDouble("Weight"));
 
                 itemList.add(item);
                 index++;
@@ -195,7 +198,9 @@ public class Items {
             String sqlQuery = "SELECT * FROM Items WHERE ID = " + id + ";";
             Statement stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQuery);
-            item = new Item(rs.getInt("ID"), rs.getString("NAME"), rs.getInt("CategoryNumber"), rs.getString("Manufacture"));
+            item = new Item(rs.getInt("ID"),
+                    rs.getString("NAME"), rs.getInt("CategoryNumber"),
+                    rs.getString("Manufacture"),rs.getDouble("Weight"));
             stmt.close();
         } catch (Exception e) {
             return null;

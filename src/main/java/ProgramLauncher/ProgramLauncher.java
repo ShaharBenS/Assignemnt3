@@ -127,10 +127,10 @@ public class ProgramLauncher
             DISCOUNTS.addDiscount(new Discount(120000, 202020, 20, 25));
 
 
-            ORDERS.addOrder(new Order(1, 200000, new Date(new java.util.Date()), "20202020", 0));
-            ORDERS.addOrder(new Order(2, 300000, new Date(new java.util.Date()), "30303030", 1));
-            ORDERS.addOrder(new Order(3, 100000, new Date(new java.util.Date()), "10101010", 2));
-            ORDERS.addOrder(new Order(4, 300000, new Date(new java.util.Date()), "30303030", 3));
+            ORDERS.addOrder(new Order(1, 200000, new Date(new java.util.Date()), shopID, "20202020", 0));
+            ORDERS.addOrder(new Order(2, 300000, new Date(new java.util.Date()), shopID, "30303030", 1));
+            ORDERS.addOrder(new Order(3, 100000, new Date(new java.util.Date()), shopID, "10101010", 2));
+            ORDERS.addOrder(new Order(4, 300000, new Date(new java.util.Date()), shopID, "30303030", 3));
 
 
             ORDERS_ITEMS.addOrderItem(new OrderItem(1, 111111, 30, 50.0));
@@ -186,16 +186,19 @@ public class ProgramLauncher
             ORDERS.setArrivalDate(3, new Date(new java.util.Date()));
             ORDERS.setArrivalDate(4, new Date(new java.util.Date()));
 
-            //TODO:: change to supplier
-            sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (313,'tnuva','Petach-Tikava','Shlomo','0500000000'); INSERT INTO Supliers (code) VALUES (313)";
-            stmt.executeUpdate(sql);
-            sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (323,'elit','Ramat-Gan','benizri','0522222222'); INSERT INTO Supliers (code) VALUES (323)";
-            stmt.executeUpdate(sql);
-            sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (4,'elit','Ramat-Gan','benizri','0522228222'); INSERT INTO Supliers (code) VALUES (4)";
-            stmt.executeUpdate(sql);
-
             String sql;
             Statement stmt = null;
+            //TODO:: change to supplier
+            try {
+                sql = "INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (313,'tnuva','Petach-Tikava','Shlomo','0500000000'); INSERT INTO Supliers (code) VALUES (313)";
+                stmt.executeUpdate(sql);
+                sql = "INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (323,'elit','Ramat-Gan','benizri','0522222222'); INSERT INTO Supliers (code) VALUES (323)";
+                stmt.executeUpdate(sql);
+                sql = "INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (4,'elit','Ramat-Gan','benizri','0522228222'); INSERT INTO Supliers (code) VALUES (4)";
+                stmt.executeUpdate(sql);
+            }
+            catch(Exception e) {}
+
             try {
                 stmt = conn.createStatement();
 
@@ -491,9 +494,9 @@ public class ProgramLauncher
             sql = "  CREATE TABLE IF NOT EXISTS Items " +
                     " (ID   INT PRIMARY KEY  NOT NULL," +
                     " NAME   TEXT NOT NULL, " +
-                    " Weight REAL NOT NULL," +
                     " CategoryNumber       INT    REFERENCES CATEGORY(ID) ON DELETE SET NULL ON UPDATE CASCADE, " +
-                    " Manufacture         TEXT    NOT NULL);";
+                    " Manufacture         TEXT    NOT NULL," +
+                    " Weight REAL NOT NULL);";
             stmt.execute(sql);
             stmt.close();
 

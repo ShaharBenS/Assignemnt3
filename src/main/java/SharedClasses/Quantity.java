@@ -6,6 +6,7 @@ package SharedClasses;
 public class Quantity {
 
     private int itemID;
+    private int ShopID;
     private String location;
     private int defects;
     private int warehouse;
@@ -15,10 +16,10 @@ public class Quantity {
     private int current;
 
 
-    //TODO:omri&shahr: add supp shop
-    public Quantity(int itemID, String location, int defects, int warehouse, int minimum, int store, int amount_to_order)
+    public Quantity(int itemID,int shopID, String location, int defects, int warehouse, int minimum, int store, int amount_to_order)
     {
         this.itemID = itemID;
+        this.ShopID = shopID;
         this.location = location;
         this.defects = defects;
         this.warehouse = warehouse;
@@ -92,7 +93,17 @@ public class Quantity {
     public int getCurrent() {
         return current;
     }
+    public int getShopID() {
+        return ShopID;
+    }
 
+    public void setShopID(int shopID) {
+        ShopID = shopID;
+    }
+
+    public void setCurrent(int current) {
+        this.current = current;
+    }
     public String toStringStock()
     {
         String str = "";

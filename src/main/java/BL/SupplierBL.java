@@ -226,7 +226,7 @@ public class SupplierBL {
 
     public int addOrder(int supplierId, Date date,int frequency){
         String conID=contacts.getContactID(supplierId);
-        Order ord = new Order(OrderID++,supplierId,date, conID);
+        Order ord = new Order(OrderID++,supplierId,date, shopID, conID);
         ord.setFrequency(frequency);
         if(!order.addOrder(ord))
         {
@@ -251,7 +251,7 @@ public class SupplierBL {
     	Order ord;
     	String orderGet = order.getOrder(orderID);
     	String[] splited = orderGet.split("\\s");
-    	ord= new Order(Integer.parseInt(splited[0]), Integer.parseInt(splited[1]),new Date(splited[2]),splited[3],Integer.parseInt(splited[4]),OI.getOrderItems(orderID));
+    	ord= new Order(Integer.parseInt(splited[0]), Integer.parseInt(splited[1]),new Date(splited[2]), shopID, splited[3],Integer.parseInt(splited[4]),OI.getOrderItems(orderID));
     	return ord;
     }
     
@@ -261,7 +261,7 @@ public class SupplierBL {
         toReturn= new Order[orderSup.size()];
     	for(int i=0; i<orderSup.size();i++){
             String[] splited = orderSup.get(i).split("\\s");
-            toReturn[i]= new Order(Integer.parseInt(splited[0]), Integer.parseInt(splited[1]), new Date(splited[2]),splited[3],Integer.parseInt(splited[4]),OI.getOrderItems(Integer.parseInt(splited[0])));
+            toReturn[i]= new Order(Integer.parseInt(splited[0]), Integer.parseInt(splited[1]), new Date(splited[2]), shopID, splited[3],Integer.parseInt(splited[4]),OI.getOrderItems(Integer.parseInt(splited[0])));
     	}
     	return toReturn;
     }
