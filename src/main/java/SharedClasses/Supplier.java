@@ -4,7 +4,7 @@ package SharedClasses;
  * Created by keren on 4/6/2017.
  */
 public class Supplier extends Site {
-    // private int id;
+    private int id;
     private String name;
     private int bankNum;
     private int branchNum;
@@ -12,11 +12,13 @@ public class Supplier extends Site {
     private String payment;
     private String deliveryMethod;
     private String supplyTime;
+    private Contact[] Contacts;
+
     //private String address;
 
-//TODO:: add contacts array
     public Supplier(int id, String name, int bankNum, int branchNum, int accountNum, String payment, String deliveryMethod, String supplyTime, String address) {
         super(id,address,"","");
+        this.id = id;
         this.name = name;
         this.bankNum = bankNum;
         this.branchNum = branchNum;
@@ -25,7 +27,20 @@ public class Supplier extends Site {
         this.deliveryMethod = deliveryMethod;
         this.supplyTime = supplyTime;
     }
-
+    public Supplier(int id, String name, int bankNum, int branchNum, int accountNum,
+                    String payment, String deliveryMethod, String supplyTime, String address,Contact[] contacts) {
+        super(id,address,"","");
+        this.id = id;
+        this.name = name;
+        this.bankNum = bankNum;
+        this.branchNum = branchNum;
+        this.accountNum = accountNum;
+        this.payment = payment;
+        this.deliveryMethod = deliveryMethod;
+        this.supplyTime = supplyTime;
+        Contacts = new Contact[contacts.length];
+        System.arraycopy(contacts, 0, Contacts, 0, contacts.length);
+    }
     public int getId() {
         return super.getCode();
     }
@@ -99,7 +114,16 @@ public class Supplier extends Site {
         return "Collect From:";
     }
 
+    public Contact[] getContacts() {
+        Contact [] contactsArray = new Contact[Contacts.length];
+        System.arraycopy(Contacts, 0, contactsArray, 0, Contacts.length);
+        return contactsArray;
+    }
 
+    public void setContacts(Contact[] contacts) {
+        Contacts = new Contact[contacts.length];
+        System.arraycopy(contacts,0,Contacts,0,contacts.length);
+    }
 
     @Override
     public String toString() {

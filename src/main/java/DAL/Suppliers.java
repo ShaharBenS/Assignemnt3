@@ -1,5 +1,6 @@
 package DAL;
 
+import SharedClasses.Contact;
 import SharedClasses.Site;
 import SharedClasses.Supplier;
 
@@ -7,18 +8,21 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Suppliers {
     private Connection c;
     java.sql.Statement stmt;
+    Contacts contacts;
 
-
-    public Suppliers(Connection c) {
+    public Suppliers(Connection c,Contacts contacts) {
         this.c = c;
         stmt = null;
+        this.contacts = contacts;
     }
 
-    /* NEW FINCTION: ADDING SITE TO DB -TRUE IF SUCCEED, FALSE OTHERWISE */
+    /* NEW FUNCTION: ADDING SITE TO DB -TRUE IF SUCCEED, FALSE OTHERWISE */
     private boolean addSite(int siteCode, String name, String address, String contact, String phone)
     {
         try{
@@ -36,14 +40,12 @@ public class Suppliers {
             ps.close();
             return true;
         }catch (Exception e){
-            e.printStackTrace(); //TODO:omri&shahar need to check its rly works
             return false;
         }
     }
-
+    // TODO: shahar | omri = When adding site fails it might be because that site already exists.
     public boolean addSupplier(Supplier sup) {
         try {
-
             int siteCode = sup.getCode();
             String name = sup.getName();
             String address = sup.getAddress();
@@ -52,8 +54,8 @@ public class Suppliers {
 
             if(!addSite(siteCode, name, address, contact, phone)) return false;
 
-            PreparedStatement ps = c.prepareStatement("INSERT INTO Suppliers (ID, Name, BankNum, BranchNum, AccountNum, Payment, DeliveryMethod, SupplyTime, Address) " +
-                    "VALUES (?,?,?,?,?,?,?,?,?);");
+            PreparedStatement ps = c.prepareStatement("INSERT INTO Suppliers (ID, Name, BankNum, BranchNum, AccountNum, Payment, DeliveryMethod, SupplyTime) " +
+                    "VALUES (?,?,?,?,?,?,?,?);");
 
             ps.setInt(1, sup.getId());
             ps.setString(2, sup.getName());
@@ -63,7 +65,6 @@ public class Suppliers {
             ps.setString(6, sup.getPayment());
             ps.setString(7, sup.getDeliveryMethod());
             ps.setString(8, sup.getSupplyTime());
-            ps.setString(9, sup.getAddress());
 
             ps.executeUpdate();
             c.commit();
@@ -353,7 +354,29 @@ public class Suppliers {
 
     }
 
-     public Supplier getSupplierWithContact(int to) {
-        return getSupplier(to);
+    public Supplier getSupplierWithContact(int to)
+    {
+        List<Contact> supplierContactsList = new ArrayList<>();
+        try {
+            String sqlQuary = "SELECT * FROM Contacts WHERE SupplierID = '" + to + "';";
+            stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery(sqlQuary);
+            while (rs.next()) {
+                Contact contact = new Contact(rs.getString(1),rs.getInt(2),rs.getString(3),
+                        rs.getString(4),rs.getString(5));
+                supplierContactsList.add(contact);
+            }
+            rs.close();
+            stmt.close();
+        } catch (Exception e) {
+            return null;
+        }
+        Contact [] supplierContacts = new Contact[supplierContactsList.size()];
+        supplierContacts = supplierContactsList.toArray(supplierContacts);
+        Supplier toReturn = getSupplier(to);
+        toReturn.setContacts(supplierContacts);
+        return toReturn;
     }
+
+
 }
