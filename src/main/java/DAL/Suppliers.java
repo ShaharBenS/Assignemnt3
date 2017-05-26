@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Suppliers {
-    Connection c;
+    private Connection c;
     java.sql.Statement stmt;
 
 
@@ -71,7 +71,7 @@ public class Suppliers {
             ps.close();
             return true;
         } catch (Exception e) {
-            System.out.println(e);//TODO:omri&shshar: do we rly wanna print it ?
+            e.printStackTrace();//TODO:omri&shshar: do we rly wanna print it ?
             return false;
         }
 
@@ -221,7 +221,6 @@ public class Suppliers {
             pstmt.close();
             return true;
         } catch (SQLException e) {
-            System.out.println(e);
             return false;
         }
     }
@@ -242,10 +241,7 @@ public class Suppliers {
             pstmt.close();
             return true;
         } catch (SQLException e)
-
         {
-            System.out.println(e);
-
             return false;
         }
     }
@@ -266,10 +262,7 @@ public class Suppliers {
              pstmt.close();
              return true;
          } catch (SQLException e)
-
          {
-             System.out.println(e);
-
              return false;
          }
     }
@@ -286,9 +279,10 @@ public class Suppliers {
 
             rs.close();
             stmt.close();
+            return sup;
         } catch (Exception e) {
+            return null;
         }
-        return sup;
     }
 
 
@@ -303,9 +297,10 @@ public class Suppliers {
             }
             rs.close();
             stmt.close();
+            return ans;
         } catch (Exception e) {
+            return "";
         }
-        return ans;
     }
 
     public String getSupplierName(int id){
@@ -319,15 +314,14 @@ public class Suppliers {
             }
             rs.close();
             stmt.close();
+            return ans;
         } catch (Exception e) {
             return "";
         }
-        return ans;
     }
 
     public boolean removeSupplier(int id) {
         try {
-
             String sql = "DELETE FROM Suppliers WHERE ID = ?";
 
             PreparedStatement pstmt = c.prepareStatement(sql);
@@ -363,7 +357,7 @@ public class Suppliers {
 
     }
 
-    public Supplier getSupplierWithContact(int to) {
+     public Supplier getSupplierWithContact(int to) {
         return getSupplier(to);
     }
 }
