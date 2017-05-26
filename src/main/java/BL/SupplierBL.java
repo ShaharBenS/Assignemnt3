@@ -248,11 +248,10 @@ public class SupplierBL {
     	}
     }
     public Order getOrder(int orderID){
-    	Order ord;
-    	String orderGet = order.getOrder(orderID);
-    	String[] splited = orderGet.split("\\s");
-    	ord= new Order(Integer.parseInt(splited[0]),BL.shopID, Integer.parseInt(splited[1]),new Date(splited[2]), splited[3],Integer.parseInt(splited[4]),OI.getOrderItems(orderID));
-    	return ord;
+    	Order ord = order.getOrder(orderID);
+        return  new Order(ord.getOrderID()
+                ,ord.getShopID(),ord.getSupplierID(),new Date(ord.getDate()),ord.getContactID(),
+                ord.getFrequency(),OI.getOrderItems(orderID));
     }
     
     public Order[] getOrderOfSup(int supID){
@@ -309,7 +308,7 @@ public class SupplierBL {
             OrderItem [] orderItems = OI.getOrderItems(id);
             for (OrderItem orderItem : orderItems) {
                 int item_id = orderItem.getItemID();
-                Quantity quantity = quantities.getQuantity(item_id);
+                Quantity quantity = quantities.getQuantity(item_id,BL.shopID);
                 if(quantity!=null)
                 {
                     quantities.updateWarehouse(item_id,quantity.getWarehouse() + orderItem.getQuantity());
@@ -340,7 +339,7 @@ public class SupplierBL {
     {
         return si.getSuppliersID(itemID);
     }
-    
+
     public boolean checkOrderExist(int orderID){
     	return order.checkOrderExist(orderID);
     }

@@ -56,8 +56,8 @@ public class Quantities
 
         try
         {
-            String query = "SELECT * FROM QUANTITIES AS Q WHERE Q.ItemID = "+id +
-                    shopID == -1 ? ";" : " AND Q.ShopID = "+shopID+";";
+            String query = shopID == -1 ? "SELECT * FROM QUANTITIES AS Q WHERE Q.ItemID = "+id+ ";" :
+                    "SELECT * FROM QUANTITIES AS Q WHERE Q.ItemID = "+id+ " AND Q.ShopID = "+shopID + ";";
             Statement stmt = conn.createStatement();
             ResultSet resultSet = stmt.executeQuery(query);
             q = new Quantity(resultSet.getInt("ItemID"),resultSet.getInt("ShopID"),resultSet.getString("LOCATION"),
