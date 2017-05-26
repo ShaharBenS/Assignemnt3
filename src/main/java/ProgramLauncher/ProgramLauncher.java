@@ -38,7 +38,7 @@ public class ProgramLauncher
         Orders ORDERS = new Orders(conn);
         OrdersItems ORDERS_ITEMS = new OrdersItems(conn);
         SupplierItems SUPPLIER_ITEMS = new SupplierItems(conn);
-        Suppliers SUPPLIERS = new Suppliers(conn,CONTACTS);
+        Suppliers SUPPLIERS = new Suppliers(conn, CONTACTS);
 
         DAL dal =  new DAL(conn,ITEMS, SUPPLIERS);
 
@@ -403,7 +403,7 @@ public class ProgramLauncher
             stmt.executeUpdate(sql);
             sql= "CREATE TABLE IF NOT EXISTS Sites " +
                     "(code INT PRIMARY KEY NOT NULL," +
-                    ",Address VARCHAR(50) NOT NULL," +
+                    " Address VARCHAR(50) NOT NULL," +
                     " Contact VARCHAR(50) NOT NULL," +
                     " Phone VARCHAR(10) NOT NULL);";
 

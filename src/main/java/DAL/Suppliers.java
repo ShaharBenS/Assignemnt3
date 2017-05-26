@@ -1,7 +1,6 @@
 package DAL;
 
 import SharedClasses.Contact;
-import SharedClasses.Site;
 import SharedClasses.Supplier;
 
 import java.sql.Connection;

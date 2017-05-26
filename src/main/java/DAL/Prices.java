@@ -25,7 +25,7 @@ public class Prices
      */
     public Price getPrice(int id)
     {
-        Price price = null;
+        Price price;
 
         try
         {
