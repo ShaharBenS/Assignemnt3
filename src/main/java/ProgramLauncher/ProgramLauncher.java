@@ -84,7 +84,6 @@ public class ProgramLauncher
             CONTACTS.addContact(new Contact("30303030", 300000, "Natsu Dragneel",
                     "789123456", "c@c.c"));
 
-            //TODO:omri&shahar:
             ITEMS.addItem(new Item(111111, "KORNFLEKS", 102, "SHKEL-INC",0.5));
             ITEMS.addItem(new Item(222222, "Steak", 101, "COWS-KILLERS",1));
             ITEMS.addItem(new Item(333333, "Cheese", 100, "TARA",0.2));
@@ -126,11 +125,12 @@ public class ProgramLauncher
             DISCOUNTS.addDiscount(new Discount(110000, 101010, 20, 15));
             DISCOUNTS.addDiscount(new Discount(120000, 202020, 20, 25));
 
+            int[] shopID = new int[]{810,811,812,813};
 
-            ORDERS.addOrder(new Order(1, 200000, new Date(new java.util.Date()), shopID, "20202020", 0));
-            ORDERS.addOrder(new Order(2, 300000, new Date(new java.util.Date()), shopID, "30303030", 1));
-            ORDERS.addOrder(new Order(3, 100000, new Date(new java.util.Date()), shopID, "10101010", 2));
-            ORDERS.addOrder(new Order(4, 300000, new Date(new java.util.Date()), shopID, "30303030", 3));
+            ORDERS.addOrder(new Order(1, shopID[0], 200000, new Date(new java.util.Date()),  "20202020", 0));
+            ORDERS.addOrder(new Order(2, shopID[1], 300000, new Date(new java.util.Date()),  "30303030", 1));
+            ORDERS.addOrder(new Order(3, shopID[2], 100000, new Date(new java.util.Date()),  "10101010", 2));
+            ORDERS.addOrder(new Order(4, shopID[3], 300000, new Date(new java.util.Date()),  "30303030", 3));
 
 
             ORDERS_ITEMS.addOrderItem(new OrderItem(1, 111111, 30, 50.0));
@@ -145,27 +145,27 @@ public class ProgramLauncher
             ORDERS_ITEMS.addOrderItem(new OrderItem(2, 101010, 40, 10));
             ORDERS_ITEMS.addOrderItem(new OrderItem(3, 202020, 30, 12.5));
 
-            QUANTITIES.addItemQuantity(new Quantity(111111, "SHELF 2-A", 0,
+            QUANTITIES.addItemQuantity(new Quantity(111111, shopID[0],"SHELF 2-A", 0,
                     10, 10, 0, 30));
-            QUANTITIES.addItemQuantity(new Quantity(222222, "SHELF 2-B", 0,
+            QUANTITIES.addItemQuantity(new Quantity(222222, shopID[0],"SHELF 2-B", 0,
                     20, 10, 0, 12));
-            QUANTITIES.addItemQuantity(new Quantity(333333, "SHELF 2-C", 0,
+            QUANTITIES.addItemQuantity(new Quantity(333333, shopID[1],"SHELF 2-C", 0,
                     30, 10, 30, 63));
-            QUANTITIES.addItemQuantity(new Quantity(444444, "SHELF 2-D", 0,
+            QUANTITIES.addItemQuantity(new Quantity(444444, shopID[1],"SHELF 2-D", 0,
                     40, 20, 20, 80));
-            QUANTITIES.addItemQuantity(new Quantity(555555, "SHELF 2-E", 0,
+            QUANTITIES.addItemQuantity(new Quantity(555555, shopID[2],"SHELF 2-E", 0,
                     50, 20, 10, 10));
-            QUANTITIES.addItemQuantity(new Quantity(666666, "SHELF 2-F", 0,
+            QUANTITIES.addItemQuantity(new Quantity(666666, shopID[2],"SHELF 2-F", 0,
                     60, 30, 10, 13));
-            QUANTITIES.addItemQuantity(new Quantity(777777, "SHELF 2-G", 0,
+            QUANTITIES.addItemQuantity(new Quantity(777777, shopID[3],"SHELF 2-G", 0,
                     70, 30, 10, 50));
-            QUANTITIES.addItemQuantity(new Quantity(888888, "SHELF 2-H", 0,
+            QUANTITIES.addItemQuantity(new Quantity(888888, shopID[3],"SHELF 2-H", 0,
                     80, 40, 30, 90));
-            QUANTITIES.addItemQuantity(new Quantity(999999, "SHELF 2-I", 0,
+            QUANTITIES.addItemQuantity(new Quantity(999999, shopID[0],"SHELF 2-I", 0,
                     90, 40, 60, 60));
-            QUANTITIES.addItemQuantity(new Quantity(101010, "SHELF 2-J", 0,
+            QUANTITIES.addItemQuantity(new Quantity(101010, shopID[1],"SHELF 2-J", 0,
                     100, 50, 30, 30));
-            QUANTITIES.addItemQuantity(new Quantity(202020, "SHELF 2-K", 0,
+            QUANTITIES.addItemQuantity(new Quantity(202020, shopID[2],"SHELF 2-K", 0,
                     110, 50, 10, 50));
 
             PRICES.addItemPrice(new Price(111111, 20.5, 0, null, null));
@@ -175,9 +175,9 @@ public class ProgramLauncher
             PRICES.addItemPrice(new Price(555555, 70.5, 30,
                     new Date(2017, 12, 10), new Date(2017, 12, 30)));
             PRICES.addItemPrice(new Price(666666, 80.5, 20,
-                    new Date(2017, 04, 10), new Date(2017, 04, 16)));
+                    new Date(2017, 4, 10), new Date(2017, 4, 16)));
             PRICES.addItemPrice(new Price(777777, 90.5, 10,
-                    new Date(2017, 03, 10), new Date(2017, 03, 14)));
+                    new Date(2017, 3, 10), new Date(2017, 3, 14)));
             PRICES.addItemPrice(new Price(888888, 100.5, 0, null, null));
             PRICES.addItemPrice(new Price(999999, 200.5, 0, null, null));
             PRICES.addItemPrice(new Price(101010, 56.5, 0, null, null));

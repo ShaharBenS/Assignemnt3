@@ -22,8 +22,8 @@ public class Suppliers {
         this.contacts = contacts;
     }
 
-    /* NEW FUNCTION: ADDING SITE TO DB -TRUE IF SUCCEED, FALSE OTHERWISE */
-    private boolean addSite(int siteCode, String name, String address, String contact, String phone)
+    /* NEW FINCTION: ADDING SITE TO DB -TRUE IF SUCCEED, FALSE OTHERWISE */
+    private void addSite(int siteCode, String name, String address, String contact, String phone)
     {
         try{
             PreparedStatement ps = c.prepareStatement("INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) "+
@@ -38,14 +38,13 @@ public class Suppliers {
             ps.executeUpdate();
             c.commit();
             ps.close();
-            return true;
-        }catch (Exception e){
-            return false;
+        }catch (Exception e){ //should fall here is site already exist
         }
     }
     // TODO: shahar | omri = When adding site fails it might be because that site already exists.
     public boolean addSupplier(Supplier sup) {
         try {
+
             int siteCode = sup.getCode();
             String name = sup.getName();
             String address = sup.getAddress();
@@ -266,13 +265,14 @@ public class Suppliers {
 
 
     public Supplier getSupplier(int id) {
-        Supplier sup = null;
+        Supplier sup;
         try {
             String sqlQuary = "SELECT * FROM Suppliers WHERE ID = '" + id + "';";
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQuary);
 
-            sup = new Supplier(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
+            sup = new Supplier(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
+                    rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
 
             rs.close();
             stmt.close();
