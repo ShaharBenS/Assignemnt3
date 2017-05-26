@@ -51,7 +51,7 @@ public class Suppliers {
             String contact = sup.getContact();
             String phone = sup.getPhone();
 
-            if(!addSite(siteCode, name, address, contact, phone)) return false;
+            addSite(siteCode, name, address, contact, phone);
 
             PreparedStatement ps = c.prepareStatement("INSERT INTO Suppliers (ID, Name, BankNum, BranchNum, AccountNum, Payment, DeliveryMethod, SupplyTime) " +
                     "VALUES (?,?,?,?,?,?,?,?);");
