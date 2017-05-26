@@ -38,7 +38,7 @@ public class ProductManagement {
             int cCode = Integer.parseInt(iParts[4]);
             if (iParts[4].length() != 3) return false;
             double sell = Double.parseDouble(iParts[6]);
-            item = new Item(id, iParts[5], cCode, iParts[2]);
+            item = new Item(id, iParts[5], cCode, iParts[2]); // TODO:omri: get weight from user as well
             quantity = new Quantity(id, iParts[1],0,0,minimal,0,minimal*3);
             price = new Price(id, sell, 0, null,null);
 
@@ -99,7 +99,7 @@ public class ProductManagement {
         try {
             int id = Integer.parseInt(prop[0]);
             int postAmount = Integer.parseInt(prop[1]);
-            Quantity itemQuantity = QUANTITIES.getQuantity(id);
+            Quantity itemQuantity = QUANTITIES.getQuantity(id,BL.shopID);
             int store = itemQuantity.getStore();
             int warehouse = itemQuantity.getWarehouse();
             if(itemQuantity == null) return false;
@@ -130,7 +130,7 @@ public class ProductManagement {
         try {
             int id = Integer.parseInt(prop[0]);
             int postAmount = Integer.parseInt(prop[1]);
-            Quantity itemQuantity = QUANTITIES.getQuantity(id);
+            Quantity itemQuantity = QUANTITIES.getQuantity(id,BL.shopID);
             int defects = itemQuantity.getDefects();
             int store = itemQuantity.getStore();
             if(itemQuantity == null) return false;
@@ -196,7 +196,7 @@ public class ProductManagement {
         if (line.length() != 6) return "Invalid ID";
         try {
             int id = Integer.parseInt(line);
-            Quantity quantity = QUANTITIES.getQuantity(id);
+            Quantity quantity = QUANTITIES.getQuantity(id,BL.shopID);
             if (quantity==null) return "ID not found!\n";
             else return quantity.toStringStock();
         } catch (Exception e) {
@@ -214,7 +214,7 @@ public class ProductManagement {
            {
                toStrings[i] = "------- FULL ITEM -------\n";
                toStrings[i] += (ITEMS.getItem((Integer) K_ID_V_PRICE[i].getKey())).toString();
-               toStrings[i] += (QUANTITIES.getQuantity((Integer) K_ID_V_PRICE[i].getKey())).toString();
+               toStrings[i] += (QUANTITIES.getQuantity((Integer) K_ID_V_PRICE[i].getKey(),BL.shopID)).toString();
                toStrings[i] += (PRICES.getPrice((Integer) K_ID_V_PRICE[i].getKey())).toString();
                toStrings[i] += "Final Cost: " + (Double) K_ID_V_PRICE[i].getValue() + "\n";
                toStrings[i] += "------- FULL ITEM -------\n\n";
@@ -225,7 +225,7 @@ public class ProductManagement {
     }
 
     public String[] getAllDefectProducts() {
-        Quantity[] quantities = QUANTITIES.getAllDefectItems();
+        Quantity[] quantities = QUANTITIES.getAllDefectItems(BL.shopID);
         int size = quantities.length;
         if(size == 0) return new String[]{"No Defects were found !"};
         Item[] items = new Item[size];
@@ -240,7 +240,7 @@ public class ProductManagement {
 
     private void checkIfNeedToOrder(int id)
     {
-        Quantity quantity = QUANTITIES.getQuantity(id);
+        Quantity quantity = QUANTITIES.getQuantity(id,BL.shopID);
         if (quantity.getWarehouse() <= quantity.getMinimum()) {
 
             if(SBL.isItemOrdered(id))

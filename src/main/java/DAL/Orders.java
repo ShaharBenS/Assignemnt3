@@ -187,13 +187,18 @@ public class Orders {
         }
     }
 
-    public Order[] getPeriodicOrders()
+    /*
+        This functions returns all Periodic Orders.
+        If shopID is NOT -1, only periodic orders to that shop will be returned.
+     */
+    public Order[] getPeriodicOrders(int shopID)
     {
         List<Order> orderList = new ArrayList<>();
         Order[] ordersArray;
         try {
             Statement stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM ORDERS WHERE ORDERS.OrderFrequency > 0;");
+            ResultSet rs = shopID == -1 ?  stmt.executeQuery("SELECT * FROM ORDERS WHERE ORDERS.OrderFrequency > 0;") :
+                    stmt.executeQuery("SELECT * FROM ORDERS WHERE ORDERS.shopID = "+shopID+" AND ORDERS.OrderFrequency > 0;");
             int count = 0;
             while(rs.next())
             {

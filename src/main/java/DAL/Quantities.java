@@ -48,14 +48,16 @@ public class Quantities
 
     /*
         returning Quantities object by given id, or null if not exist
+        when shopID is -1 , only items on that shop will be returned
     */
-    public Quantity getQuantity(int id)
+    public Quantity getQuantity(int id,int shopID)
     {
         Quantity q = null;
 
         try
         {
-            String query = "SELECT * FROM QUANTITIES AS Q WHERE Q.ItemID = "+id+" AND Q.ShopID = "+BL.shopID+";";
+            String query = "SELECT * FROM QUANTITIES AS Q WHERE Q.ItemID = "+id +
+                    shopID == -1 ? ";" : " AND Q.ShopID = "+shopID+";";
             Statement stmt = conn.createStatement();
             ResultSet resultSet = stmt.executeQuery(query);
             q = new Quantity(resultSet.getInt("ItemID"),resultSet.getInt("ShopID"),resultSet.getString("LOCATION"),
@@ -121,13 +123,16 @@ public class Quantities
     }
 
 
-    public Quantity[] getAllDefectItems()
+    /*
+        Returns all defects Items
+        When shopID is -1, all defects Items from all shops are returned.
+     */
+    public Quantity[] getAllDefectItems(int shopID)
     {
         Quantity[] items = null;
         List<Quantity> itemList = new ArrayList<>();
-        String query =  "SELECT * " +
-                "FROM QUANTITIES " +
-                "WHERE DEFECTS > 0"+" AND ShopID = "+BL.shopID;
+        String query =  shopID == -1 ? "SELECT * FROM QUANTITIES WHERE DEFECTS > 0;" :
+                "SELECT * FROM QUANTITIES WHERE DEFECTS > 0 AND ShopID = " + shopID+";";
 
         try
         {
