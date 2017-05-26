@@ -19,6 +19,7 @@ public class Order {
     {
         String ans ="";
         ans+="***** ORDER *****\n";
+        ans+="SHOP ID: "+shopID+"\n";
         ans+="ORDER ID: "+orderID+"\n";
         ans+="SUPPLIER ID: "+supplierID+"\n";
         ans+="Date: "+date.toString()+"\n";

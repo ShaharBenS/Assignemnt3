@@ -7,6 +7,15 @@ import java.util.LinkedList;
 import SharedClasses.*;
 
 public class BL {
+
+	/******
+	 * @param: global variable that each class in the system can access to
+	 * 			it tells the shopID of the current user who work with the system.
+	 * 			need to update it EVERY LOGIN! otherwise we will get rekt.	 *
+ 	 */
+	public int shopID;
+
+
 	private DAL dal;
 	private Worker user;
 	/**
@@ -23,6 +32,7 @@ public class BL {
 	}
 
 	//TODO:LIAM: return permission by id { 1- 5 }
+	//TODO:LIAM&OFIR: update the global variable we define up here
 	public int setUser(String id) throws NituzException{ //LOGIN
 		try{
 			legalID(id);
