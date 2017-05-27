@@ -346,5 +346,5 @@ public class SupplierBL {
 
     public boolean checkItemExistInOrder(int orderID, int itemID){return OI.checkItemExistInOrder(orderID, itemID);}
 
-    public boolean isItemOrdered(int itemID) { return OI.isItemOrdered(itemID); }
+    public boolean isItemOrdered(int itemID, int shopID) { return OI.isItemOrdered(itemID, shopID); }
 }

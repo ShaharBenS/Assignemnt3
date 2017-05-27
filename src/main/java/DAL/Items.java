@@ -39,10 +39,10 @@ public class Items {
     }
 
 
-    public int existOrder(int supplierID)
+    public int existOrder(int supplierID, int shopID)
     {
         int oid=0;
-        String query = "SELECT OrderID, SupplierID FROM Orders WHERE ArrivalDate is null and SupplierID = "+supplierID+";";
+        String query = "SELECT OrderID, SupplierID FROM Orders WHERE ArrivalDate is null and SupplierID = "+supplierID+" and ShopID = "+shopID+";";
         try
         {
             Statement statement = c.createStatement();

@@ -244,7 +244,7 @@ public class ProductManagement {
         Quantity quantity = QUANTITIES.getQuantity(id,BL.shopID);
         if (quantity.getWarehouse() <= quantity.getMinimum()) {
 
-            if(SBL.isItemOrdered(id))
+            if(SBL.isItemOrdered(id, BL.shopID))
                 return;
 
             Integer[] suppliersID = SBL.getSuppliersID(id);
@@ -262,7 +262,7 @@ public class ProductManagement {
                 }
             }
             int supplierID = minimum.getKey();
-            int oid = ITEMS.existOrder(supplierID);
+            int oid = ITEMS.existOrder(supplierID, BL.shopID);
             int orderID;
             if(oid == 0) //there is no open order
                 orderID = SBL.addOrder(supplierID,new Date(new java.util.Date()),0);

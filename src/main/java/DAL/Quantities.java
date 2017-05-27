@@ -52,7 +52,7 @@ public class Quantities
     */
     public Quantity getQuantity(int id,int shopID)
     {
-        Quantity q = null;
+        Quantity q;
 
         try
         {
@@ -64,13 +64,12 @@ public class Quantities
                     resultSet.getInt("DEFECTS"),resultSet.getInt("WAREHOUSE"),resultSet.getInt("MINIMUM"),
                     resultSet.getInt("STORE"),resultSet.getInt("ORDER_AMOUNT"));
             stmt.close();
+            return q;
         }
         catch (Exception e)
         {
             return null;
         }
-
-        return q;
     }
 
     /*
