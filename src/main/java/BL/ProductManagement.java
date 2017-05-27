@@ -21,10 +21,10 @@ public class ProductManagement {
     }
 
     // ADD NEW item TO DATABASE
-     // FORMAT: [0:ID] [1:LOCATION] [2:MANUFACTURE] [3:MINIMAL AMOUNT] [4:CATEGORY CODE] [5:NAME] [6:SELL PRICE]
+     // FORMAT: [0:ID] [1:LOCATION] [2:MANUFACTURE] [3:MINIMAL AMOUNT] [4:CATEGORY CODE] [5:NAME] [6:SELL PRICE] [7:WEIGHT]
     public boolean addItem(String pLine) {
         String[] iParts = pLine.split("\\s+");
-        if (iParts.length != 7) return false;
+        if (iParts.length != 8) return false;
         Quantity quantity;
         Item item;
         Price price;
@@ -38,8 +38,9 @@ public class ProductManagement {
             int cCode = Integer.parseInt(iParts[4]);
             if (iParts[4].length() != 3) return false;
             double sell = Double.parseDouble(iParts[6]);
-            item = new Item(id, iParts[5], cCode, iParts[2]); // TODO:omri: get weight from user as well
-            quantity = new Quantity(id, iParts[1],0,0,minimal,0,minimal*3);
+            double weight = Double.parseDouble(iParts[7]);
+            item = new Item(id, iParts[5], cCode, iParts[2], weight);
+            quantity = new Quantity(id, BL.shopID, iParts[1],0,0,minimal,0,minimal*3);
             price = new Price(id, sell, 0, null,null);
 
         } catch (Exception e) { return false; }

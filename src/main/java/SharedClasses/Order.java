@@ -15,7 +15,7 @@ public class Order {
     private OrderItem[] orderItems;
 
     @Override
-    public String toString() // TODO : omri ; add ShopID to String
+    public String toString()
     {
         String ans ="";
         ans+="***** ORDER *****\n";

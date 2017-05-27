@@ -40,7 +40,7 @@ public class Suppliers {
         }catch (Exception e){ //should fall here is site already exist
         }
     }
-    // TODO: shahar | omri = When adding site fails it might be because that site already exists.
+
     public boolean addSupplier(Supplier sup) {
         try {
 
