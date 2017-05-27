@@ -898,6 +898,29 @@ public class DAL {
         }
     }
 
+    public boolean removeWorkerInShift(int id, Shift s) throws NituzException {
+
+        try{
+            Statement stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery( "SELECT ID,Code FROM WorkersInShifts WHERE Status = 'Working' AND ID = "+id+" AND Code = "+s.getCode()+";" );
+            if(!rs.isBeforeFirst()){
+                return false;
+            }
+            else{
+                Statement stmt2 = c.createStatement();
+                String sql = "DELETE FROM WorkersInShifts (ID,Code,Status) " +
+                        "VALUES ("+id+","+s.getCode()+",'Working');";
+                stmt2.executeUpdate(sql);
+                stmt2.close();
+            }
+            rs.close();
+            stmt.close();
+            return true;
+        } catch ( Exception e){
+            throw new NituzException(4,e.getMessage());
+        }
+    }
+
     public boolean addShift(Shift s) throws NituzException {
 
         try{

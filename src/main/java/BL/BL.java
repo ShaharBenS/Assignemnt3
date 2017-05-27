@@ -31,19 +31,34 @@ public class BL {
 		return this.user;
 	}
 
-	//TODO:LIAM: return permission by id { 1- 5 }
-	//TODO:LIAM&OFIR: update the global variable we define up here
+	// return 0 if has no valid premission
 	public int setUser(String id) throws NituzException{ //LOGIN
 		try{
 			legalID(id);
-			user=dal.selectWorker(Integer.parseInt(id));
+			int intID = Integer.parseInt(id);
+			user=dal.selectWorker(intID);
+			setShopID(intID);
+			if(user.getRole().equals("Director of Personal Transport Center")) return 1;
+			if(user.getRole().equals("Director of Personal Shops")) return 2;
+			if(user.getRole().equals("Director of Logistics")) return 3;
+			if(user.getRole().equals("Storekeeper")) return 4;
+			if(user.getRole().equals("Shop Manager")) return 5;
+			return 0;
 		}
 		catch(Exception e){
 			throw new NituzException(1, id + " wasn't found in the system");
 		}
 	}
 
-	public boolean hasPermissionManager(String role) throws NituzException{
+	public boolean setShopID(int id) throws NituzException{
+		try{
+			Worker w = dal.selectWorker(id);
+			shopID = w.getWorkPlace();
+		}
+		catch(){ throw new NituzException(1, id + " wasn't found in the system");}
+	}
+
+	/*public boolean hasPermissionManager(String role) throws NituzException{
 		if (role.equals("BranchManager") || role.equals("TransportManager")){
 			return true;
 		}
@@ -62,7 +77,7 @@ public class BL {
 			return true;
 		}
 		throw new NituzException(6, "You have no permission for that!");
-	}
+	}*/
 
 	public boolean logOut() throws NituzException
 	{
@@ -135,8 +150,7 @@ public class BL {
 	 * @throws NituzException the site not included in this transport
 	 */
 	public String makeDoc(String transport, String site) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionTransport(user.getRole());
+
 		int _t;
 		try{_t = Integer.parseInt(transport);}
 		catch (NumberFormatException e)
@@ -167,9 +181,6 @@ public class BL {
 	 */
 	public String makeDoc(String transport, String shop, String supplier) throws NituzException
 	{
-		isUserLoggedIn();
-		hasPermissionTransport(user.getRole());
-
 		// transport
 		int _t;
 		try{_t = Integer.parseInt(transport);}
@@ -206,8 +217,7 @@ public class BL {
 	 * @throws NituzException illegal TRANSPORT format
 	 */
 	public String makeDoc(String transport) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionTransport(user.getRole());
+
 		int _t;
 		try{_t = Integer.parseInt(transport);}
 		catch (NumberFormatException e)
@@ -225,8 +235,7 @@ public class BL {
 	 * 			Or the given string is not a truck.
 	 */
 	public void selectTruckTotransport(String transport, String truck) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionTransport(user.getRole());
+
 		int t;
 		try{t = Integer.parseInt(transport);}
 		catch (NumberFormatException e)
@@ -250,8 +259,7 @@ public class BL {
 	 * 				Or the given string is not a truck.
 	 */
 	public void signTruckTotransport(String transport, String truck) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionTransport(user.getRole());
+
 		leagalPlate(truck);
 		int _t;
 		try{_t = Integer.parseInt(transport);}
@@ -276,8 +284,7 @@ public class BL {
 	 */
 	public boolean addTruck(String plate, String model, String weight, String maxWeight, String licenseType)
 			throws NituzException {
-		isUserLoggedIn();
-		hasPermissionTransport(user.getRole());
+
 		leagalPlate(plate);
 		legalWeight(weight);
 		legalWeight(maxWeight);
@@ -292,8 +299,7 @@ public class BL {
 	}
 
 	public boolean addTransport(String date, String leavTime, String number) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionTransport(user.getRole());
+
 		int num;
 
 		try{num = Integer.parseInt(number);}
@@ -338,8 +344,7 @@ public class BL {
 	 * @throws NituzException if something rung is the given parameters.
 	 */
 	public boolean addMission(String t, String amount, String to, String from, String item) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionTransport(user.getRole());
+
 		int _amount;
 		try {_amount = Integer.parseInt(amount);}
 		catch (NumberFormatException e)
@@ -396,8 +401,8 @@ public class BL {
 			return "morning";
 		if (8<=_hh &&_hh < 16)
 			return "evening";
-		if (16<=_hh &&_hh <= 24)
-			return "night";
+		/*if (16<=_hh &&_hh <= 24)
+			return "night";*/
 		return null;
 	}
 
@@ -464,8 +469,6 @@ public class BL {
 	public boolean updateMission(String transport, String to, String item, String from, String newAmount) throws NituzException
 	{
 		// test the input
-		isUserLoggedIn();
-		hasPermissionTransport(user.getRole());
 		int _t;
 		try {_t = Integer.parseInt(transport);}
 		catch (NumberFormatException e)
@@ -517,8 +520,7 @@ public class BL {
 	 * 			Or the given string is not a driver.
 	 */
 	public void selectDriverTotransport(String transport, String driver) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionTransport(user.getRole());
+
 		int t;
 		try{t = Integer.parseInt(transport);}
 		catch (NumberFormatException e)
@@ -552,8 +554,7 @@ public class BL {
 	public boolean updateTransport(String transport, String[] details) throws NituzException
 	{
 		// check if all the input are legal
-		isUserLoggedIn();
-		hasPermissionTransport(user.getRole());
+
 		int t;
 		try{t = Integer.parseInt(transport);}
 		catch (NumberFormatException e)
@@ -624,8 +625,7 @@ public class BL {
 	public boolean add(String id, String lName, String fName, String startingDate, String terms, String salary, String role,
 			String bankNumber, String numAccount) throws NituzException
 	{
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		legalID(id);
 		int intID = Integer.parseInt(id);
 		try {
@@ -657,8 +657,7 @@ public class BL {
 	public boolean addDriver(String id, String lName, String fName, String startingDate, String terms, String salary, String license,
 					   String bankNumber, String numAccount ) throws NituzException
 	{
-		isUserLoggedIn();
-		hasPermissionTransport(user.getRole());
+
 		legalID(id);
 		int intID = Integer.parseInt(id);
 		try {
@@ -700,8 +699,7 @@ public class BL {
 	 * @return true if and only if the details of worker id update successfully in the DB.
 	 */
 	public boolean update(String id, String[] details) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());  
+
 		Worker worker = select(id);
 		boolean updated = false;
 		// last name
@@ -749,8 +747,7 @@ public class BL {
 	}
 
 	public boolean updateDriver(String id, String[] details) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionTransport(user.getRole());
+
 		Driver driver = selectDriver(id);
 		boolean updated = false;
 		// last name
@@ -798,8 +795,7 @@ public class BL {
 	}
 
 	private Driver selectDriver(String id) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionTransport(user.getRole());
+
 		legalID(id);
 		return dal.getDriver(Integer.parseInt(id));
 	}
@@ -815,16 +811,14 @@ public class BL {
 	}
 
 	public boolean removeWorker(String id) throws NituzException{
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		legalID(id);
 		int intID = Integer.parseInt(id);
 		return this.dal.removeWorker(intID);       
 	}
 
 	public boolean removeDriver (String id) throws  NituzException{
-		isUserLoggedIn();
-		hasPermissionTransport(user.getRole());
+
 		legalID(id);
 		int intID = Integer.parseInt(id);
 		return this.dal.removeDriver(intID);
@@ -837,7 +831,6 @@ public class BL {
 	 */
 	public Worker select(String sid) throws NituzException
 	{
-		isUserLoggedIn();
 		legalID(sid);
 		int id = Integer.parseInt(sid);
 		Worker worker = this.dal.selectWorker(id);
@@ -890,15 +883,13 @@ public class BL {
 
 	//shifts a worker can work in  
 	public boolean addPossibleShift(Shift s, String id) throws NituzException{
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		Worker w = select(id);
 		Shift s1 = dal.getShift(s.getDate(), s.getTime(), s.getWorkPlace());
 		return this.dal.addPossibleShift(s1, w.getId());
 	}
 	public boolean deletePossibleShift(Shift s,String id) throws NituzException{
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		Worker w = select(id);
 		Shift s1 = dal.getShift(s.getDate(), s.getTime(), s.getWorkPlace());
 		return this.dal.deletePossibleShift(s1, w.getId());
@@ -907,7 +898,6 @@ public class BL {
 	// prints all possible shifts workers can work in
 	public String showPossibleShifts( Shift s) throws NituzException{
 		int intWorkPlace = user.getWorkPlace();
-		hasPermissionBranch(user.getRole());
 		String toRet="";
 		LinkedList <PossibleShiftsForWorkers> lst = this.dal.possibleShiftsForWorkers(intWorkPlace);
 		for (PossibleShiftsForWorkers PSFW: lst){
@@ -962,8 +952,6 @@ public class BL {
 	public boolean placeWorkersInShift(String[] ids, Shift s) throws NituzException{
 		// need to add checking for if the ids are all from the branch given if not send a msg to user what workers ids
 		// don't work in this branch with workPlace id.
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
 		for (int i = 0; i < ids.length; i++){
 			legalID(ids[i]);
 		}
@@ -994,15 +982,13 @@ public class BL {
 	}
 
 	public boolean isValidShiftManager(String id) throws NituzException{ //need to check that he works at least one month
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		legalID(id);           
 		return true;
 	}
 
 	public boolean removeWorkerFromShift(String id, Shift s) throws NituzException{  
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		select(id);
 		int intID = Integer.parseInt(id);
 		legalShift(s);
@@ -1021,8 +1007,7 @@ public class BL {
 	}
 	// print workers in shift
 	public String showWorkersInShift(Shift s) throws NituzException{
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		LinkedList<Worker> lst = this.dal.shiftsForWorkers(s);
 		String str="";
 		for(Worker w:lst){
@@ -1031,8 +1016,7 @@ public class BL {
 		return str;
 	}
 	public boolean chooseRolesInShift(String[] roles,Shift s) throws NituzException{
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		for (int i = 0; i < roles.length; i++){
 			legalRole(roles[i]);
 		}
@@ -1041,8 +1025,7 @@ public class BL {
 	}
 
 	public boolean deleteRoleInShift(String role, Shift s) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		if (role.equals("Storekeeper")){
 			if(!transportsInShift(s) || storeKeepersInShift(s)>1){
 				return dal.deleteRoleInShift(role, s);
@@ -1061,7 +1044,9 @@ public class BL {
 	}
 
 	public boolean roleCanBeDeleted(String role) throws NituzException{
-		if (role.equals("TransportManager") || role.equals("BranchManager") || role.equals("Storekeeper") || role.equals("Driver")){
+		if (role.equals("Director of Personal Transport Center") || role.equals("Director of Personal Shops")
+				|| role.equals("Director of Logistics") || role.equals("Storekeeper")
+				|| role.equals("Shop Manager") role.equals("Storekeeper") || role.equals("Driver")){
 			throw new NituzException(2, role + " can't be deleted!");
 		}
 		return true;
@@ -1076,21 +1061,18 @@ public class BL {
 	}
 
 	public boolean addBank(String bankNum, String bankName) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		legalNumber(bankNum);
 		return this.dal.addBank(Integer.parseInt(bankNum), bankName);
 	}
 
 	public boolean addRole(String role) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		return this.dal.addRole(role);
 	}
 
 	public boolean addWorkerInShift(String id, Shift s) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		legalID(id);
 		try {
 			dal.hasShift(s);
@@ -1107,31 +1089,28 @@ public class BL {
 		if(b == false) return false;
 		return this.dal.placeWorkerInShift(intID, s);
 	}
+
 	public boolean hasShiftManager (Shift s) throws NituzException{
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		Shift s1 = getShift(s.getDate(), s.getTime());
 		return this.dal.hasShiftManager(s1);
 	}
 
 	public boolean deleteRole(String role) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		if (roleCanBeDeleted(role))
 			return this.dal.deleteRole(role);
 		return false;
 	}
 
 	public boolean deleteBank(String bankNumber)throws NituzException {
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		legalNumber(bankNumber);
 		return this.dal.deleteBank(Integer.parseInt(bankNumber));
 	}
 
 	public boolean deleteShift(Shift s) throws NituzException {
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
+
 		dal.hasShift(s);
 		if (user.getWorkPlace() == s.getWorkPlace()) {
 			Shift s1 = getShift(s.getDate(), s.getTime());
@@ -1142,8 +1121,6 @@ public class BL {
 
 	public boolean addShift(String date, String time, String idManager) throws NituzException {
 
-		isUserLoggedIn();
-		hasPermissionBranch(user.getRole());
 		Worker w = select(idManager);
 		int intIDmanager = Integer.parseInt(idManager);
 		try{
@@ -1158,5 +1135,13 @@ public class BL {
 			else
 				throw new NituzException(1, "manager is not in the same branch as the shift!");
 		}
+	}
+	public int getWorkPlace() throws NituzException{
+
+		try{
+			Worker w = dal.selectWorker(user.getId());
+			return w.getWorkPlace();
+		}
+		catch(){throw new NituzException(1, "manager is not in the same branch as the shift!");}
 	}
 }
