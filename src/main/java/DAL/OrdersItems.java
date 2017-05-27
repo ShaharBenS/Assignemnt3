@@ -68,10 +68,10 @@ public class OrdersItems {
                             "FROM OrdersItems as OI CROSS JOIN Orders as O " +
                             "WHERE OI.OrderID = O.OrderID " +
                             "GROUP BY OI.ItemID " +
-                            "HAVING O.Date >= (SELECT Max(Orders.Date) " +
-                            "FROM OrdersItems CROSS JOIN Orders " +
-                            "WHERE OrdersItems.OrderID = Orders.OrderID AND ItemID = OI.ItemID " +
-                            "GROUP BY ItemID);";
+                            "HAVING O.Date >=   (SELECT Max(Orders.Date) " +
+                                                "FROM OrdersItems CROSS JOIN Orders " +
+                                                "WHERE OrdersItems.OrderID = Orders.OrderID AND ItemID = OI.ItemID " +
+                                                "GROUP BY ItemID);";
             Statement stmt1 = c.createStatement();
             ResultSet rs = stmt1.executeQuery(sqlQuary);
             int count = 0;

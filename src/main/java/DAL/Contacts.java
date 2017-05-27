@@ -105,9 +105,9 @@ public class Contacts {
     }
 
 
-    public Contact getContact(String id) {
+    public Contact getContact(String id){
         Contact con = null;
-        try {
+        try{
             String sqlQuary = "SELECT * FROM Contacts WHERE ID = '" + id + "';";
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQuary);
@@ -115,7 +115,8 @@ public class Contacts {
 
             rs.close();
             stmt.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e){
         }
         return con;
     }

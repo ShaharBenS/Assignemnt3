@@ -263,7 +263,7 @@ public class ProgramLauncher
             }
             while(continuePeriodCheck){
 
-                Order [] orders = ORDERS.getPeriodicOrders();
+                Order [] orders = ORDERS.getPeriodicOrders(BL.shopID);
                 List<Order> warnings = new ArrayList<>();
                 int count = 0;
                 for(Order order:orders)
@@ -311,7 +311,7 @@ public class ProgramLauncher
                                 }
                                 System.out.println("Periodic Order for tomorrow found, OrderID: "+aOI.getOrderID());
                                 System.out.println(aOI.toString());
-                                Quantity q = QUANTITIES.getQuantity(aOI.getItemID());
+                                Quantity q = QUANTITIES.getQuantity(aOI.getItemID(),BL.shopID);
                                 System.out.println("The current Amount is: " + (q == null ? "0" : q.getCurrent()));
                                 System.out.println("Would you like to change the amount to order? Enter 'yes' to change");
                                 String choice = sc.nextLine();
