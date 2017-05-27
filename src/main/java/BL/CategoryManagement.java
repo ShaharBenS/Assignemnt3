@@ -119,7 +119,7 @@ public class CategoryManagement {
          {
              toStrings[i] = "------- FULL ITEM -------\n";
              toStrings[i] += items[i].toString();
-             toStrings[i] += QUANTITIES.getQuantity(items[i].getItemID()).toString();
+             toStrings[i] += QUANTITIES.getQuantity(items[i].getItemID(),BL.shopID).toString();
              toStrings[i] += PRICES.getPrice(items[i].getItemID()).toString();
              toStrings[i] += "Final Cost: " + (Double) K_ID_V_PRICE.get(items[i].getItemID())+"\n";
              toStrings[i] += "------- FULL ITEM -------\n\n";

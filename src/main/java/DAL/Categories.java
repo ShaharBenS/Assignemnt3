@@ -1,5 +1,6 @@
 package DAL;
 
+import BL.BL;
 import SharedClasses.Category;
 import SharedClasses.Item;
 import SharedClasses.Quantity;
@@ -50,11 +51,11 @@ public class Categories
         try {
             String sqlQuary = "SELECT OI.ItemID, OI.FinalCost " +
                             "FROM OrdersItems as OI CROSS JOIN Orders as O " +
-                            "WHERE OI.OrderID = O.OrderID " +
+                            "WHERE OI.OrderID = O.OrderID  and O.ShopID = "+ BL.shopID + " " +
                             "GROUP BY OI.ItemID " +
                             "HAVING O.Date >= (SELECT Max(Orders.Date) " +
                             "FROM OrdersItems CROSS JOIN Orders " +
-                            "WHERE OrdersItems.OrderID = Orders.OrderID AND ItemID = OI.ItemID " +
+                            "WHERE OrdersItems.OrderID = Orders.OrderID AND ItemID = OI.ItemID AND Orders.ShopID = "+ BL.shopID +" " +
                             "GROUP BY ItemID);";
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQuary);
