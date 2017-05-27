@@ -55,7 +55,7 @@ public class ProgramLauncher
         PL_Stock PL_STOCK = new PL_Stock(PRODUCT_MANAGEMENT, PRICE_MANAGEMENT, CATEGORY_MANAGEMENT,SBL);
         PL_Supplier pl_sup= new PL_Supplier (SBL);
         PL_Orders pl_ord= new PL_Orders(SBL);
-        Menu MENU = new Menu(PL_STOCK, pl_sup, pl_ord);
+        Menu MENU = new Menu(PL_STOCK, pl_sup, pl_ord,bl);
 
         /*
             Database init

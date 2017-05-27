@@ -1,5 +1,7 @@
 package SharedClasses;
 
+import PL.Menu;
+
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -29,6 +31,21 @@ public class MenuOP {
         m.father=this;
         if (this.execute==null)
             this.sones.addLast(m);
+    }
+
+    public MenuOP clone(){
+        MenuOP ans;
+        if (this.execute==null){
+            ans=new MenuOP(this.message);
+            MenuOP m[]= (MenuOP[]) this.sones.toArray();
+            for (int i=0;i<m.length;i++){
+                ans.addSon(m[i].clone());
+            }
+        }
+        else{
+            ans=new MenuOP(this.message,this.execute);
+        }
+        return ans;
     }
 
     public void execute(){

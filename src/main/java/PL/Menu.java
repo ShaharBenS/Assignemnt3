@@ -3,6 +3,7 @@ package PL;
 import SharedClasses.NituzException;
 import SharedClasses.MenuOP;
 import BL.*;
+import SharedClasses.Shift;
 
 import javax.naming.SizeLimitExceededException;
 import java.util.Scanner;
@@ -28,7 +29,136 @@ public class Menu {
         this.menues=new MenuOP[5]; // 0. Director of Personnel Transport Center 1. Director of Personnel shops 2. Director of logistics 3. storekeeper 4. Shop manager
 
         menues[0]=new MenuOP("Director of Personnel Transport Center");
-        
+            MenuOP t1=new MenuOP("Workers Control");
+            MenuOP t11=new MenuOP("Add Driver", ()->{
+                System.out.println("Please insert the new driver ID:");
+                String id=scanner.nextLine();
+                System.out.println("Please insert the new Driver last name:");
+                String lName=scanner.nextLine();
+                System.out.println("Please insert the new Driver first name:");
+                String fName=scanner.nextLine();
+                System.out.println("Please insert the new Driver starting date:");
+                String startingDate=scanner.nextLine();
+                System.out.println("Please insert the new Driver license type:");
+                String licens=scanner.nextLine();
+                System.out.println("Please insert the new Driver salary:");
+                String salary=scanner.nextLine();
+                System.out.println("Please insert the new Driver bank number:");
+                String bankn=scanner.nextLine();
+                System.out.println("Please insert the new Driver account number:");
+                String acountn=scanner.nextLine();
+                System.out.println("Please insert the new Driver terms:");
+                String terms=scanner.nextLine();
+                bl.addDriver(id,lName,fName,startingDate,terms,salary,licens,bankn,acountn);
+            });
+            t1.addSon(t11);
+            MenuOP t12=new MenuOP("Update Driver",()->{
+                System.out.println("Please insert the ID of driver that you wants to update:");
+                String id=scanner.nextLine();
+                System.out.println("Please insert the Driver new last name (if there is no change leave empty):");
+                String lName=scanner.nextLine();
+                System.out.println("Please insert the Driver new first name (if there is no change leave empty):");
+                String fName=scanner.nextLine();
+                System.out.println("Please insert the Driver new starting date (if there is no change leave empty):");
+                String startingDate=scanner.nextLine();
+                System.out.println("Please insert the Driver new license type (if there is no change leave empty):");
+                String licens=scanner.nextLine();
+                System.out.println("Please insert the Driver new salary (if there is no change leave empty):");
+                String salary=scanner.nextLine();
+                System.out.println("Please insert the Driver new bank number (if there is no change leave empty):");
+                String bankn=scanner.nextLine();
+                System.out.println("Please insert the Driver new account number (if there is no change leave empty):");
+                String acountn=scanner.nextLine();
+                System.out.println("Please insert the Driver new terms (if there is no change leave empty):");
+                String terms=scanner.nextLine();
+                String d[]=new String[9];
+                if(!lName.contentEquals("")){
+                    d[0]=lName;
+                }
+                if(!fName.contentEquals("")){
+                    d[1]=fName;
+                }
+                if(!startingDate.contentEquals("")){
+                    d[2]=startingDate;
+                }
+                if(!terms.contentEquals("")){
+                    d[3]=terms;
+                }
+                if(!salary.contentEquals("")){
+                    d[4]=salary;
+                }
+                if(!licens.contentEquals("")){
+                    d[5]=licens;
+                }
+                if(!bankn.contentEquals("")){
+                    d[6]=bankn;
+                }
+                if(!acountn.contentEquals("")){
+                    d[7]=acountn;
+                }
+                bl.updateDriver(id,d);
+            });
+            t1.addSon(t12);
+            MenuOP t13=new MenuOP("Remove Driver",()->{
+                System.out.println("Please insert the ID of Driver you wants to Remove:");
+                String id=scanner.nextLine();
+                bl.removeDriver(id);
+            });
+            t1.addSon(t13);
+            menues[0].addSon(t1);
+            MenuOP t2=new MenuOP("Workers Shifts");
+            MenuOP t21=new MenuOP("Open Shift new Shift",()->{
+                System.out.println("Please Insert the new Shift date:");
+                String date=this.scanner.nextLine();
+                System.out.println("Please Insert the new shift time:");
+                String time=this.scanner.nextLine();
+                System.out.println("Please Insert the new shift manager ID:");
+                String manager=this.scanner.nextLine();
+                bl.addShift(date,time,manager);
+            });
+            t2.addSon(t21);
+            MenuOP t22=new MenuOP("Remove Shift",()->{
+                System.out.println("Please Insert the date of the Shift you wants to Delete:");
+                String date=this.scanner.nextLine();
+                System.out.println("Please Insert the time of the Shift you wants to Delete:");
+                String time=this.scanner.nextLine();
+                bl.deleteShift(bl.getShift(date,time));
+            });
+            t2.addSon(t22);
+            MenuOP t23=new MenuOP("Show Shift",()->{
+                System.out.println("Please Insert the date of the Shift:");
+                String date=this.scanner.nextLine();
+                System.out.println("Please Insert the time of the Shift:");
+                String time=this.scanner.nextLine();
+                System.out.println(bl.getShift(date,time).toString());
+            });
+            t2.addSon(t23);
+            MenuOP t24=new MenuOP("Manage workers in Shifts");
+                MenuOP t241=new MenuOP("Show Available Worker",()->{
+                    System.out.println("Please Insert the date of the Shift:");
+                    String date=this.scanner.nextLine();
+                    System.out.println("Please Insert the time of the Shift:");
+                    String time=this.scanner.nextLine();
+                    //TODO: ofir&liam: add the needed function
+                });
+                t24.addSon(t241);
+                MenuOP t242=new MenuOP("Add Workers to Shift",()->{
+                    System.out.println("Please Insert the date of the Shift you wants to Delete:");
+                    String date=this.scanner.nextLine();
+                    System.out.println("Please Insert the time of the Shift you wants to Delete:");
+                    String time=this.scanner.nextLine();
+                    Shift s=bl.getShift(date,time);
+                    boolean con=true;
+                    while(con) {
+                        System.out.println("Please insert Worker ID or 'q' if you have finished");
+                        String id=scanner.nextLine();
+                        if (id.contentEquals("q"))
+                            con=false;
+                        else
+                            bl.addWorkerInShift(id, s);
+                    }
+                });
+                t24.addSon(t242);
         menues[1]=new MenuOP("Director of Personnel shop");
         menues[2]=new MenuOP("Director of logistics");
             //for Director of Logistics
@@ -63,6 +193,19 @@ public class Menu {
                 bl.addTransport(date,time,id);
             });
             l2.addSon(l21);
+            MenuOP l26=new MenuOP("Assign Truck and Driver",()->{
+                System.out.println("Please insert the id of the transport you wants Assign Truck and driver to:");
+                String id=scanner.nextLine();
+                System.out.println("Please insert the Truck plate:");
+                String truck=scanner.nextLine();
+                System.out.println("Please insert the Driver ID:");
+                String driver=scanner.nextLine();
+                String d[]=new String[4];
+                d[2]=truck;
+                d[3]=driver;
+                bl.updateTransport(id,d);
+            });
+            l2.addSon(l26);
             MenuOP l22=new MenuOP("Update Transport",()->{
                 System.out.println("Please insert the id of the transport you wants to update:");
                 String id=scanner.nextLine();
@@ -153,9 +296,14 @@ public class Menu {
             });
             l2.addSon(l25);
             menues[2].addSon(l2);
+            MenuOP l4=new MenuOP("Watch all drivers",()->{
+                System.out.println();//TODO: Ofir: add the needed function
+            });
+            menues[2].addSon(l4);
             MenuOP l3=new MenuOP("Watch All open Orders",()->{
                 System.out.println();//TODO: omri&shahar:add the needed message
             });
+            menues[2].addSon(l3);
         menues[3]=new MenuOP("storekeeper");
         menues[4]=new MenuOP("Shop Manager");
 
