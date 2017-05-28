@@ -72,9 +72,12 @@ public class PL_Stock
 
         while(true)
         {
-            for (String aMENU : SUPER_MENU) {
-                System.out.print(aMENU + "\n");
-            }
+            System.out.println(SUPER_MENU[0]);
+            System.out.println(SUPER_MENU[1]);
+            System.out.println(SUPER_MENU[2]);
+            System.out.println(SUPER_MENU[3]);
+
+
             try { operation = Integer.parseInt(scanner.nextLine()); }
             catch(Exception r) { System.out.print("Invalid operation. Please try again\n\n"); continue; }
 
@@ -112,9 +115,11 @@ public class PL_Stock
         int operation;
         while(true)
         {
-            for (String aMENU : ADD_MENU) {
-                System.out.print(aMENU + "\n");
-            }
+            System.out.println(ADD_MENU[0]);
+            System.out.println(ADD_MENU[1]);
+            System.out.println(ADD_MENU[2]);
+
+
             try { operation = Integer.parseInt(scanner.nextLine()); }
             catch(Exception r) { System.out.print("Invalid operation. Please try again\n\n"); continue; }
 
@@ -155,9 +160,21 @@ public class PL_Stock
         int operation;
         while(true)
         {
-            for (String aMENU : UPDATE_MENU) {
-                System.out.print(aMENU + "\n");
-            }
+            System.out.println(UPDATE_MENU[0]);
+            System.out.println(UPDATE_MENU[1]);
+            System.out.println(UPDATE_MENU[2]);
+            System.out.println(UPDATE_MENU[3]);
+            System.out.println(UPDATE_MENU[4]);
+            System.out.println(UPDATE_MENU[5]);
+            System.out.println(UPDATE_MENU[6]);
+            System.out.println(UPDATE_MENU[7]);
+            System.out.println(UPDATE_MENU[8]);
+            System.out.println(UPDATE_MENU[9]);
+            System.out.println(UPDATE_MENU[10]);
+            System.out.println(UPDATE_MENU[11]);
+            System.out.println(UPDATE_MENU[12]);
+            System.out.println(UPDATE_MENU[13]);
+
             try
             {
                 operation = Integer.parseInt(scanner.nextLine());
@@ -261,9 +278,14 @@ public class PL_Stock
         int operation;
         while(true)
         {
-            for (String aMENU : TOOLS_MENU) {
-                System.out.print(aMENU + "\n");
-            }
+            System.out.print(TOOLS_MENU[0]);
+            System.out.print(TOOLS_MENU[1]);
+            System.out.print(TOOLS_MENU[2]);
+            System.out.print(TOOLS_MENU[3]);
+            System.out.print(TOOLS_MENU[4]);
+            System.out.print(TOOLS_MENU[5]);
+
+
             try {
                 operation = Integer.parseInt(scanner.nextLine());
             } catch (Exception r) {

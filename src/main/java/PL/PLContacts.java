@@ -18,7 +18,7 @@ public class PLContacts {
     }
 
 
-    /////////////////// CONTACTS ///////////////////////////////////////////////////
+    ////////////////////////////////////// CONTACTS //////////////////////////////////////
     private void printOptions3() {
         System.out.println("Please choose an option:");
         System.out.println("1- Add new contact");

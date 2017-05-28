@@ -479,7 +479,10 @@ public class ProgramLauncher
         checkPeriodicOrders.start();
 
         // start
-        MENU.start();
+        try{
+            MENU.start();
+        }
+        catch (NituzException ignored){}
         continuePeriodCheck = false;
         checkPeriodicOrders.interrupt();
         checkPeriodicOrders.join();
@@ -491,9 +494,7 @@ public class ProgramLauncher
             conn.close();
             Thread.sleep(500);
 
-        } catch (Exception e)
-        {
-        }
+        } catch (Exception ignored){}
     }
 
     private static Connection getConnectionAndInitDatabase(String dataBaseName) {
@@ -535,12 +536,7 @@ public class ProgramLauncher
                     " date DATE NOT NULL );";
 
             stmt.executeUpdate(sql);
-            sql= "CREATE TABLE IF NOT EXISTS Items " +
-                    "(code INT PRIMARY KEY NOT NULL," +
-                    " Weight DOUBLE NOT NULL ," +
-                    "descripsion VARCHAR(50) DEFAULT NULL);";
 
-            stmt.executeUpdate(sql);
             sql= "CREATE TABLE IF NOT EXISTS Sites " +
                     "(code INT PRIMARY KEY NOT NULL," +
                     " Address VARCHAR(50) NOT NULL," +
@@ -553,10 +549,7 @@ public class ProgramLauncher
                     " rigion VARCHAR(50) NOT NULL );";
 
             stmt.executeUpdate(sql);
-            sql= "CREATE TABLE IF NOT EXISTS Supliers" +
-                    " (code INT PRIMARY KEY REFERENCES Sites(code));";
 
-            stmt.executeUpdate(sql);
             sql="CREATE TABLE IF NOT EXISTS Missions" +
                     " (shop INT REFERENCES Shops(code)," +
                     " Supplier INT REFERENCES Supliers(code) " +
