@@ -50,6 +50,13 @@ public abstract class Site
 				"	Address: " + this.address + "\n" +
 				"	Contact: " + this.contact + " " + this.phone;
 	}
+	public String details(){
+		String myclass = this.getClass().getSimpleName();
+		return myclass + " " + this.code + "\n" +
+				"Address: " + this.address + "     " +
+				"Contact: " + this.contact + "     " +
+				"Phone: " + this.phone;
+	}
 
 	public abstract String change();
 }

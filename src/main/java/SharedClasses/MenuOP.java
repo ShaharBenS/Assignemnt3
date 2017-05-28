@@ -64,11 +64,7 @@ public class MenuOP {
                 String s = c.nextLine();
                 int e = Integer.parseInt(s);
                 if ((e - 1) >= 0 && e <= m.length) {
-                    try {
-                        m[e].execute();
-                    } catch (NituzException x) {
-                        System.out.println(x.getMessage());
-                    }
+                    m[e].execute();
                 } else if (e == m.length + 1) {
                     return;
                 }

@@ -28,7 +28,6 @@ public class Menu {
         this.bl=bl;
         this.scanner = new Scanner(System.in);
         this.menues=new MenuOP[5]; // 0. Director of Personnel Transport Center 1. Director of Personnel shops 2. Director of logistics 3. storekeeper 4. Shop manager
-
         menues[0]=new MenuOP("Director of Personnel Transport Center");
             MenuOP t1=new MenuOP("Workers Control");
             MenuOP t11=new MenuOP("Add Driver", ()->{
@@ -114,70 +113,91 @@ public class Menu {
             MenuOP t2=new MenuOP("Workers Shifts");
             MenuOP t21=new MenuOP("Open Shift new Shift",()->{
                 System.out.println("Please Insert the new Shift date:");
-                String date=this.scanner.nextLine();
+                java.lang.String date=this.scanner.nextLine();
                 System.out.println("Please Insert the new shift time:");
-                String time=this.scanner.nextLine();
+                java.lang.String time=this.scanner.nextLine();
                 System.out.println("Please Insert the new shift manager ID:");
-                String manager=this.scanner.nextLine();
-                bl.addShift(date,time,manager);
+                java.lang.String manager=this.scanner.nextLine();
+                try {
+                    bl.addShift(date, time, manager);
+                } catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             t2.addSon(t21);
             MenuOP t22=new MenuOP("Remove Shift",()->{
                 System.out.println("Please Insert the date of the Shift you wants to Delete:");
-                String date=this.scanner.nextLine();
+                java.lang.String date=this.scanner.nextLine();
                 System.out.println("Please Insert the time of the Shift you wants to Delete:");
-                String time=this.scanner.nextLine();
-                bl.deleteShift(bl.getShift(date,time));
+                java.lang.String time=this.scanner.nextLine();
+                try{
+                    Shift s= bl.getShift(date, time);
+                    boolean deleteShift = bl.deleteShift(s);
+                } catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             t2.addSon(t22);
             MenuOP t23=new MenuOP("Show Shift",()->{
                 System.out.println("Please Insert the date of the Shift:");
-                String date=this.scanner.nextLine();
+                java.lang.String date=this.scanner.nextLine();
                 System.out.println("Please Insert the time of the Shift:");
-                String time=this.scanner.nextLine();
-                System.out.println(bl.getShift(date,time).toString());
+                java.lang.String time=this.scanner.nextLine();
+                try{
+                    System.out.println(bl.getShift(date,time).toString());
+                } catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             t2.addSon(t23);
             MenuOP t24=new MenuOP("Manage Workers in Shifts");
                 MenuOP t241=new MenuOP("Show Available Worker",()->{
                     System.out.println("Please Insert the date of the Shift:");
-                    String date=this.scanner.nextLine();
+                    java.lang.String date=this.scanner.nextLine();
                     System.out.println("Please Insert the time of the Shift:");
-                    String time=this.scanner.nextLine();
-                    //TODO: ofir&liam: add the needed function
+                    java.lang.String time=this.scanner.nextLine();
+                    System.out.println();//TODO: ofir&liam: add the needed function
                 });
                 t24.addSon(t241);
                 MenuOP t242=new MenuOP("Add Workers to Shift",()->{
                     System.out.println("Please Insert the date of the Shift:");
-                    String date=this.scanner.nextLine();
+                    java.lang.String date=this.scanner.nextLine();
                     System.out.println("Please Insert the time of the Shift:");
-                    String time=this.scanner.nextLine();
-                    Shift s=bl.getShift(date,time);
-                    boolean con=true;
-                    while(con) {
-                        System.out.println("Please insert Worker ID or 'q' if you have finished");
-                        String id=scanner.nextLine();
-                        if (id.contentEquals("q"))
-                            con=false;
-                        else
-                            bl.addWorkerInShift(id, s);
+                    java.lang.String time=this.scanner.nextLine();
+                    try {
+                        Shift s = bl.getShift(date, time);
+                        boolean con = true;
+                        while (con) {
+                            System.out.println("Please insert Worker ID or 'q' if you have finished");
+                            java.lang.String id = scanner.nextLine();
+                            if (id.contentEquals("q"))
+                                con = false;
+                            else
+                                bl.addWorkerInShift(id, s);
+                        }
+                    } catch (NituzException x) {
+                        System.out.println(x.getMessage());
                     }
                 });
                 t24.addSon(t242);
                 MenuOP t243=new MenuOP("Remove Workers from Shift",()->{
                     System.out.println("Please Insert the date of the Shift:");
-                    String date=this.scanner.nextLine();
+                    java.lang.String date=this.scanner.nextLine();
                     System.out.println("Please Insert the time of the Shift:");
-                    String time=this.scanner.nextLine();
-                    Shift s=bl.getShift(date,time);
-                    boolean con=true;
-                    while(con) {
-                        System.out.println("Please insert Worker ID or 'q' if you have finished");
-                        String id=scanner.nextLine();
-                        if (id.contentEquals("q"))
-                            con=false;
-                        else
-                            bl.removeWorkerFromShift(id, s);
+                    java.lang.String time=this.scanner.nextLine();
+                    try {
+                        Shift s = bl.getShift(date, time);
+                        boolean con = true;
+                        while (con) {
+                            System.out.println("Please insert Worker ID or 'q' if you have finished");
+                            java.lang.String id = scanner.nextLine();
+                            if (id.contentEquals("q"))
+                                con = false;
+                            else
+                                bl.removeWorkerFromShift(id, s);
+                        }
+                    } catch (NituzException x) {
+                        System.out.println(x.getMessage());
                     }
                 });
                 t24.addSon(t243);
@@ -186,32 +206,40 @@ public class Menu {
                     java.lang.String date=this.scanner.nextLine();
                     System.out.println("Please Insert the time of the Shift:");
                     java.lang.String time=this.scanner.nextLine();
-                    Shift s=bl.getShift(date,time);
-                    boolean con=true;
-                    while(con) {
-                        System.out.println("Please insert Worker ID or 'q' if you have finished");
-                        java.lang.String id=scanner.nextLine();
-                        if (id.contentEquals("q"))
-                            con=false;
-                        else
-                            bl.addPossibleShift(s,id);
+                    try {
+                        Shift s = bl.getShift(date, time);
+                        boolean con = true;
+                        while (con) {
+                            System.out.println("Please insert Worker ID or 'q' if you have finished");
+                            java.lang.String id = scanner.nextLine();
+                            if (id.contentEquals("q"))
+                                con = false;
+                            else
+                                bl.addPossibleShift(s, id);
+                        }
+                    } catch (NituzException x) {
+                        System.out.println(x.getMessage());
                     }
                 });
                 t24.addSon(t244);
                 MenuOP t245=new MenuOP ("Unsign Worker from Shift",()->{
                     System.out.println("Please Insert the date of the Shift:");
-                    String date=this.scanner.nextLine();
+                    java.lang.String date=this.scanner.nextLine();
                     System.out.println("Please Insert the time of the Shift:");
-                    String time=this.scanner.nextLine();
-                    Shift s=bl.getShift(date,time);
-                    boolean con=true;
-                    while(con) {
-                        System.out.println("Please insert Worker ID or 'q' if you have finished");
-                        String id=scanner.nextLine();
-                        if (id.contentEquals("q"))
-                            con=false;
-                        else
-                            bl.deletePossibleShift(s,id);
+                    java.lang.String time=this.scanner.nextLine();
+                    try {
+                        Shift s = bl.getShift(date, time);
+                        boolean con = true;
+                        while (con) {
+                            System.out.println("Please insert Worker ID or 'q' if you have finished");
+                            java.lang.String id = scanner.nextLine();
+                            if (id.contentEquals("q"))
+                                con = false;
+                            else
+                                bl.deletePossibleShift(s, id);
+                        }
+                    } catch (NituzException x) {
+                        System.out.println(x.getMessage());
                     }
                 });
                 t24.addSon(t245);
@@ -222,18 +250,22 @@ public class Menu {
                     java.lang.String date=this.scanner.nextLine();
                     System.out.println("Please Insert the time of the Shift:");
                     java.lang.String time=this.scanner.nextLine();
-                    Shift s=bl.getShift(date,time);
-                    boolean con=true;
-                    while(con) {
-                        System.out.println("Please insert Role or 'q' if you have finished");
-                        java.lang.String role=scanner.nextLine();
-                        if (role.contentEquals("q"))
-                            con=false;
-                        else {
-                            java.lang.String r[] = new java.lang.String[1];
-                            r[0]=role;
-                            bl.chooseRolesInShift(r,s);
+                    try {
+                        Shift s = bl.getShift(date, time);
+                        boolean con = true;
+                        while (con) {
+                            System.out.println("Please insert Role or 'q' if you have finished");
+                            java.lang.String role = scanner.nextLine();
+                            if (role.contentEquals("q"))
+                                con = false;
+                            else {
+                                java.lang.String r[] = new java.lang.String[1];
+                                r[0] = role;
+                                bl.chooseRolesInShift(r, s);
+                            }
                         }
+                    } catch (NituzException x) {
+                        System.out.println(x.getMessage());
                     }
                 });
                 t25.addSon(t251);
@@ -242,15 +274,19 @@ public class Menu {
                     java.lang.String date=this.scanner.nextLine();
                     System.out.println("Please Insert the time of the Shift:");
                     java.lang.String time=this.scanner.nextLine();
-                    Shift s=bl.getShift(date,time);
-                    boolean con=true;
-                    while(con) {
-                        System.out.println("Please insert Role or 'q' if you have finished");
-                        java.lang.String role=scanner.nextLine();
-                        if (role.contentEquals("q"))
-                            con=false;
-                        else
-                            bl.deleteRoleInShift(role, s);
+                    try {
+                        Shift s = bl.getShift(date, time);
+                        boolean con = true;
+                        while (con) {
+                            System.out.println("Please insert Role or 'q' if you have finished");
+                            java.lang.String role = scanner.nextLine();
+                            if (role.contentEquals("q"))
+                                con = false;
+                            else
+                                bl.deleteRoleInShift(role, s);
+                        }
+                    } catch (NituzException x) {
+                        System.out.println(x.getMessage());
                     }
                 });
                 t25.addSon(t252);
@@ -262,13 +298,21 @@ public class Menu {
                     java.lang.String bnum=scanner.nextLine();
                     System.out.println("Please enter Bank Name:");
                     java.lang.String bname=scanner.nextLine();
-                    bl.addBank(bnum,bname);
+                    try {
+                        bl.addBank(bnum, bname);
+                    } catch (NituzException x) {
+                        System.out.println(x.getMessage());
+                    }
                 });
                 t3.addSon(t31);
                 MenuOP t32=new MenuOP ("Remove Bank",()->{
                     System.out.println("Please enter Bank Number:");
                     java.lang.String bnum=scanner.nextLine();
-                    bl.deleteBank(bnum);
+                    try {
+                        bl.deleteBank(bnum);
+                    } catch (NituzException x) {
+                        System.out.println(x.getMessage());
+                    }
                 });
                 t3.addSon(t32);
                 MenuOP t33=new MenuOP ("Show All Banks",()->{
@@ -285,7 +329,11 @@ public class Menu {
                         if (id.contentEquals("q"))
                             con=false;
                         else
-                            bl.addRole(id);
+                            try {
+                                bl.addRole(id);
+                            } catch (NituzException x) {
+                                System.out.println(x.getMessage());
+                            }
                     }
                 });
                 t4.addSon(t41);
@@ -297,7 +345,11 @@ public class Menu {
                         if (id.contentEquals("q"))
                             con=false;
                         else
-                            bl.deleteRole(id);
+                            try {
+                                bl.deleteRole(id);
+                            } catch (NituzException x) {
+                                System.out.println(x.getMessage());
+                            }
                     }
                 });
                 t4.addSon(t42);
@@ -328,7 +380,11 @@ public class Menu {
                 java.lang.String acountn=scanner.nextLine();
                 System.out.println("Please insert the new Worker terms:");
                 java.lang.String terms=scanner.nextLine();
-                bl.add(id,lName,fName,startingDate,terms,salary,licens,bankn,acountn);
+                try {
+                    bl.add(id, lName, fName, startingDate, terms, salary, licens, bankn, acountn);
+                } catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             s1.addSon(s11);
             MenuOP s12=new MenuOP("Update Worker",()->{
@@ -375,7 +431,11 @@ public class Menu {
                 if(!acountn.contentEquals("")){
                     d[7]=acountn;
                 }
-                bl.update(id,d);
+                try {
+                    bl.update(id, d);
+                } catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             s1.addSon(s12);
             MenuOP s13=new MenuOP("Remove Worker",()->{
@@ -397,139 +457,187 @@ public class Menu {
             MenuOP l1=new MenuOP("Trucks Control");
             MenuOP l11=new MenuOP("Add Truck",()->{
                 System.out.println("Please insert the new truck Plate:");
-                String plate=scanner.nextLine();
+                java.lang.String plate=scanner.nextLine();
                 System.out.println("Please insert the new truck Model:");
-                String model=scanner.nextLine();
+                java.lang.String model=scanner.nextLine();
                 System.out.println("Please insert the new truck Weight:");
-                String weight=scanner.nextLine();
+                java.lang.String weight=scanner.nextLine();
                 System.out.println("Please insert the new truck Maximum carry weight:");
-                String maxWeight=scanner.nextLine();
+                java.lang.String maxWeight=scanner.nextLine();
                 System.out.println("Please insert the new truck license type:");
-                String licens=scanner.nextLine();
-                bl.addTruck(plate,model,weight,maxWeight,licens);
+                java.lang.String licens=scanner.nextLine();
+                try{
+                    bl.addTruck(plate,model,weight,maxWeight,licens);
+                } catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             l1.addSon(l11);
             MenuOP l12=new MenuOP("Watch all Trucks",()->{
-                System.out.println(bl.getAllTrucks());
+                try {
+                    System.out.println(bl.getAllTrucks());
+                } catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             l1.addSon(l12);
             menues[2].addSon(l1);
             MenuOP l2=new MenuOP("Transport Management");
             MenuOP l21=new MenuOP("Create Transport",()->{
                 System.out.println("Please insert the new transport id:");
-                String id=scanner.nextLine();
+                java.lang.String id=scanner.nextLine();
                 System.out.println("Please insert the new transport date:");
-                String date=scanner.nextLine();
+                java.lang.String date=scanner.nextLine();
                 System.out.println("Please insert the new transport leave time:");
-                String time=scanner.nextLine();
-                bl.addTransport(date,time,id);
+                java.lang.String time=scanner.nextLine();
+                try {
+                    bl.addTransport(date, time, id);
+                } catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             l2.addSon(l21);
             MenuOP l26=new MenuOP("Assign Truck and Driver",()->{
                 System.out.println("Please insert the id of the transport you wants Assign Truck and driver to:");
-                String id=scanner.nextLine();
+                java.lang.String id=scanner.nextLine();
                 System.out.println("Please insert the Truck plate:");
-                String truck=scanner.nextLine();
+                java.lang.String truck=scanner.nextLine();
                 System.out.println("Please insert the Driver ID:");
-                String driver=scanner.nextLine();
-                String d[]=new String[4];
+                java.lang.String driver=scanner.nextLine();
+                java.lang.String d[]=new java.lang.String[4];
                 d[2]=truck;
                 d[3]=driver;
-                bl.updateTransport(id,d);
+                try {
+                    bl.updateTransport(id, d);
+                }catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             l2.addSon(l26);
             MenuOP l22=new MenuOP("Update Transport",()->{
                 System.out.println("Please insert the id of the transport you wants to update:");
-                String id=scanner.nextLine();
+                java.lang.String id=scanner.nextLine();
                 System.out.println("Please insert the new date of the transport (if there is no change leave empty):");
-                String date=scanner.nextLine();
+                java.lang.String date=scanner.nextLine();
                 System.out.println("Please insert the new leave time of the transport (if there is no change leave empty):");
-                String time=scanner.nextLine();
-                String d[]=new String[4];
+                java.lang.String time=scanner.nextLine();
+                java.lang.String d[]=new java.lang.String[4];
                 if(!date.contentEquals("")){
                     d[0]=date;
                 }
                 if(!time.contentEquals("")){
                     d[1]=time;
                 }
-                bl.updateTransport(id,d);
+                try {
+                    bl.updateTransport(id, d);
+                }catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             l2.addSon(l22);
             MenuOP l23=new MenuOP("Missions Control");
             MenuOP l231=new MenuOP("Add Mission",()->{
                 System.out.println("Please insert the id of the transport you wants to add mission to:");
-                String id=scanner.nextLine();
+                java.lang.String id=scanner.nextLine();
                 System.out.println("Please insert the supplier id:");
-                String supplier=scanner.nextLine();
+                java.lang.String supplier=scanner.nextLine();
                 System.out.println("Please insert the shop id:");
-                String shop=scanner.nextLine();
+                java.lang.String shop=scanner.nextLine();
                 System.out.println("Please insert the item id:");
-                String item=scanner.nextLine();
+                java.lang.String item=scanner.nextLine();
                 System.out.println("Please insert the amount to be transferred:");
-                String amount=scanner.nextLine();
-                bl.addMission(id, amount, shop, supplier,item);
+                java.lang.String amount=scanner.nextLine();
+                try {
+                    bl.addMission(id, amount, shop, supplier, item);
+                }catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             l23.addSon(l231);
             MenuOP l232=new MenuOP("Update Mission",()->{
                 System.out.println("Please insert the id of the transport you wants to update mission in:");
-                String id=scanner.nextLine();
+                java.lang.String id=scanner.nextLine();
                 System.out.println("Please insert the supplier id:");
-                String supplier=scanner.nextLine();
+                java.lang.String supplier=scanner.nextLine();
                 System.out.println("Please insert the shop id:");
-                String shop=scanner.nextLine();
+                java.lang.String shop=scanner.nextLine();
                 System.out.println("Please insert the item id:");
-                String item=scanner.nextLine();
+                java.lang.String item=scanner.nextLine();
                 System.out.println("Please insert the new amount:");
-                String amount=scanner.nextLine();
-                bl.updateMission(id,shop,item,supplier,amount);
+                java.lang.String amount=scanner.nextLine();
+                try {
+                    bl.updateMission(id, shop, item, supplier, amount);
+                }catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             l23.addSon(l232);
             MenuOP l233=new MenuOP("Remove Mission",()->{
                 System.out.println("Please insert the id of the transport you wants to remove mission from:");
-                String id=scanner.nextLine();
+                java.lang.String id=scanner.nextLine();
                 System.out.println("Please insert the supplier id:");
-                String supplier=scanner.nextLine();
+                java.lang.String supplier=scanner.nextLine();
                 System.out.println("Please insert the shop id:");
-                String shop=scanner.nextLine();
+                java.lang.String shop=scanner.nextLine();
                 System.out.println("Please insert the item id:");
-                String item=scanner.nextLine();
-                bl.updateMission(id,shop,item,supplier,"0");
+                java.lang.String item=scanner.nextLine();
+                try {
+                    bl.updateMission(id, shop, item, supplier, "0");
+                }catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             l23.addSon(l233);
             l2.addSon(l23);
-            MenuOP l24=new MenuOP("Create Docs");
+            MenuOP l24=new MenuOP("Transports Docs");
             MenuOP l241=new MenuOP("General Transport Documents",()->{
                 System.out.println("Please insert the id of the transport you wants to create documents:");
-                String id=scanner.nextLine();
-                bl.makeDoc(id);
+                java.lang.String id=scanner.nextLine();
+                try {
+                    bl.makeDoc(id);
+                }catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             l24.addSon(l241);
             MenuOP l242=new MenuOP("Site Transport Documents",()->{
                 System.out.println("Please insert the id of the transport you wants to create documents:");
-                String id=scanner.nextLine();
+                java.lang.String id=scanner.nextLine();
                 System.out.println("Please insert the id of the Site you wants to create documents:");
-                String shop=scanner.nextLine();
-                bl.makeDoc(id,shop);
+                java.lang.String shop=scanner.nextLine();
+                try {
+                    bl.makeDoc(id, shop);
+                }catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             l24.addSon(l242);
             MenuOP l243=new MenuOP("Shop-Supplier Transport Documents",()->{
                 System.out.println("Please insert the id of the transport you wants to create documents:");
-                String id=scanner.nextLine();
+                java.lang.String id=scanner.nextLine();
                 System.out.println("Please insert the id of the Shop you wants to create documents:");
-                String shop=scanner.nextLine();
+                java.lang.String shop=scanner.nextLine();
                 System.out.println("Please insert the id of the Supplier you wants to create documents:");
-                String supplier=scanner.nextLine();
-                bl.makeDoc(id,shop,supplier);
+                java.lang.String supplier=scanner.nextLine();
+                try {
+                    bl.makeDoc(id, shop, supplier);
+                }catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             l24.addSon(l243);
             l2.addSon(l24);
             MenuOP l25= new MenuOP("Watch All Transports", ()->{
-                System.out.println(bl.getAllTransport());
+                try{
+                    System.out.println(bl.getAllTransport());
+                }catch (NituzException x) {
+                    System.out.println(x.getMessage());
+                }
             });
             l2.addSon(l25);
             menues[2].addSon(l2);
             MenuOP l4=new MenuOP("Watch all drivers",()->{
-                System.out.println();//TODO: Ofir: add the needed function
+                System.out.println();//TODO: Ofir & Liam: add the needed function
             });
             menues[2].addSon(l4);
             MenuOP l3=new MenuOP("Watch All open Orders",()->{
@@ -537,11 +645,29 @@ public class Menu {
             });
             menues[2].addSon(l3);
         menues[3]=new MenuOP("storekeeper");
+        MenuOP st1= new MenuOP("Stoke Management",()->{pl_stock.start();});
+        menues[3].addSon(st1);
+        MenuOP st3=new MenuOP("Order Management",()->{pl_ord.orderCase();});
+        menues[3].addSon(st3);
+        MenuOP st2=new MenuOP("Suppliers Management",()->{pl_sup.start();});
+        menues[3].addSon(st2);
         menues[4]=new MenuOP("Shop Manager");
-
-
-
-
+        menues[4].addSon(st2.clone());
+        MenuOP m1=new MenuOP("Reports");//watch all reports
+        MenuOP m11=new MenuOP("Stoke Reports",()->{});
+        m1.addSon(m11);
+        MenuOP m12=new MenuOP("Order Reports");
+        MenuOP m121=new MenuOP("Oder Report by order number",()->{pl_ord.case3();});
+        m12.addSon(m121);
+        MenuOP m122=new MenuOP("Order Report by Supplier ID",()->{pl_ord.case31();});
+        m12.addSon(m122);
+        m1.addSon(m12);
+        m1.addSon(s14.clone());
+        MenuOP m13=new MenuOP ("Transports Reports");
+        m13.addSon(l25.clone());
+        m13.addSon(l24.clone());
+        m1.addSon(m13);
+        menues[4].addSon(m1);
     }
 
 
@@ -554,7 +680,7 @@ public class Menu {
                 try {
                     System.out.println("Please enter your ID: ");
                     System.out.print("#>");
-                    String s = scanner.nextLine();
+                    java.lang.String s = this.scanner.nextLine();
                     role=bl.setUser(s);
                     signed = true;
                     System.out.println("Welcome to the Super-Li computer System.");
@@ -563,7 +689,9 @@ public class Menu {
                 }
             } else {
                 if (role==0){
-                    // TODO: Gal: regular workers??????
+                    System.out.println("you have no open option. type ENTER to log out");
+                    this.scanner.nextLine();
+                    bl.logOut();
                 }
                 else{
                     this.menues[role-1].execute();
