@@ -42,7 +42,9 @@ public class PL_Stock
             "11) Update item Category Code",
             "12) Update item Order Amount",
             "13) Update item Sell Price",
-            "14) Back"
+            "14) Update item Weight",
+            "15) Update item Description\n",
+            "16) Back"
     };
     private final String[] TOOLS_MENU = {"Choose an option:" ,
             "1) Add new Discount",
@@ -130,7 +132,7 @@ public class PL_Stock
                 case 1:
                 {
                     System.out.print("Enter the Items properties (separated by 1 space!) in the following structure:\n" +
-                            "[ID] [LOCATION] [MANUFACTURE] [MINIMAL AMOUNT] [CATEGORY CODE] [NAME] [SELL PRICE] [WEIGHT]\n");
+                            "[ID] [LOCATION] [MANUFACTURE] [MINIMAL AMOUNT] [CATEGORY CODE] [NAME] [SELL PRICE] [WEIGHT] [DESCRIPTION]\n");
                     String ItemLine = scanner.nextLine();
                     if (ProductM.addItem(ItemLine))
                         System.out.print(" >> item added successfully\n");
@@ -179,6 +181,8 @@ public class PL_Stock
             System.out.println(UPDATE_MENU[14]);
             System.out.println(UPDATE_MENU[15]);
             System.out.println(UPDATE_MENU[16]);
+            System.out.println(UPDATE_MENU[17]);
+            System.out.println(UPDATE_MENU[18]);
 
             try
             {
@@ -271,6 +275,18 @@ public class PL_Stock
                     printUpdate(PriceM.updateSellPrice(prop));
                     break;
                 case 14:
+                    System.out.print("Enter properties in the following structure:\n" +
+                            "[ID] [NEW WEIGHT]\n");
+                    prop = scanner.nextLine();
+                    printUpdate(ProductM.updateWeight(prop));
+                    break;
+                case 15:
+                    System.out.print("Enter properties in the following structure:\n" +
+                            "[ID] [NEW DESCRIPTION]\n");
+                    prop = scanner.nextLine();
+                    printUpdate(ProductM.updateDescription(prop));
+                    break;
+                case 16:
                     return;
                 default: System.out.print("Invalid Operation!!! Try again...\n\n\n");
                     break;
