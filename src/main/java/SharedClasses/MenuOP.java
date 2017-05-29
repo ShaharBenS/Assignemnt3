@@ -17,7 +17,7 @@ public class MenuOP {
 
     public MenuOP (String messege){
         this.message=messege;
-        this.sones=new LinkedList<MenuOP>();
+        this.sones= new LinkedList<>();
         this.execute=null;
     }
 
@@ -50,7 +50,7 @@ public class MenuOP {
     public void execute(){
         if (this.execute==null){
             Scanner c = new Scanner(System.in);
-            MenuOP m[] = new MenuOP[this.sones.size()];
+            MenuOP m[] = new MenuOP[sones.size()];
             this.sones.toArray(m);
             while (true) {
                 int i = 0;
@@ -64,7 +64,7 @@ public class MenuOP {
                 String s = c.nextLine();
                 int e = Integer.parseInt(s);
                 if ((e - 1) >= 0 && e <= m.length) {
-                    m[e].execute();
+                    m[e-1].execute();
                 } else if (e == m.length + 1) {
                     return;
                 }

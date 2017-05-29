@@ -661,7 +661,7 @@ public class Menu {
             });
             menues[2].addSon(l3);
         menues[3]=new MenuOP("storekeeper");
-        MenuOP st1= new MenuOP("Stoke Management",()->{pl_stock.start();});
+        MenuOP st1= new MenuOP("Stock Management",()->{pl_stock.start();});
         menues[3].addSon(st1);
         MenuOP st3=new MenuOP("Order Management",()->{pl_ord.orderCase();});
         menues[3].addSon(st3);
@@ -670,7 +670,7 @@ public class Menu {
         menues[4]=new MenuOP("Shop Manager");
         menues[4].addSon(st2.clone());
         MenuOP m1=new MenuOP("Reports");//watch all reports
-        MenuOP m11=new MenuOP("Stoke Reports",()->{});
+        MenuOP m11=new MenuOP("Stock Reports",()->{});
         m1.addSon(m11);
         MenuOP m12=new MenuOP("Order Reports");
         MenuOP m121=new MenuOP("Oder Report by order number",()->{pl_ord.case3();});

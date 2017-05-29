@@ -122,9 +122,9 @@ public class SupplierBL {
     }
 
     /* OMRI's FUNCTION */
-    public Pair[] getAllFinalPrices()
+    public Pair[] getAllFinalPrices(int shopID)
     {
-        return OI.getAllFinalPrices();
+        return OI.getAllFinalPrices(shopID);
     }
 
     public Supplier getSupplier(int id) {

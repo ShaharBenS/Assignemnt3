@@ -76,6 +76,7 @@ public class PL_Stock
             System.out.println(SUPER_MENU[1]);
             System.out.println(SUPER_MENU[2]);
             System.out.println(SUPER_MENU[3]);
+            System.out.println(SUPER_MENU[4]);
 
 
             try { operation = Integer.parseInt(scanner.nextLine()); }
@@ -118,6 +119,7 @@ public class PL_Stock
             System.out.println(ADD_MENU[0]);
             System.out.println(ADD_MENU[1]);
             System.out.println(ADD_MENU[2]);
+            System.out.println(ADD_MENU[3]);
 
 
             try { operation = Integer.parseInt(scanner.nextLine()); }
@@ -174,6 +176,7 @@ public class PL_Stock
             System.out.println(UPDATE_MENU[11]);
             System.out.println(UPDATE_MENU[12]);
             System.out.println(UPDATE_MENU[13]);
+            System.out.println(UPDATE_MENU[14]);
 
             try
             {
@@ -278,12 +281,13 @@ public class PL_Stock
         int operation;
         while(true)
         {
-            System.out.print(TOOLS_MENU[0]);
-            System.out.print(TOOLS_MENU[1]);
-            System.out.print(TOOLS_MENU[2]);
-            System.out.print(TOOLS_MENU[3]);
-            System.out.print(TOOLS_MENU[4]);
-            System.out.print(TOOLS_MENU[5]);
+            System.out.println(TOOLS_MENU[0]);
+            System.out.println(TOOLS_MENU[1]);
+            System.out.println(TOOLS_MENU[2]);
+            System.out.println(TOOLS_MENU[3]);
+            System.out.println(TOOLS_MENU[4]);
+            System.out.println(TOOLS_MENU[5]);
+            System.out.println(TOOLS_MENU[6]);
 
 
             try {

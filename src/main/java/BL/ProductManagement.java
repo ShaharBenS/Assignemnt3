@@ -207,7 +207,7 @@ public class ProductManagement {
 
     public String[] getAllItems() {
        try {
-           Pair[] K_ID_V_PRICE = SBL.getAllFinalPrices(); //KEY = ID | VALUE = PRICE (DOUBLE)
+           Pair[] K_ID_V_PRICE = SBL.getAllFinalPrices(BL.shopID); //KEY = ID | VALUE = PRICE (DOUBLE)
            if (K_ID_V_PRICE == null) return new String[]{"No Items\n"};
 
            String[] toStrings = new String[K_ID_V_PRICE.length];
