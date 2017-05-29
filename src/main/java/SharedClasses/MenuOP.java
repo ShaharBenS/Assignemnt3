@@ -62,7 +62,14 @@ public class MenuOP {
                 else
                     System.out.println((i + 1) + ". logout");
                 String s = c.nextLine();
-                int e = Integer.parseInt(s);
+                int e;
+                try {
+                    e = Integer.parseInt(s);
+                } catch (Exception err) //invalid arg
+                {
+                    System.out.println("invalid input, please try again");
+                    continue;
+                }
                 if ((e - 1) >= 0 && e <= m.length) {
                     m[e-1].execute();
                 } else if (e == m.length + 1) {

@@ -193,6 +193,35 @@ public class ProductManagement {
         }
     }
 
+
+    //TODO:shahar: its a random TODO - u need to make sure the thread will be active only for מחסנאי and manager
+
+
+    public boolean updateWeight(String line)
+    {
+        String[] prop = line.split("\\s+");
+        if (prop.length != 2) return false;
+        try {
+            int id = Integer.parseInt(prop[0]);
+            double newWeight = Double.parseDouble(prop[1]);
+            return ITEMS.setWeight(id, newWeight);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean updateDescription(String line)
+    {
+        String[] prop = line.split("\\s+");
+        if (prop.length != 2) return false;
+        try {
+            int id = Integer.parseInt(prop[0]);
+            return ITEMS.setDescription(id, prop[1]);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     public String ItemReport(String line) {
         if (line.length() != 6) return "Invalid ID";
         try {

@@ -172,6 +172,45 @@ public class Items {
         }
     }
 
+    public boolean setWeight(int id, double weight){
+        try {
+            String sql = "UPDATE Items SET Weight = ? WHERE ID = ?";
+
+            PreparedStatement pstmt = c.prepareStatement(sql);
+
+            // set the corresponding param
+            pstmt.setDouble(1, weight);
+            pstmt.setInt(2, id);
+            // update
+            pstmt.executeUpdate();
+
+            c.commit();
+            pstmt.close();
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    public boolean setDescription(int id, String description){
+        try {
+            String sql = "UPDATE Items SET Description = ? WHERE ID = ?";
+
+            PreparedStatement pstmt = c.prepareStatement(sql);
+
+            // set the corresponding param
+            pstmt.setString(1, description);
+            pstmt.setInt(2, id);
+            // update
+            pstmt.executeUpdate();
+
+            c.commit();
+            pstmt.close();
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
 
     public boolean setManufacture(int id, String manufacture){
         try {
