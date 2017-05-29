@@ -26,24 +26,33 @@ public class PL_Stock
             "2) Add new Category",
             "3) Back"
             };
-    private final String[] UPDATE_MENU = {"Choose an option:",
-            "   ** CATEGORY SECTION **",
+
+    private final String[] UPDATE_MENU =
+            {"Choose an option:",
+            " 1) CATEGORY SECTION",
+            " 2) ITEM SECTION",
+            " 3) Back"
+    };
+
+    private final String [] CATEGORY_UPDATE_MENU = {
             " 1) Update category ID",
             " 2) Update category Name",
-            " 3) Update category Father ID\n",
-            "   ** ITEM SECTION **",
-            " 4) Update item ID",
-            " 5) Update item Location",
-            " 6) Update item Manufacture",
-            " 7) Update Warehouse Stock From Arrived Order",
-            " 8) Update item Amount in Store",
-            " 9) Update item Minimal Amount",
-            "10) Update item Amount of Defects",
-            "11) Update item Category Code",
-            "12) Update item Order Amount",
-            "13) Update item Sell Price",
-            "14) Back"
-    };
+            " 3) Update category Father ID",
+            " 4) Back"};
+    private final String [] ITEM_UPDATE_MENU = {
+            " 1) Update item ID",
+            " 2) Update item Location",
+            " 3) Update item Manufacture",
+            " 4) Update Warehouse Stock From Arrived Order",
+            " 5) Update item Amount in Store",
+            " 6) Update item Minimal Amount",
+            " 7) Update item Amount of Defects",
+            " 8) Update item Category Code",
+            " 9) Update item Order Amount",
+            "10) Update item Sell Price",
+            "11) Back"};
+
+
     private final String[] TOOLS_MENU = {"Choose an option:" ,
             "1) Add new Discount",
             "2) Stock report by item ID",
@@ -165,20 +174,6 @@ public class PL_Stock
             System.out.println(UPDATE_MENU[0]);
             System.out.println(UPDATE_MENU[1]);
             System.out.println(UPDATE_MENU[2]);
-            System.out.println(UPDATE_MENU[3]);
-            System.out.println(UPDATE_MENU[4]);
-            System.out.println(UPDATE_MENU[5]);
-            System.out.println(UPDATE_MENU[6]);
-            System.out.println(UPDATE_MENU[7]);
-            System.out.println(UPDATE_MENU[8]);
-            System.out.println(UPDATE_MENU[9]);
-            System.out.println(UPDATE_MENU[10]);
-            System.out.println(UPDATE_MENU[11]);
-            System.out.println(UPDATE_MENU[12]);
-            System.out.println(UPDATE_MENU[13]);
-            System.out.println(UPDATE_MENU[14]);
-            System.out.println(UPDATE_MENU[15]);
-            System.out.println(UPDATE_MENU[16]);
 
             try
             {
@@ -191,6 +186,36 @@ public class PL_Stock
             String prop;
 
             switch (operation)
+            {
+                case 1:
+                    CATEGORY_UPDATE_MENU();
+                case 2:
+                    ITEM_UPDATE_MENU();
+                case 3:
+                    return;
+
+                default: System.out.print("Invalid Operation!!! Try again...\n\n\n");
+                    break;
+            }
+        }
+    }
+    private void CATEGORY_UPDATE_MENU()
+    {
+        int operation;
+
+        while(true)
+        {
+            System.out.println(CATEGORY_UPDATE_MENU[0]);
+            System.out.println(CATEGORY_UPDATE_MENU[1]);
+            System.out.println(CATEGORY_UPDATE_MENU[2]);
+            System.out.println(CATEGORY_UPDATE_MENU[3]);
+
+
+            try { operation = Integer.parseInt(scanner.nextLine()); }
+            catch(Exception r) { System.out.print("Invalid operation. Please try again\n\n"); continue; }
+
+            String prop;
+            switch(operation)
             {
                 case 1:
                     System.out.print("Enter properties in the following structure:\n" +
@@ -211,70 +236,108 @@ public class PL_Stock
                     printUpdate(CategoryM.updateCategoryIdFather(prop));
                     break;
                 case 4:
+                {
+                    return;
+                }
+                default: System.out.print("Invalid Operation!!! Try again...\n\n\n");
+                    break;
+
+            }
+            //Read Input:
+        }
+    }
+    private void ITEM_UPDATE_MENU()
+    {
+        int operation;
+
+        while(true)
+        {
+            System.out.println(ITEM_UPDATE_MENU[0]);
+            System.out.println(ITEM_UPDATE_MENU[1]);
+            System.out.println(ITEM_UPDATE_MENU[2]);
+            System.out.println(ITEM_UPDATE_MENU[3]);
+            System.out.println(ITEM_UPDATE_MENU[4]);
+            System.out.println(ITEM_UPDATE_MENU[5]);
+            System.out.println(ITEM_UPDATE_MENU[6]);
+            System.out.println(ITEM_UPDATE_MENU[7]);
+            System.out.println(ITEM_UPDATE_MENU[8]);
+            System.out.println(ITEM_UPDATE_MENU[9]);
+            System.out.println(ITEM_UPDATE_MENU[10]);
+
+
+            try { operation = Integer.parseInt(scanner.nextLine()); }
+            catch(Exception r) { System.out.print("Invalid operation. Please try again\n\n"); continue; }
+
+            String prop;
+            switch(operation)
+            {
+                case 1:
                     System.out.print("Enter properties in the following structure:\n" +
                             "[ID] [NEW ID]\n");
                     prop = scanner.nextLine();
                     printUpdate(ProductM.updateItemId(prop));
                     break;
-                case 5:
+                case 2:
                     System.out.print("Enter properties in the following structure:\n" +
                             "[ID] [NEW LOCATION]\n");
                     prop = scanner.nextLine();
                     printUpdate(ProductM.updateItemLocation(prop));
                     break;
-                case 6:
+                case 3:
                     System.out.print("Enter properties in the following structure:\n" +
                             "[ID] [NEW MANUFACTURE]\n");
                     prop = scanner.nextLine();
                     printUpdate(ProductM.updateItemManufacture(prop));
                     break;
-                case 7:
+                case 4:
                     System.out.print("Enter properties in the following structure:\n" +
                             "[Arriving Order ID] [Arrival Date] ** Date: DD.MM.YYYY **\n");
                     prop = scanner.nextLine();
                     printUpdate(SBL.setOrderArrivalDate(prop));
                     break;
-                case 8:
+                case 5:
                     System.out.print("Enter properties in the following structure:\n" +
                             "[ID] [NEW AMOUNT IN STORE]\n");
                     prop = scanner.nextLine();
                     printUpdate(ProductM.updateItemAmountInStore(prop));
                     break;
-                case 9:
+                case 6:
                     System.out.print("Enter properties in the following structure:\n" +
                             "[ID] [NEW MINIMAL AMOUNT]\n");
                     prop = scanner.nextLine();
                     printUpdate(ProductM.updateItemMinimalAmount(prop));
                     break;
-                case 10:
+                case 7:
                     System.out.print("Enter properties in the following structure:\n" +
                             "[ID] [NEW AMOUNT OF DEFECTS]\n");
                     prop = scanner.nextLine();
                     printUpdate(ProductM.updateItemDefectAmount(prop));
                     break;
-                case 11:
+                case 8:
                     System.out.print("Enter properties in the following structure:\n" +
                             "[ID] [NEW CATEGORY CODE]\n");
                     prop = scanner.nextLine();
                     printUpdate(ProductM.updateItemCategoryCode(prop));
                     break;
-                case 12:
+                case 9:
                     System.out.print("Enter properties in the following structure:\n" +
                             "[ID] [NEW ORDER AMOUNT]\n");
                     prop = scanner.nextLine();
                     printUpdate(ProductM.updateOrderAmount(prop));
                     break;
-                case 13:
+                case 10:
                     System.out.print("Enter properties in the following structure:\n" +
                             "[ID] [NEW SELL PRICE]\n");
                     prop = scanner.nextLine();
                     printUpdate(PriceM.updateSellPrice(prop));
                     break;
-                case 14:
+                case 11:
                     return;
                 default: System.out.print("Invalid Operation!!! Try again...\n\n\n");
                     break;
+
             }
+            //Read Input:
         }
     }
 

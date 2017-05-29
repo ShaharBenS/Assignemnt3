@@ -52,17 +52,16 @@ public class Suppliers {
 
             addSite(siteCode, name, address, contact, phone);
 
-            PreparedStatement ps = c.prepareStatement("INSERT INTO Suppliers (ID, Name, BankNum, BranchNum, AccountNum, Payment, DeliveryMethod, SupplyTime) " +
-                    "VALUES (?,?,?,?,?,?,?,?);");
+            PreparedStatement ps = c.prepareStatement("INSERT INTO Suppliers (ID, BankNum, BranchNum, AccountNum, Payment, DeliveryMethod, SupplyTime) " +
+                    "VALUES (?,?,?,?,?,?,?);");
 
             ps.setInt(1, sup.getId());
-            ps.setString(2, sup.getName());
-            ps.setInt(3, sup.getBankNum());
-            ps.setInt(4, sup.getBranchNum());
-            ps.setInt(5, sup.getAccountNum());
-            ps.setString(6, sup.getPayment());
-            ps.setString(7, sup.getDeliveryMethod());
-            ps.setString(8, sup.getSupplyTime());
+            ps.setInt(2, sup.getBankNum());
+            ps.setInt(3, sup.getBranchNum());
+            ps.setInt(4, sup.getAccountNum());
+            ps.setString(5, sup.getPayment());
+            ps.setString(6, sup.getDeliveryMethod());
+            ps.setString(7, sup.getSupplyTime());
 
             ps.executeUpdate();
             c.commit();
@@ -266,8 +265,7 @@ public class Suppliers {
     public Supplier getSupplier(int id) {
         Supplier sup;
         try {
-            String sqlQuary = "SELECT * FROM Suppliers CROSS JOIN Sites WHERE ID = '" + id + "' AND Suppliers.ID" +
-                    "= Sites.code;";
+            String sqlQuary = "SELECT * FROM Suppliers CROSS JOIN Sites WHERE ID = '" + id + "' AND Suppliers.ID = Sites.code;";
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQuary);
 
