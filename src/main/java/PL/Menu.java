@@ -712,6 +712,7 @@ public class Menu {
                 else{
                     this.menues[role-1].execute();
                     bl.logOut();
+                    exit = true;
                 }
             }
         }

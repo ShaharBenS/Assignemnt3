@@ -260,6 +260,7 @@ public class SupplierBL {
         toReturn= new Order[orderSup.size()];
     	for(int i=0; i<orderSup.size();i++){
             toReturn[i]= orderSup.get(i);
+            toReturn[i].setOrderItems(OI.getOrderItems(toReturn[i].getOrderID()));
     	}
     	return toReturn;
     }
