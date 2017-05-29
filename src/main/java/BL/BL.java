@@ -50,10 +50,11 @@ public class BL {
 		}
 	}
 
-	public void setShopID(int id) throws NituzException{
+	public boolean setShopID(int id) throws NituzException{
 		try{
 			Worker w = dal.selectWorker(id);
 			shopID = w.getWorkPlace();
+			return true;
 		}
 		catch(Exception e){ throw new NituzException(1, id + " wasn't found in the system");}
 	}
