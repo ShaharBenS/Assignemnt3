@@ -37,9 +37,8 @@ public class MenuOP {
         MenuOP ans;
         if (this.execute==null){
             ans=new MenuOP(this.message);
-            MenuOP m[]= (MenuOP[]) this.sones.toArray();
-            for (int i=0;i<m.length;i++){
-                ans.addSon(m[i].clone());
+            for (int i=0;i<this.sones.size();i++){
+                ans.addSon(this.sones.get(i));
             }
         }
         else{

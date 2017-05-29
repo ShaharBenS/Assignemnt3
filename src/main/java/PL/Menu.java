@@ -49,7 +49,11 @@ public class Menu {
                 java.lang.String acountn=scanner.nextLine();
                 System.out.println("Please insert the new Driver terms:");
                 java.lang.String terms=scanner.nextLine();
-                bl.addDriver(id,lName,fName,startingDate,terms,salary,licens,bankn,acountn);
+                try {
+                    bl.addDriver(id, lName, fName, startingDate, terms, salary, licens, bankn, acountn);
+                }catch (NituzException e){
+                    System.out.println(e.getMessage());
+                }
             });
             t1.addSon(t11);
             MenuOP t12=new MenuOP("Update Driver",()->{
@@ -96,13 +100,21 @@ public class Menu {
                 if(!acountn.contentEquals("")){
                     d[7]=acountn;
                 }
-                bl.updateDriver(id,d);
+                try {
+                    bl.updateDriver(id, d);
+                }catch (NituzException e){
+                    System.out.println(e.getMessage());
+                }
             });
             t1.addSon(t12);
             MenuOP t13=new MenuOP("Remove Driver",()->{
                 System.out.println("Please insert the ID of Driver you wants to Remove:");
                 java.lang.String id=scanner.nextLine();
-                bl.removeDriver(id);
+                try {
+                    bl.removeDriver(id);
+                }catch (NituzException e){
+                    System.out.println(e.getMessage());
+                }
             });
             t1.addSon(t13);
             MenuOP t14=new MenuOP("Show All Drivers",()->{
@@ -441,7 +453,11 @@ public class Menu {
             MenuOP s13=new MenuOP("Remove Worker",()->{
                 System.out.println("Please insert the ID of the Worker you wants to Remove:");
                 java.lang.String id=scanner.nextLine();
-                bl.remove(id);
+                try {
+                    bl.remove(id);
+                }catch (NituzException e){
+                    System.out.println(e.getMessage());
+                }
             });
             s1.addSon(s13);
             MenuOP s14=new MenuOP("Show All Workers",()->{

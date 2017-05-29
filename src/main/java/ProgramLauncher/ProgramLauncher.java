@@ -192,12 +192,14 @@ public class ProgramLauncher
             Statement stmt = null;
             //TODO:: change to supplier
             try {
+
                 sql = "INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (313,'tnuva','Petach-Tikava','Shlomo','0500000000'); INSERT INTO Supliers (code) VALUES (313)";
                 stmt.executeUpdate(sql);
                 sql = "INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (323,'elit','Ramat-Gan','benizri','0522222222'); INSERT INTO Supliers (code) VALUES (323)";
                 stmt.executeUpdate(sql);
                 sql = "INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (4,'elit','Ramat-Gan','benizri','0522228222'); INSERT INTO Supliers (code) VALUES (4)";
                 stmt.executeUpdate(sql);
+
             }
             catch(Exception e) {}
 
@@ -213,24 +215,6 @@ public class ProgramLauncher
                 sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('15151515', 'Mazda', 4, 1500, 10000)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('16161616', 'Subaru', 5, 2250, 15000)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Items (code , Weight ,descripsion) VALUES (21212, 0.2, 'koteg')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Items (code , Weight ,descripsion) VALUES (78, 650.2, 'cow')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Items (code , Weight ,descripsion) VALUES (23232, 1, 'milk')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Items (code , Weight ,descripsion) VALUES (24242, 0.5, 'hummus')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Items (code , Weight ,descripsion) VALUES (25252, 0.01, 'tiktak')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Items (code , Weight ,descripsion) VALUES (26262, 670, 'chocolate')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (313,'tnuva','Petach-Tikava','Shlomo','0500000000'); INSERT INTO Supliers (code) VALUES (313);";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (323,'elit','Ramat-Gan','benizri','0522222222'); INSERT INTO Supliers (code) VALUES (323);";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (4,'elit','Ramat-Gan','izhaki','0522228222'); INSERT INTO Supliers (code) VALUES (4);";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (0,'supersal','rishon','Shimi','0501212121');";
                 stmt.executeUpdate(sql);
@@ -599,7 +583,7 @@ public class ProgramLauncher
                     "FOREIGN KEY(Role) REFERENCES Roles(Role), "+
                     "FOREIGN KEY(Code) REFERENCES Shifts(Code) ON DELETE CASCADE );";
             stmt.executeUpdate(sql);
-            sql = "CREATE TABLE WorkersInShifts "+
+            sql = "CREATE TABLE IF NOT EXISTS WorkersInShifts "+
                     "(ID INT NOT NULL, Code INT NOT NULL,"+
                     " Status VARCHAR(50) NOT NULL,"+
                     " FOREIGN KEY(ID) REFERENCES Workers(ID),"+
@@ -736,7 +720,7 @@ public class ProgramLauncher
             stmt = c.createStatement();
             sql =   "CREATE TABLE IF NOT EXISTS QUANTITIES " +
                     "(ItemID INT NOT NULL," +
-                    "ShopID INT NOT NULL " +
+                    "ShopID INT NOT NULL ," +
                     "LOCATION TEXT NOT NULL," +
                     "MINIMUM INT NOT NULL," +
                     "ORDER_AMOUNT INT DEFAULT 0," +
