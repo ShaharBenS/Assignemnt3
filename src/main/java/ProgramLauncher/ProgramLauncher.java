@@ -517,59 +517,91 @@ public class ProgramLauncher
 
             //********************************************************************************************************
 
-            sql = "CREATE TABLE IF NOT EXISTS Drivers " +
-                    "(ID INT PRIMARY KEY NOT NULL," +
-                    " Name VARCHAR(50) NOT NULL," +
+            sql = "CREATE TABLE IF NOT EXISTS Drivers "+
+                    "(ID INT PRIMARY KEY NOT NULL REFERENCES Workers(ID) ,"+
                     " Licence INT NOT NULL);";
             stmt.executeUpdate(sql);
-
-            sql= "CREATE TABLE IF NOT EXISTS Trucks " +
-                    "(Plate VARCHAR(10) PRIMARY KEY NOT NULL, " +
-                    "Model VARCHAR(50) NOT NULL, " +
-                    "licenseType INT NOT NULL , " +
-                    "Wight INT NOT NULL , " +
-                    "MaxWight INT NOT NULL);";
-
+            sql= "CREATE TABLE IF NOT EXISTS Trucks"+
+                    " (Plate VARCHAR(10) PRIMARY KEY NOT NULL,"+
+                    " Model VARCHAR(50) NOT NULL, licenseType INT NOT NULL ,"+
+                    " Wight INT NOT NULL , MaxWight INT NOT NULL);";
             stmt.executeUpdate(sql);
-            sql= "CREATE TABLE IF NOT EXISTS Transport " +
-                    "(TransportNumber INT PRIMARY KEY NOT NULL ," +
-                    " date DATE NOT NULL );";
-
+            sql= "CREATE TABLE IF NOT EXISTS Transport"+
+                    " (TransportNumber INT PRIMARY KEY NOT NULL ,"+
+                    "  date DATE NOT NULL );";
             stmt.executeUpdate(sql);
-
-            sql= "CREATE TABLE IF NOT EXISTS Sites " +
-                    "(code INT PRIMARY KEY NOT NULL," +
-                    " Address VARCHAR(50) NOT NULL," +
-                    " Contact VARCHAR(50) NOT NULL," +
+            sql= "CREATE TABLE IF NOT EXISTS Sites"+
+                    " (code INT PRIMARY KEY NOT NULL,"+
+                    " Name VARCHAR(50) NOT NULL ,"+
+                    "Address VARCHAR(50) NOT NULL,"+
+                    " Contact VARCHAR(50) NOT NULL,"+
                     " Phone VARCHAR(10) NOT NULL);";
-
             stmt.executeUpdate(sql);
-            sql= "CREATE TABLE IF NOT EXISTS Shops" +
-                    " (code INT PRIMARY KEY REFERENCES Sites(code)," +
-                    " rigion VARCHAR(50) NOT NULL );";
-
+            sql= "CREATE TABLE IF NOT EXISTS Shops"+
+                    " (code INT PRIMARY KEY REFERENCES Sites(code),"+
+                    " region VARCHAR(50) NOT NULL );";
             stmt.executeUpdate(sql);
-
-            sql="CREATE TABLE IF NOT EXISTS Missions" +
-                    " (shop INT REFERENCES Shops(code)," +
-                    " Supplier INT REFERENCES Supliers(code) " +
-                    ",Transport INT REFERENCES Transport(TransportNumber)," +
-                    " item INT REFERENCES Itemss(code)," +
-                    "plandQ INT ," +
-                    "actualQ INT ," +
+            sql="CREATE TABLE IF NOT EXISTS Missions"+
+                    " (shop INT REFERENCES Shops(code),"+
+                    " Supplier INT REFERENCES Supliers(code) ,"+
+                    "Transport INT REFERENCES Transport(TransportNumber),"+
+                    " item INT REFERENCES Itemss(code),"+
+                    "plandQ INT ,actualQ INT ,"+
                     "PRIMARY KEY (shop,Supplier,Transport,item));";
-
             stmt.executeUpdate(sql);
-            sql= "CREATE TABLE IF NOT EXISTS TrucksTrnsportSigning" +
-                    " (truck VARCHAR(10) REFERENCES Trucks(Plate)," +
-                    " transport INT REFERENCES Transport(TransportNumber)," +
-                    " PRIMARY KEY (truck,transport));";
-
+            sql= "CREATE TABLE IF NOT EXISTS TrucksTrnsportSigning "+
+                    "(truck VARCHAR(10) REFERENCES Trucks(Plate),"+
+                    "transport INT REFERENCES Transport(TransportNumber),"+
+                    "PRIMARY KEY (truck,transport));";
             stmt.executeUpdate(sql);
-            sql= "CREATE TABLE IF NOT EXISTS driverAsiignmetns " +
-                    "(truck VARCHAR(10) REFERENCES Trucks(Plate)," +
-                    " transport INT PRIMARY KEY REFERENCES Transport(TransportNumber) " +
-                    ",driver INT REFERENCES Drivers(ID));";
+            sql= "CREATE TABLE IF NOT EXISTS driverAsiignmetns "+
+                    "(truck VARCHAR(10) REFERENCES Trucks(Plate),"+
+                    "transport INT PRIMARY KEY REFERENCES Transport(TransportNumber) ,"+
+                    "driver INT REFERENCES Drivers(ID));";
+            stmt.executeUpdate(sql);
+            sql = "CREATE TABLE IF NOT EXISTS Workers "+
+                    "(ID INT PRIMARY KEY NOT NULL, "+
+                    "Lname VARCHAR(50) NOT NULL, "+
+                    "Fname VARCHAR(50) NOT NULL, "+
+                    "startDate VARCHAR(50) DEFAULT  NULL,"+
+                    "TermsOfEmployment VARCHAR(250),"+
+                    " Salary INT,"+
+                    "Role VARCHAR(250) NOT NULL,"+
+                    "WorkPlace INT NOT NULL," +
+                    "BankNumber INT NOT NULL,"+
+                    " BankAccountNumber INT NOT NULL,"+
+                    "FOREIGN KEY(BankNumber) REFERENCES Banks(BankNumber),"+
+                    " FOREIGN KEY(Role) REFERENCES Roles(Role),"+
+                    " FOREIGN KEY(WorkPlace) REFERENCES Sites(Code));";
+            stmt.executeUpdate(sql);
+            sql = "CREATE TABLE IF NOT EXISTS Banks"+
+                    " (BankNumber INT PRIMARY KEY NOT NULL,"+
+                    " BankName VARCHAR(50) NOT NULL );";
+            stmt.executeUpdate(sql);
+            sql = "CREATE TABLE IF NOT EXISTS Shifts"+
+                    " (Code INT PRIMARY KEY NOT NULL,"+
+                    " Date VARCHAR(50) NOT NULL,"+
+                    " Day VARCHAR(50) NOT NULL,"+
+                    " Time VARCHAR(50) NOT NULL,"+
+                    " WorkPlace INT NOT NULL,"+
+                    " ShiftManager INT,"+
+                    " FOREIGN KEY(ShiftManager) REFERENCES Workers(ID) ON DELETE CASCADE,"+
+                    " FOREIGN KEY(WorkPlace) REFERENCES Sites(Code));";
+            stmt.executeUpdate(sql);
+            sql = "CREATE TABLE IF NOT EXISTS Roles "+
+                    "(Role VARCHAR(50) PRIMARY KEY NOT NULL );";
+            stmt.executeUpdate(sql);
+            sql = "CREATE TABLE IF NOT EXISTS RolesInShifts "+
+                    "(Role VARCHAR(50) NOT NULL, "+
+                    "Code INT NOT NULL, "+
+                    "FOREIGN KEY(Role) REFERENCES Roles(Role), "+
+                    "FOREIGN KEY(Code) REFERENCES Shifts(Code) ON DELETE CASCADE );";
+            stmt.executeUpdate(sql);
+            sql = "CREATE TABLE WorkersInShifts "+
+                    "(ID INT NOT NULL, Code INT NOT NULL,"+
+                    " Status VARCHAR(50) NOT NULL,"+
+                    " FOREIGN KEY(ID) REFERENCES Workers(ID),"+
+                    " FOREIGN KEY(Code) REFERENCES Shifts(Code) ON DELETE CASCADE );";
             stmt.executeUpdate(sql);
 
             //********************************************************************************************************
@@ -726,38 +758,7 @@ public class ProgramLauncher
             stmt.execute(sql);
             stmt.close();
 
-            sql = "CREATE TABLE Drivers (ID INT PRIMARY KEY NOT NULL REFERENCES Workers(ID) , Licence INT NOT NULL);";
-            stmt.executeUpdate(sql);
-            sql= "CREATE TABLE Trucks (Plate VARCHAR(10) PRIMARY KEY NOT NULL, Model VARCHAR(50) NOT NULL, licenseType INT NOT NULL , Wight INT NOT NULL , MaxWight INT NOT NULL);";
-            stmt.executeUpdate(sql);
-            sql= "CREATE TABLE Transport (TransportNumber INT PRIMARY KEY NOT NULL ,  date DATE NOT NULL );";
-            stmt.executeUpdate(sql);
-            sql= "CREATE TABLE Items (code INT PRIMARY KEY NOT NULL, Weight DOUBLE NOT NULL ,descripsion VARCHAR(50) DEFAULT NULL);";
-            stmt.executeUpdate(sql);
-            sql= "CREATE TABLE Sites (code INT PRIMARY KEY NOT NULL, Name VARCHAR(50) NOT NULL ,Address VARCHAR(50) NOT NULL, Contact VARCHAR(50) NOT NULL, Phone VARCHAR(10) NOT NULL);";
-            stmt.executeUpdate(sql);
-            sql= "CREATE TABLE Shops (code INT PRIMARY KEY REFERENCES Sites(code), region VARCHAR(50) NOT NULL );";
-            stmt.executeUpdate(sql);
-            sql= "CREATE TABLE Supliers (code INT PRIMARY KEY REFERENCES Sites(code));";
-            stmt.executeUpdate(sql);
-            sql="CREATE TABLE Missions (shop INT REFERENCES Shops(code), Supplier INT REFERENCES Supliers(code) ,Transport INT REFERENCES Transport(TransportNumber), item INT REFERENCES Itemss(code),plandQ INT ,actualQ INT ,PRIMARY KEY (shop,Supplier,Transport,item));";
-            stmt.executeUpdate(sql);
-            sql= "CREATE TABLE TrucksTrnsportSigning  (truck VARCHAR(10) REFERENCES Trucks(Plate), transport INT REFERENCES Transport(TransportNumber), PRIMARY KEY (truck,transport));";
-            stmt.executeUpdate(sql);
-            sql= "CREATE TABLE driverAsiignmetns (truck VARCHAR(10) REFERENCES Trucks(Plate), transport INT PRIMARY KEY REFERENCES Transport(TransportNumber) ,driver INT REFERENCES Drivers(ID));";
-            stmt.executeUpdate(sql);
-            sql = "CREATE TABLE Workers (ID INT PRIMARY KEY NOT NULL, Lname VARCHAR(50) NOT NULL, Fname VARCHAR(50) NOT NULL, startDate VARCHAR(50) DEFAULT  NULL, TermsOfEmployment VARCHAR(250), Salary INT, Role VARCHAR(250) NOT NULL, WorkPlace INT NOT NULL, BankNumber INT NOT NULL, BankAccountNumber INT NOT NULL,FOREIGN KEY(BankNumber) REFERENCES Banks(BankNumber), FOREIGN KEY(Role) REFERENCES Roles(Role), FOREIGN KEY(WorkPlace) REFERENCES Sites(Code));";
-            stmt.executeUpdate(sql);
-            sql = "CREATE TABLE Banks (BankNumber INT PRIMARY KEY NOT NULL, BankName VARCHAR(50) NOT NULL );";
-            stmt.executeUpdate(sql);
-            sql = "CREATE TABLE Shifts (Code INT PRIMARY KEY NOT NULL, Date VARCHAR(50) NOT NULL, Day VARCHAR(50) NOT NULL, Time VARCHAR(50) NOT NULL, WorkPlace INT NOT NULL, ShiftManager INT, FOREIGN KEY(ShiftManager) REFERENCES Workers(ID) ON DELETE CASCADE, FOREIGN KEY(WorkPlace) REFERENCES Sites(Code));";
-            stmt.executeUpdate(sql);
-            sql = "CREATE TABLE Roles (Role VARCHAR(50) PRIMARY KEY NOT NULL );";
-            stmt.executeUpdate(sql);
-            sql = "CREATE TABLE RolesInShifts (Role VARCHAR(50) NOT NULL, Code INT NOT NULL, FOREIGN KEY(Role) REFERENCES Roles(Role), FOREIGN KEY(Code) REFERENCES Shifts(Code) ON DELETE CASCADE );";
-            stmt.executeUpdate(sql);
-            sql = "CREATE TABLE WorkersInShifts (ID INT NOT NULL, Code INT NOT NULL, Status VARCHAR(50) NOT NULL, FOREIGN KEY(ID) REFERENCES Workers(ID), FOREIGN KEY(Code) REFERENCES Shifts(Code) ON DELETE CASCADE );";
-            stmt.executeUpdate(sql);
+
 
             c.commit();
             stmt.close();

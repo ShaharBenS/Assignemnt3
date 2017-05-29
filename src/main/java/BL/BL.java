@@ -1136,7 +1136,7 @@ public class BL {
 				throw new NituzException(1, "manager is not in the same branch as the shift!");
 		}
 	}
-<<<<<<< HEAD
+
 
 	public String getAllTrucks() throws NituzException {
 		String ans="";
@@ -1155,7 +1155,7 @@ public class BL {
         }
 	    return ans;
     }
-=======
+
 	public int getWorkPlace() throws NituzException{
 
 		try{
@@ -1164,5 +1164,4 @@ public class BL {
 		}
 		catch(){throw new NituzException(1, "manager is not in the same branch as the shift!");}
 	}
->>>>>>> origin/Workers
 }
