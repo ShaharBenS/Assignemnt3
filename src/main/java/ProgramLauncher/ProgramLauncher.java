@@ -608,7 +608,6 @@ public class ProgramLauncher
              */
             sql = "CREATE TABLE IF NOT EXISTS Suppliers " +
                     "(ID INT PRIMARY KEY     NOT NULL," +
-                    "Name TEXT NOT NULL," +
                     " BankNum          INT    NOT NULL, " +
                     " BranchNum        INT    NOT NULL, " +
                     " AccountNum	   INT    NOT NULL, " +

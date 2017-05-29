@@ -266,12 +266,15 @@ public class Suppliers {
     public Supplier getSupplier(int id) {
         Supplier sup;
         try {
-            String sqlQuary = "SELECT * FROM Suppliers WHERE ID = '" + id + "';";
+            String sqlQuary = "SELECT * FROM Suppliers CROSS JOIN Sites WHERE ID = '" + id + "' AND Suppliers.ID" +
+                    "= Sites.code;";
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQuary);
 
-            sup = new Supplier(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5),
-                    rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
+            sup = new Supplier(rs.getInt("ID"), rs.getString("Name"), rs.getInt("BankNum"),
+                    rs.getInt("BranchNum"), rs.getInt("AccountNum"),
+                    rs.getString("Payment"), rs.getString("DeliveryMethod")
+                    ,rs.getString("SupplyTime"),rs.getString("Address"));
 
             rs.close();
             stmt.close();

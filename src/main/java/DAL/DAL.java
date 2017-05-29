@@ -283,7 +283,7 @@ public class DAL {
                 Statement stmt = c.createStatement();
                 ResultSet rs = stmt.executeQuery("Select * From Sites JOIN Shops WHERE Sites.code=Shops.code AND Sites.code=" + _to + ";");
                 if (rs.isBeforeFirst()) {
-                    Site site = new Shop(rs.getInt("code"), rs.getString("Address"), rs.getString("Phone"), rs.getString("Contact"),rs.getString("rigion"));
+                    Site site = new Shop(rs.getInt("code"),rs.getString("Name"), rs.getString("Address"), rs.getString("Phone"), rs.getString("Contact"),rs.getString("rigion"));
                     stmt.close();
                     rs.close();
                     return site;

@@ -5,7 +5,6 @@ package SharedClasses;
  */
 public class Supplier extends Site {
     private int id;
-    private String name;
     private int bankNum;
     private int branchNum;
     private int accountNum;
@@ -16,10 +15,9 @@ public class Supplier extends Site {
 
     //private String address;
 
-    public Supplier(int id, String name, int bankNum, int branchNum, int accountNum, String payment, String deliveryMethod, String supplyTime, String address) {
-        super(id,address,"","");
+    public Supplier(int id,String name, int bankNum, int branchNum, int accountNum, String payment, String deliveryMethod, String supplyTime, String address) {
+        super(id,name,address,"","");
         this.id = id;
-        this.name = name;
         this.bankNum = bankNum;
         this.branchNum = branchNum;
         this.accountNum = accountNum;
@@ -29,9 +27,8 @@ public class Supplier extends Site {
     }
     public Supplier(int id, String name, int bankNum, int branchNum, int accountNum,
                     String payment, String deliveryMethod, String supplyTime, String address,Contact[] contacts) {
-        super(id,address,"","");
+        super(id,name,address,"","");
         this.id = id;
-        this.name = name;
         this.bankNum = bankNum;
         this.branchNum = branchNum;
         this.accountNum = accountNum;
@@ -47,14 +44,6 @@ public class Supplier extends Site {
 
     public void setId(int id) {
         super.code = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getBankNum() {

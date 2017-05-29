@@ -4,8 +4,8 @@ public class Shop extends Site
 {
 	private String region;
 
-	public Shop(int code, String address, String phone, String contact, String region) {
-		super(code, address, phone, contact);
+	public Shop(int code,String name, String address, String phone, String contact, String region) {
+		super(code,name, address, phone, contact);
 		this.region = region;
 	}
 
