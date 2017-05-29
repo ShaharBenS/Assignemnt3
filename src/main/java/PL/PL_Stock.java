@@ -50,7 +50,9 @@ public class PL_Stock
             " 8) Update item Category Code",
             " 9) Update item Order Amount",
             "10) Update item Sell Price",
-            "11) Back"};
+            "12) Update item weight",
+            "13) Update item Description",
+            "14) Back"};
 
 
     private final String[] TOOLS_MENU = {"Choose an option:" ,
@@ -263,7 +265,8 @@ public class PL_Stock
             System.out.println(ITEM_UPDATE_MENU[8]);
             System.out.println(ITEM_UPDATE_MENU[9]);
             System.out.println(ITEM_UPDATE_MENU[10]);
-
+            System.out.println(ITEM_UPDATE_MENU[11]);
+            System.out.println(ITEM_UPDATE_MENU[12]);
 
             try { operation = Integer.parseInt(scanner.nextLine()); }
             catch(Exception r) { System.out.print("Invalid operation. Please try again\n\n"); continue; }
@@ -332,6 +335,18 @@ public class PL_Stock
                     printUpdate(PriceM.updateSellPrice(prop));
                     break;
                 case 11:
+                    System.out.print("Enter properties in the following structure:\n" +
+                            "[ID] [NEW WEIGHT]\n");
+                    prop = scanner.nextLine();
+                    printUpdate(ProductM.updateWeight(prop));
+                    break;
+                case 12:
+                    System.out.print("Enter properties in the following structure:\n" +
+                            "[ID] [NEW DESCRIPTION]\n");
+                    prop = scanner.nextLine();
+                    printUpdate(ProductM.updateDescription(prop));
+                    break;
+                case 13:
                     return;
                 default: System.out.print("Invalid Operation!!! Try again...\n\n\n");
                     break;
