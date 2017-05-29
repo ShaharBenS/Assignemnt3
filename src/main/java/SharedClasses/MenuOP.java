@@ -50,7 +50,8 @@ public class MenuOP {
     public void execute(){
         if (this.execute==null){
             Scanner c = new Scanner(System.in);
-            MenuOP m[] = (MenuOP[]) this.sones.toArray();
+            MenuOP m[] = new MenuOP[this.sones.size()];
+            this.sones.toArray(m);
             while (true) {
                 int i = 0;
                 for (; i < m.length; i++) {

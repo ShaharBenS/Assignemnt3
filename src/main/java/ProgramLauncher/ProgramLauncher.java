@@ -226,6 +226,8 @@ public class ProgramLauncher
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (5,'Osher Ad','Tel Aviv','Avrami','0587778777');";
                 stmt.executeUpdate(sql);
+                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (-1,'Osher Ad','Tel Aviv','Avrami','0587778777');";
+                stmt.executeUpdate(sql);
                 sql="INSERT INTO Shops (code , region) VALUES (0,'A')";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Shops (code , region) VALUES (414,'B')";
@@ -244,13 +246,15 @@ public class ProgramLauncher
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Banks (BankNumber, BankName) VALUES (4, 'Phoenix')";
                 stmt.executeUpdate(sql);
+                sql="INSERT INTO Banks (BankNumber, BankName) VALUES (5, 'Discount')";
+                stmt.executeUpdate(sql);
                 sql="INSERT INTO Roles (Role) VALUES ('Driver')";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Roles (Role) VALUES ('Cleaner')";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Roles (Role) VALUES ('Cashier')";
+                sql="INSERT INTO Roles (Role) VALUES ('Storekeeper')";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Roles (Role) VALUES ('Secretary')";
+                sql="INSERT INTO Roles (Role) VALUES ('Security')";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Roles (Role) VALUES ('Manager')";
                 stmt.executeUpdate(sql);
@@ -268,21 +272,21 @@ public class ProgramLauncher
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (171717171, 'Scholes', 'Paul', '29/03/2016', '...', 5100, 'Janitor', 0, 1, 55555)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (181818181, 'Giggs', 'Rayn', '30/04/2017', '...', 5200, 'Cashier', 0, 2, 66666)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (181818181, 'Giggs', 'Rayn', '30/04/2017', '...', 5200, 'Storekeeper', 0, 2, 66666)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (191919191, 'Nevil', 'Gary', '19/05/2007', '...', 4900, 'Security', 414, 3, 77777)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (232323232, 'Keane', 'Roy', '16/06/2008', '...', 4800, 'Cashier', 414, 1, 88888)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (232323232, 'Keane', 'Roy', '16/06/2008', '...', 4800, 'Storekeeper', 414, 1, 88888)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (242424242, 'Best', 'Georgy', '27/07/2009', '...', 6000, 'Cashier', 434, 2, 99999)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (242424242, 'Best', 'Georgy', '27/07/2009', '...', 6000, 'Storekeeper', 434, 2, 99999)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (252525252, 'Ferguson', 'Alex', '21/08/2010', '...', 3900, 'Janitor', 434, 3, 12121)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (262626262, 'VanSaar', 'Edwin', '22/09/2011', '...', 4500, 'Cashier', 424, 1, 13131)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (262626262, 'VanSaar', 'Edwin', '22/09/2011', '...', 4500, 'Storekeeper', 424, 1, 13131)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (343434343, 'VanPersi', 'Robin', '22/09/2004', '...', 4500, 'Security', 424, 1, 13141)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (353535353, 'Hernandez', 'Chicirito', '22/09/2003', '...', 4800, 'Cashier', 5, 1, 13151)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (353535353, 'Hernandez', 'Chicirito', '22/09/2003', '...', 4800, 'Storekeeper', 5, 1, 13151)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (363636363, 'Carrick', 'Michel', '28/01/2006', '...', 4000, 'Security', 5, 1, 13579)";
                 stmt.executeUpdate(sql);
@@ -306,7 +310,7 @@ public class ProgramLauncher
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (2, '01/05/2017', 'Monday', 'evening', 0, 171717171)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (3, '01/05/2017', 'Monday', 'night', 0, 18181818181)";
+                sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (3, '01/05/2017', 'Monday', 'night', 0, 181818181)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (4, '01/05/2017', 'Monday', 'morning', 414, 191919191)";
                 stmt.executeUpdate(sql);
@@ -314,25 +318,25 @@ public class ProgramLauncher
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (6, '01/05/2017', 'Monday', 'night', 414, 232323232)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Cashier', 1)";
+                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Storekeeper', 1)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Janitor', 1)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Cashier', 2)";
+                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Storekeeper', 2)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Janitor', 2)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Janitor', 3)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Cashier', 4)";
+                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Storekeeper', 4)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Security', 4)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Cashier', 5)";
+                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Storekeeper', 5)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Security', 5)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Cashier', 6)";
+                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Storekeeper', 6)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (171717171, 1, 'Available')";
                 stmt.executeUpdate(sql);
@@ -377,6 +381,7 @@ public class ProgramLauncher
 
             } catch (SQLException e) {
                 e.printStackTrace();
+
             }
         }
         SBL.initOrderID();
@@ -558,7 +563,7 @@ public class ProgramLauncher
                     " BankAccountNumber INT NOT NULL,"+
                     "FOREIGN KEY(BankNumber) REFERENCES Banks(BankNumber),"+
                     " FOREIGN KEY(Role) REFERENCES Roles(Role),"+
-                    " FOREIGN KEY(WorkPlace) REFERENCES Sites(Code));";
+                    " FOREIGN KEY(WorkPlace) REFERENCES Sites(code));";
             stmt.executeUpdate(sql);
             sql = "CREATE TABLE IF NOT EXISTS Banks"+
                     " (BankNumber INT PRIMARY KEY NOT NULL,"+
@@ -622,7 +627,7 @@ public class ProgramLauncher
                     " PhoneNumber TEXT NOT NULL, " +
                     " Email	TEXT," +
                     "PRIMARY KEY(SiteID, ID),"+
-                    "FOREIGN KEY(SiteID) REFERENCES Site(code) " +
+                    "FOREIGN KEY(SiteID) REFERENCES Sites(code) " +
                     "ON DELETE CASCADE ON UPDATE CASCADE);";
             stmt.execute(sql);
             stmt.close();
