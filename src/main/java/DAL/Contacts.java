@@ -21,10 +21,10 @@ public class Contacts {
 
     public boolean addContact(Contact con) {
         try {
-            PreparedStatement ps = c.prepareStatement("INSERT INTO Contacts (ID, SupplierID, FullName, PhoneNumber, Email) " +
+            PreparedStatement ps = c.prepareStatement("INSERT INTO Contacts (ID, SiteID, FullName, PhoneNumber, Email) " +
                     "VALUES (?,?,?,?,?);");
             ps.setString(1, con.getId());
-            ps.setInt(2, con.getSupplierID());
+            ps.setInt(2, con.getSiteID());
             ps.setString(3, con.getFullName());
             ps.setString(4, con.getPhoneNumber());
             ps.setString(5, con.getEmail());
@@ -124,13 +124,13 @@ public class Contacts {
     public String getSupplierContact(int id) {
         String ans = "";
         try {
-            String sqlQuary = "SELECT * FROM Contacts WHERE SupplierID = '" + id + "';";
+            String sqlQuary = "SELECT * FROM Contacts WHERE SiteID = '" + id + "';";
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQuary);
             while (rs.next()) {
                 ans += "ID: " + rs.getString(1) + "\n";
 
-                ans += "SupplierID: " + rs.getInt(2) + "\n";
+                ans += "SiteID: " + rs.getInt(2) + "\n";
                 ans += "Full Name: " + rs.getString(3) + "\n";
                 ans += "Phone Number: " + rs.getString(4) + "\n";
                 ans += "Email: " + rs.getString(5) + "\n";
@@ -192,7 +192,7 @@ public class Contacts {
     public String getContactID(int supId) {
         String ans = "";
         try {
-            String sqlQuary = "SELECT ID FROM Contacts WHERE SupplierID = '" + supId + "';";
+            String sqlQuary = "SELECT ID FROM Contacts WHERE SiteID = '" + supId + "';";
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQuary);
             ans = rs.getString(1);
@@ -206,7 +206,7 @@ public class Contacts {
 
     public boolean removeContact(String id, int supId) {
         try {
-            String sql = "DELETE FROM Contacts WHERE ID = ? AND SupplierID = ?;";
+            String sql = "DELETE FROM Contacts WHERE ID = ? AND SiteID = ?;";
 
             PreparedStatement pstmt = c.prepareStatement(sql);
 
@@ -244,7 +244,7 @@ public class Contacts {
     public boolean ifExist(int supID, String conID) {
         try {
             stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Contacts where ID = '" + conID + "' and SupplierID = '" + supID + "';");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Contacts where ID = '" + conID + "' and SiteID = '" + supID + "';");
             if (rs.next()) {
                 stmt.close();
                 rs.close();

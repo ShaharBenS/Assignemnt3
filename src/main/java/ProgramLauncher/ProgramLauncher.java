@@ -68,12 +68,14 @@ public class ProgramLauncher
             CATEGORIES.addCategory(new Category(104, "Bread"));
             CATEGORIES.addCategory(new Category(105, "35%", 101));
 
+
             SUPPLIERS.addSupplier(new Supplier(100000, "TNUVA", 111, 1, 15, "LEOMI",
                     "BY HAND", "10:50", "netivot"));
             SUPPLIERS.addSupplier(new Supplier(200000, "TARA", 222, 2, 16, "HAPOALIM",
                     "INTERNET ONLY", "13:00", "shfaram"));
             SUPPLIERS.addSupplier(new Supplier(300000, "MOTHER-EARTH", 333, 3, 17, "YAHAV",
                     "Mail", "05:00", "plat-earth"));
+
 
             CONTACTS.addContact(new Contact("10101010", 100000, "Naruto Uzumaki",
                     "123456789", "a@a.a"));
@@ -84,17 +86,17 @@ public class ProgramLauncher
             CONTACTS.addContact(new Contact("30303030", 300000, "Natsu Dragneel",
                     "789123456", "c@c.c"));
 
-            ITEMS.addItem(new Item(111111, "KORNFLEKS", 102, "SHKEL-INC",0.5));
-            ITEMS.addItem(new Item(222222, "Steak", 101, "COWS-KILLERS",1));
-            ITEMS.addItem(new Item(333333, "Cheese", 100, "TARA",0.2));
-            ITEMS.addItem(new Item(444444, "White-Bread", 101, "Bereshit",0.4));
-            ITEMS.addItem(new Item(555555, "Soda", 103, "Shweps",6));
-            ITEMS.addItem(new Item(666666, "Cola", 103, "Coca-Cola",8));
-            ITEMS.addItem(new Item(777777, "Arak", 103, "Tzuani-Nehmad",2));
-            ITEMS.addItem(new Item(888888, "Potatoes", 104, "Mother-Earth",1));
-            ITEMS.addItem(new Item(999999, "Tomato", 104, "Mother-Earth",0.7));
-            ITEMS.addItem(new Item(101010, "Rice", 105, "Mother-Earth",0.4));
-            ITEMS.addItem(new Item(202020, "Eggs", 105, "Mother-Chicken",0.3));
+            ITEMS.addItem(new Item(111111, "KORNFLEKS", 102, "SHKEL-INC",0.5,""));
+            ITEMS.addItem(new Item(222222, "Steak", 101, "COWS-KILLERS",1,""));
+            ITEMS.addItem(new Item(333333, "Cheese", 100, "TARA",0.2,""));
+            ITEMS.addItem(new Item(444444, "White-Bread", 101, "Bereshit",0.4,""));
+            ITEMS.addItem(new Item(555555, "Soda", 103, "Shweps",6,""));
+            ITEMS.addItem(new Item(666666, "Cola", 103, "Coca-Cola",8,""));
+            ITEMS.addItem(new Item(777777, "Arak", 103, "Tzuani-Nehmad",2,""));
+            ITEMS.addItem(new Item(888888, "Potatoes", 104, "Mother-Earth",1,""));
+            ITEMS.addItem(new Item(999999, "Tomato", 104, "Mother-Earth",0.7,""));
+            ITEMS.addItem(new Item(101010, "Rice", 105, "Mother-Earth",0.4,""));
+            ITEMS.addItem(new Item(202020, "Eggs", 105, "Mother-Chicken",0.3,""));
 
 
             SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 111111, 100000, 12.5));
@@ -620,7 +622,8 @@ public class ProgramLauncher
                     " Payment         TEXT	NOT NULL," +
                     " DeliveryMethod TEXT NOT NULL," + //SOMEONE BRING ME *OR* I BRING FROM SOMEONE
                     " SupplyTime TEXT," + // DAYS
-                    "FOREIGN KEY(ID) REFERENCES Sites(code) ON UPDATE CASCADE);";
+                    " FOREIGN KEY(BankNum) REFERENCES Banks(BankNumber)ON UPDATE CASCADE, "+
+                    " FOREIGN KEY(ID) REFERENCES Sites(code) ON UPDATE CASCADE);";
             stmt.execute(sql);
             stmt.close();
 
@@ -630,12 +633,12 @@ public class ProgramLauncher
             stmt = c.createStatement();
             sql = "CREATE TABLE IF NOT EXISTS Contacts " +
                     "(ID   TEXT NOT NULL," +
-                    " SupplierID INT  NOT NULL," +
+                    " SiteID INT  NOT NULL," +
                     " FullName   TEXT  NOT NULL, " +
                     " PhoneNumber TEXT NOT NULL, " +
                     " Email	TEXT," +
-                    "PRIMARY KEY(SupplierID, ID),"+
-                    "FOREIGN KEY(SupplierID) REFERENCES Suppliers(ID) " +
+                    "PRIMARY KEY(SiteID, ID),"+
+                    "FOREIGN KEY(SiteID) REFERENCES Site(code) " +
                     "ON DELETE CASCADE ON UPDATE CASCADE);";
             stmt.execute(sql);
             stmt.close();
@@ -661,7 +664,8 @@ public class ProgramLauncher
                     " NAME   TEXT NOT NULL, " +
                     " CategoryNumber       INT    REFERENCES CATEGORY(ID) ON DELETE SET NULL ON UPDATE CASCADE, " +
                     " Manufacture         TEXT    NOT NULL," +
-                    " Weight REAL NOT NULL);";
+                    " Weight REAL NOT NULL," +
+                    " Description TEXT);";
             stmt.execute(sql);
             stmt.close();
 

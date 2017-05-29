@@ -1,7 +1,6 @@
 package PL;
 
 import SharedClasses.Contact;
-import SharedClasses.Discount;
 
 import java.util.Scanner;
 
@@ -278,7 +277,7 @@ public class PLContacts {
         if (!conID.equals("")) {
             Contact con =bl.getContact(conID);
             String ans ="";
-            ans+="Supplier ID: " + con.getSupplierID()+ "\n";
+            ans+="Supplier ID: " + con.getSiteID()+ "\n";
             ans+= "Contact ID: " + con.getId() + "\n";
             ans += "Name: " + con.getFullName() + "\n";
             ans += "Phone number: " + con.getPhoneNumber() + "\n";

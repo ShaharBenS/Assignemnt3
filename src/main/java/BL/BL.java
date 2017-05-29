@@ -50,12 +50,12 @@ public class BL {
 		}
 	}
 
-	public boolean setShopID(int id) throws NituzException{
+	public void setShopID(int id) throws NituzException{
 		try{
 			Worker w = dal.selectWorker(id);
 			shopID = w.getWorkPlace();
 		}
-		catch(){ throw new NituzException(1, id + " wasn't found in the system");}
+		catch(Exception e){ throw new NituzException(1, id + " wasn't found in the system");}
 	}
 
 	/*public boolean hasPermissionManager(String role) throws NituzException{
@@ -1046,7 +1046,7 @@ public class BL {
 	public boolean roleCanBeDeleted(String role) throws NituzException{
 		if (role.equals("Director of Personal Transport Center") || role.equals("Director of Personal Shops")
 				|| role.equals("Director of Logistics") || role.equals("Storekeeper")
-				|| role.equals("Shop Manager") role.equals("Storekeeper") || role.equals("Driver")){
+				|| role.equals("Shop Manager") || role.equals("Storekeeper") || role.equals("Driver")){
 			throw new NituzException(2, role + " can't be deleted!");
 		}
 		return true;
@@ -1162,6 +1162,6 @@ public class BL {
 			Worker w = dal.selectWorker(user.getId());
 			return w.getWorkPlace();
 		}
-		catch(){throw new NituzException(1, "manager is not in the same branch as the shift!");}
+		catch(Exception e){throw new NituzException(1, "manager is not in the same branch as the shift!");}
 	}
 }

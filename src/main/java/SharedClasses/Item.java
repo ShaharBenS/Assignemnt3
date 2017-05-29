@@ -9,13 +9,15 @@ public class Item {
     private int categoryNumber;
     private String manufacture;
     private double weight;
+    private String description;
 
-    public Item(int itemID,  String name,int categoryNumber, String manufacture, double weight) {
+    public Item(int itemID,  String name,int categoryNumber, String manufacture, double weight, String description) {
         this.itemID = itemID;
         this.categoryNumber = categoryNumber;
         this.name = name;
         this.manufacture = manufacture;
         this.weight = weight;
+        this.description = description;
     }
 
 
@@ -24,6 +26,11 @@ public class Item {
         categoryNumber = 0;
         name = "";
         manufacture = "";
+    }
+
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getItemID() {
@@ -100,6 +107,6 @@ public class Item {
         return itemID;
     }
     public String getDescription() {
-        return name;
+        return description;
     }
 }

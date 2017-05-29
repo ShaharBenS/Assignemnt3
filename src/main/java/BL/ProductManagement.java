@@ -21,10 +21,10 @@ public class ProductManagement {
     }
 
     // ADD NEW item TO DATABASE
-     // FORMAT: [0:ID] [1:LOCATION] [2:MANUFACTURE] [3:MINIMAL AMOUNT] [4:CATEGORY CODE] [5:NAME] [6:SELL PRICE] [7:WEIGHT]
+     // FORMAT: [0:ID] [1:LOCATION] [2:MANUFACTURE] [3:MINIMAL AMOUNT] [4:CATEGORY CODE] [5:NAME] [6:SELL PRICE] [7:WEIGHT] [8:DESCRIPTION]
     public boolean addItem(String pLine) {
         String[] iParts = pLine.split("\\s+");
-        if (iParts.length != 8) return false;
+        if (iParts.length != 9) return false;
         Quantity quantity;
         Item item;
         Price price;
@@ -39,7 +39,7 @@ public class ProductManagement {
             if (iParts[4].length() != 3) return false;
             double sell = Double.parseDouble(iParts[6]);
             double weight = Double.parseDouble(iParts[7]);
-            item = new Item(id, iParts[5], cCode, iParts[2], weight);
+            item = new Item(id, iParts[5], cCode, iParts[2], weight,iParts[8]);
             quantity = new Quantity(id, BL.shopID, iParts[1],0,0,minimal,0,minimal*3);
             price = new Price(id, sell, 0, null,null);
 

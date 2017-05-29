@@ -6,14 +6,14 @@ package SharedClasses;
 public class Contact
 {
     private String id;
-    private int supplierId;
+    private int SiteID;
     private String fullName;
     private String phoneNumber;
     private String email;
 
-    public Contact(String id, int supplierId, String fullName, String phoneNumber, String email) {
+    public Contact(String id, int SiteID, String fullName, String phoneNumber, String email) {
         this.id = id;
-        this.supplierId = supplierId;
+        this.SiteID = SiteID;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.email = email;
@@ -27,12 +27,12 @@ public class Contact
         this.id = id;
     }
 
-    public int getSupplierID() {
-        return supplierId;
+    public int getSiteID() {
+        return SiteID;
     }
 
-    public void setSupplierID(int id) {
-        this.supplierId = id;
+    public void setSiteID(int id) {
+        this.SiteID = id;
     }
 
     public String getFullName() {
