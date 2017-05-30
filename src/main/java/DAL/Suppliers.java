@@ -52,16 +52,17 @@ public class Suppliers {
 
             addSite(siteCode, name, address, contact, phone);
 
-            PreparedStatement ps = c.prepareStatement("INSERT INTO Suppliers (ID, BankNum, BranchNum, AccountNum, Payment, DeliveryMethod, SupplyTime) " +
-                    "VALUES (?,?,?,?,?,?,?);");
+            PreparedStatement ps = c.prepareStatement("INSERT INTO Suppliers (ID, Name, BankNum, BranchNum, AccountNum, Payment, DeliveryMethod, SupplyTime) " +
+                    "VALUES (?,?,?,?,?,?,?,?);");
 
             ps.setInt(1, sup.getId());
-            ps.setInt(2, sup.getBankNum());
-            ps.setInt(3, sup.getBranchNum());
-            ps.setInt(4, sup.getAccountNum());
-            ps.setString(5, sup.getPayment());
-            ps.setString(6, sup.getDeliveryMethod());
-            ps.setString(7, sup.getSupplyTime());
+            ps.setString(2, sup.getName());
+            ps.setInt(3, sup.getBankNum());
+            ps.setInt(4, sup.getBranchNum());
+            ps.setInt(5, sup.getAccountNum());
+            ps.setString(6, sup.getPayment());
+            ps.setString(7, sup.getDeliveryMethod());
+            ps.setString(8, sup.getSupplyTime());
 
             ps.executeUpdate();
             c.commit();
@@ -72,6 +73,27 @@ public class Suppliers {
     }
 
 
+    public boolean updateSiteID(int id, int newid){
+        try {
+            String sql = "UPDATE Sites SET code = ? WHERE code = ?";
+
+            PreparedStatement pstmt = c.prepareStatement(sql);
+
+            // set the corresponding param
+            pstmt.setInt(1, newid);
+            pstmt.setInt(2, id);
+            // update
+            pstmt.executeUpdate();
+
+            c.commit();
+            pstmt.close();
+            stmt.close();
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
     public boolean setID(int id, int newId) {
         try {
             String sql = "UPDATE Suppliers SET ID = ? WHERE ID = ?";
@@ -81,13 +103,15 @@ public class Suppliers {
             // set the corresponding param
             pstmt.setInt(1, newId);
             pstmt.setInt(2, id);
+
+            boolean ans = updateSiteID(id, newId);
             // update
             pstmt.executeUpdate();
 
             c.commit();
             pstmt.close();
             stmt.close();
-            return true;
+            return ans;
         } catch (SQLException e) {
             return false;
         }
@@ -242,7 +266,7 @@ public class Suppliers {
     
     public boolean setAddress(int id, String address){
     	 try {
-             String sql = "UPDATE Suppliers SET Address = ? WHERE ID = ?";
+             String sql = "UPDATE Sites SET Address = ? WHERE code = ?";
 
              PreparedStatement pstmt = c.prepareStatement(sql);
 
@@ -319,7 +343,7 @@ public class Suppliers {
 
     public boolean removeSupplier(int id) {
         try {
-            String sql = "DELETE FROM Suppliers WHERE ID = ?";
+            String sql = "DELETE FROM Sites WHERE code = ?"; //on delete cascade delete also the supplier
 
             PreparedStatement pstmt = c.prepareStatement(sql);
 

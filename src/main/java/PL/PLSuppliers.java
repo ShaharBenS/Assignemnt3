@@ -124,8 +124,6 @@ public class PLSuppliers {
                         return;
                    }
                 }
-
-
                if( bl.addSupplier(ID,Name, BankNum, BranchNum, AccountNum, Payment, DeliveryMethod, SupplyTime, address))
                    System.out.println("Supplier has been added");
                 else System.out.println("something went wrong");

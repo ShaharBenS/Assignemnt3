@@ -608,6 +608,7 @@ public class ProgramLauncher
              */
             sql = "CREATE TABLE IF NOT EXISTS Suppliers " +
                     "(ID INT PRIMARY KEY     NOT NULL," +
+                    "Name TEXT NOT NULL," +
                     " BankNum          INT    NOT NULL, " +
                     " BranchNum        INT    NOT NULL, " +
                     " AccountNum	   INT    NOT NULL, " +
@@ -615,7 +616,7 @@ public class ProgramLauncher
                     " DeliveryMethod TEXT NOT NULL," + //SOMEONE BRING ME *OR* I BRING FROM SOMEONE
                     " SupplyTime TEXT," + // DAYS
                     " FOREIGN KEY(BankNum) REFERENCES Banks(BankNumber)ON UPDATE CASCADE, "+
-                    " FOREIGN KEY(ID) REFERENCES Sites(code) ON UPDATE CASCADE);";
+                    " FOREIGN KEY(ID) REFERENCES Sites(code) ON UPDATE CASCADE ON DELETE CASCADE);";
             stmt.execute(sql);
             stmt.close();
 

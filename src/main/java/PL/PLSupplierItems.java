@@ -86,7 +86,7 @@ public class PLSupplierItems {
                 System.out.println("Please enter item's id");
                 ItemID = Integer.parseInt(sc.nextLine());
 
-                boolean itemEx= bl.checkIfItemExistInSupItems(ItemID);
+                boolean itemEx= bl.checkIfItemExistInSupItems(ItemID, ID);
 
                 if(!itemEx) {
                     System.out.println("Please enter the catalog number of the item");

@@ -331,8 +331,8 @@ public class SupplierBL {
     	return OI.removeOrderItem(orderID,itemID);
     }
 
-    public boolean checkIfItemExistInSupItems(int itemID){
-        return si.checkIfItemExist(itemID);
+    public boolean checkIfItemExistInSupItems(int itemID , int suppID){
+        return si.checkIfItemExist(itemID, suppID);
     }
 
 

@@ -220,10 +220,10 @@ public class SupplierItems {
 
     }
 
-    public  boolean checkIfItemExist(int ItemID){
+    public  boolean checkIfItemExist(int ItemID, int suppID){
         try {
             stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM SupplierItems where ItemID = " + ItemID + ";");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM SupplierItems where ItemID = " + ItemID + " and ID = "+suppID+";");
             if (rs.next()) {
                 rs.close();
                 stmt.close();
