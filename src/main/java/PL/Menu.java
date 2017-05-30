@@ -684,6 +684,9 @@ public class Menu {
             menues[2].addSon(l4);
         MenuOP l3=new MenuOP("Watch All open Orders", pl_ord::ordersWithoutDelivery);
             menues[2].addSon(l3);
+        MenuOP l5 = new MenuOP("Delete Order",()->{pl_ord.case4();});
+            menues[2].addSon(l5);
+            menues[0].addSon(l5.clone());
         menues[3]=new MenuOP("storekeeper");
         MenuOP st1= new MenuOP("Stock Management",()->{pl_stock.start();});
         menues[3].addSon(st1);

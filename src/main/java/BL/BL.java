@@ -337,10 +337,10 @@ public class BL {
 	/**
 	 * add a mission to the DB, and to the transport t
 	 * @param amount
-	 * @param to
-	 * @param from
-	 * @param item
-	 * @param t
+	 * @param to - shopID
+	 * @param from - site id
+	 * @param item - code
+	 * @param t - transport id
 	 * @return true if and only if the mission saved successfully in the DB.
 	 * @throws NituzException if something rung is the given parameters.
 	 */

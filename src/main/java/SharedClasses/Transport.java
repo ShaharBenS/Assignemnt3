@@ -1,5 +1,7 @@
 package SharedClasses;
 
+import javafx.util.Pair;
+
 import java.util.LinkedList;
 
 public class Transport 
@@ -78,6 +80,11 @@ public class Transport
 		if (h==null)
 			throw new NituzException(14, "transport " + this.number +" not going to this site/s (" + shop.getCode() + ", " + supplier.getCode() + ")");
 		return ans;
+	}
+
+	public Pair<Item,Integer>[] transportsItems(Site shop)
+	{
+		return null;//TODO:gal
 	}
 
 	private String findItems(Site shop, Site supplier) {

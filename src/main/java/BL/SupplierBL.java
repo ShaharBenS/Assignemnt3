@@ -226,6 +226,7 @@ public class SupplierBL {
 
 
     public int addOrder(int supplierId, Date date,int frequency){
+        //TODO: add trasport=  BL.createTransport
         String conID=contacts.getContactID(supplierId);
         Order ord = new Order(OrderID++,BL.shopID,supplierId,date, conID,frequency);
         if(!order.addOrder(ord))
