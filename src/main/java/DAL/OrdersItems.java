@@ -196,4 +196,18 @@ public class OrdersItems {
     }
 
 
+    public int getOrderItemQuantity(int order, int item){
+        try {
+            stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery( "SELECT Quantity FROM OrdersItems  " +
+                    "where OrderID = "+order+" and itemID = " + item);
+            int quantity = rs.getInt(1);
+            rs.close();
+            stmt.close();
+            return quantity;
+
+        } catch (Exception e) {
+            return 0;
+        }
+    }
 }

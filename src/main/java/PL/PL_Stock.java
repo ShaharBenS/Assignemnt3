@@ -296,7 +296,9 @@ public class PL_Stock
                     System.out.print("Enter properties in the following structure:\n" +
                             "[Arriving Order ID] [Arrival Date] ** Date: DD.MM.YYYY **\n");
                     prop = scanner.nextLine();
-                    printUpdate(SBL.setOrderArrivalDate(prop));
+                    boolean answer = SBL.setOrderArrivalDate(prop);
+                    printUpdate(answer);
+                    if(!answer) break;
                     boolean defectItem = true;
                     while(defectItem)
                     {
@@ -309,10 +311,10 @@ public class PL_Stock
                         else {
                             if(ans.equals("y"))
                             {
-                                System.out.print("Enter properties in the following structure:\n" +
+                                System.out.println("Enter properties in the following structure:\n" +
                                         "[Item ID] [Defect Quantity]");
                                 String prop2 = scanner.nextLine();
-                                printUpdate(ProductM.addDefects(prop2));
+                                printUpdate(ProductM.addDefects(prop2,prop.split("\\s")[0]));
 
                             }
                             else //ans is no

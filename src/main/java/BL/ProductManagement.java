@@ -1,6 +1,7 @@
 package BL;
 
 import DAL.Items;
+import DAL.OrdersItems;
 import DAL.Prices;
 import DAL.Quantities;
 import SharedClasses.*;
@@ -157,7 +158,7 @@ public class ProductManagement {
 
 
     //NOTE: THIS FUNCTION REMOVE AMOUNT FROM THE STORE AS WELL !
-    public boolean addDefects(String line) {
+    public boolean addDefects(String line, String orderID) {
         String[] prop = line.split("\\s+");
         if (prop.length != 2) return false;
         try {
@@ -167,7 +168,9 @@ public class ProductManagement {
             int defects = itemQuantity.getDefects();
             int warehouse = itemQuantity.getWarehouse();
             if(itemQuantity == null) return false;
-            if(warehouse-addAmount<0)return  false;
+            int orderID_int = Integer.parseInt(orderID);
+            int orderAmount = SBL.getOrderItemQuantity(orderID_int, id);
+            if(orderAmount-addAmount < 0)return  false;
             boolean ans = updateItemAmountInWarehouse("" + id + " " + (warehouse - addAmount));
             if (!ans) return false;
             ans = QUANTITIES.updateDefects(id, addAmount+defects);
