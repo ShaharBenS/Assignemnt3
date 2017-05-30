@@ -43,13 +43,15 @@ public class ProgramLauncher
 
         DAL dal =  new DAL(conn,ITEMS, SUPPLIERS);
 
+
+        BL bl =  new BL(dal);
         // BL INIT
-        SupplierBL SBL = new SupplierBL(CONTACTS, DISCOUNTS, ITEMS, SUPPLIER_ITEMS, SUPPLIERS, ORDERS, ORDERS_ITEMS,QUANTITIES);
+        SupplierBL SBL = new SupplierBL(bl,CONTACTS, DISCOUNTS, ITEMS, SUPPLIER_ITEMS, SUPPLIERS, ORDERS, ORDERS_ITEMS,QUANTITIES);
         ProductManagement PRODUCT_MANAGEMENT = new ProductManagement(ITEMS, PRICES, QUANTITIES, SBL);
         CategoryManagement CATEGORY_MANAGEMENT = new CategoryManagement(CATEGORIES, ITEMS, PRICES, QUANTITIES);
         PriceManagement PRICE_MANAGEMENT = new PriceManagement(PRICES);
 
-        BL bl =  new BL(dal);
+
 
         // PL INIT
         //TODO:GAL: redo all
@@ -263,22 +265,22 @@ public class ProgramLauncher
                 CATEGORIES.addCategory(new Category(105, "35%", 101));
 
 
-                SUPPLIERS.addSupplier(new Supplier(100000, "TNUVA", 1, 1, 15, "LEOMI",
-                        "BY HAND", "10:50", "netivot"));
-                SUPPLIERS.addSupplier(new Supplier(200000, "TARA", 2, 2, 16, "HAPOALIM",
-                        "INTERNET ONLY", "13:00", "shfaram"));
-                SUPPLIERS.addSupplier(new Supplier(300000, "MOTHER-EARTH", 3, 3, 17, "YAHAV",
-                        "Mail", "05:00", "plat-earth"));
+                SUPPLIERS.addSupplier(new Supplier(100000, "TNUVA", 1, 1, 15, "check",
+                        "with delivery", "Sunday", "netivot"));
+                SUPPLIERS.addSupplier(new Supplier(200000, "TARA", 2, 2, 16, "check",
+                        "with delivery", "Sunday", "shfaram"));
+                SUPPLIERS.addSupplier(new Supplier(300000, "MOTHER-EARTH", 3, 3, 17, "check",
+                        "with delivery", "Sunday", "plat-earth"));
 
 
-                CONTACTS.addContact(new Contact("10101010", 100000, "Naruto Uzumaki",
-                        "123456789", "a@a.a"));
+                CONTACTS.addContact(new Contact("101010101", 100000, "Naruto Uzumaki",
+                        "0523614498", "a@a.a"));
 
-                CONTACTS.addContact(new Contact("20202020", 200000, "Edoward Elich",
-                        "465123789", "a@a.a"));
+                CONTACTS.addContact(new Contact("202020202", 200000, "Edoward Elich",
+                        "0598321175", "a@a.a"));
 
-                CONTACTS.addContact(new Contact("30303030", 300000, "Natsu Dragneel",
-                        "789123456", "c@c.c"));
+                CONTACTS.addContact(new Contact("303030303", 300000, "Natsu Dragneel",
+                        "0526489301", "c@c.c"));
 
                 ITEMS.addItem(new Item(111111, "KORNFLEKS", 102, "SHKEL-INC",0.5,""));
                 ITEMS.addItem(new Item(222222, "Steak", 101, "COWS-KILLERS",1,""));

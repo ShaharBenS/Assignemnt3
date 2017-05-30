@@ -17,9 +17,11 @@ public class SupplierBL {
     Orders order;
     OrdersItems OI;
     Quantities quantities;
+    BL bl;
     public static int OrderID;
 
-    public SupplierBL(Contacts contacts, Discounts dis, Items item, SupplierItems si, Suppliers sup, Orders order, OrdersItems ordersItems,Quantities quantities) {
+    public SupplierBL(BL bl, Contacts contacts, Discounts dis, Items item, SupplierItems si, Suppliers sup, Orders order, OrdersItems ordersItems,Quantities quantities) {
+        this.bl = bl;
         this.contacts = contacts;
         this.dis = dis;
         this.item = item;
