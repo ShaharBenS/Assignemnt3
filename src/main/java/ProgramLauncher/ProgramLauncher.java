@@ -23,7 +23,8 @@ public class ProgramLauncher
     public static List<OrderItem> alreadyWarned = new ArrayList<>();
     private static Scanner sc = new Scanner(System.in);
     public static Thread checkPeriodicOrders;
-    private static boolean continuePeriodCheck = true;
+    public static boolean continuePeriodCheck = false;
+    public static boolean roleSet = false;
     public static void main(String [] args) throws InterruptedException {
         Connection conn = getConnectionAndInitDatabase("Database.db");
 
@@ -123,7 +124,6 @@ public class ProgramLauncher
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Banks (BankNumber, BankName) VALUES (5, 'Discount')";
                 stmt.executeUpdate(sql);
-
                 sql="INSERT INTO Roles (Role) VALUES ('Driver')";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Roles (Role) VALUES ('Cleaner')";
@@ -311,15 +311,7 @@ public class ProgramLauncher
                 DISCOUNTS.addDiscount(new Discount(200000, 111111, 20, 20));
                 DISCOUNTS.addDiscount(new Discount(200000, 222222, 20, 20));
                 DISCOUNTS.addDiscount(new Discount(300000, 333333, 20, 30));
-                DISCOUNTS.addDiscount(new Discount(200000, 333333, 20, 30));
-                DISCOUNTS.addDiscount(new Discount(400000, 444444, 20, 40));
-                DISCOUNTS.addDiscount(new Discount(500000, 555555, 20, 50));
-                DISCOUNTS.addDiscount(new Discount(600000, 666666, 20, 60));
-                DISCOUNTS.addDiscount(new Discount(700000, 777777, 20, 70));
-                DISCOUNTS.addDiscount(new Discount(800000, 888888, 20, 80));
-                DISCOUNTS.addDiscount(new Discount(900000, 999999, 20, 90));
-                DISCOUNTS.addDiscount(new Discount(110000, 101010, 20, 15));
-                DISCOUNTS.addDiscount(new Discount(120000, 202020, 20, 25));
+                DISCOUNTS.addDiscount(new Discount(200000, 333333, 20, 40));
 
                 int[] shopID = new int[]{0,0,0,0};
 
@@ -395,6 +387,14 @@ public class ProgramLauncher
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
 
+            }
+            while(!roleSet)
+            {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+
+                }
             }
             while(continuePeriodCheck){
 

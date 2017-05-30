@@ -50,9 +50,9 @@ public class PL_Stock
             " 8) Update item Category Code",
             " 9) Update item Order Amount",
             "10) Update item Sell Price",
-            "12) Update item weight",
-            "13) Update item Description",
-            "14) Back"};
+            "11) Update item weight",
+            "12) Update item Description",
+            "13) Back"};
 
 
     private final String[] TOOLS_MENU = {"Choose an option:" ,

@@ -254,8 +254,10 @@ public class PLDiscount {
             if (itemID != 0) {
                 System.out.println(bl.getDiscounts(supID, itemID));
 
-            } else case44();
-        } else
+            }
+            else case44();
+        }
+        else
             case44();
     }
 
@@ -274,7 +276,7 @@ public class PLDiscount {
                         System.out.println("deleted successfully");
                     else {
                         System.out.println("something went wrong");
-                        case45();
+                        case4();
                     }
                 } else case45();
             } else case45();

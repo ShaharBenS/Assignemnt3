@@ -1,5 +1,6 @@
 package PL;
 
+import ProgramLauncher.ProgramLauncher;
 import SharedClasses.NituzException;
 import SharedClasses.MenuOP;
 import BL.*;
@@ -699,6 +700,8 @@ public class Menu {
                     java.lang.String s = this.scanner.nextLine();
                     role=bl.setUser(s);
                     signed = true;
+                    if(role == 4 || role == 5) {ProgramLauncher.continuePeriodCheck = true;ProgramLauncher.roleSet = true;}
+
                     System.out.println("Welcome to the Super-Li computer System.");
                 } catch (NituzException e) {
                     System.out.println(e);
@@ -706,8 +709,11 @@ public class Menu {
             } else {
                 if (role==0){
                     System.out.println("you have no open option. type ENTER to log out");
-                    this.scanner.nextLine();
+                    java.lang.String s = this.scanner.nextLine();
                     bl.logOut();
+                    ProgramLauncher.continuePeriodCheck = false;
+                    ProgramLauncher.roleSet = true;
+                    exit = true;
                 }
                 else{
                     this.menues[role-1].execute();
