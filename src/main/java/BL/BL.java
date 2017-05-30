@@ -1192,4 +1192,18 @@ public class BL {
 		}
 		return ans;
 	}
+
+	public String getAllRoles(Shift s) throws NituzException {
+		String ans="";
+		String r[]=dal.getAllRoles(s.getCode());
+		for ( int i=0;i<r.length; i++) {
+			ans+=r[i]+"\n";
+		}
+		return ans;
+	}
+
+	public void removeTruck(String plate) throws NituzException {
+		leagalPlate(plate);
+		dal.removeTruck(plate);
+	}
 }

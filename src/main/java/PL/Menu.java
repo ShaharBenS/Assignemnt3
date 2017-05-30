@@ -312,6 +312,19 @@ public class Menu {
                     }
                 });
                 t25.addSon(t252);
+                MenuOP t253=new MenuOP("Show All Roles in Shift", ()->{
+                    System.out.println("Please Insert the date of the Shift:");
+                    java.lang.String date=this.scanner.nextLine();
+                    System.out.println("Please Insert the time of the Shift:");
+                    java.lang.String time=this.scanner.nextLine();
+                    try {
+                        Shift s = bl.getShift(date, time);
+                        System.out.println(bl.getAllRoles(s));
+                    } catch (NituzException e) {
+                        e.printStackTrace();
+                    }
+                });
+                t25.addSon(t253);
             t2.addSon(t25);
             menues[0].addSon(t2);
             MenuOP t3=new MenuOP("Banks Control");
@@ -339,7 +352,7 @@ public class Menu {
                 t3.addSon(t32);
                 MenuOP t33=new MenuOP ("Show All Banks",()->{
                     try {
-                        System.out.println(bl.getAllBanks());//TODO: ofir & liam: add needed function
+                        System.out.println(bl.getAllBanks());
                     } catch (NituzException e) {
                         e.printStackTrace();
                     }
@@ -511,6 +524,16 @@ public class Menu {
                 }
             });
             l1.addSon(l11);
+            MenuOP l13=new MenuOP("Remove Truck",()->{
+                System.out.println("Please insert the new truck Plate:");
+                java.lang.String plate=scanner.nextLine();
+                try {
+                    bl.removeTruck(plate);
+                } catch (NituzException e) {
+                    e.printStackTrace();
+                }
+            });
+            l1.addSon(l13);
             MenuOP l12=new MenuOP("Watch all Trucks",()->{
                 try {
                     System.out.println(bl.getAllTrucks());
@@ -748,42 +771,5 @@ public class Menu {
                 }
             }
         }
-        /*
-        int operation;
-
-        while(true) {
-            for (int i = 0; i < MENU.length; i++) {
-                System.out.print(MENU[i] + "\n");
-            }
-            try {
-                operation = Integer.parseInt(scanner.nextLine());
-            } catch (Exception r) {
-                System.out.print("Invalid operation. Please try again\n\n");
-                continue;
-            }
-
-            String prop;
-            switch (operation)
-            {
-                case 1:
-                    pl_sup.start();
-                    break;
-                case 2:
-                    pl_stock.start();
-                    break;
-                case 3:
-                    pl_ord.orderCase();
-                    break;
-                case 4: {
-                    System.out.println("Bye!");
-                    return;
-                }
-                default:
-                    System.out.println("No Such Option!");
-                    break;
-            }
-        }
-        */
     }
-
 }

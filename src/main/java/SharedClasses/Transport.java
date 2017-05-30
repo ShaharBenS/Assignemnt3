@@ -84,7 +84,12 @@ public class Transport
 
 	public Pair<Item,Integer>[] transportsItems(Site shop)
 	{
-		return null;//TODO:gal
+		Mission mi[]= (Mission[]) this.allMissionToSite(shop.code).toArray();
+		Pair<Item, Integer>[] ans = new Pair[mi.length];
+        for (int i=0;i<mi.length;i++) {
+			ans[i]=new Pair<Item,Integer>(mi[i].getItem(),new Integer(mi[i].getAmount()));
+		}
+        return ans;
 	}
 
 	private String findItems(Site shop, Site supplier) {

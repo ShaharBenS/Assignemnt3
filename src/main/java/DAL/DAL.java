@@ -1425,4 +1425,44 @@ public class DAL {
             throw new NituzException(1,e.getMessage());
         }
     }
+
+    public String[] getAllRoles(int code) throws NituzException {
+        try{
+            Statement stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM RolesInShifts WHERE Code="+code+";" );
+            if(rs.isBeforeFirst()) {
+                LinkedList<String> ans=new LinkedList<String>();
+                while (rs.next()) {
+                    String s = rs.getString("Role");
+                    ans.add(s);
+                }
+                stmt.close();
+                rs.close();
+                return (String[]) ans.toArray();
+            }
+            else {
+                throw new NituzException(1,"user not found");
+            }
+        } catch ( Exception e){
+            throw new NituzException(1,e.getMessage());
+        }
+    }
+
+    public void removeTruck(String plate) throws NituzException {
+        try{
+            Statement stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery( "SELECT Plate FROM Trucks WHERE Plate =" + this.truckplate(plate) +";" );
+            if(rs.isBeforeFirst()) {
+
+                String sql = "DELETE FROM Trucks WHERE Plate = "+ this.truckplate(plate) +";";
+                stmt.executeUpdate(sql);
+                stmt.close();
+                rs.close();
+                return;
+            }
+            throw new NituzException(1,"Truck not found");
+        } catch ( Exception e){
+            throw new NituzException(1,e.getMessage());
+        }
+    }
 }
