@@ -121,7 +121,7 @@ public class SupplierItems {
     public int getCatalogNumber(int itemId, int supId){
         int catalog =0;
         try {
-            String sqlQuary = "SELECT CatalogNumber FROM SupplierItems WHERE SupplierID = '" + supId + "'and ItemID = '" + itemId + "';";
+            String sqlQuary = "SELECT CatalogNumber FROM SupplierItems WHERE SupplierID = '" + supId + "' and ItemID = '" + itemId + "';";
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQuary);
             catalog = rs.getInt(1);
@@ -224,6 +224,33 @@ public class SupplierItems {
         try {
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM SupplierItems where ItemID = " + ItemID + " and ID = "+suppID+";");
+            if (rs.next()) {
+                rs.close();
+                stmt.close();
+                return true;
+            } else return false;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public int getItemIDFromOrderAndCatalogNumber(int supplierID, int catalogItem) {
+        try {
+            stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT ItemID FROM SupplierItems where CatalogNumber = " + catalogItem + " and SupplierID = "+supplierID+";");
+            int itemID = rs.getInt(1);
+            rs.close();
+            stmt.close();
+            return itemID;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public boolean checkIfItemCatalogExists(int item) {
+        try {
+            stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM SupplierItems where CatalogNumber = " + item+";");
             if (rs.next()) {
                 rs.close();
                 stmt.close();

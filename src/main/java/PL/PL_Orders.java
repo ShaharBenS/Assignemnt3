@@ -111,7 +111,7 @@ public class PL_Orders
             return 0;
         }
 
-        boolean Exist = bl.checkExistItemID(item);
+        boolean Exist = bl.checkExistCatalogNumber(item);
         if (Exist)
             return item;
         else {

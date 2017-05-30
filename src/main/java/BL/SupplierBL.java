@@ -353,6 +353,10 @@ public class SupplierBL {
 
     public int getItemIDFromOrderAndCatalogNumber(int order, int catalogItem)
     {
-        return si.getCatalogNumber(this.order.getOrder(order).getSupplierID(),catalogItem);
+        return si.getItemIDFromOrderAndCatalogNumber(this.order.getOrder(order).getSupplierID(),catalogItem);
+    }
+
+    public boolean checkExistCatalogNumber(int item) {
+        return si.checkIfItemCatalogExists(item);
     }
 }
