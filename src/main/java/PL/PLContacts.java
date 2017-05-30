@@ -100,7 +100,7 @@ public class PLContacts {
     //option: 1-add, 0-exist.
     private String getConID(int option, int supID) {
         String conID = "";
-        System.out.println("Please enter contact ID");
+        System.out.println("Please enter contact ID (9 digits)");
         try {
             conID = sc.nextLine();
             if (!(conID.length() == 9)) {
@@ -148,13 +148,13 @@ public class PLContacts {
                 System.out.println("Contact has been added successfully");
             else {
                 System.out.println("ERROR! something went wrong");
-                case31();
+                case3();
             }
 
         } else if (supID != 0 && !conID.equals("")) {
             System.out.println("Please enter contact's full name");
             FullName = sc.nextLine();
-            System.out.println("Please enter contact's phone number");
+            System.out.println("Please enter contact's phone number (10 digits - starts with 05..)");
             phone = sc.nextLine();
             if (checkPhone(phone)) {
                 System.out.println("Please enter contact's e-mail");
@@ -164,19 +164,19 @@ public class PLContacts {
                         System.out.println("Contact has been added successfully");
                     else {
                         System.out.println("ERROR! something went wrong");
-                        case31();
+                        return;
                     }
                 } else {
                     System.out.println("ERROR! invalid mail");
-                    case31();
+                    return;
                 }
             } else {
                 System.out.println("ERROR! invalid phone number");
-                case31();
+                return;
             }
         } else {
             System.out.println("ERROR! something went wrong");
-            case31();
+            return;
         }
     }
 
@@ -228,10 +228,10 @@ public class PLContacts {
                 System.out.println("update successfully");
             } else {
                 System.out.println("ERROR! invalid mail");
-                case321();
+                case32();
             }
         } else
-            case321();
+            case32();
     }
 
     //update phone contact
@@ -247,10 +247,10 @@ public class PLContacts {
                 System.out.println("update successfully");
             } else {
                 System.out.println("ERROR! invalid phone number");
-                case322();
+                case32();
             }
         } else
-            case322();
+            case32();
     }
 
     //update name contact
@@ -266,7 +266,7 @@ public class PLContacts {
             bl.setContact(conID, name, 1);
             System.out.println("update successfully");
         } else
-            case323();
+            case32();
     }
 
     //get contact details.
@@ -283,8 +283,8 @@ public class PLContacts {
             ans += "Phone number: " + con.getPhoneNumber() + "\n";
             ans += "Email: " + con.getEmail() + "\n";
             System.out.println(ans);
-        } else
-            case33();
+        }
+        case3();
     }
 
     //delete contact.
@@ -298,9 +298,9 @@ public class PLContacts {
             if (bl.removeContact(conID, supID)) System.out.println("deleted successfully");
             else {
                 System.out.println("something went wrong");
-                case34();
+                case3();
             }
-        } else case34();
+        } else case3();
     }
 
     private boolean checkPhone(String phone) {
