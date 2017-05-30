@@ -99,7 +99,7 @@ public class PL_Orders
 
     private int getItem(){
         int item = 0;
-        System.out.println("Please enter item ID");
+        System.out.println("Please enter Catalog Number");
         try {
             item = Integer.parseInt(sc.nextLine());
             if (item < 0) {
@@ -257,10 +257,13 @@ public class PL_Orders
     //addItemToOrder
     public void case12() {
         int order = getOrderID();
-        int item, quantity, ans;
+        int catalogItem, quantity, ans;
         //check if the order exist
         if (order != 0) {
-            item = getItem();
+            catalogItem = getItem();
+
+            int item = bl.getItemIDFromOrderAndCatalogNumber(order,catalogItem);
+
             if (item != 0) {
                 quantity = getQuantity();
                 if (quantity != -1) {
@@ -341,10 +344,12 @@ public class PL_Orders
     //updateItemQuantity
     public void case22() {
         int order = getOrderID();
-        int itemNum, quantity;
+        int catalogNumber, quantity;
         //check if the order exist
         if (order != 0) {
-            itemNum = getItem();
+            catalogNumber = getItem();
+            int itemNum = bl.getItemIDFromOrderAndCatalogNumber(order,catalogNumber);
+
             if (itemNum != 0 && bl.checkItemExistInOrder(order, itemNum)) {
                 quantity = getQuantity();
                 if (quantity != -1) {
@@ -411,10 +416,12 @@ public class PL_Orders
     //removeOrderItem
     public void case42() {
         int order = getOrderID();
-        int itemNum;
+        int catalogNumber;
         //check if the order exist
         if (order != 0) {
-            itemNum = getItem();
+            catalogNumber = getItem();
+            int itemNum = bl.getItemIDFromOrderAndCatalogNumber(order,catalogNumber);
+
             if (itemNum != 0 && bl.checkItemExistInOrder(order, itemNum)) {
                 bl.removeOrderItem(order, itemNum);
                 System.out.println("Item from order has been removed successfully");

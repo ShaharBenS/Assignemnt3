@@ -351,4 +351,8 @@ public class SupplierBL {
 
     public int getOrderItemQuantity(int orderID_int, int id){ return OI.getOrderItemQuantity(orderID_int,id);}
 
+    public int getItemIDFromOrderAndCatalogNumber(int order, int catalogItem)
+    {
+        return si.getCatalogNumber(this.order.getOrder(order).getSupplierID(),catalogItem);
+    }
 }

@@ -306,7 +306,6 @@ public class PL_Stock
                         String ans = scanner.nextLine();
                         if(ans.length() != 1) {
                             System.out.println("invalid input! answer must be y / n");
-                            continue;
                         }
                         else {
                             if(ans.equals("y"))
