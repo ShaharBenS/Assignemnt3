@@ -263,7 +263,7 @@ public class Orders {
             while(rs.next())
             {
                 orders.add(new Order(rs.getInt("OrderID"),rs.getInt("ShopID"),rs.getInt("SupplierID"),
-                        new Date(rs.getDate("Date")),rs.getString("ContactID"),rs.getInt("OrderFrequency"),
+                        new Date(rs.getDate("Date")),rs.getString("ContactID"),rs.getInt("OrderFrequency")
                         ));
             }
             Order [] ordersArray = new Order[orders.size()];

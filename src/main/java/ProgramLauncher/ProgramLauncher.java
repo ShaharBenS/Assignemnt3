@@ -42,14 +42,14 @@ public class ProgramLauncher
         Suppliers SUPPLIERS = new Suppliers(conn, CONTACTS);
 
         DAL dal =  new DAL(conn,ITEMS, SUPPLIERS);
+        BL bl =  new BL(dal);
 
         // BL INIT
-        SupplierBL SBL = new SupplierBL(CONTACTS, DISCOUNTS, ITEMS, SUPPLIER_ITEMS, SUPPLIERS, ORDERS, ORDERS_ITEMS,QUANTITIES);
+        SupplierBL SBL = new SupplierBL(CONTACTS, DISCOUNTS, ITEMS, SUPPLIER_ITEMS, SUPPLIERS, ORDERS, ORDERS_ITEMS,QUANTITIES,bl);
         ProductManagement PRODUCT_MANAGEMENT = new ProductManagement(ITEMS, PRICES, QUANTITIES, SBL);
         CategoryManagement CATEGORY_MANAGEMENT = new CategoryManagement(CATEGORIES, ITEMS, PRICES, QUANTITIES);
         PriceManagement PRICE_MANAGEMENT = new PriceManagement(PRICES);
 
-        BL bl =  new BL(dal);
 
         // PL INIT
         //TODO:GAL: redo all

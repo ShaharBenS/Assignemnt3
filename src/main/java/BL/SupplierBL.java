@@ -17,9 +17,10 @@ public class SupplierBL {
     Orders order;
     OrdersItems OI;
     Quantities quantities;
+    BL bl;
     public static int OrderID;
 
-    public SupplierBL(Contacts contacts, Discounts dis, Items item, SupplierItems si, Suppliers sup, Orders order, OrdersItems ordersItems,Quantities quantities) {
+    public SupplierBL(Contacts contacts, Discounts dis, Items item, SupplierItems si, Suppliers sup, Orders order, OrdersItems ordersItems,Quantities quantities,BL bl) {
         this.contacts = contacts;
         this.dis = dis;
         this.item = item;
@@ -28,6 +29,7 @@ public class SupplierBL {
         this.order = order;
         this.OI = ordersItems;
         this.quantities = quantities;
+        this.bl = bl;
     }
 
     public void initOrderID()
@@ -122,7 +124,7 @@ public class SupplierBL {
     }
 
     /* OMRI's FUNCTION */
-    public Pair[] getAllFinalPrices(int shopID)
+    Pair[] getAllFinalPrices(int shopID)
     {
         return OI.getAllFinalPrices(shopID);
     }
@@ -226,13 +228,20 @@ public class SupplierBL {
 
 
     public int addOrder(int supplierId, Date date,int frequency){
-        //TODO: add trasport=  BL.createTransport
         String conID=contacts.getContactID(supplierId);
         Order ord = new Order(OrderID++,BL.shopID,supplierId,date, conID,frequency);
         if(!order.addOrder(ord))
         {
             return -1;
         }
+
+        //TODO: add trasport =  BL.createTransport
+        try{
+            bl.addTransport("Time Need to check from supplier available day on week",
+                    "Need to check what's the format",""+ord.getOrderID());
+        }
+        catch (NituzException ignored){}
+
         return ord.getOrderID();
     }
     
@@ -276,7 +285,15 @@ public class SupplierBL {
         if(disco != 0)
          finalCost = cost - (disco*cost)/100;
         OrderItem orderItem = new OrderItem(orderID,itemID, quantity, finalCost);
-        return OI.addOrderItem(orderItem);
+        boolean ans = OI.addOrderItem(orderItem);
+        //TODO: need to add mission accordingly
+        try{
+            bl.addMission(""+orderID,""+quantity,""+OrderToAdd.getShopID(),
+                    ""+OrderToAdd.getSupplierID(),""+itemID);
+        }
+        catch (NituzException ignored){}
+
+        return ans;
     }
     public boolean setOrderArrivalDate(String line)
     {
