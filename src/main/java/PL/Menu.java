@@ -682,9 +682,7 @@ public class Menu {
                 }
             });
             menues[2].addSon(l4);
-            MenuOP l3=new MenuOP("Watch All open Orders",()->{
-                System.out.println();//TODO: omri&shahar:add the needed message
-            });
+        MenuOP l3=new MenuOP("Watch All open Orders", pl_ord::ordersWithoutDelivery);
             menues[2].addSon(l3);
         menues[3]=new MenuOP("storekeeper");
         MenuOP st1= new MenuOP("Stock Management",()->{pl_stock.start();});

@@ -359,4 +359,13 @@ public class SupplierBL {
     public boolean checkExistCatalogNumber(int item) {
         return si.checkIfItemCatalogExists(item);
     }
+
+    public Order[] getOrderWithoutDelivery()
+    {
+        Order [] orders = order.getOrderWithoutDelivery();
+        for(Order o: orders){
+            o.setOrderItems(OI.getOrderItems(o.getOrderID()));
+        }
+        return orders;
+    }
 }
