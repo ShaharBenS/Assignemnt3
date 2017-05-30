@@ -221,9 +221,6 @@ public class ProductManagement {
     }
 
 
-    //TODO:shahar: its a random TODO - u need to make sure the thread will be active only for מחסנאי and manager
-
-
     public boolean updateWeight(String line)
     {
         String[] prop = line.split("\\s+");

@@ -251,4 +251,28 @@ public class Orders {
             return 0;
         }
     }
+
+
+    public Order[] getOrderWithoutDelivery()
+    {
+        try {
+            Statement stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Orders WHERE Orders.DeliveryMethod = 'without delivery';");
+
+            List<Order> orders = new ArrayList<>();
+            while(rs.next())
+            {
+                orders.add(new Order(rs.getInt("OrderID"),rs.getInt("ShopID"),rs.getInt("SupplierID"),
+                        new Date(rs.getDate("Date")),rs.getString("ContactID"),rs.getInt("OrderFrequency"),
+                        ));
+            }
+            Order [] ordersArray = new Order[orders.size()];
+            orders.toArray(ordersArray);
+            return ordersArray;
+
+        } catch (Exception e)
+        {
+            return null;
+        }
+    }
 }

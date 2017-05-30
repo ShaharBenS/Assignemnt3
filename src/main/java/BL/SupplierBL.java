@@ -355,4 +355,13 @@ public class SupplierBL {
     {
         return si.getCatalogNumber(this.order.getOrder(order).getSupplierID(),catalogItem);
     }
+
+    public Order[] getOrderWithoutDelivery()
+    {
+        Order [] orders = order.getOrderWithoutDelivery();
+        for(Order o: orders){
+            o.setOrderItems(OI.getOrderItems(o.getOrderID()));
+        }
+        return orders;
+    }
 }

@@ -502,4 +502,12 @@ public class PL_Orders
         }
     }
 
+    void ordersWithoutDelivery()
+    {
+        Order [] orders = bl.getOrderWithoutDelivery();
+        if(orders == null){return;}
+        for (Order order : orders) {
+            System.out.println(order);
+        }
+    }
 }
