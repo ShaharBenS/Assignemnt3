@@ -1357,4 +1357,72 @@ public class DAL {
             throw new NituzException(1,e.getMessage());
         }
     }
+
+
+    public Worker[] getAllWorkers(int workPlace) throws NituzException {
+        try{
+            Statement stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM Workers WHERE WorkPlace =" + workPlace +";" );
+            if(rs.isBeforeFirst()) {
+                LinkedList<Worker> ans=new LinkedList<Worker>();
+                while (rs.next()) {
+                    Worker w = new Worker(rs.getInt("ID"), rs.getString("Lname"), rs.getString("Fname"), rs.getString("startDate"), rs.getString("TermsOfEmployment"),
+                            rs.getInt("Salary"), rs.getString("Role"), rs.getInt("BankNumber"), rs.getInt("BankAccountNumber"), workPlace);
+                    ans.add(w);
+                }
+                stmt.close();
+                rs.close();
+                return (Worker[]) ans.toArray();
+            }
+            else {
+                throw new NituzException(1,"user not found");
+            }
+        } catch ( Exception e){
+            throw new NituzException(1,e.getMessage());
+        }
+    }
+
+    public Bank[] getAllBanks() throws NituzException {
+        try{
+            Statement stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM Banks;" );
+            if(rs.isBeforeFirst()) {
+                LinkedList<Bank> ans=new LinkedList<Bank>();
+                while (rs.next()) {
+                    Bank b = new Bank(rs.getString("BankName"),rs.getInt("BankNumber"));
+                    ans.add(b);
+                }
+                stmt.close();
+                rs.close();
+                return (Bank[]) ans.toArray();
+            }
+            else {
+                throw new NituzException(1,"user not found");
+            }
+        } catch ( Exception e){
+            throw new NituzException(1,e.getMessage());
+        }
+    }
+
+    public String[] getAllRoles() throws NituzException {
+        try{
+            Statement stmt = c.createStatement();
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM Roles;" );
+            if(rs.isBeforeFirst()) {
+                LinkedList<String> ans=new LinkedList<String>();
+                while (rs.next()) {
+                    String s = rs.getString("Role");
+                    ans.add(s);
+                }
+                stmt.close();
+                rs.close();
+                return (String[]) ans.toArray();
+            }
+            else {
+                throw new NituzException(1,"user not found");
+            }
+        } catch ( Exception e){
+            throw new NituzException(1,e.getMessage());
+        }
+    }
 }

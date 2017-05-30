@@ -23,4 +23,9 @@ public class Bank {
 	public void setBankNumber(int BankNumber) {
 		this.bankNumber = BankNumber;
 	}
+
+	@Override
+	public String toString() {
+		return "Bank Number: "+this.bankNumber+" Bank Name: "+this.bankName;
+	}
 }

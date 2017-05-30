@@ -119,7 +119,11 @@ public class Menu {
             });
             t1.addSon(t13);
             MenuOP t14=new MenuOP("Show All Drivers",()->{
-                System.out .println();// TODO: Ofir & Liam : add needed function
+                try {
+                    System.out .println(bl.getAllWorkers());
+                } catch (NituzException e) {
+                    e.printStackTrace();
+                }
             });
             t1.addSon(t14);
             menues[0].addSon(t1);
@@ -169,7 +173,12 @@ public class Menu {
                     java.lang.String date=this.scanner.nextLine();
                     System.out.println("Please Insert the time of the Shift:");
                     java.lang.String time=this.scanner.nextLine();
-                    System.out.println();//TODO: ofir&liam: add the needed function
+                    try {
+                        Shift s=bl.getShift(date,time);
+                        System.out.println(bl.showPossibleShifts(s));
+                    } catch (NituzException e) {
+                        e.printStackTrace();
+                    }
                 });
                 t24.addSon(t241);
                 MenuOP t242=new MenuOP("Add Workers to Shift",()->{
@@ -329,7 +338,11 @@ public class Menu {
                 });
                 t3.addSon(t32);
                 MenuOP t33=new MenuOP ("Show All Banks",()->{
-                    System.out.println();//TODO: ofir & liam: add needed function
+                    try {
+                        System.out.println(bl.getAllBanks());//TODO: ofir & liam: add needed function
+                    } catch (NituzException e) {
+                        e.printStackTrace();
+                    }
                 });
                 t3.addSon(t33);
             menues[0].addSon(t3);
@@ -367,7 +380,11 @@ public class Menu {
                 });
                 t4.addSon(t42);
                 MenuOP t43=new MenuOP("Show Roles",()->{
-                    System.out.println();//TODO: Ofir & Liam: add needed function
+                    try {
+                        System.out.println(bl.getAllRoles());
+                    } catch (NituzException e) {
+                        e.printStackTrace();
+                    }
                 });
                 t4.addSon(t43);
             menues[0].addSon(t4);
@@ -462,7 +479,11 @@ public class Menu {
             });
             s1.addSon(s13);
             MenuOP s14=new MenuOP("Show All Workers",()->{
-                System.out .println();// TODO: Ofir & Liam : add needed function
+                try {
+                    System.out .println(bl.getAllWorkers());
+                } catch (NituzException e) {
+                    e.printStackTrace();
+                }
             });
             s1.addSon(s14);
         menues[1].addSon(s1);
@@ -654,7 +675,11 @@ public class Menu {
             l2.addSon(l25);
             menues[2].addSon(l2);
             MenuOP l4=new MenuOP("Watch all drivers",()->{
-                System.out.println();//TODO: Ofir & Liam: add the needed function
+                try {
+                    System.out .println(bl.getAllWorkers());
+                } catch (NituzException e) {
+                    e.printStackTrace();
+                }
             });
             menues[2].addSon(l4);
             MenuOP l3=new MenuOP("Watch All open Orders",()->{

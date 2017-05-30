@@ -1165,4 +1165,31 @@ public class BL {
 		}
 		catch(Exception e){throw new NituzException(1, "manager is not in the same branch as the shift!");}
 	}
+
+	public String getAllWorkers() throws NituzException {
+		String ans="";
+		Worker w[]=dal.getAllWorkers(getWorkPlace());
+		for ( int i=0;i<w.length; i++) {
+			ans+=w[i].toString()+"\n";
+		}
+		return ans;
+	}
+
+	public String getAllBanks() throws NituzException {
+		String ans="";
+		Bank b[]=dal.getAllBanks();
+		for ( int i=0;i<b.length; i++) {
+			ans+=b[i].toString()+"\n";
+		}
+		return ans;
+	}
+
+	public String getAllRoles() throws NituzException {
+		String ans="";
+		String r[]=dal.getAllRoles();
+		for ( int i=0;i<r.length; i++) {
+			ans+=r[i]+"\n";
+		}
+		return ans;
+	}
 }
