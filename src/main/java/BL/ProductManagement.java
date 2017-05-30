@@ -155,6 +155,30 @@ public class ProductManagement {
         }
     }
 
+
+    //NOTE: THIS FUNCTION REMOVE AMOUNT FROM THE STORE AS WELL !
+    public boolean addDefects(String line) {
+        String[] prop = line.split("\\s+");
+        if (prop.length != 2) return false;
+        try {
+            int id = Integer.parseInt(prop[0]);
+            int addAmount = Integer.parseInt(prop[1]);
+            Quantity itemQuantity = QUANTITIES.getQuantity(id,BL.shopID);
+            int defects = itemQuantity.getDefects();
+            int warehouse = itemQuantity.getWarehouse();
+            if(itemQuantity == null) return false;
+            if(warehouse-addAmount<0)return  false;
+            boolean ans = updateItemAmountInWarehouse("" + id + " " + (warehouse - addAmount));
+            if (!ans) return false;
+            ans = QUANTITIES.updateDefects(id, addAmount+defects);
+            return ans;
+
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
     public boolean updateOrderAmount(String line){
         String[] prop = line.split("\\s+");
         if (prop.length != 2) return false;

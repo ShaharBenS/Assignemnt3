@@ -297,6 +297,31 @@ public class PL_Stock
                             "[Arriving Order ID] [Arrival Date] ** Date: DD.MM.YYYY **\n");
                     prop = scanner.nextLine();
                     printUpdate(SBL.setOrderArrivalDate(prop));
+                    boolean defectItem = true;
+                    while(defectItem)
+                    {
+                        System.out.println("Is there any item with defect quantity? (y/n)");
+                        String ans = scanner.nextLine();
+                        if(ans.length() != 1) {
+                            System.out.println("invalid input! answer must be y / n");
+                            continue;
+                        }
+                        else {
+                            if(ans.equals("y"))
+                            {
+                                System.out.print("Enter properties in the following structure:\n" +
+                                        "[Item ID] [Defect Quantity]");
+                                String prop2 = scanner.nextLine();
+                                printUpdate(ProductM.addDefects(prop2));
+
+                            }
+                            else //ans is no
+                            {
+                                defectItem = false;
+                            }
+                        }
+                    }
+
                     break;
                 case 5:
                     System.out.print("Enter properties in the following structure:\n" +
