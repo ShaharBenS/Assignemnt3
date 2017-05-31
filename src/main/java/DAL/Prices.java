@@ -55,8 +55,8 @@ public class Prices
             p_stmt.setInt(1,price.getItemID());
             p_stmt.setDouble(2,price.getSell_price());
             p_stmt.setInt(3,price.getPerecentage());
-            p_stmt.setDate(4,price.getStart() == null ? null : price.getStart().toSQLdate());
-            p_stmt.setDate(5, price.getEnd() == null ? null : price.getEnd().toSQLdate());
+            p_stmt.setString(4,price.getStart() == null ? null : price.getStart().toString());
+            p_stmt.setString(5, price.getEnd() == null ? null : price.getEnd().toString());
             p_stmt.executeUpdate();
 
             conn.commit();

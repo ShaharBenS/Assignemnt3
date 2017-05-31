@@ -261,6 +261,49 @@ public class ProgramLauncher
                     "with delivery", "Sunday", "plat-earth"));
 
 
+
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                        " VALUES (550000001, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Transport Center', 100000, 5, 55001)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                        " VALUES (550000002, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Storekeeper', 100000, 5, 55002)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                        " VALUES (550000003, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Shops', 100000, 5, 55003)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                        " VALUES (550000004, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Shop Manager', 100000, 5, 55004)";
+                stmt.executeUpdate(sql);
+
+
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                        " VALUES (550000005, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Transport Center', 200000, 5, 55005)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                        " VALUES (550000006, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Storekeeper', 200000, 5, 55006)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                        " VALUES (550000007, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Shops', 200000, 5, 55007)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                        " VALUES (550000008, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Shop Manager', 200000, 5, 55008)";
+                stmt.executeUpdate(sql);
+
+
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                        " VALUES (550000009, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Transport Center', 300000, 5, 55009)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                        " VALUES (550000010, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Storekeeper', 300000, 5, 55010)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                        " VALUES (550000011, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Shops', 300000, 5, 55011)";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                        " VALUES (550000012, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Shop Manager', 300000, 5, 55012)";
+                stmt.executeUpdate(sql);
+                conn.commit();
+
             CONTACTS.addContact(new Contact("101010101", 100000, "Geula Stone",
                     "0523614498", "a@a.a"));
 
@@ -303,66 +346,139 @@ public class ProgramLauncher
             DISCOUNTS.addDiscount(new Discount(300000, 333333, 20, 30));
             DISCOUNTS.addDiscount(new Discount(200000, 333333, 20, 40));
 
-            int[] shopID = new int[]{0,0,0,0};
+            int SHOPID = 0;
 
-            ORDERS.addOrder(new Order(1, shopID[0], 200000, new Date(new java.util.Date()),  "202020202", 0));
-            ORDERS.addOrder(new Order(2, shopID[1], 300000, new Date(new java.util.Date()),  "303030303", 1));
-            ORDERS.addOrder(new Order(3, shopID[2], 100000, new Date(new java.util.Date()),  "101010101", 2));
-            ORDERS.addOrder(new Order(4, shopID[3], 300000, new Date(new java.util.Date()),  "303030303", 3));
+                ORDERS.addOrder(new Order(1, SHOPID, 200000, new Date(new java.util.Date()),  "202020202", 0));
+                ORDERS.addOrder(new Order(2, SHOPID, 300000, new Date(new java.util.Date()),  "303030303", 1));
+                ORDERS.addOrder(new Order(3, SHOPID, 100000, new Date(new java.util.Date()),  "101010101", 2));
 
 
-            ORDERS_ITEMS.addOrderItem(new OrderItem(1, 111111, 30, 50.0));
-            ORDERS_ITEMS.addOrderItem(new OrderItem(2, 222222, 40, 10));
-            ORDERS_ITEMS.addOrderItem(new OrderItem(3, 333333, 30, 60.0));
-            ORDERS_ITEMS.addOrderItem(new OrderItem(4, 444444, 40, 10));
-            ORDERS_ITEMS.addOrderItem(new OrderItem(1, 555555, 30, 22.5));
-            ORDERS_ITEMS.addOrderItem(new OrderItem(2, 666666, 40, 10));
-            ORDERS_ITEMS.addOrderItem(new OrderItem(3, 777777, 30, 32.5));
-            ORDERS_ITEMS.addOrderItem(new OrderItem(4, 888888, 40, 10));
-            ORDERS_ITEMS.addOrderItem(new OrderItem(1, 999999, 30, 42.5));
-            ORDERS_ITEMS.addOrderItem(new OrderItem(2, 101010, 40, 10));
-            ORDERS_ITEMS.addOrderItem(new OrderItem(3, 202020, 30, 12.5));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(3, 111111, 20, 50.0));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(3, 222222, 30, 10));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(3, 333333, 80, 60.0));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(3, 444444, 60, 10));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(3, 555555, 60, 22.5));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(3, 666666, 70, 10));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(3, 777777, 80, 32.5));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(3, 888888, 110, 10));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(3, 999999, 150, 42.5));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(3, 101010, 130, 10));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(3, 202020, 120, 12.5));
 
-            QUANTITIES.addItemQuantity(new Quantity(111111, shopID[0],"SHELF 2-A", 0,
-                    10, 10, 0, 30));
-            QUANTITIES.addItemQuantity(new Quantity(222222, shopID[0],"SHELF 2-B", 0,
-                    20, 10, 0, 12));
-            QUANTITIES.addItemQuantity(new Quantity(333333, shopID[1],"SHELF 2-C", 2,
-                    30, 10, 30, 63));
-            QUANTITIES.addItemQuantity(new Quantity(444444, shopID[1],"SHELF 2-D", 0,
-                    40, 20, 20, 80));
-            QUANTITIES.addItemQuantity(new Quantity(555555, shopID[2],"SHELF 2-E", 5,
-                    50, 20, 10, 10));
-            QUANTITIES.addItemQuantity(new Quantity(666666, shopID[2],"SHELF 2-F", 0,
-                    60, 30, 10, 13));
-            QUANTITIES.addItemQuantity(new Quantity(777777, shopID[3],"SHELF 2-G", 1,
-                    70, 30, 10, 50));
-            QUANTITIES.addItemQuantity(new Quantity(888888, shopID[3],"SHELF 2-H", 0,
-                    80, 40, 30, 90));
-            QUANTITIES.addItemQuantity(new Quantity(999999, shopID[0],"SHELF 2-I", 0,
-                    90, 40, 60, 60));
-            QUANTITIES.addItemQuantity(new Quantity(101010, shopID[1],"SHELF 2-J", 0,
-                    100, 50, 30, 30));
-            QUANTITIES.addItemQuantity(new Quantity(202020, shopID[2],"SHELF 2-K", 0,
-                    110, 50, 10, 50));
+                for(int i=1; i<=9; i++)
+                {
+                    ORDERS_ITEMS.addOrderItem(new OrderItem(1, 111111*i, 10*i, 6*i));
+                    ORDERS_ITEMS.addOrderItem(new OrderItem(2, 111111*i, 13*i, 11*i));
+                }
 
-            PRICES.addItemPrice(new Price(111111, 20.5, 0, null, null));
-            PRICES.addItemPrice(new Price(222222, 30.5, 0, null, null));
-            PRICES.addItemPrice(new Price(333333, 50.5, 0, null, null));
-            PRICES.addItemPrice(new Price(444444, 60.5, 0, null, null));
-            PRICES.addItemPrice(new Price(555555, 70.5, 30,
-                    new Date(2017, 12, 10), new Date(2017, 12, 30)));
-            PRICES.addItemPrice(new Price(666666, 80.5, 20,
-                    new Date(2017, 4, 10), new Date(2017, 4, 16)));
-            PRICES.addItemPrice(new Price(777777, 90.5, 10,
-                    new Date(2017, 3, 10), new Date(2017, 3, 14)));
-            PRICES.addItemPrice(new Price(888888, 100.5, 0, null, null));
-            PRICES.addItemPrice(new Price(999999, 200.5, 0, null, null));
-            PRICES.addItemPrice(new Price(101010, 56.5, 0, null, null));
-            PRICES.addItemPrice(new Price(202020, 23.5, 0, null, null));
+                QUANTITIES.addItemQuantity(new Quantity(111111, SHOPID,"SHELF 2-A", 10,
+                        10, 10, 0, 30));
+                QUANTITIES.addItemQuantity(new Quantity(222222, SHOPID,"SHELF 2-B", 10,
+                        20, 10, 0, 12));
+                QUANTITIES.addItemQuantity(new Quantity(333333, SHOPID,"SHELF 2-C", 20,
+                        30, 10, 30, 63));
+                QUANTITIES.addItemQuantity(new Quantity(444444, SHOPID,"SHELF 2-D", 0,
+                        40, 20, 20, 80));
+                QUANTITIES.addItemQuantity(new Quantity(555555, SHOPID,"SHELF 2-E", 0,
+                        50, 20, 10, 10));
+                QUANTITIES.addItemQuantity(new Quantity(666666, SHOPID, "SHELF 2-F", 0,
+                        60, 30, 10, 13));
+                QUANTITIES.addItemQuantity(new Quantity(777777, SHOPID,"SHELF 2-G", 0,
+                        70, 30, 10, 50));
+                QUANTITIES.addItemQuantity(new Quantity(888888, SHOPID,"SHELF 2-H", 0,
+                        80, 40, 30, 90));
+                QUANTITIES.addItemQuantity(new Quantity(999999, SHOPID,"SHELF 2-I", 0,
+                        90, 40, 60, 60));
+                QUANTITIES.addItemQuantity(new Quantity(101010, SHOPID,"SHELF 2-J", 0,
+                        100, 50, 30, 30));
+                QUANTITIES.addItemQuantity(new Quantity(202020, SHOPID,"SHELF 2-K", 0,
+                        110, 50, 10, 50));
 
-            ORDERS.setArrivalDate(3, new Date(new java.util.Date()));
-            ORDERS.setArrivalDate(4, new Date(new java.util.Date()));
+                PRICES.addItemPrice(new Price(111111, 20.5, 0, null, null));
+                PRICES.addItemPrice(new Price(222222, 30.5, 0, null, null));
+                PRICES.addItemPrice(new Price(333333, 50.5, 0, null, null));
+                PRICES.addItemPrice(new Price(444444, 60.5, 0, null, null));
+                PRICES.addItemPrice(new Price(555555, 70.5, 30,
+                        new Date(2017, 12, 10), new Date(2017, 12, 30)));
+                PRICES.addItemPrice(new Price(666666, 80.5, 20,
+                        new Date(2017, 4, 10), new Date(2017, 4, 16)));
+                PRICES.addItemPrice(new Price(777777, 90.5, 10,
+                        new Date(2017, 3, 10), new Date(2017, 3, 14)));
+                PRICES.addItemPrice(new Price(888888, 100.5, 0, null, null));
+                PRICES.addItemPrice(new Price(999999, 200.5, 0, null, null));
+                PRICES.addItemPrice(new Price(101010, 56.5, 0, null, null));
+                PRICES.addItemPrice(new Price(202020, 23.5, 0, null, null));
+
+                ORDERS.setArrivalDate(3, new Date(new java.util.Date()));
+
+
+
+
+                SHOPID = 1;
+
+
+                ORDERS.addOrder(new Order(4, SHOPID, 200000, new Date(new java.util.Date()),  "202020202", 0));
+                ORDERS.addOrder(new Order(5, SHOPID, 300000, new Date(new java.util.Date()),  "303030303", 1));
+                ORDERS.addOrder(new Order(6, SHOPID, 100000, new Date(new java.util.Date()),  "101010101", 2));
+
+
+                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 111111, 20, 50.0));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 222222, 30, 10));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 333333, 80, 60.0));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 444444, 60, 10));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 555555, 60, 22.5));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 666666, 70, 10));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 777777, 80, 32.5));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 888888, 110, 10));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 999999, 150, 42.5));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 101010, 130, 10));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 202020, 120, 12.5));
+
+                for(int i=1; i<=9; i++)
+                {
+                    ORDERS_ITEMS.addOrderItem(new OrderItem(1, 111111*i, 9*i, 21*i));
+                    ORDERS_ITEMS.addOrderItem(new OrderItem(3, 111111*i, 2*i, 5*i));
+                }
+
+                QUANTITIES.addItemQuantity(new Quantity(111111, SHOPID,"SHELF 2-A", 10,
+                        10, 10, 0, 30));
+                QUANTITIES.addItemQuantity(new Quantity(222222, SHOPID,"SHELF 2-B", 10,
+                        20, 10, 0, 12));
+                QUANTITIES.addItemQuantity(new Quantity(333333, SHOPID,"SHELF 2-C", 20,
+                        30, 10, 30, 63));
+                QUANTITIES.addItemQuantity(new Quantity(444444, SHOPID,"SHELF 2-D", 30,
+                        10, 20, 20, 80));
+                QUANTITIES.addItemQuantity(new Quantity(555555, SHOPID,"SHELF 2-E", 0,
+                        50, 20, 10, 10));
+                QUANTITIES.addItemQuantity(new Quantity(666666, SHOPID, "SHELF 2-F", 20,
+                        40, 30, 10, 13));
+                QUANTITIES.addItemQuantity(new Quantity(777777, SHOPID,"SHELF 2-G", 0,
+                        70, 30, 10, 50));
+                QUANTITIES.addItemQuantity(new Quantity(888888, SHOPID,"SHELF 2-H", 15,
+                        65, 40, 30, 90));
+                QUANTITIES.addItemQuantity(new Quantity(999999, SHOPID,"SHELF 2-I", 0,
+                        90, 40, 60, 60));
+                QUANTITIES.addItemQuantity(new Quantity(101010, SHOPID,"SHELF 2-J", 0,
+                        100, 50, 30, 30));
+                QUANTITIES.addItemQuantity(new Quantity(202020, SHOPID,"SHELF 2-K", 0,
+                        110, 50, 10, 50));
+
+                PRICES.addItemPrice(new Price(111111, 10.5, 0, null, null));
+                PRICES.addItemPrice(new Price(222222, 10.5, 0, null, null));
+                PRICES.addItemPrice(new Price(333333, 10.5, 0, null, null));
+                PRICES.addItemPrice(new Price(444444, 10.5, 0, null, null));
+                PRICES.addItemPrice(new Price(555555, 10.5, 30,
+                        new Date(2017, 12, 10), new Date(2017, 12, 30)));
+                PRICES.addItemPrice(new Price(666666, 10.5, 20,
+                        new Date(2017, 4, 10), new Date(2017, 4, 16)));
+                PRICES.addItemPrice(new Price(777777, 10.5, 10,
+                        new Date(2017, 3, 10), new Date(2017, 3, 14)));
+                PRICES.addItemPrice(new Price(888888, 10.5, 0, null, null));
+                PRICES.addItemPrice(new Price(999999, 10.5, 0, null, null));
+                PRICES.addItemPrice(new Price(101010, 10.5, 0, null, null));
+                PRICES.addItemPrice(new Price(202020, 10.5, 0, null, null));
+
+                ORDERS.setArrivalDate(2, new Date(new java.util.Date()));
 
 
             } catch (SQLException e) {
