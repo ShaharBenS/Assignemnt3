@@ -1498,4 +1498,14 @@ public class DAL {
             throw new NituzException(1,e.getMessage());
         }
     }
+
+    public void zeroiesTransport(int orderID) throws NituzException {
+        try {
+            Statement stmt = c.createStatement();
+            String sql = "UPDATE Missions SET actualQ= 0 WHERE  Missions.Transport=" + orderID ;
+            stmt.executeUpdate(sql);
+        } catch (Exception e) {
+            throw new NituzException(0,"unknown error:"+e.getMessage());
+        }
+    }
 }
