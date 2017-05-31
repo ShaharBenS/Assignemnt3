@@ -191,8 +191,10 @@ public class PL_Stock
             {
                 case 1:
                     CATEGORY_UPDATE_MENU();
+                    break;
                 case 2:
                     ITEM_UPDATE_MENU();
+                    break;
                 case 3:
                     return;
 
