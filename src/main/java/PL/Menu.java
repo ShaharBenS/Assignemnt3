@@ -569,6 +569,7 @@ public class Menu {
                     e.printStackTrace();
                 }
             });
+            l2.addSon(l27);
             MenuOP l26=new MenuOP("Assign Truck and Driver",()->{
                 System.out.println("Please insert the id of the transport you wants Assign Truck and driver to:");
                 java.lang.String id=scanner.nextLine();

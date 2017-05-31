@@ -1226,9 +1226,7 @@ public class BL {
 	/*
 	    If null returned -> no such transport
 	 */
-    public Transport getTransport(int id)
-    {
-        //TODO : gal
-        return null;
+    public Transport getTransport(int id) throws NituzException {
+        return dal.getTransport(id);
     }
 }
