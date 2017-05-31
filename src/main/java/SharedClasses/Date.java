@@ -89,4 +89,20 @@ public class Date
         cal.set( Calendar.DATE, day );
         return new java.sql.Date( cal.getTimeInMillis() );
     }
+
+    public String toStringWithBackslash()
+    {
+        String date = "";
+        if(day < 10)
+        {
+            date = date + "0";
+        }
+        date = date + day + "/";
+        if(month < 10)
+        {
+            date = date + "0";
+        }
+        date = date + month + "/"+year;
+        return date;
+    }
 }
