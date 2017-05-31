@@ -1221,9 +1221,9 @@ public class BL {
 		return true;
 	}
 
-    public boolean getTransport(int id)
+    public Transport getTransport(int id)
     {
         //TODO : gal
-        return true;
+        return null;
     }
 }
