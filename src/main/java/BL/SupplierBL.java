@@ -375,17 +375,13 @@ public class SupplierBL {
     }
     public boolean removeOrder(int orderID)
     {
-        boolean ans = order.removeOrder(orderID);
-        //TODO:GAL : delete the transport...
-        return ans;
+        return order.removeOrder(orderID);
 
     }
     
     public boolean removeOrderItem(int orderID, int itemID)
     {
-    	boolean ans = OI.removeOrderItem(orderID,itemID);
-    	//TODO:GAL : remove the mission
-        return ans;
+        return OI.removeOrderItem(orderID,itemID);
     }
 
     public boolean checkIfItemExistInSupItems(int itemID , int suppID){

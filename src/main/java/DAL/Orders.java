@@ -257,13 +257,14 @@ public class Orders {
     {
         try {
             Statement stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Orders WHERE Orders.DeliveryMethod = 'without delivery';");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Orders CROSS JOIN Suppliers " +
+                    "WHERE Suppliers.ID = Orders.SupplierID AND Suppliers.DeliveryMethod = 'without delivery';");
 
             List<Order> orders = new ArrayList<>();
             while(rs.next())
             {
                 orders.add(new Order(rs.getInt("OrderID"),rs.getInt("ShopID"),rs.getInt("SupplierID"),
-                        new Date(rs.getDate("Date")),rs.getString("ContactID"),rs.getInt("OrderFrequency")
+                        new Date(rs.getString("Date")),rs.getString("ContactID"),rs.getInt("OrderFrequency")
                         ));
             }
             Order [] ordersArray = new Order[orders.size()];

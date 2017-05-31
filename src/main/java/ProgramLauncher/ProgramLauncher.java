@@ -251,7 +251,7 @@ public class ProgramLauncher
 
 
             SUPPLIERS.addSupplier(new Supplier(100000, "TNUVA", 1, 1, 15, "check",
-                    "with delivery", "Sunday", "netivot"));
+                    "without delivery", "Sunday", "netivot"));
             SUPPLIERS.addSupplier(new Supplier(200000, "TARA", 2, 2, 16, "check",
                     "with delivery", "Sunday", "shfaram"));
             SUPPLIERS.addSupplier(new Supplier(300000, "MOTHER-EARTH", 3, 3, 17, "check",
@@ -379,8 +379,10 @@ public class ProgramLauncher
             {
                 try {
                     Thread.sleep(2000);
-                } catch (InterruptedException e) {
-
+                } catch (InterruptedException e) {}
+                if(!continuePeriodCheck)
+                {
+                    break;
                 }
             }
             while(continuePeriodCheck){

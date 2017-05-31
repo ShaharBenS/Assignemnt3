@@ -387,13 +387,10 @@ public class PL_Orders
                     break;
                 case 3:
                     //back
-                    orderCase();
                     return;
 
                 default:
                     System.out.println("ERROR! wrong operation");
-                    orderCase();
-                    break;
             }
         } catch (Exception e) {
             System.out.println("ERROR! not a number");
