@@ -30,7 +30,7 @@ public class Menu {
         this.scanner = new Scanner(System.in);
         this.menues=new MenuOP[5]; // 0. Director of Personnel Transport Center 1. Director of Personnel shops 2. Director of logistics 3. storekeeper 4. Shop manager
         menues[0]=new MenuOP("Director of Personnel Transport Center");
-            MenuOP t1=new MenuOP("Workers Control");
+            MenuOP t1=new MenuOP("Drivers Control");
             MenuOP t11=new MenuOP("Add Driver", ()->{
                 System.out.println("Please insert the new driver ID:");
                 java.lang.String id=scanner.nextLine();
@@ -752,14 +752,22 @@ public class Menu {
         while (!exit ) {
             if (!signed) {
                 try {
-                    System.out.println("Please enter your ID: ");
+                    System.out.println("Please enter your ID os 'q' to exit: ");
                     System.out.print("#>");
                     java.lang.String s = this.scanner.nextLine();
-                    role=bl.setUser(s);
-                    signed = true;
-                    if(role == 4 || role == 5) {ProgramLauncher.continuePeriodCheck = true;ProgramLauncher.roleSet = true;}
+                    if (s.contentEquals("q")){
+                        exit=true;
+                    }
+                    else {
+                        role = bl.setUser(s);
+                        signed = true;
+                        if (role == 4 || role == 5) {
+                            ProgramLauncher.continuePeriodCheck = true;
+                            ProgramLauncher.roleSet = true;
+                        }
 
-                    System.out.println("Welcome to the Super-Li computer System.");
+                        System.out.println("Welcome to the Super-Li computer System.");
+                    }
                 } catch (NituzException e) {
                     System.out.println(e);
                 }
@@ -770,13 +778,12 @@ public class Menu {
                     bl.logOut();
                     ProgramLauncher.continuePeriodCheck = false;
                     ProgramLauncher.roleSet = true;
-                    exit = true;
                 }
                 else{
                     this.menues[role-1].execute();
                     bl.logOut();
-                    exit = true;
                 }
+                signed = false;
             }
         }
     }
