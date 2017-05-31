@@ -1216,8 +1216,10 @@ public class BL {
 	 */
 	public boolean clearTransport(int orderID) throws NituzException
 	{
-		//TODO : gal
-
-		return true;
+		if(dal.isTransport(orderID)){
+			dal.zeroiesTransport(orderID);
+			return true;
+		}
+		return false;
 	}
 }
