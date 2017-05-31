@@ -1221,6 +1221,9 @@ public class BL {
 		return true;
 	}
 
+	/*
+	    If null returned -> no such transport
+	 */
     public Transport getTransport(int id)
     {
         //TODO : gal

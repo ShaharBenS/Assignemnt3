@@ -350,8 +350,42 @@ public class SupplierBL {
                 }
 
                 Transport transport = bl.getTransport(id);
+                if(transport == null) {return false;}
+                Date arrivalDate = new Date(transport.getDate());
+                String time = transport.getLeavTime();
+                long arrivalDateMili = arrivalDate.toSQLdate().getTime();
+                if(arrivalDateMili <= days)
+                {
+                    int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+                    String hourArrivedS = time.split(":")[0];
+                    int hourArrived = hourArrivedS.length() == 1 ?
+                            Integer.parseInt(String.valueOf(hourArrivedS.charAt(1))) :
+                            Integer.parseInt(hourArrivedS);
+                    if(hourArrived <= hour)
+                    {
+                        //Order arrived!
+                        if(!order.setArrivalDate(id,arrivalDate))
+                        {
+                            return false;
+                        }
+                        OrderItem [] orderItems = OI.getOrderItems(id);
+                        for (OrderItem orderItem : orderItems) {
+                            int item_id = orderItem.getItemID();
+                            Quantity quantity = quantities.getQuantity(item_id,BL.shopID);
+                            if(quantity!=null)
+                            {
+                                quantities.updateWarehouse(item_id,quantity.getWarehouse() + orderItem.getQuantity());
+                            }
+                        }
+                        return true;
 
-                if(!order.setArrivalDate(id,a_date))
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
                 {
                     return false;
                 }
@@ -360,16 +394,7 @@ public class SupplierBL {
             {
                 return false;
             }
-            OrderItem [] orderItems = OI.getOrderItems(id);
-            for (OrderItem orderItem : orderItems) {
-                int item_id = orderItem.getItemID();
-                Quantity quantity = quantities.getQuantity(item_id,BL.shopID);
-                if(quantity!=null)
-                {
-                    quantities.updateWarehouse(item_id,quantity.getWarehouse() + orderItem.getQuantity());
-                }
-            }
-            return true;
+
         }
         catch (Exception e)
         {
