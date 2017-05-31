@@ -5,6 +5,7 @@ import SharedClasses.*;
 import SharedClasses.Driver;
 import SharedClasses.Worker;
 
+import javax.management.relation.Role;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.LinkedList;
@@ -23,7 +24,7 @@ public class DAL {
     public boolean selectTruckTotransport(int t, String s) throws NituzException {
         try {
             if (!isSignTruckTotransport(t,s)) {
-                throw new NituzException(3, "Truck isn't signed for this transport");
+                this.signTruckTotransport(t,s);
             }
             Statement stmt = c.createStatement();
             String sql;
@@ -82,6 +83,8 @@ public class DAL {
             sql = "INSERT INTO Transport (TransportNumber , date) VALUES ("+t.getNumber()+",'"+StringToSQLiteFormat(t.getDate(),t.getLeavTime())+"')";
 
             stmt.executeUpdate(sql);
+            c.commit();
+            stmt.close();
             return true;
         }
         catch (NituzException e){
@@ -283,7 +286,7 @@ public class DAL {
                 Statement stmt = c.createStatement();
                 ResultSet rs = stmt.executeQuery("Select * From Sites JOIN Shops WHERE Sites.code=Shops.code AND Sites.code=" + _to + ";");
                 if (rs.isBeforeFirst()) {
-                    Site site = new Shop(rs.getInt("code"),rs.getString("Name"), rs.getString("Address"), rs.getString("Phone"), rs.getString("Contact"),rs.getString("rigion"));
+                    Site site = new Shop(rs.getInt("code"),rs.getString("Name"), rs.getString("Address"), rs.getString("Phone"), rs.getString("Contact"),rs.getString("region"));
                     stmt.close();
                     rs.close();
                     return site;
@@ -413,7 +416,7 @@ public class DAL {
             ResultSet rs = stmt.executeQuery( "SELECT * FROM Drivers WHERE ID =" + id +";" );
             if(rs.isBeforeFirst()) {
                 Worker w=selectWorker(id);
-                SharedClasses.Driver driver = new SharedClasses.Driver(w,rs.getInt("license"));
+                SharedClasses.Driver driver = new SharedClasses.Driver(w,rs.getInt("Licence"));
                 stmt.close();
                 rs.close();
                 return driver;
@@ -1327,9 +1330,13 @@ public class DAL {
                     Truck truck1 = new Truck(truckplate(rs.getString("Plate")), rs.getString("Model"), rs.getDouble("Wight"), rs.getDouble("MaxWight"), rs.getInt("licenseType"));
                     ans.addLast(truck1);
                 }
+                Truck w[]=new Truck[ans.size()];
+                for (int i=0;i<w.length;i++){
+                    w[i]=ans.get(i);
+                }
                 stmt.close();
                 rs.close();
-                return (Truck[])ans.toArray();
+                return w;
             }
             else throw new Exception("There are no Trucks in DB");
         } catch (Exception e){
@@ -1348,9 +1355,13 @@ public class DAL {
                     Transport tran = new Transport(new SimpleDateFormat("dd/MM/yyyy").format(d),new SimpleDateFormat("HH:mm").format(d),Integer.parseInt(rs.getString("TransportNumber")));
                     ans.addLast(tran);
                 }
+                Transport w[]=new Transport[ans.size()];
+                for (int i=0;i<w.length;i++){
+                    w[i]=ans.get(i);
+                }
                 stmt.close();
                 rs.close();
-                return (Transport [])ans.toArray();
+                return w;
             }
             else throw new Exception("There are no Trucks in DB");
         } catch (Exception e){
@@ -1366,13 +1377,23 @@ public class DAL {
             if(rs.isBeforeFirst()) {
                 LinkedList<Worker> ans=new LinkedList<Worker>();
                 while (rs.next()) {
-                    Worker w = new Worker(rs.getInt("ID"), rs.getString("Lname"), rs.getString("Fname"), rs.getString("startDate"), rs.getString("TermsOfEmployment"),
-                            rs.getInt("Salary"), rs.getString("Role"), rs.getInt("BankNumber"), rs.getInt("BankAccountNumber"), workPlace);
+                    Worker w;
+                    if(rs.getString("Role").contentEquals("Driver"))
+                    {
+                        w=getDriver(rs.getInt("ID"));
+                    }else {
+                        w = new Worker(rs.getInt("ID"), rs.getString("Lname"), rs.getString("Fname"), rs.getString("startDate"), rs.getString("TermsOfEmployment"),
+                                rs.getInt("Salary"), rs.getString("Role"), rs.getInt("BankNumber"), rs.getInt("BankAccountNumber"), workPlace);
+                    }
                     ans.add(w);
+                }
+                Worker w[]=new Worker[ans.size()];
+                for (int i=0;i<w.length;i++){
+                    w[i]=ans.get(i);
                 }
                 stmt.close();
                 rs.close();
-                return (Worker[]) ans.toArray();
+                return w;
             }
             else {
                 throw new NituzException(1,"user not found");
@@ -1392,9 +1413,13 @@ public class DAL {
                     Bank b = new Bank(rs.getString("BankName"),rs.getInt("BankNumber"));
                     ans.add(b);
                 }
+                Bank w[]=new Bank[ans.size()];
+                for (int i=0;i<w.length;i++){
+                    w[i]=ans.get(i);
+                }
                 stmt.close();
                 rs.close();
-                return (Bank[]) ans.toArray();
+                return w;
             }
             else {
                 throw new NituzException(1,"user not found");
@@ -1414,9 +1439,13 @@ public class DAL {
                     String s = rs.getString("Role");
                     ans.add(s);
                 }
+                String w[]=new String[ans.size()];
+                for (int i=0;i<w.length;i++){
+                    w[i]=ans.get(i);
+                }
                 stmt.close();
                 rs.close();
-                return (String[]) ans.toArray();
+                return w;
             }
             else {
                 throw new NituzException(1,"user not found");
@@ -1436,9 +1465,13 @@ public class DAL {
                     String s = rs.getString("Role");
                     ans.add(s);
                 }
+                String w[]=new String[ans.size()];
+                for (int i=0;i<w.length;i++){
+                    w[i]=ans.get(i);
+                }
                 stmt.close();
                 rs.close();
-                return (String[]) ans.toArray();
+                return w;
             }
             else {
                 throw new NituzException(1,"user not found");

@@ -87,7 +87,6 @@ public class MenuOP {
             catch (Exception e){
                 System.out.println(e.getMessage());
                 e.printStackTrace();
-                this.execute();
             }
         }
     }

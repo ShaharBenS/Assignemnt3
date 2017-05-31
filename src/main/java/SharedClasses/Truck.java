@@ -35,4 +35,9 @@ public class Truck
 	public int getLicenseType() {
 		return licenseType;
 	}
+
+	@Override
+	public String toString() {
+		return "Plate:"+this.palte+" Model:"+this.model+" Weight:"+this.weight+" Max Carry Weight:"+this.maxWeight+" License:"+this.licenseType;
+	}
 }
