@@ -122,26 +122,28 @@ public class Contacts {
     }
 
     public String getSupplierContact(int id) {
-        String ans = "";
+        String str = "";
         try {
             String sqlQuary = "SELECT * FROM Contacts WHERE SiteID = '" + id + "';";
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQuary);
             while (rs.next()) {
-                ans += "ID: " + rs.getString(1) + "\n";
 
-                ans += "SiteID: " + rs.getInt(2) + "\n";
-                ans += "Full Name: " + rs.getString(3) + "\n";
-                ans += "Phone Number: " + rs.getString(4) + "\n";
-                ans += "Email: " + rs.getString(5) + "\n";
-                ans += "\n";
+                str += "----- CONTACT -----\n";
+                str += "ID: " +  rs.getString(1) +"\n";
+                str += "Site ID: " + rs.getInt(2) +"\n";
+                str += "Name: " + rs.getString(3) +"\n";
+                str += "Phone Number: " + rs.getString(4) +"\n";
+                str += "Email: " + rs.getString(5) +"\n";
+                str += "----- CONTACT -----\n";
+
             }
             rs.close();
             stmt.close();
         } catch (Exception e) {
             System.out.println("exce");
         }
-        return ans;
+        return str;
     }
 
     public String getContactName(String id) {

@@ -320,18 +320,7 @@ public class PLSuppliers {
         }
         boolean Exists = bl.checkSupExist(ID);
         if (Exists) {
-           Supplier sup =bl.getSupplier(ID);
-            String ans ="";
-            ans+="Supplier ID: " + sup.getId() + "\n";
-            ans+= "Name: " + sup.getName() + "\n";
-            ans += "Bank number: " + sup.getBankNum() + "\n";
-            ans += "Branch number: " + sup.getBranchNum() + "\n";
-            ans += "Account number: " + sup.getAccountNum() + "\n";
-            ans += "Payment: " + sup.getPayment() + "\n";
-            ans += "Delivery Method: " + sup.getDeliveryMethod() + "\n";
-            ans += "Supply Time: " + sup.getSupplyTime() + "\n";
-            ans+= "Address: " + sup.getAddress();
-            System.out.println(ans);
+           System.out.println(bl.getSupplier(ID).toString());
         } else {
             System.out.println("ERROR! invalid supplier ID");
             return;

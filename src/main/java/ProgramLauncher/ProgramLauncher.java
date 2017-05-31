@@ -68,315 +68,302 @@ public class ProgramLauncher
 
             String sql;
             Statement stmt = null;
-            //TODO:: change to supplier
             try {
+            stmt = conn.createStatement();
 
-                sql = "INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (313,'tnuva','Petach-Tikava','Shlomo','0500000000'); INSERT INTO Supliers (code) VALUES (313)";
-                stmt.executeUpdate(sql);
-                sql = "INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (323,'elit','Ramat-Gan','benizri','0522222222'); INSERT INTO Supliers (code) VALUES (323)";
-                stmt.executeUpdate(sql);
-                sql = "INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (4,'elit','Ramat-Gan','benizri','0522228222'); INSERT INTO Supliers (code) VALUES (4)";
-                stmt.executeUpdate(sql);
+            sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('12121212', 'Volvo', 1, 500, 1000)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('13131313', 'Ford', 2, 750, 4000)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('14141414', 'Tetra', 3, 1000, 7000)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('15151515', 'Mazda', 4, 1500, 10000)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('16161616', 'Subaru', 5, 2250, 15000)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (0,'supersal','rishon','Shimi','0501212121');";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (414,'supersal','rishon','Shimon','0501212121');";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (424,'Mega','jafa','Meni','0548889999');";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (434,'Osher Ad','jerusalem','Avram','0587777777');";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (5,'Osher Ad','Tel Aviv','Avrami','0587778777');";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (-1,'Osher Ad','Tel Aviv','Avrami','0587778777');";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Shops (code , region) VALUES (0,'A')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Shops (code , region) VALUES (414,'B')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Shops (code , region) VALUES (424,'A')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Shops (code , region) VALUES (434,'A')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Shops (code , region) VALUES (5,'B')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Banks (BankNumber, BankName) VALUES (1, 'Poalim')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Banks (BankNumber, BankName) VALUES (2, 'Leoomi')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Banks (BankNumber, BankName) VALUES (3, 'Yahav')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Banks (BankNumber, BankName) VALUES (4, 'Phoenix')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Banks (BankNumber, BankName) VALUES (5, 'Discount')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Roles (Role) VALUES ('Director of Personal Transport Center')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Roles (Role) VALUES ('Director of Personal Shops')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Roles (Role) VALUES ('Director of Logistics')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Roles (Role) VALUES ('Storekeeper')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Roles (Role) VALUES ('Shop Manager')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (444444444, 'Yaakobi', 'Shimi', '18/02/2016', '...', 5000, 'Shop Manager', 0, 2, 45678)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (555555555, 'Trump', 'Shimon', '12/03/2012', '...', 5500, 'Shop Manager', 414, 3, 456789)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (666666666, 'Levi', 'Meni', '05/02/2011', '...', 5700, 'Shop Manager', 424, 4, 567890)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (777777777, 'Levi', 'Avram', '08/03/2001', '...', 5700, 'Shop Manager', 434, 4, 567891)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (888888888, 'Levi', 'Avrami', '05/02/2012', '...', 5200, 'Storekeeper', 5, 4, 11111)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (171717171, 'Scholes', 'Paul', '29/03/2016', '...', 5100, 'Storekeeper', 0, 1, 55555)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (181818181, 'Giggs', 'Rayn', '30/04/2017', '...', 5200, 'Storekeeper', 0, 2, 66666)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (191919191, 'Nevil', 'Gary', '19/05/2007', '...', 4900, 'Storekeeper', 414, 3, 77777)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (232323232, 'Keane', 'Roy', '16/06/2008', '...', 4800, 'Director of Logistics', 414, 1, 88888)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (242424242, 'Best', 'Georgy', '27/07/2009', '...', 6000, 'Director of Logistics', 434, 2, 99999)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (252525252, 'Ferguson', 'Alex', '21/08/2010', '...', 3900, 'Director of Logistics', 434, 3, 12121)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (262626262, 'VanSaar', 'Edwin', '22/09/2011', '...', 4500, 'Director of Logistics', 424, 1, 13131)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (343434343, 'VanPersi', 'Robin', '22/09/2004', '...', 4500, 'Director of Personal Shops', 424, 1, 13141)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (353535353, 'Hernandez', 'Chicirito', '22/09/2003', '...', 4800, 'Director of Personal Shops', 5, 1, 13151)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (363636363, 'Carrick', 'Michel', '28/01/2006', '...', 4000, 'Director of Personal Shops', 5, 1, 13579)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (112211221, 'Peek', 'Zvika', '27/02/2005', '...', 4000, 'Director of Personal Shops', -1, 2, 24680)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (113311331, 'Hamacabi', 'Yehooda', '21/03/2006', '...', 4000, 'Director of Personal Transport Center', -1, 3, 13531)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (223322332, 'Gump', 'Forest', '12/05/2007', '...', 4000, 'Director of Personal Transport Center', -1, 4, 24642)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (224422442, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Transport Center', -1, 5, 46864)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Drivers (ID, licence) VALUES (112211221 , 1)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Drivers (ID, licence) VALUES (113311331 , 2)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Drivers (ID, licence) VALUES (223322332 , 3)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Drivers (ID, licence) VALUES (224422442 , 4)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (1, '01/05/2017', 'Monday', 'morning', 0, 171717171)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (2, '01/05/2017', 'Monday', 'evening', 0, 171717171)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (3, '01/05/2017', 'Monday', 'night', 0, 181818181)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (4, '01/05/2017', 'Monday', 'morning', 414, 191919191)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (5, '01/05/2017', 'Monday', 'evening', 414, 191919191)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (6, '01/05/2017', 'Monday', 'night', 414, 232323232)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Storekeeper', 1)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Personal Transport Center', 1)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Storekeeper', 2)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Personal Transport Center', 2)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Shop Manager', 3)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Shop Manager', 4)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Personal Shops', 4)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Personal Shops', 5)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Logistics', 5)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Logistics', 6)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (171717171, 1, 'Available')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (171717171, 1, 'Working')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (181818181, 1, 'Available')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (181818181, 1, 'Working')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (171717171, 2, 'Available')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (171717171, 2, 'Working')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (181818181, 2, 'Available')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (181818181, 2, 'Working')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (171717171, 3, 'Available')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (171717171, 3, 'Working')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (191919191, 4, 'Available')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (191919191, 4, 'Working')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (232323232, 4, 'Available')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (232323232, 4, 'Working')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (191919191, 5, 'Available')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (191919191, 5, 'Working')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (232323232, 5, 'Available')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (232323232, 5, 'Working')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (191919191, 6, 'Available')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (191919191, 6, 'Working')";
+            stmt.executeUpdate(sql);
+            conn.commit();
 
-            }
-            catch(Exception e) {}
-
-            try {
-                stmt = conn.createStatement();
-
-                sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('12121212', 'Volvo', 1, 500, 1000)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('13131313', 'Ford', 2, 750, 4000)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('14141414', 'Tetra', 3, 1000, 7000)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('15151515', 'Mazda', 4, 1500, 10000)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Trucks (Plate,Model,licenseType,Wight,MaxWight) VALUES ('16161616', 'Subaru', 5, 2250, 15000)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (0,'supersal','rishon','Shimi','0501212121');";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (414,'supersal','rishon','Shimon','0501212121');";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (424,'Mega','jafa','Meni','0548889999');";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (434,'Osher Ad','jerusalem','Avram','0587777777');";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (5,'Osher Ad','Tel Aviv','Avrami','0587778777');";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (-1,'Osher Ad','Tel Aviv','Avrami','0587778777');";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Shops (code , region) VALUES (0,'A')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Shops (code , region) VALUES (414,'B')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Shops (code , region) VALUES (424,'A')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Shops (code , region) VALUES (434,'A')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Shops (code , region) VALUES (5,'B')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Banks (BankNumber, BankName) VALUES (1, 'Poalim')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Banks (BankNumber, BankName) VALUES (2, 'Leoomi')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Banks (BankNumber, BankName) VALUES (3, 'Yahav')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Banks (BankNumber, BankName) VALUES (4, 'Phoenix')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Banks (BankNumber, BankName) VALUES (5, 'Discount')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Roles (Role) VALUES ('Director of Personal Transport Center')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Roles (Role) VALUES ('Director of Personal Shops')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Roles (Role) VALUES ('Director of Logistics')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Roles (Role) VALUES ('Storekeeper')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Roles (Role) VALUES ('Shop Manager')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (444444444, 'Yaakobi', 'Shimi', '18/02/2016', '...', 5000, 'Shop Manager', 0, 2, 45678)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (555555555, 'Trump', 'Shimon', '12/03/2012', '...', 5500, 'Shop Manager', 414, 3, 456789)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (666666666, 'Levi', 'Meni', '05/02/2011', '...', 5700, 'Shop Manager', 424, 4, 567890)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (777777777, 'Levi', 'Avram', '08/03/2001', '...', 5700, 'Shop Manager', 434, 4, 567891)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (888888888, 'Levi', 'Avrami', '05/02/2012', '...', 5200, 'Storekeeper', 5, 4, 11111)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (171717171, 'Scholes', 'Paul', '29/03/2016', '...', 5100, 'Storekeeper', 0, 1, 55555)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (181818181, 'Giggs', 'Rayn', '30/04/2017', '...', 5200, 'Storekeeper', 0, 2, 66666)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (191919191, 'Nevil', 'Gary', '19/05/2007', '...', 4900, 'Storekeeper', 414, 3, 77777)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (232323232, 'Keane', 'Roy', '16/06/2008', '...', 4800, 'Director of Logistics', 414, 1, 88888)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (242424242, 'Best', 'Georgy', '27/07/2009', '...', 6000, 'Director of Logistics', 434, 2, 99999)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (252525252, 'Ferguson', 'Alex', '21/08/2010', '...', 3900, 'Director of Logistics', 434, 3, 12121)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (262626262, 'VanSaar', 'Edwin', '22/09/2011', '...', 4500, 'Director of Logistics', 424, 1, 13131)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (343434343, 'VanPersi', 'Robin', '22/09/2004', '...', 4500, 'Director of Personal Shops', 424, 1, 13141)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (353535353, 'Hernandez', 'Chicirito', '22/09/2003', '...', 4800, 'Director of Personal Shops', 5, 1, 13151)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (363636363, 'Carrick', 'Michel', '28/01/2006', '...', 4000, 'Director of Personal Shops', 5, 1, 13579)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (112211221, 'Peek', 'Zvika', '27/02/2005', '...', 4000, 'Director of Personal Shops', -1, 2, 24680)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (113311331, 'Hamacabi', 'Yehooda', '21/03/2006', '...', 4000, 'Director of Personal Transport Center', -1, 3, 13531)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (223322332, 'Gump', 'Forest', '12/05/2007', '...', 4000, 'Director of Personal Transport Center', -1, 4, 24642)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (224422442, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Transport Center', -1, 5, 46864)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Drivers (ID, licence) VALUES (112211221 , 1)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Drivers (ID, licence) VALUES (113311331 , 2)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Drivers (ID, licence) VALUES (223322332 , 3)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Drivers (ID, licence) VALUES (224422442 , 4)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (1, '01/05/2017', 'Monday', 'morning', 0, 171717171)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (2, '01/05/2017', 'Monday', 'evening', 0, 171717171)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (3, '01/05/2017', 'Monday', 'night', 0, 181818181)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (4, '01/05/2017', 'Monday', 'morning', 414, 191919191)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (5, '01/05/2017', 'Monday', 'evening', 414, 191919191)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Shifts(Code, Date, Day, Time, WorkPlace, ShiftManager) VALUES (6, '01/05/2017', 'Monday', 'night', 414, 232323232)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Storekeeper', 1)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Personal Transport Center', 1)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Storekeeper', 2)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Personal Transport Center', 2)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Shop Manager', 3)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Shop Manager', 4)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Personal Shops', 4)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Personal Shops', 5)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Logistics', 5)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Logistics', 6)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (171717171, 1, 'Available')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (171717171, 1, 'Working')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (181818181, 1, 'Available')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (181818181, 1, 'Working')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (171717171, 2, 'Available')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (171717171, 2, 'Working')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (181818181, 2, 'Available')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (181818181, 2, 'Working')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (171717171, 3, 'Available')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (171717171, 3, 'Working')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (191919191, 4, 'Available')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (191919191, 4, 'Working')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (232323232, 4, 'Available')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (232323232, 4, 'Working')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (191919191, 5, 'Available')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (191919191, 5, 'Working')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (232323232, 5, 'Available')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (232323232, 5, 'Working')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (191919191, 6, 'Available')";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (191919191, 6, 'Working')";
-                stmt.executeUpdate(sql);
-                conn.commit();
-
-                CATEGORIES.addCategory(new Category(102, "KARTON", 103));
-                CATEGORIES.addCategory(new Category(100, "Milk", 102));
-                CATEGORIES.addCategory(new Category(101, "Meat"));
-                CATEGORIES.addCategory(new Category(104, "Bread"));
-                CATEGORIES.addCategory(new Category(105, "35%", 101));
+            CATEGORIES.addCategory(new Category(102, "KARTON", 103));
+            CATEGORIES.addCategory(new Category(100, "Milk", 102));
+            CATEGORIES.addCategory(new Category(101, "Meat"));
+            CATEGORIES.addCategory(new Category(104, "Bread"));
+            CATEGORIES.addCategory(new Category(105, "35%", 101));
 
 
-                SUPPLIERS.addSupplier(new Supplier(100000, "TNUVA", 1, 1, 15, "check",
-                        "with delivery", "Sunday", "netivot"));
-                SUPPLIERS.addSupplier(new Supplier(200000, "TARA", 2, 2, 16, "check",
-                        "with delivery", "Sunday", "shfaram"));
-                SUPPLIERS.addSupplier(new Supplier(300000, "MOTHER-EARTH", 3, 3, 17, "check",
-                        "with delivery", "Sunday", "plat-earth"));
+            SUPPLIERS.addSupplier(new Supplier(100000, "TNUVA", 1, 1, 15, "check",
+                    "with delivery", "Sunday", "netivot"));
+            SUPPLIERS.addSupplier(new Supplier(200000, "TARA", 2, 2, 16, "check",
+                    "with delivery", "Sunday", "shfaram"));
+            SUPPLIERS.addSupplier(new Supplier(300000, "MOTHER-EARTH", 3, 3, 17, "check",
+                    "with delivery", "Sunday", "plat-earth"));
 
 
-                CONTACTS.addContact(new Contact("101010101", 100000, "Geula Stone",
-                        "0523614498", "a@a.a"));
+            CONTACTS.addContact(new Contact("101010101", 100000, "Geula Stone",
+                    "0523614498", "a@a.a"));
 
-                CONTACTS.addContact(new Contact("202020202", 200000, "Shlomi Saturday",
-                        "0598321175", "a@a.a"));
+            CONTACTS.addContact(new Contact("202020202", 200000, "Shlomi Saturday",
+                    "0598321175", "a@a.a"));
 
-                CONTACTS.addContact(new Contact("303030303", 300000, "Dudu Flying",
-                        "0526489301", "c@c.c"));
+            CONTACTS.addContact(new Contact("303030303", 300000, "Dudu Flying",
+                    "0526489301", "c@c.c"));
 
-                ITEMS.addItem(new Item(111111, "KORNFLEKS", 102, "SHKEL-INC",0.5,""));
-                ITEMS.addItem(new Item(222222, "Steak", 101, "COWS-KILLERS",1,""));
-                ITEMS.addItem(new Item(333333, "Cheese", 100, "TARA",0.2,""));
-                ITEMS.addItem(new Item(444444, "White-Bread", 101, "Bereshit",0.4,""));
-                ITEMS.addItem(new Item(555555, "Soda", 103, "Shweps",6,""));
-                ITEMS.addItem(new Item(666666, "Cola", 103, "Coca-Cola",8,""));
-                ITEMS.addItem(new Item(777777, "Arak", 103, "Tzuani-Nehmad",2,""));
-                ITEMS.addItem(new Item(888888, "Potatoes", 104, "Mother-Earth",1,""));
-                ITEMS.addItem(new Item(999999, "Tomato", 104, "Mother-Earth",0.7,""));
-                ITEMS.addItem(new Item(101010, "Rice", 105, "Mother-Earth",0.4,""));
-                ITEMS.addItem(new Item(202020, "Eggs", 105, "Mother-Chicken",0.3,""));
-
-
-                SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 111111, 100000, 12.5));
-                SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 111111, 100001, 12.5));
-                SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 333333, 100001, 12.5));
-                SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 222222, 200000, 22.5));
-                SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(300000, 333333, 300000, 32.5));
-                SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 444444, 400000, 42.5));
-                SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 555555, 500000, 52.5));
-                SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(300000, 666666, 600000, 52.5));
-                SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 777777, 700000, 62.5));
-                SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 888888, 800000, 72.5));
-                SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(300000, 999999, 900000, 82.5));
-                SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 101010, 110000, 92.5));
-                SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 202020, 120000, 112.5));
-
-                DISCOUNTS.addDiscount(new Discount(100000, 111111, 20, 10));
-                DISCOUNTS.addDiscount(new Discount(200000, 111111, 20, 20));
-                DISCOUNTS.addDiscount(new Discount(200000, 222222, 20, 20));
-                DISCOUNTS.addDiscount(new Discount(300000, 333333, 20, 30));
-                DISCOUNTS.addDiscount(new Discount(200000, 333333, 20, 40));
-
-                int[] shopID = new int[]{0,0,0,0};
-
-                ORDERS.addOrder(new Order(1, shopID[0], 200000, new Date(new java.util.Date()),  "20202020", 0));
-                ORDERS.addOrder(new Order(2, shopID[1], 300000, new Date(new java.util.Date()),  "30303030", 1));
-                ORDERS.addOrder(new Order(3, shopID[2], 100000, new Date(new java.util.Date()),  "10101010", 2));
-                ORDERS.addOrder(new Order(4, shopID[3], 300000, new Date(new java.util.Date()),  "30303030", 3));
+            ITEMS.addItem(new Item(111111, "KORNFLEKS", 102, "SHKEL-INC",0.5,""));
+            ITEMS.addItem(new Item(222222, "Steak", 101, "COWS-KILLERS",1,""));
+            ITEMS.addItem(new Item(333333, "Cheese", 100, "TARA",0.2,""));
+            ITEMS.addItem(new Item(444444, "White-Bread", 101, "Bereshit",0.4,""));
+            ITEMS.addItem(new Item(555555, "Soda", 103, "Shweps",6,""));
+            ITEMS.addItem(new Item(666666, "Cola", 103, "Coca-Cola",8,""));
+            ITEMS.addItem(new Item(777777, "Arak", 103, "Tzuani-Nehmad",2,""));
+            ITEMS.addItem(new Item(888888, "Potatoes", 104, "Mother-Earth",1,""));
+            ITEMS.addItem(new Item(999999, "Tomato", 104, "Mother-Earth",0.7,""));
+            ITEMS.addItem(new Item(101010, "Rice", 105, "Mother-Earth",0.4,""));
+            ITEMS.addItem(new Item(202020, "Eggs", 105, "Mother-Chicken",0.3,""));
 
 
-                ORDERS_ITEMS.addOrderItem(new OrderItem(1, 111111, 30, 50.0));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 222222, 40, 10));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(3, 333333, 30, 60.0));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(4, 444444, 40, 10));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(1, 555555, 30, 22.5));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 666666, 40, 10));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(3, 777777, 30, 32.5));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(4, 888888, 40, 10));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(1, 999999, 30, 42.5));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 101010, 40, 10));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(3, 202020, 30, 12.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 111111, 100000, 12.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 111111, 100001, 12.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 333333, 100001, 12.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 222222, 200000, 22.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(300000, 333333, 300000, 32.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 444444, 400000, 42.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 555555, 500000, 52.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(300000, 666666, 600000, 52.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 777777, 700000, 62.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 888888, 800000, 72.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(300000, 999999, 900000, 82.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(100000, 101010, 110000, 92.5));
+            SUPPLIER_ITEMS.addSupplierItem(new SupplierItem(200000, 202020, 120000, 112.5));
 
-                QUANTITIES.addItemQuantity(new Quantity(111111, shopID[0],"SHELF 2-A", 0,
-                        10, 10, 0, 30));
-                QUANTITIES.addItemQuantity(new Quantity(222222, shopID[0],"SHELF 2-B", 0,
-                        20, 10, 0, 12));
-                QUANTITIES.addItemQuantity(new Quantity(333333, shopID[1],"SHELF 2-C", 2,
-                        30, 10, 30, 63));
-                QUANTITIES.addItemQuantity(new Quantity(444444, shopID[1],"SHELF 2-D", 0,
-                        40, 20, 20, 80));
-                QUANTITIES.addItemQuantity(new Quantity(555555, shopID[2],"SHELF 2-E", 5,
-                        50, 20, 10, 10));
-                QUANTITIES.addItemQuantity(new Quantity(666666, shopID[2],"SHELF 2-F", 0,
-                        60, 30, 10, 13));
-                QUANTITIES.addItemQuantity(new Quantity(777777, shopID[3],"SHELF 2-G", 1,
-                        70, 30, 10, 50));
-                QUANTITIES.addItemQuantity(new Quantity(888888, shopID[3],"SHELF 2-H", 0,
-                        80, 40, 30, 90));
-                QUANTITIES.addItemQuantity(new Quantity(999999, shopID[0],"SHELF 2-I", 0,
-                        90, 40, 60, 60));
-                QUANTITIES.addItemQuantity(new Quantity(101010, shopID[1],"SHELF 2-J", 0,
-                        100, 50, 30, 30));
-                QUANTITIES.addItemQuantity(new Quantity(202020, shopID[2],"SHELF 2-K", 0,
-                        110, 50, 10, 50));
+            DISCOUNTS.addDiscount(new Discount(100000, 111111, 20, 10));
+            DISCOUNTS.addDiscount(new Discount(200000, 111111, 20, 20));
+            DISCOUNTS.addDiscount(new Discount(200000, 222222, 20, 20));
+            DISCOUNTS.addDiscount(new Discount(300000, 333333, 20, 30));
+            DISCOUNTS.addDiscount(new Discount(200000, 333333, 20, 40));
 
-                PRICES.addItemPrice(new Price(111111, 20.5, 0, null, null));
-                PRICES.addItemPrice(new Price(222222, 30.5, 0, null, null));
-                PRICES.addItemPrice(new Price(333333, 50.5, 0, null, null));
-                PRICES.addItemPrice(new Price(444444, 60.5, 0, null, null));
-                PRICES.addItemPrice(new Price(555555, 70.5, 30,
-                        new Date(2017, 12, 10), new Date(2017, 12, 30)));
-                PRICES.addItemPrice(new Price(666666, 80.5, 20,
-                        new Date(2017, 4, 10), new Date(2017, 4, 16)));
-                PRICES.addItemPrice(new Price(777777, 90.5, 10,
-                        new Date(2017, 3, 10), new Date(2017, 3, 14)));
-                PRICES.addItemPrice(new Price(888888, 100.5, 0, null, null));
-                PRICES.addItemPrice(new Price(999999, 200.5, 0, null, null));
-                PRICES.addItemPrice(new Price(101010, 56.5, 0, null, null));
-                PRICES.addItemPrice(new Price(202020, 23.5, 0, null, null));
+            int[] shopID = new int[]{0,0,0,0};
 
-                ORDERS.setArrivalDate(3, new Date(new java.util.Date()));
-                ORDERS.setArrivalDate(4, new Date(new java.util.Date()));
+            ORDERS.addOrder(new Order(1, shopID[0], 200000, new Date(new java.util.Date()),  "20202020", 0));
+            ORDERS.addOrder(new Order(2, shopID[1], 300000, new Date(new java.util.Date()),  "30303030", 1));
+            ORDERS.addOrder(new Order(3, shopID[2], 100000, new Date(new java.util.Date()),  "10101010", 2));
+            ORDERS.addOrder(new Order(4, shopID[3], 300000, new Date(new java.util.Date()),  "30303030", 3));
+
+
+            ORDERS_ITEMS.addOrderItem(new OrderItem(1, 111111, 30, 50.0));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(2, 222222, 40, 10));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(3, 333333, 30, 60.0));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(4, 444444, 40, 10));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(1, 555555, 30, 22.5));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(2, 666666, 40, 10));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(3, 777777, 30, 32.5));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(4, 888888, 40, 10));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(1, 999999, 30, 42.5));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(2, 101010, 40, 10));
+            ORDERS_ITEMS.addOrderItem(new OrderItem(3, 202020, 30, 12.5));
+
+            QUANTITIES.addItemQuantity(new Quantity(111111, shopID[0],"SHELF 2-A", 0,
+                    10, 10, 0, 30));
+            QUANTITIES.addItemQuantity(new Quantity(222222, shopID[0],"SHELF 2-B", 0,
+                    20, 10, 0, 12));
+            QUANTITIES.addItemQuantity(new Quantity(333333, shopID[1],"SHELF 2-C", 2,
+                    30, 10, 30, 63));
+            QUANTITIES.addItemQuantity(new Quantity(444444, shopID[1],"SHELF 2-D", 0,
+                    40, 20, 20, 80));
+            QUANTITIES.addItemQuantity(new Quantity(555555, shopID[2],"SHELF 2-E", 5,
+                    50, 20, 10, 10));
+            QUANTITIES.addItemQuantity(new Quantity(666666, shopID[2],"SHELF 2-F", 0,
+                    60, 30, 10, 13));
+            QUANTITIES.addItemQuantity(new Quantity(777777, shopID[3],"SHELF 2-G", 1,
+                    70, 30, 10, 50));
+            QUANTITIES.addItemQuantity(new Quantity(888888, shopID[3],"SHELF 2-H", 0,
+                    80, 40, 30, 90));
+            QUANTITIES.addItemQuantity(new Quantity(999999, shopID[0],"SHELF 2-I", 0,
+                    90, 40, 60, 60));
+            QUANTITIES.addItemQuantity(new Quantity(101010, shopID[1],"SHELF 2-J", 0,
+                    100, 50, 30, 30));
+            QUANTITIES.addItemQuantity(new Quantity(202020, shopID[2],"SHELF 2-K", 0,
+                    110, 50, 10, 50));
+
+            PRICES.addItemPrice(new Price(111111, 20.5, 0, null, null));
+            PRICES.addItemPrice(new Price(222222, 30.5, 0, null, null));
+            PRICES.addItemPrice(new Price(333333, 50.5, 0, null, null));
+            PRICES.addItemPrice(new Price(444444, 60.5, 0, null, null));
+            PRICES.addItemPrice(new Price(555555, 70.5, 30,
+                    new Date(2017, 12, 10), new Date(2017, 12, 30)));
+            PRICES.addItemPrice(new Price(666666, 80.5, 20,
+                    new Date(2017, 4, 10), new Date(2017, 4, 16)));
+            PRICES.addItemPrice(new Price(777777, 90.5, 10,
+                    new Date(2017, 3, 10), new Date(2017, 3, 14)));
+            PRICES.addItemPrice(new Price(888888, 100.5, 0, null, null));
+            PRICES.addItemPrice(new Price(999999, 200.5, 0, null, null));
+            PRICES.addItemPrice(new Price(101010, 56.5, 0, null, null));
+            PRICES.addItemPrice(new Price(202020, 23.5, 0, null, null));
+
+            ORDERS.setArrivalDate(3, new Date(new java.util.Date()));
+            ORDERS.setArrivalDate(4, new Date(new java.util.Date()));
 
 
             } catch (SQLException e) {
-                e.printStackTrace();
+            e.printStackTrace();
             }
         }
 

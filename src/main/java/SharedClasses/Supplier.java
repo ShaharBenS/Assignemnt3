@@ -15,7 +15,8 @@ public class Supplier extends Site {
 
     //private String address;
 
-    public Supplier(int id,String name, int bankNum, int branchNum, int accountNum, String payment, String deliveryMethod, String supplyTime, String address) {
+    public Supplier(int id,String name, int bankNum, int branchNum, int accountNum,
+                    String payment, String deliveryMethod, String supplyTime, String address) {
         super(id,name,address,"","");
         this.id = id;
         this.bankNum = bankNum;
@@ -135,11 +136,21 @@ default: return 0;
 
     @Override
     public String toString() {
-        String myclass = this.getClass().getSimpleName();
-        return myclass + " " + this.code + "\n" +
-                "	Address: " + getAddress() + "\n" +
-                "	Contacts: \n" ;//TODO: add all contacts (name & phone)
 
+        String str ="";
+
+        str += "----- Supplier -----\n";
+        str += "Supplier ID: " + id + "\n";
+        str += "Name: " + getName()  +"\n";
+        str += "Address: " + getAddress() +"\n";
+        str += "Bank Number: " + bankNum + "\n";
+        str += "Branch Number: " + branchNum + "\n";
+        str += "Account Number: " + accountNum + "\n";
+        str += "Payment: " + payment + "\n";
+        str += "Delivery Method: " + deliveryMethod + "\n";
+        str += "Supply Time: " + supplyTime + "\n";
+        str += "----- Supplier -----\n";
+        return str;
     }
 
     @Override
