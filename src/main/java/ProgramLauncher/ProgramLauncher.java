@@ -126,55 +126,53 @@ public class ProgramLauncher
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Banks (BankNumber, BankName) VALUES (5, 'Discount')";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Roles (Role) VALUES ('Driver')";
+                sql="INSERT INTO Roles (Role) VALUES ('Director of Personal Transport Center')";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Roles (Role) VALUES ('Cleaner')";
+                sql="INSERT INTO Roles (Role) VALUES ('Director of Personal Shops')";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Roles (Role) VALUES ('Director of Logistics')";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Roles (Role) VALUES ('Storekeeper')";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Roles (Role) VALUES ('Security')";
+                sql="INSERT INTO Roles (Role) VALUES ('Shop Manager')";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Roles (Role) VALUES ('Manager')";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (444444444, 'Yaakobi', 'Shimi', '18/02/2016', '...', 5000, 'Shop Manager', 0, 2, 45678)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Roles (Role) VALUES ('Janitor')";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (555555555, 'Trump', 'Shimon', '12/03/2012', '...', 5500, 'Shop Manager', 414, 3, 456789)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (444444444, 'Yaakobi', 'Shimi', '18/02/2016', '...', 5000, 'Manager', 0, 2, 45678)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (666666666, 'Levi', 'Meni', '05/02/2011', '...', 5700, 'Shop Manager', 424, 4, 567890)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (555555555, 'Trump', 'Shimon', '12/03/2012', '...', 5500, 'Manager', 414, 3, 456789)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (777777777, 'Levi', 'Avram', '08/03/2001', '...', 5700, 'Shop Manager', 434, 4, 567891)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (666666666, 'Levi', 'Meni', '05/02/2011', '...', 5700, 'Manager', 424, 4, 567890)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (888888888, 'Levi', 'Avrami', '05/02/2012', '...', 5200, 'Storekeeper', 5, 4, 11111)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (777777777, 'Levi', 'Avram', '08/03/2001', '...', 5700, 'Manager', 434, 4, 567891)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (888888888, 'Levi', 'Avrami', '05/02/2012', '...', 5200, 'Manager', 5, 4, 11111)";
-                stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (171717171, 'Scholes', 'Paul', '29/03/2016', '...', 5100, 'Janitor', 0, 1, 55555)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (171717171, 'Scholes', 'Paul', '29/03/2016', '...', 5100, 'Storekeeper', 0, 1, 55555)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (181818181, 'Giggs', 'Rayn', '30/04/2017', '...', 5200, 'Storekeeper', 0, 2, 66666)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (191919191, 'Nevil', 'Gary', '19/05/2007', '...', 4900, 'Security', 414, 3, 77777)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (191919191, 'Nevil', 'Gary', '19/05/2007', '...', 4900, 'Storekeeper', 414, 3, 77777)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (232323232, 'Keane', 'Roy', '16/06/2008', '...', 4800, 'Storekeeper', 414, 1, 88888)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (232323232, 'Keane', 'Roy', '16/06/2008', '...', 4800, 'Director of Logistics', 414, 1, 88888)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (242424242, 'Best', 'Georgy', '27/07/2009', '...', 6000, 'Storekeeper', 434, 2, 99999)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (242424242, 'Best', 'Georgy', '27/07/2009', '...', 6000, 'Director of Logistics', 434, 2, 99999)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (252525252, 'Ferguson', 'Alex', '21/08/2010', '...', 3900, 'Janitor', 434, 3, 12121)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (252525252, 'Ferguson', 'Alex', '21/08/2010', '...', 3900, 'Director of Logistics', 434, 3, 12121)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (262626262, 'VanSaar', 'Edwin', '22/09/2011', '...', 4500, 'Storekeeper', 424, 1, 13131)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (262626262, 'VanSaar', 'Edwin', '22/09/2011', '...', 4500, 'Director of Logistics', 424, 1, 13131)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (343434343, 'VanPersi', 'Robin', '22/09/2004', '...', 4500, 'Security', 424, 1, 13141)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (343434343, 'VanPersi', 'Robin', '22/09/2004', '...', 4500, 'Director of Personal Shops', 424, 1, 13141)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (353535353, 'Hernandez', 'Chicirito', '22/09/2003', '...', 4800, 'Storekeeper', 5, 1, 13151)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (353535353, 'Hernandez', 'Chicirito', '22/09/2003', '...', 4800, 'Director of Personal Shops', 5, 1, 13151)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (363636363, 'Carrick', 'Michel', '28/01/2006', '...', 4000, 'Security', 5, 1, 13579)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (363636363, 'Carrick', 'Michel', '28/01/2006', '...', 4000, 'Director of Personal Shops', 5, 1, 13579)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (112211221, 'Peek', 'Zvika', '27/02/2005', '...', 4000, 'Driver', -1, 2, 24680)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (112211221, 'Peek', 'Zvika', '27/02/2005', '...', 4000, 'Director of Personal Shops', -1, 2, 24680)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (113311331, 'Hamacabi', 'Yehooda', '21/03/2006', '...', 4000, 'Driver', -1, 3, 13531)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (113311331, 'Hamacabi', 'Yehooda', '21/03/2006', '...', 4000, 'Director of Personal Transport Center', -1, 3, 13531)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (223322332, 'Gump', 'Forest', '12/05/2007', '...', 4000, 'Driver', -1, 4, 24642)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (223322332, 'Gump', 'Forest', '12/05/2007', '...', 4000, 'Director of Personal Transport Center', -1, 4, 24642)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (224422442, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Driver', -1, 5, 46864)";
+                sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (224422442, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Transport Center', -1, 5, 46864)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO Drivers (ID, licence) VALUES (112211221 , 1)";
                 stmt.executeUpdate(sql);
@@ -198,23 +196,23 @@ public class ProgramLauncher
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Storekeeper', 1)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Janitor', 1)";
+                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Personal Transport Center', 1)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Storekeeper', 2)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Janitor', 2)";
+                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Personal Transport Center', 2)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Janitor', 3)";
+                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Shop Manager', 3)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Storekeeper', 4)";
+                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Shop Manager', 4)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Security', 4)";
+                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Personal Shops', 4)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Storekeeper', 5)";
+                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Personal Shops', 5)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Security', 5)";
+                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Logistics', 5)";
                 stmt.executeUpdate(sql);
-                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Storekeeper', 6)";
+                sql="INSERT INTO RolesInShifts(Role, Code) VALUES ('Director of Logistics', 6)";
                 stmt.executeUpdate(sql);
                 sql="INSERT INTO WorkersInShifts(ID, Code, Status) VALUES (171717171, 1, 'Available')";
                 stmt.executeUpdate(sql);
@@ -273,13 +271,13 @@ public class ProgramLauncher
                         "with delivery", "Sunday", "plat-earth"));
 
 
-                CONTACTS.addContact(new Contact("101010101", 100000, "Naruto Uzumaki",
+                CONTACTS.addContact(new Contact("101010101", 100000, "Geula Stone",
                         "0523614498", "a@a.a"));
 
-                CONTACTS.addContact(new Contact("202020202", 200000, "Edoward Elich",
+                CONTACTS.addContact(new Contact("202020202", 200000, "Shlomi Saturday",
                         "0598321175", "a@a.a"));
 
-                CONTACTS.addContact(new Contact("303030303", 300000, "Natsu Dragneel",
+                CONTACTS.addContact(new Contact("303030303", 300000, "Dudu Flying",
                         "0526489301", "c@c.c"));
 
                 ITEMS.addItem(new Item(111111, "KORNFLEKS", 102, "SHKEL-INC",0.5,""));
