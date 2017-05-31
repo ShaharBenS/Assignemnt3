@@ -376,8 +376,14 @@ public class SupplierBL {
     }
     public boolean removeOrder(int orderID)
     {
-        return order.removeOrder(orderID);
+        boolean ans = order.removeOrder(orderID);
 
+        try{
+            bl.clearTransport(orderID);
+        }
+        catch (NituzException ignored){}
+
+        return ans;
     }
     
     public boolean removeOrderItem(int orderID, int itemID)

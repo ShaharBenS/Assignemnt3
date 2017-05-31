@@ -1210,4 +1210,14 @@ public class BL {
 		leagalPlate(plate);
 		dal.removeTruck(plate);
 	}
+
+	/*
+		Delete all mission on that transport
+	 */
+	public boolean clearTransport(int orderID) throws NituzException
+	{
+		//TODO : gal
+
+		return true;
+	}
 }
