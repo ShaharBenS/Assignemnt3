@@ -58,4 +58,16 @@ public class Contact
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public String toString()
+    {
+        String ans ="";
+        ans+="Supplier ID: " + getSiteID()+ "\n";
+        ans+= "Contact ID: " + getId() + "\n";
+        ans += "Name: " + getFullName() + "\n";
+        ans += "Phone number: " + getPhoneNumber() + "\n";
+        ans += "Email: " + getEmail() + "\n";
+        return ans;
+    }
 }

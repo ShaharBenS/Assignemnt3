@@ -54,7 +54,6 @@ public class ProgramLauncher
 
 
         // PL INIT
-        //TODO:GAL: redo all
         PL_Stock PL_STOCK = new PL_Stock(PRODUCT_MANAGEMENT, PRICE_MANAGEMENT, CATEGORY_MANAGEMENT,SBL);
         PL_Supplier pl_sup= new PL_Supplier (SBL);
         PL_Orders pl_ord= new PL_Orders(SBL);
@@ -68,18 +67,6 @@ public class ProgramLauncher
 
             String sql;
             Statement stmt = null;
-            //TODO:: change to supplier
-            try {
-
-                sql = "INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (313,'tnuva','Petach-Tikava','Shlomo','0500000000'); INSERT INTO Supliers (code) VALUES (313)";
-                stmt.executeUpdate(sql);
-                sql = "INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (323,'elit','Ramat-Gan','benizri','0522222222'); INSERT INTO Supliers (code) VALUES (323)";
-                stmt.executeUpdate(sql);
-                sql = "INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (4,'elit','Ramat-Gan','benizri','0522228222'); INSERT INTO Supliers (code) VALUES (4)";
-                stmt.executeUpdate(sql);
-
-            }
-            catch(Exception e) {}
 
             try {
                 stmt = conn.createStatement();

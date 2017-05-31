@@ -138,7 +138,7 @@ default: return 0;
         String myclass = this.getClass().getSimpleName();
         return myclass + " " + this.code + "\n" +
                 "	Address: " + getAddress() + "\n" +
-                "	Contacts: \n" ;//TODO: add all contacts (name & phone)
+                "	Contacts: \n" ;
 
     }
 
