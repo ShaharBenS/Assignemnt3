@@ -123,7 +123,9 @@ public class ProgramLauncher
             stmt.executeUpdate(sql);
             sql="INSERT INTO Roles (Role) VALUES ('Shop Manager')";
             stmt.executeUpdate(sql);
-            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (444444444, 'Yaakobi', 'Shimi', '18/02/2016', '...', 5000, 'Shop Manager', 0, 2, 45678)";
+            sql="INSERT INTO Roles (Role) VALUES ('Driver')";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (444444444, 'Yaakobi', 'Shimi', '18/02/2016', '...', 5000, 'Shop Manager', 5, 2, 45678)";
             stmt.executeUpdate(sql);
             sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (555555555, 'Trump', 'Shimon', '12/03/2012', '...', 5500, 'Shop Manager', 414, 3, 456789)";
             stmt.executeUpdate(sql);
@@ -133,19 +135,19 @@ public class ProgramLauncher
             stmt.executeUpdate(sql);
             sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (888888888, 'Levi', 'Avrami', '05/02/2012', '...', 5200, 'Storekeeper', 5, 4, 11111)";
             stmt.executeUpdate(sql);
-            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (171717171, 'Scholes', 'Paul', '29/03/2016', '...', 5100, 'Storekeeper', 0, 1, 55555)";
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (171717171, 'Scholes', 'Paul', '29/03/2016', '...', 5100, 'Storekeeper', 5, 1, 55555)";
             stmt.executeUpdate(sql);
-            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (181818181, 'Giggs', 'Rayn', '30/04/2017', '...', 5200, 'Storekeeper', 0, 2, 66666)";
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (181818181, 'Giggs', 'Rayn', '30/04/2017', '...', 5200, 'Storekeeper', 5, 2, 66666)";
             stmt.executeUpdate(sql);
             sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (191919191, 'Nevil', 'Gary', '19/05/2007', '...', 4900, 'Storekeeper', 414, 3, 77777)";
             stmt.executeUpdate(sql);
-            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (232323232, 'Keane', 'Roy', '16/06/2008', '...', 4800, 'Director of Logistics', 414, 1, 88888)";
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (232323232, 'Keane', 'Roy', '16/06/2008', '...', 4800, 'Director of Logistics', 0, 1, 88888)";
             stmt.executeUpdate(sql);
-            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (242424242, 'Best', 'Georgy', '27/07/2009', '...', 6000, 'Director of Logistics', 434, 2, 99999)";
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (242424242, 'Best', 'Georgy', '27/07/2009', '...', 6000, 'Director of Logistics', 0, 2, 99999)";
             stmt.executeUpdate(sql);
-            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (252525252, 'Ferguson', 'Alex', '21/08/2010', '...', 3900, 'Director of Logistics', 434, 3, 12121)";
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (252525252, 'Ferguson', 'Alex', '21/08/2010', '...', 3900, 'Director of Logistics', 0, 3, 12121)";
             stmt.executeUpdate(sql);
-            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (262626262, 'VanSaar', 'Edwin', '22/09/2011', '...', 4500, 'Director of Logistics', 424, 1, 13131)";
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (262626262, 'VanSaar', 'Edwin', '22/09/2011', '...', 4500, 'Director of Logistics', 0, 1, 13131)";
             stmt.executeUpdate(sql);
             sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (343434343, 'VanPersi', 'Robin', '22/09/2004', '...', 4500, 'Director of Personal Shops', 424, 1, 13141)";
             stmt.executeUpdate(sql);
@@ -153,19 +155,27 @@ public class ProgramLauncher
             stmt.executeUpdate(sql);
             sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (363636363, 'Carrick', 'Michel', '28/01/2006', '...', 4000, 'Director of Personal Shops', 5, 1, 13579)";
             stmt.executeUpdate(sql);
-            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (112211221, 'Peek', 'Zvika', '27/02/2005', '...', 4000, 'Director of Personal Shops', -1, 2, 24680)";
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (696969696, 'Peek', 'Zvika', '27/02/2005', '...', 4000, 'Director of Personal Shops', 5, 2, 24680)";
             stmt.executeUpdate(sql);
-            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (113311331, 'Hamacabi', 'Yehooda', '21/03/2006', '...', 4000, 'Director of Personal Transport Center', -1, 3, 13531)";
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (959595959, 'Hamacabi', 'Yehooda', '21/03/2006', '...', 4000, 'Director of Personal Transport Center', 414, 3, 13531)";
             stmt.executeUpdate(sql);
-            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (223322332, 'Gump', 'Forest', '12/05/2007', '...', 4000, 'Director of Personal Transport Center', -1, 4, 24642)";
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (842821823, 'Gump', 'Forest', '12/05/2007', '...', 4000, 'Director of Personal Transport Center', 434, 4, 24642)";
             stmt.executeUpdate(sql);
-            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (224422442, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Transport Center', -1, 5, 46864)";
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (979529331, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Transport Center', 424, 5, 46864)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (112211221, 'Yoni', 'Halevi', '14/08/2007', '...', 4000, 'Driver', 0, 5, 46864)";
             stmt.executeUpdate(sql);
             sql="INSERT INTO Drivers (ID, licence) VALUES (112211221 , 1)";
             stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (113311331, 'Grimm', 'Riper', '22/09/2003', '...', 4800, 'Driver', 0, 1, 13151)";
+            stmt.executeUpdate(sql);
             sql="INSERT INTO Drivers (ID, licence) VALUES (113311331 , 2)";
             stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (223322332, 'Jony', 'Bravo', '21/08/2010', '...', 3900, 'Driver', 0, 3, 12121)";
+            stmt.executeUpdate(sql);
             sql="INSERT INTO Drivers (ID, licence) VALUES (223322332 , 3)";
+            stmt.executeUpdate(sql);
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (224422442, 'Jamal', 'Abdelnazzer', '12/03/2012', '...', 5500, 'Driver', 0, 3, 456789)";
             stmt.executeUpdate(sql);
             sql="INSERT INTO Drivers (ID, licence) VALUES (224422442 , 4)";
             stmt.executeUpdate(sql);
@@ -511,7 +521,7 @@ public class ProgramLauncher
                     " Wight INT NOT NULL , MaxWight INT NOT NULL);";
             stmt.executeUpdate(sql);
             sql= "CREATE TABLE IF NOT EXISTS Transport"+
-                    " (TransportNumber INT PRIMARY KEY NOT NULL ,"+
+                    " (TransportNumber INT PRIMARY KEY NOT NULL "+
                     "  date DATE NOT NULL );";
             stmt.executeUpdate(sql);
             sql= "CREATE TABLE IF NOT EXISTS Sites"+
