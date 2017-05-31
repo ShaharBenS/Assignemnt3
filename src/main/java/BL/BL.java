@@ -1220,4 +1220,10 @@ public class BL {
 
 		return true;
 	}
+
+    public boolean getTransport(int id)
+    {
+        //TODO : gal
+        return true;
+    }
 }

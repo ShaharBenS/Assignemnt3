@@ -349,6 +349,8 @@ public class SupplierBL {
                     return false;
                 }
 
+                bl.getTransport(id);
+
                 if(!order.setArrivalDate(id,a_date))
                 {
                     return false;
