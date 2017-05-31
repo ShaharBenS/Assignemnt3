@@ -202,6 +202,9 @@ public class BL {
 		catch (NumberFormatException e)
 		{throw new NituzException(2, "illegal SITE format");}
 		Site sp = this.dal.getSite(_sp);
+		if (sp==null){
+			throw new NituzException(1,"Supplier not Found");
+		}
 
 		String doc = t.makeDocForShopAndSupplier(sh, sp);
 		if (doc == null)
@@ -595,6 +598,7 @@ public class BL {
 			}
 			this.dal.getTransport(t).setDriver(dr);
 			this.dal.selectDriverTotransport(t, d);
+			return true;
 		}
 		return this.dal.update(t, details[0], details[1]);
 	}
