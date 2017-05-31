@@ -90,8 +90,10 @@ public class ProgramLauncher
             stmt.executeUpdate(sql);
             sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (5,'Osher Ad','Tel Aviv','Avrami','0587778777');";
             stmt.executeUpdate(sql);
-            sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (-1,'Osher Ad','Tel Aviv','Avrami','0587778777');";
-            stmt.executeUpdate(sql);
+                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (-1,'Osher Ad','Tel Aviv','Avrami','0587778777');";
+                stmt.executeUpdate(sql);
+                sql="INSERT INTO Sites (code , Name  ,Address , Contact , Phone ) VALUES (1,'Rift Herald','Look4MeAtRishon','Agasi','0511111111');";
+                stmt.executeUpdate(sql);
             sql="INSERT INTO Shops (code , region) VALUES (0,'A')";
             stmt.executeUpdate(sql);
             sql="INSERT INTO Shops (code , region) VALUES (414,'B')";
@@ -302,6 +304,27 @@ public class ProgramLauncher
                 sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
                         " VALUES (550000012, 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Shop Manager', 300000, 5, 55012)";
                 stmt.executeUpdate(sql);
+                conn.commit();
+
+
+
+
+                int j=21;
+                for(int i =0; i<=1; i++) {
+                    sql = "INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                            " VALUES (5500000"+j+", 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Transport Center', "+i+", 5, 5500"+(j++)+")";
+                    stmt.executeUpdate(sql);
+                    sql = "INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                            " VALUES (5500000"+j+", 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Storekeeper', "+i+", 5, 5500"+(j++)+")";
+                    stmt.executeUpdate(sql);
+                    sql = "INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                            " VALUES (5500000"+j+", 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Shops', "+i+", 5, 5500"+(j++)+")";
+                    stmt.executeUpdate(sql);
+                    sql = "INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
+                            " VALUES (5500000"+j+", 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Shop Manager', "+i+", 5, 5500"+(j++)+")";
+                    stmt.executeUpdate(sql);
+
+                }
                 conn.commit();
 
             CONTACTS.addContact(new Contact("101010101", 100000, "Geula Stone",
