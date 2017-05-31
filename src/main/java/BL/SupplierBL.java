@@ -273,7 +273,14 @@ public class SupplierBL {
             return order.setContactID(orderID, conID);
         case 2:
             int quantity = ((Integer) change).intValue();
-            return OI.setQuantity(orderID, itemID, quantity);
+            Order order = getOrder(OrderID);
+            boolean ans = OI.setQuantity(orderID, itemID, quantity);
+            try{
+                bl.updateMission(""+orderID,""+order.getShopID(),""+itemID,""+order.getSupplierID(),""+quantity);
+            }
+            catch (NituzException ignored){}
+
+            return ans;
         default:
             return false;
     	}
@@ -366,13 +373,19 @@ public class SupplierBL {
             return false;
         }
     }
-    public boolean removeOrder(int orderID) {
-        return order.removeOrder(orderID);
+    public boolean removeOrder(int orderID)
+    {
+        boolean ans = order.removeOrder(orderID);
+        //TODO:GAL : delete the transport...
+        return ans;
+
     }
     
     public boolean removeOrderItem(int orderID, int itemID)
     {
-    	return OI.removeOrderItem(orderID,itemID);
+    	boolean ans = OI.removeOrderItem(orderID,itemID);
+    	//TODO:GAL : remove the mission
+        return ans;
     }
 
     public boolean checkIfItemExistInSupItems(int itemID , int suppID){
