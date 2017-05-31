@@ -137,7 +137,7 @@ public class ProgramLauncher
             stmt.executeUpdate(sql);
             sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (171717171, 'Scholes', 'Paul', '29/03/2016', '...', 5100, 'Storekeeper', 5, 1, 55555)";
             stmt.executeUpdate(sql);
-            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (181818181, 'Giggs', 'Rayn', '30/04/2017', '...', 5200, 'Storekeeper', 5, 2, 66666)";
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (181818181, 'Giggs', 'Rayn', '30/04/2017', '...', 5200, 'Storekeeper', 0, 2, 66666)";
             stmt.executeUpdate(sql);
             sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (191919191, 'Nevil', 'Gary', '19/05/2007', '...', 4900, 'Storekeeper', 414, 3, 77777)";
             stmt.executeUpdate(sql);

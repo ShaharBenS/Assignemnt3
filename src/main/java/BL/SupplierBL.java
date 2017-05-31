@@ -303,9 +303,22 @@ public class SupplierBL {
     	return toReturn;
     }
     
-    public boolean addOrderItem(int orderID, int itemID, int quantity){
-
+    public boolean addOrderItem(int orderID, int itemID, int quantity)
+    {
         Order OrderToAdd = order.getOrder(orderID);
+
+        Supplier supp = getSupplier(OrderToAdd.getSupplierID());
+        if(!supp.getDeliveryMethod().equals("with delivery"))
+        {
+            try{
+                boolean ans = bl.addMission(""+orderID,""+quantity,""+OrderToAdd.getShopID(),
+                        ""+OrderToAdd.getSupplierID(),""+itemID);
+            }
+            catch (NituzException ignored)
+            {
+                return false;
+            }
+        }
 
         int disco = dis.getDiscountPer(OrderToAdd.getSupplierID(), itemID, quantity);
         double cost = si.getCost(itemID,OrderToAdd.getSupplierID());
@@ -313,20 +326,8 @@ public class SupplierBL {
         if(disco != 0)
          finalCost = cost - (disco*cost)/100;
         OrderItem orderItem = new OrderItem(orderID,itemID, quantity, finalCost);
-        boolean ans = OI.addOrderItem(orderItem);
 
-        Supplier supp = getSupplier(OrderToAdd.getSupplierID());
-        if(supp.getDeliveryMethod().equals("with delivery"))
-        {
-            return ans;
-        }
-        try{
-            bl.addMission(""+orderID,""+quantity,""+OrderToAdd.getShopID(),
-                    ""+OrderToAdd.getSupplierID(),""+itemID);
-        }
-        catch (NituzException ignored){}
-
-        return ans;
+        return OI.addOrderItem(orderItem);
     }
     public boolean setOrderArrivalDate(String line)
     {
