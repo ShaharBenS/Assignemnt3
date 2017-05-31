@@ -302,10 +302,10 @@ public class ProgramLauncher
 
             int[] shopID = new int[]{0,0,0,0};
 
-            ORDERS.addOrder(new Order(1, shopID[0], 200000, new Date(new java.util.Date()),  "20202020", 0));
-            ORDERS.addOrder(new Order(2, shopID[1], 300000, new Date(new java.util.Date()),  "30303030", 1));
-            ORDERS.addOrder(new Order(3, shopID[2], 100000, new Date(new java.util.Date()),  "10101010", 2));
-            ORDERS.addOrder(new Order(4, shopID[3], 300000, new Date(new java.util.Date()),  "30303030", 3));
+            ORDERS.addOrder(new Order(1, shopID[0], 200000, new Date(new java.util.Date()),  "202020202", 0));
+            ORDERS.addOrder(new Order(2, shopID[1], 300000, new Date(new java.util.Date()),  "303030303", 1));
+            ORDERS.addOrder(new Order(3, shopID[2], 100000, new Date(new java.util.Date()),  "101010101", 2));
+            ORDERS.addOrder(new Order(4, shopID[3], 300000, new Date(new java.util.Date()),  "303030303", 3));
 
 
             ORDERS_ITEMS.addOrderItem(new OrderItem(1, 111111, 30, 50.0));
