@@ -3,7 +3,7 @@ package SharedClasses;
 public class PossibleShiftsForWorkers {
 	
 	private Worker worker;
-	private Shift shift; //TODO: gal | ofir : What is this field?
+	private Shift shift;
 	
 	public PossibleShiftsForWorkers(Worker worker, Shift shift) {
 		this.worker = worker;
