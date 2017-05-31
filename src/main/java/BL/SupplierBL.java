@@ -382,7 +382,15 @@ public class SupplierBL {
     
     public boolean removeOrderItem(int orderID, int itemID)
     {
-        return OI.removeOrderItem(orderID,itemID);
+        boolean ans = OI.removeOrderItem(orderID,itemID);
+        Order order = getOrder(orderID);
+        try{
+            bl.updateMission(""+order.getOrderID(),""+order.getShopID(),
+                    ""+itemID,""+order.getSupplierID(),""+0);
+        }
+        catch (NituzException ignored){}
+
+        return ans;
     }
 
     public boolean checkIfItemExistInSupItems(int itemID , int suppID){

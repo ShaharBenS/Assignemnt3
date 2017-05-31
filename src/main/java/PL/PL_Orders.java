@@ -422,6 +422,7 @@ public class PL_Orders
             if (itemNum != 0 && bl.checkItemExistInOrder(order, itemNum)) {
                 bl.removeOrderItem(order, itemNum);
                 System.out.println("Item from order has been removed successfully");
+
             } else {
                 System.out.println("ERROR! something went wrong");
                 case4();
