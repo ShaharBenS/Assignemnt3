@@ -89,6 +89,25 @@ public class Supplier extends Site {
     public String getSupplyTime() {
         return supplyTime;
     }
+    public int getSupplyTimeInNumber(){
+        switch (supplyTime) {
+            case "Sunday":
+                return 1;
+            case "Monday":
+                return 2;
+            case "Tuesday":
+                return 3;
+            case "Wednesday":
+                return 4;
+            case "Thursday":
+                return 5;
+            case "Friday":
+                return 6;
+            case "Saturday":
+                return 7;
+default: return 0;
+        }
+    }
 
     public void setSupplyTime(String supplyTime) {
         this.supplyTime = supplyTime;

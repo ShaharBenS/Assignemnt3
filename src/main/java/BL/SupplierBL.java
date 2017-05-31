@@ -2,9 +2,12 @@ package BL;
 
 import DAL.*;
 import SharedClasses.*;
+import SharedClasses.Date;
 import com.sun.org.apache.xpath.internal.operations.Or;
 import javafx.util.Pair;
-import java.util.List;
+
+import java.time.DayOfWeek;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 
@@ -235,10 +238,28 @@ public class SupplierBL {
             return -1;
         }
 
-        //TODO: add trasport =  BL.createTransport
-        try{
-            bl.addTransport("Time Need to check from supplier available day on week",
-                    "Need to check what's the format",""+ord.getOrderID());
+        Supplier supp = getSupplier(supplierId);
+        if(supp.getDeliveryMethod().equals("with delivery"))
+        {
+            return ord.getOrderID();
+        }
+        try
+        {
+            Calendar c = Calendar.getInstance();
+            int currDay  = c.get(Calendar.DAY_OF_WEEK);
+            int dayInWeek = supp.getSupplyTimeInNumber();
+            int daysToAdd = (dayInWeek - currDay);
+            daysToAdd = (daysToAdd == 0) ? 7 : (daysToAdd < 0) ? (7-Math.abs(daysToAdd)) : daysToAdd;
+
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new java.util.Date());
+            calendar.add(Calendar.DAY_OF_YEAR, daysToAdd);
+            Date dateToAdd = new Date(calendar.getTime());
+
+
+            bl.addTransport(dateToAdd.toStringWithBackslash(),
+                    "08:00",""+ord.getOrderID());
         }
         catch (NituzException ignored){}
 
@@ -286,7 +307,12 @@ public class SupplierBL {
          finalCost = cost - (disco*cost)/100;
         OrderItem orderItem = new OrderItem(orderID,itemID, quantity, finalCost);
         boolean ans = OI.addOrderItem(orderItem);
-        //TODO: need to add mission accordingly
+
+        Supplier supp = getSupplier(OrderToAdd.getSupplierID());
+        if(supp.getDeliveryMethod().equals("with delivery"))
+        {
+            return ans;
+        }
         try{
             bl.addMission(""+orderID,""+quantity,""+OrderToAdd.getShopID(),
                     ""+OrderToAdd.getSupplierID(),""+itemID);

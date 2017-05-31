@@ -525,7 +525,6 @@ public class ProgramLauncher
             stmt.executeUpdate(sql);
             sql= "CREATE TABLE IF NOT EXISTS Transport"+
                     " (TransportNumber INT PRIMARY KEY NOT NULL ,"+
-                    "  date DATE NOT NULL );";
             stmt.executeUpdate(sql);
             sql= "CREATE TABLE IF NOT EXISTS Sites"+
                     " (code INT PRIMARY KEY NOT NULL,"+
