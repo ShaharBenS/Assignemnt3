@@ -247,7 +247,7 @@ public class ProductManagement {
     }
 
     public String ItemReport(String line) {
-        if (line.length() != 6) return "Invalid ID";
+        if (line.length() != 6) return "Invalid ID\n";
         try {
             int id = Integer.parseInt(line);
             Quantity quantity = QUANTITIES.getQuantity(id,BL.shopID);

@@ -385,6 +385,48 @@ public class PL_Stock
         }
     }
 
+    public void ToolsCase1()
+    {
+        String prop;
+        System.out.print("Enter properties in the following structure:\n" +
+                "[ID-of item or category] [DISCOUNT(in %)] [START DATE] [END DATE] **DATE FORM: DD.MM.YYYY\n");
+        prop = scanner.nextLine();
+        printUpdate(PriceM.addDiscount(prop));
+    }
+
+    public void ToolsCase2()
+    {
+        String prop;
+        System.out.print("Enter properties in the following structure:\n" +
+                "[ID]\n");
+        prop = scanner.nextLine();
+        System.out.print(ProductM.ItemReport(prop));
+    }
+
+    public void ToolsCase3()
+    {
+        String prop;
+        System.out.print("Enter properties in the following structure:\n" +
+                "[ID CATEGORY 1] [ID CATEGORY 2] ...... [ID CATEGORY n]\n");
+        prop = scanner.nextLine();
+        String[] productsbyCat = CategoryM.productReportbyCategory(prop);
+        for (String aProductsbyCat : productsbyCat) System.out.print(aProductsbyCat);
+    }
+
+    public void ToolsCase4()
+    {
+        String[] prodDef = ProductM.getAllDefectProducts();
+        for (String aProdDef : prodDef) System.out.print(aProdDef);
+    }
+
+    public void ToolsCase5()
+    {
+        String[] prod = ProductM.getAllItems();
+        for (String aProd : prod) System.out.print(aProd);
+    }
+
+
+
     private void TOOLS_MENU()
     {
         int operation;
@@ -410,31 +452,19 @@ public class PL_Stock
             switch (operation)
             {
                 case 1:
-                    System.out.print("Enter properties in the following structure:\n" +
-                            "[ID-of item or category] [DISCOUNT(in %)] [START DATE] [END DATE] **DATE FORM: DD.MM.YYYY\n");
-                    prop = scanner.nextLine();
-                    printUpdate(PriceM.addDiscount(prop));
+                    ToolsCase1();
                     break;
                 case 2:
-                    System.out.print("Enter properties in the following structure:\n" +
-                            "[ID]\n");
-                    prop = scanner.nextLine();
-                    System.out.print(ProductM.ItemReport(prop));
+                   ToolsCase2();
                     break;
                 case 3:
-                    System.out.print("Enter properties in the following structure:\n" +
-                            "[ID CATEGORY 1] [ID CATEGORY 2] ...... [ID CATEGORY n]\n");
-                    prop = scanner.nextLine();
-                    String[] productsbyCat = CategoryM.productReportbyCategory(prop);
-                    for (String aProductsbyCat : productsbyCat) System.out.print(aProductsbyCat);
+                   ToolsCase3();
                     break;
                 case 4:
-                    String[] prodDef = ProductM.getAllDefectProducts();
-                    for (String aProdDef : prodDef) System.out.print(aProdDef);
+                    ToolsCase4();
                     break;
                 case 5:
-                    String[] prod = ProductM.getAllItems();
-                    for (String aProd : prod) System.out.print(aProd);
+                    ToolsCase5();
                     break;
                 case 6:
                     return;

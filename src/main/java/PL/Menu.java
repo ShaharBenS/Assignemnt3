@@ -720,8 +720,16 @@ public class Menu {
         menues[4]=new MenuOP("Shop Manager");
         menues[4].addSon(st2.clone());
         MenuOP m1=new MenuOP("Reports");//watch all reports
-        MenuOP m11=new MenuOP("Stock Reports",()->{});
+        MenuOP m11=new MenuOP("Stock Reports");
         m1.addSon(m11);
+        MenuOP m111 = new MenuOP("Stock Report by ItemID",()->{pl_stock.ToolsCase2();});
+        MenuOP m112 = new MenuOP("Stock Report by Category/ies",()->{pl_stock.ToolsCase3();});
+        MenuOP m113 = new MenuOP("Defect Items report",()->{pl_stock.ToolsCase4();});
+        MenuOP m114 = new MenuOP("Show all Items",()->{pl_stock.ToolsCase5();});
+        m11.addSon(m111);
+        m11.addSon(m112);
+        m11.addSon(m113);
+        m11.addSon(m114);
         MenuOP m12=new MenuOP("Order Reports");
         MenuOP m121=new MenuOP("Oder Report by order number",()->{pl_ord.case3();});
         m12.addSon(m121);
