@@ -558,6 +558,17 @@ public class Menu {
                 }
             });
             l2.addSon(l21);
+            MenuOP l27=new MenuOP("Sign Truck to Transport",()->{
+                System.out.println("Please insert the id of the transport you wants sign Truck to:");
+                java.lang.String id=scanner.nextLine();
+                System.out.println("Please insert the Truck plate:");
+                java.lang.String truck=scanner.nextLine();
+                try {
+                    bl.signTruckTotransport(id,truck);
+                } catch (NituzException e) {
+                    e.printStackTrace();
+                }
+            });
             MenuOP l26=new MenuOP("Assign Truck and Driver",()->{
                 System.out.println("Please insert the id of the transport you wants Assign Truck and driver to:");
                 java.lang.String id=scanner.nextLine();
