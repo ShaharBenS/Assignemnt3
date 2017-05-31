@@ -382,7 +382,7 @@ public class Suppliers {
     {
         List<Contact> supplierContactsList = new ArrayList<>();
         try {
-            String sqlQuary = "SELECT * FROM Contacts WHERE SupplierID = '" + to + "';";
+            String sqlQuary = "SELECT * FROM Contacts WHERE SiteID = '" + to + "';";
             stmt = c.createStatement();
             ResultSet rs = stmt.executeQuery(sqlQuary);
             while (rs.next()) {
