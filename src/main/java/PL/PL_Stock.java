@@ -176,6 +176,7 @@ public class PL_Stock
             System.out.println(UPDATE_MENU[0]);
             System.out.println(UPDATE_MENU[1]);
             System.out.println(UPDATE_MENU[2]);
+            System.out.println(UPDATE_MENU[3]);
 
             try
             {
