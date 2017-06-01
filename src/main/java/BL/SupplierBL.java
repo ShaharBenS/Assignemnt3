@@ -334,7 +334,6 @@ public class SupplierBL {
         try{
             String [] splitted = line.split("\\s");
             int id = Integer.parseInt(splitted[0]);
-            Date a_date = new Date(splitted[1]);
             if(order.getArrivalDate(id) == null)
             {
                 Order ord = getOrder(id);

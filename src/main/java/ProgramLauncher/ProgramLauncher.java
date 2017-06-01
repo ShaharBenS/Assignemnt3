@@ -150,7 +150,7 @@ public class ProgramLauncher
             stmt.executeUpdate(sql);
             sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (181818181, 'Giggs', 'Rayn', '30/04/2017', '...', 5200, 'Cashier', 0, 2, 66666)";
             stmt.executeUpdate(sql);
-            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (191919191, 'Nevil', 'Gary', '19/05/2007', '...', 4900, 'Storekeeper', 414, 3, 77777)";
+            sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (191919191, 'Nevil', 'Gary', '19/05/2007', '...', 4900, 'Storekeeper', 0, 3, 77777)";
             stmt.executeUpdate(sql);
             sql="INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber) VALUES (232323232, 'Keane', 'Roy', '16/06/2008', '...', 4800, 'Janitor', 0, 1, 88888)";
             stmt.executeUpdate(sql);
@@ -256,9 +256,9 @@ public class ProgramLauncher
 
 
             SUPPLIERS.addSupplier(new Supplier(100000, "TNUVA", 1, 1, 15, "check",
-                    "without delivery", "Sunday", "netivot"));
+                    "with delivery", "Sunday", "netivot"));
             SUPPLIERS.addSupplier(new Supplier(200000, "TARA", 2, 2, 16, "check",
-                    "with delivery", "Sunday", "shfaram"));
+                    "without delivery", "Sunday", "shfaram"));
             SUPPLIERS.addSupplier(new Supplier(300000, "MOTHER-EARTH", 3, 3, 17, "check",
                     "with delivery", "Sunday", "plat-earth"));
 
@@ -503,10 +503,14 @@ public class ProgramLauncher
 
                 ORDERS.setArrivalDate(2, new Date(new java.util.Date()));
 
+                bl.addTransport(new Date(new java.util.Date()).toStringWithBackslash(),"08:00",""+1);
+
+                conn.commit();
 
             } catch (SQLException e) {
             e.printStackTrace();
             }
+            catch (NituzException ignored){}
         }
 
         SBL.initOrderID();

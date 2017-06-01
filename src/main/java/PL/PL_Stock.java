@@ -297,7 +297,7 @@ public class PL_Stock
                     break;
                 case 4:
                     System.out.print("Enter properties in the following structure:\n" +
-                            "[Arriving Order ID] [Arrival Date] ** Date: DD.MM.YYYY **\n");
+                            "[Arriving Order ID]\n");
                     prop = scanner.nextLine();
                     boolean answer = SBL.setOrderArrivalDate(prop);
                     printUpdate(answer);

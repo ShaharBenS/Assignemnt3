@@ -996,7 +996,7 @@ public class DAL {
 
         try{
             Statement stmt = c.createStatement();
-            ResultSet rs = stmt.executeQuery( "SELECT * FROM Shifts WHERE Date = '" + Date +"' AND Time = '"+Time+"' AND WorkPlace = "+WorkPlace+";" );
+            ResultSet rs = stmt.executeQuery( "SELECT * FROM Shifts as S WHERE S.Date = '" + Date +"' AND S.Time = '"+Time+"' AND S.WorkPlace = "+WorkPlace+";" );
             if(rs.isBeforeFirst()) {
 
                 Shift s = new Shift(rs.getInt("Code"), rs.getString("Date"), rs.getString("Day"), rs.getString("Time"), rs.getInt("WorkPlace"), rs.getInt("ShiftManager"));
