@@ -312,16 +312,16 @@ public class ProgramLauncher
                 int j=21;
                 for(int i =0; i<=1; i++) {
                     sql = "INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
-                            " VALUES (5500000"+j+", 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Transport Center', "+i+", 5, 5500"+(j++)+")";
+                            " VALUES (5500000"+j+", 'gvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Transport Center', "+((i==0)?0:5)+", 5, 5500"+(j++)+")";
                     stmt.executeUpdate(sql);
                     sql = "INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
-                            " VALUES (5500000"+j+", 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Storekeeper', "+i+", 5, 5500"+(j++)+")";
+                            " VALUES (5500000"+j+", 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Storekeeper', "+((i==0)?0:5)+", 5, 5500"+(j++)+")";
                     stmt.executeUpdate(sql);
                     sql = "INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
-                            " VALUES (5500000"+j+", 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Shops', "+i+", 5, 5500"+(j++)+")";
+                            " VALUES (5500000"+j+", 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Director of Personal Shops', "+((i==0)?0:5)+", 5, 5500"+(j++)+")";
                     stmt.executeUpdate(sql);
                     sql = "INSERT INTO Workers (ID, Lname, Fname, startDate, TermsOfEmployment, Salary, Role, WorkPlace, BankNumber, BankAccountNumber)" +
-                            " VALUES (5500000"+j+", 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Shop Manager', "+i+", 5, 5500"+(j++)+")";
+                            " VALUES (5500000"+j+", 'Agvanya', 'Mr', '14/08/2007', '...', 4000, 'Shop Manager', "+((i==0)?0:5)+", 5, 5500"+(j++)+")";
                     stmt.executeUpdate(sql);
 
                 }
@@ -435,9 +435,7 @@ public class ProgramLauncher
                 ORDERS.setArrivalDate(3, new Date(new java.util.Date()));
 
 
-
-
-                SHOPID = 1;
+                SHOPID = 5;
 
 
                 ORDERS.addOrder(new Order(4, SHOPID, 200000, new Date(new java.util.Date()),  "202020202", 0));
@@ -445,17 +443,17 @@ public class ProgramLauncher
                 ORDERS.addOrder(new Order(6, SHOPID, 100000, new Date(new java.util.Date()),  "101010101", 0));
 
 
-                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 111111, 20, 50.0));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 222222, 30, 10));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 333333, 80, 60.0));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 444444, 60, 10));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 555555, 60, 22.5));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 666666, 70, 10));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 777777, 80, 32.5));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 888888, 110, 10));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 999999, 150, 42.5));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 101010, 130, 10));
-                ORDERS_ITEMS.addOrderItem(new OrderItem(2, 202020, 120, 12.5));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(4, 111111, 20, 50.0));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(5, 222222, 30, 10));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(6, 333333, 80, 60.0));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(4, 444444, 60, 10));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(5, 555555, 60, 22.5));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(6, 666666, 70, 10));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(4, 777777, 80, 32.5));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(5, 888888, 110, 10));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(6, 999999, 150, 42.5));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(4, 101010, 130, 10));
+                ORDERS_ITEMS.addOrderItem(new OrderItem(5, 202020, 120, 12.5));
 
                 for(int i=1; i<=9; i++)
                 {

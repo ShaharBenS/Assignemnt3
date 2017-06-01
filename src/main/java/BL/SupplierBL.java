@@ -316,7 +316,6 @@ public class SupplierBL {
             }
             catch (NituzException ignored)
             {
-                return false;
             }
         }
 
