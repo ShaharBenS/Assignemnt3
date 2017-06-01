@@ -372,8 +372,8 @@ public class ProgramLauncher
             int SHOPID = 0;
 
                 ORDERS.addOrder(new Order(1, SHOPID, 200000, new Date(new java.util.Date()),  "202020202", 0));
-                ORDERS.addOrder(new Order(2, SHOPID, 300000, new Date(new java.util.Date()),  "303030303", 1));
-                ORDERS.addOrder(new Order(3, SHOPID, 100000, new Date(new java.util.Date()),  "101010101", 2));
+                ORDERS.addOrder(new Order(2, SHOPID, 300000, new Date(new java.util.Date()),  "303030303", 0));
+                ORDERS.addOrder(new Order(3, SHOPID, 100000, new Date(new java.util.Date()),  "101010101", 0));
 
 
                 ORDERS_ITEMS.addOrderItem(new OrderItem(3, 111111, 20, 50.0));
@@ -441,8 +441,8 @@ public class ProgramLauncher
 
 
                 ORDERS.addOrder(new Order(4, SHOPID, 200000, new Date(new java.util.Date()),  "202020202", 0));
-                ORDERS.addOrder(new Order(5, SHOPID, 300000, new Date(new java.util.Date()),  "303030303", 1));
-                ORDERS.addOrder(new Order(6, SHOPID, 100000, new Date(new java.util.Date()),  "101010101", 2));
+                ORDERS.addOrder(new Order(5, SHOPID, 300000, new Date(new java.util.Date()),  "303030303", 0));
+                ORDERS.addOrder(new Order(6, SHOPID, 100000, new Date(new java.util.Date()),  "101010101", 0));
 
 
                 ORDERS_ITEMS.addOrderItem(new OrderItem(2, 111111, 20, 50.0));
